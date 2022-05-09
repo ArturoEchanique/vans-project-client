@@ -1,60 +1,57 @@
-import React, { createContext, useState } from 'react'
-import { useEffect } from 'react';
-import authService from '../services/auth.service';
+import React, { createContext, useState } from "react";
+import authService from "../services/auth.service";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
 function AuthProviderWrapper(props) {
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     const storeToken = (token) => {
-        localStorage.setItem("authToken", token)
-    }
+        localStorage.setItem("authToken", token);
+    };
 
     const removeToken = () => {
-        localStorage.removeItem("authToken")
-    }
+        localStorage.removeItem("authToken");
+    };
 
     const getToken = () => {
-        return localStorage.getItem("authToken")
-    }
-
+        return localStorage.getItem("authToken");
+    };
 
     const authenticateUser = () => {
-
-        const storedToken = getToken()
+        const storedToken = getToken();
 
         if (!storedToken) {
-            logOutUser()
+            logOutUser();
         } else {
             authService
                 .verify(storedToken)
                 .then(({ data }) => {
-                    const user = data
+                    const user = data;
                     setIsLoggedIn(true);
                     setIsLoading(false);
                     setUser(user);
                 })
-                .catch(() => logOutUser())
+                .catch(() => logOutUser());
         }
-    }
+    };
 
     const logOutUser = () => {
-        removeToken()
+        removeToken();
         setIsLoggedIn(false);
         setIsLoading(false);
         setUser(null);
-    }
-
+    };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>
+        <AuthContext.Provider
+            value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}
+        >
             {props.children}
         </AuthContext.Provider>
-    )
+    );
 }
 
 export { AuthContext, AuthProviderWrapper };
