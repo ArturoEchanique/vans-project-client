@@ -1,12 +1,17 @@
+import AppRoutes from '../routes/AppRoutes';
+import '.././App.css'
+// import Footer from './Footer/Footer';
+// import Navigation from './Navigation/Navigation';
 
-import '.././App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>holi</h1>
-    </div>
+    <>
+      {/* <Navigation /> */}
+      <AppRoutes />
+      {/* <Footer /> */}
+    </>
   );
 }
 
-export default App;
+export default App
