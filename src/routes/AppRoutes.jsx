@@ -11,12 +11,7 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/" element={"holiEstoyEnrutadio"} />
             <Route path="/results" element={<ResultsPage />} />
-            {/* <Route path="/detalles/:coaster_id" element={<CoasterDetailsPage />} />
-            <Route path="/registro" element={<SignupPage />} />
-            <Route path="/inicio-sesion" element={<LoginPage />} />
-            <Route path="*" element={<h1>Esto es un 404, melón</h1>} /> */}
         </Routes>
     )
 }
