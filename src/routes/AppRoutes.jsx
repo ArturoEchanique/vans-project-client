@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 // import IndexPage from "../pages/HomePage/HomePage"
 // import LoginPage from "../pages/LoginPage/LoginPage"
 // import SignupPage from "../pages/SignupPage/SignupPage"
+// import CoastersPage from '../pages/CoastersPage/CoastersPage'
 
 const AppRoutes = () => {
 
