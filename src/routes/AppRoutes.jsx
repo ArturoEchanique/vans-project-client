@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import ResultsPage from "../pages/ResultsPage/ResultsPage"
 // import CoasterDetailsPage from "../pages/CoasterDetailsPage/CoasterDetailsPage"
 // import CoastersPage from '../pages/CoastersPage/CoastersPage'
 // import IndexPage from "../pages/HomePage/HomePage"
@@ -11,8 +12,8 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={"holiEstoyEnrutadio"} />
-            {/* <Route path="/galeria" element={<CoastersPage />} />
-            <Route path="/detalles/:coaster_id" element={<CoasterDetailsPage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            {/* <Route path="/detalles/:coaster_id" element={<CoasterDetailsPage />} />
             <Route path="/registro" element={<SignupPage />} />
             <Route path="/inicio-sesion" element={<LoginPage />} />
             <Route path="*" element={<h1>Esto es un 404, melón</h1>} /> */}

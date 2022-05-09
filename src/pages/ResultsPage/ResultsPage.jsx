@@ -2,32 +2,38 @@ import { Container, Modal, Button } from 'react-bootstrap'
 // import CoastersList from '../../components/CoastersList/CoastersList'
 import { useContext, useEffect, useState } from "react"
 // import NewCoasterForm from './../../components/NewCoasterForm/NewCoasterForm'
-// import coastersService from './../../services/coaster.service'
+import vanService from './../../services/van.service'
 import { AuthContext } from '../../context/auth.context'
 
 const ResultsPage = () => {
 
-    const [showModal, setShowModal] = useState(false)
-    const [coasters, setCoasters] = useState([])
+    const [fetched, setFetched] = useState(false)
+    const [Vans, setVans] = useState([])
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
+    // const openModal = () => setShowModal(true)
+    // const closeModal = () => setShowModal(false)
 
-    useEffect(() => loadCoasters(), [])
+    useEffect(() => loadVans(), 
+    [])
 
-    const loadCoasters = () => {
-        coastersService
-            .getAllCoasters()
-            .then(({ data }) => setCoasters(data))
+    const loadVans = () => {
+        console.log("holi")
+        vanService
+            .getVans()
+            .then(({ data }) => {
+                console.log(data)
+                setFetched(true)
+                setVans(data)
+            })
             .then(err => console.log(err))
     }
 
-    const fireFinalActions = () => {
-        closeModal()
-        loadCoasters()
-    }
+    // const fireFinalActions = () => {
+    //     closeModal()
+    //     loadVans()
+    // }
 
-    const { isLoggedIn } = useContext(AuthContext)
+    // const { isLoggedIn } = useContext(AuthContext)
 
     return (
         <>
@@ -46,7 +52,12 @@ const ResultsPage = () => {
                     <NewCoasterForm fireFinalActions={fireFinalActions} />
                 </Modal.Body>
             </Modal> */}
-            i am results page
+            {Vans[0]?.description}
+            {Vans.map(van => {
+                return van.description
+            })}
+
+            
         </>
     )
 }
