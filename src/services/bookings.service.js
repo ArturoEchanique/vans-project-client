@@ -14,6 +14,12 @@ class BookingsService {
     getOneBooking = (booking_id) => {
         return this.api.get(`/${booking_id}`);
     };
+    editBooking = (booking_id) => {
+        return this.api.get(`/edit/${booking_id}`);
+    };
+    deleteBooking = (booking_id) => {
+        return this.api.get(`/delete/${booking_id}`);
+    };
 }
 
 const bookingsService = new BookingsService();
