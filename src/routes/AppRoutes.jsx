@@ -5,12 +5,14 @@ import { Routes, Route } from "react-router-dom"
 // import LoginPage from "../pages/LoginPage/LoginPage"
 // import SignupPage from "../pages/SignupPage/SignupPage"
 // import CoastersPage from '../pages/CoastersPage/CoastersPage'
+import SignupPage from '../pages/SingupPage/SingupPage'
 
 const AppRoutes = () => {
 
     return (
         <Routes>
             <Route path="/" element={"holiEstoyEnrutadio"} />
+            <Route path="/singup" element={SignupPage} />
             {/* <Route path="/galeria" element={<CoastersPage />} />
             <Route path="/detalles/:coaster_id" element={<CoasterDetailsPage />} />
             <Route path="/registro" element={<SignupPage />} />
