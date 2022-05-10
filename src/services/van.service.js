@@ -7,23 +7,28 @@ class VanService {
     }
 
     createVan = van => {
-        return this.app.post('/create-van', van)
+        return this.app.post('/create', van)
     }
 
-    getVans = () => {
-        return this.app.get('/get-all-vans')
+    getVans = (query) => {
+        let queryComputed= "?name=nameQuery"
+        return this.app.get(`/${queryComputed}`)
     }
+
+    // getWithQuery = () => {
+    //     return this.app.get('/get-all')
+    // }
 
     getOneVan = id => {
-        return this.app.get(`/get-onevan/${id}`)
+        return this.app.get(`/${id}`)
     }
 
     getOneVanAndUpdate = (id, van) => {
-        return this.app.post(`/get-onevan/${id}/edit`, van)
+        return this.app.post(`/${id}/edit`, van)
     }
 
     getOneVanAndRemove = id => {
-        return this.app.post(`/get-onevan/${id}/delete`)
+        return this.app.post(`/${id}/delete`)
     }
 
 }
