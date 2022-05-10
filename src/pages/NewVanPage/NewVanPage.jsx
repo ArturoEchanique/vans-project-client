@@ -1,17 +1,17 @@
 import { Container, Button, Row, Col } from 'react-bootstrap'
-import Loginform from '../../components/LoginForm/LoginForm'
+import NewVanForm from '../../components/NewVanForm/NewVanForm'
 
 
 
-const LoginPage = () => {
+const NewVanPage = () => {
 
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <h1>Log In</h1>
+                    <h1>Add a new Vehicle</h1>
                     <hr />
-                    <Loginform />
+                    <NewVanForm />
 
                 </Col>
             </Row>
@@ -19,4 +19,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default NewVanPage

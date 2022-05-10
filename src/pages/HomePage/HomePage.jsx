@@ -4,9 +4,9 @@ import DatePicker from "../../components/DatePicker/DatePicker";
 const HomePage = () => {
     return (
         <Container>
-            
+            <hr />
             <DatePicker />
-            
+
         </Container>
     );
 };
