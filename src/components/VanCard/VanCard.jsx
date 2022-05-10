@@ -2,21 +2,21 @@ import { Navbar, Container, Nav, Modal, Button, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 
-const VanCard = ({vanDetails}) => {
+const VanCard = ({ imageUrl, name, description }) => {
 
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={vanDetails.imageUrl} />
+            <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
-                <Card.Title>{vanDetails.name}</Card.Title>
+                <Card.Title>{name}</Card.Title>
                 <Card.Text>
-                    {vanDetails.description}
+                    {description}
                 </Card.Text>
                 <Button variant="primary">See details</Button>
             </Card.Body>
         </Card>
     )
-    
+
 }
 
 export default VanCard;
