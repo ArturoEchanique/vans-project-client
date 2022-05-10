@@ -1,14 +1,14 @@
-import { Container, Modal, Button } from 'react-bootstrap'
-// import CoastersList from '../../components/CoastersList/CoastersList'
+import { Container, Modal, Button, Card } from 'react-bootstrap'
 import { useContext, useEffect, useState } from "react"
-// import NewCoasterForm from './../../components/NewCoasterForm/NewCoasterForm'
 import vanService from './../../services/van.service'
 import { AuthContext } from '../../context/auth.context'
+import VanCard from '../../components/VanCard/VanCard'
 
 const ResultsPage = () => {
 
     const [fetched, setFetched] = useState(false)
     const [Vans, setVans] = useState([])
+    const [searchInput, setSearchInput] = useState("");
 
     // const openModal = () => setShowModal(true)
     // const closeModal = () => setShowModal(false)
@@ -17,46 +17,54 @@ const ResultsPage = () => {
     [])
 
     const loadVans = () => {
-        console.log("holi")
         vanService
             .getVans()
             .then(({ data }) => {
-                console.log(data)
                 setFetched(true)
                 setVans(data)
             })
             .then(err => console.log(err))
     }
 
-    // const fireFinalActions = () => {
-    //     closeModal()
-    //     loadVans()
-    // }
+    const loadVansWithQuery = (query) => {
+        vanService
+            .getVansWithQuery(query)
+            .then(({ data }) => {
+                setVans(data)
+            })
+            .then(err => console.log(err))
+    }
 
-    // const { isLoggedIn } = useContext(AuthContext)
+    const handleSearch = e => {
+        if
+            (e.target.value === "") {
+            loadVans()
+        }
+        else {
+            setSearchInput(e.target.value)
+            loadVansWithQuery(searchInput)
+        }
+
+
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+    }
 
     return (
         <>
-            {/* <Container>
-                <h1>Listado de montañas rusas</h1>
-                {isLoggedIn && <Button onClick={openModal}>Crear nueva</Button>}
-                <hr />
-                <CoastersList coasters={coasters} />
-            </Container>
-
-            <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Nueva montaña rusa</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <NewCoasterForm fireFinalActions={fireFinalActions} />
-                </Modal.Body>
-            </Modal> */}
-            {Vans[0]?.description}
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Search
+                    <input type="text" value={searchInput} name="name" onChange={handleSearch} />
+                </label>
+            </form>
             {Vans.map(van => {
-                return van.description
+                return (
+                    <VanCard vanDetails={van}/>
+                )
             })}
-
             
         </>
     )
