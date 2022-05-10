@@ -2,10 +2,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 
 const Navigation = () => {
-<<<<<<< HEAD
 
-=======
->>>>>>> 1036222226a9f613fd537b8263c70a8bc13fc995
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
