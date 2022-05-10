@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage/HomePage";
 import ResultsPage from "../pages/ResultsPage/ResultsPage";
 
 const AppRoutes = () => {
+
+    
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
@@ -14,3 +16,4 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+
