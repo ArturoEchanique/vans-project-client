@@ -8,6 +8,8 @@ import NewVanPage from '../pages/NewVanPage/NewVanPage';
 import EditVanPage from '../pages/EditVanPage/EditVanPage';
 
 const AppRoutes = () => {
+
+
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
@@ -22,3 +24,4 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+

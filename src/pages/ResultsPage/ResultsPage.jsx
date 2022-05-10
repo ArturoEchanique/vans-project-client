@@ -7,14 +7,13 @@ import VanCard from '../../components/VanCard/VanCard'
 const ResultsPage = () => {
 
     const [fetched, setFetched] = useState(false)
-    const [Vans, setVans] = useState([])
+    const [vans, setVans] = useState([])
     const [searchInput, setSearchInput] = useState("");
 
     // const openModal = () => setShowModal(true)
     // const closeModal = () => setShowModal(false)
 
-    useEffect(() => loadVans(), 
-    [])
+    useEffect(() => loadVans(), [])
 
     const loadVans = () => {
         vanService
@@ -36,11 +35,9 @@ const ResultsPage = () => {
     }
 
     const handleSearch = e => {
-        if
-            (e.target.value === "") {
+        if (e.target.value === "") {
             loadVans()
-        }
-        else {
+        } else {
             setSearchInput(e.target.value)
             loadVansWithQuery(searchInput)
         }
@@ -60,12 +57,12 @@ const ResultsPage = () => {
                     <input type="text" value={searchInput} name="name" onChange={handleSearch} />
                 </label>
             </form>
-            {Vans.map(van => {
+            {vans.map(van => {
                 return (
-                    <VanCard vanDetails={van}/>
+                    <VanCard {...van} />
                 )
             })}
-            
+
         </>
     )
 }

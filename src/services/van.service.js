@@ -10,13 +10,14 @@ class VanService {
         return this.app.post('/create', van)
     }
 
-    getVans = () => {
-        return this.app.get('/get-all')
+    getVans = (query) => {
+        let queryComputed= "?name=nameQuery"
+        return this.app.get(`/${queryComputed}`)
     }
 
-    getWithQuery = () => {
-        return this.app.get('/get-all')
-    }
+    // getWithQuery = () => {
+    //     return this.app.get('/get-all')
+    // }
 
     getOneVan = id => {
         return this.app.get(`/${id}`)
