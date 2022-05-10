@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 
 const Navigation = () => {
-    
+
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
@@ -12,7 +12,13 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavLink to="/" className="nav-link">
-                            Inicio
+                            HOME
+                        </NavLink>
+                        <NavLink to="/singup" className="nav-link">
+                            Sing up
+                        </NavLink>
+                        <NavLink to="/login" className="nav-link">
+                            Login
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse>
