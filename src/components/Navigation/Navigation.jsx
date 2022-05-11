@@ -4,8 +4,6 @@ import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 
 const Navigation = () => {
-    const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
-
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
@@ -28,12 +26,24 @@ const Navigation = () => {
                                 <>
                                     <NavLink to="/singup" className="nav-link">Sing up</NavLink>
                                     <NavLink to="/login" className="nav-link">Login</NavLink>
+                                    <NavLink to="/newvan" className="nav-link">
+                                        new van
+                                    </NavLink>
+                                    <NavLink to="/:van_id/edit" className="nav-link">
+                                        edit van?
+                                    </NavLink>
                                 </>
                         }
 
                         {
-                            user && <NavLink to="/" className="nav-link justify-content-end">helo, {user.username}</NavLink>
+                            user && <NavLink to="/profile" className="nav-link justify-content-end">helo, {user.username}</NavLink>
                         }
+                        <NavLink to="/results" className="nav-link">
+                            results
+                        </NavLink>
+                        {/* <NavLink to="/profile" className="nav-link">
+                            profile
+                        </NavLink> */}
 
                     </Nav>
                 </Navbar.Collapse>

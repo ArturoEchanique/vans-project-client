@@ -1,12 +1,11 @@
 import { Container } from "react-bootstrap";
 import DatePicker from "../../components/DatePicker/DatePicker";
 
-const HomePage = () => {
+const HomePage = ({setFilterState}) => {
     return (
         <Container>
             <hr />
-            <DatePicker />
-
+            <DatePicker setFilterState={setFilterState} />
         </Container>
     );
 };
