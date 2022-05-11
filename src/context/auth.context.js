@@ -1,5 +1,7 @@
 import React, { createContext, useState } from "react";
 import authService from "../services/auth.service";
+import { useEffect } from 'react';
+
 
 const AuthContext = createContext();
 
@@ -44,11 +46,12 @@ function AuthProviderWrapper(props) {
         setIsLoading(false);
         setUser(null);
     };
+    useEffect(() => {
+        authenticateUser()
+    }, [])
 
     return (
-        <AuthContext.Provider
-            value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}
-        >
+        <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>
             {props.children}
         </AuthContext.Provider>
     );
