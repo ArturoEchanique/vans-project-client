@@ -2,10 +2,6 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 
 const Navigation = () => {
-<<<<<<< HEAD
-
-=======
->>>>>>> 1036222226a9f613fd537b8263c70a8bc13fc995
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
@@ -25,6 +21,18 @@ const Navigation = () => {
                         </NavLink>
                         <NavLink to="/login" className="nav-link">
                             Login
+                        </NavLink>
+                        <NavLink to="/results" className="nav-link">
+                            results
+                        </NavLink>
+                        <NavLink to="/profile" className="nav-link">
+                            profile
+                        </NavLink>
+                        <NavLink to="/newvan" className="nav-link">
+                            new van
+                        </NavLink>
+                        <NavLink to="/:van_id/edit" className="nav-link">
+                            edit van?
                         </NavLink>
                     </Nav>
                 </Navbar.Collapse>
