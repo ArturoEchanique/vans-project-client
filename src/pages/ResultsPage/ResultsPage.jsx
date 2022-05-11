@@ -6,7 +6,7 @@ import VanCard from '../../components/VanCard/VanCard'
 
 const ResultsPage = () => {
 
-    const [fetched, setFetched] = useState(false)
+    const [fetching, setFetching] = useState(false)
     const [vans, setVans] = useState([])
     const [searchInput, setSearchInput] = useState("");
 
@@ -16,10 +16,12 @@ const ResultsPage = () => {
     useEffect(() => loadVans(), [])
 
     const loadVans = (query) => {
+        
         vanService
+        
             .getVans(query)
             .then(({ data }) => {
-                setFetched(true)
+                setFetching(true)
                 setVans(data)
             })
             .then(err => console.log(err))
@@ -35,13 +37,14 @@ const ResultsPage = () => {
     // }
 
     const handleSearch = e => {
-        // console.log("search input", searchInput)
-        if (!e.target.value) {
-            loadVans()
-        } else {
-            setSearchInput(e.target.value)
-            loadVans(searchInput)
-        }
+        loadVans(e.target.value);
+        setSearchInput(e.target.value)
+        // console.log("the state is..", searchInput)
+        // setTimeout(() => {
+            
+        // }, "1000")
+        
+        
 
 
     }
