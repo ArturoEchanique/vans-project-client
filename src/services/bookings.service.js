@@ -3,6 +3,16 @@ import axios from "axios";
 class BookingsService {
     constructor() {
         this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/bookings` });
+        this.app.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bexarer ${storedToken}` }
+            }
+
+            return config
+        })
     }
     saveBooking = (booking) => {
         return this.api.post(`/create`, booking);

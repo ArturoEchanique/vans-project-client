@@ -4,6 +4,16 @@ class VanService {
 
     constructor() {
         this.app = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vans` })
+        this.app.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bexarer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     createVan = van => {
@@ -11,7 +21,7 @@ class VanService {
     }
 
     getVans = (query) => {
-        let queryComputed= "?name=nameQuery"
+        let queryComputed = "?name=nameQuery"
         return this.app.get(`/${queryComputed}`)
     }
 

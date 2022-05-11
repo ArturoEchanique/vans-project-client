@@ -4,6 +4,16 @@ class AuthService {
 
     constructor() {
         this.app = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/auth` })
+        // this.app.interceptors.request.use((config) => {
+
+        //     const storedToken = localStorage.getItem("authToken");
+
+        //     if (storedToken) {
+        //         config.headers = { Authorization: `Bexarer ${storedToken}` }
+        //     }
+
+        //     return config
+        // })
     }
 
     signup = user => {
