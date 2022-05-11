@@ -1,14 +1,14 @@
+import './App.css';
 import Navigation from './Navigation/Navigation';
 import AppRoutes from '../routes/AppRoutes';
-
-
-import './App.css';
+import UserMessage from './UserMessage/UserMessage';
 
 const App = () => {
   return (
     <>
       <Navigation />
       <AppRoutes />
+      <UserMessage />
       {/* <Footer /> */}
     </>
   );

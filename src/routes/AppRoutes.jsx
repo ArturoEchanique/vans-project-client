@@ -9,6 +9,7 @@ import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
 import BecameHostPage from "../pages/BecameHostPage/BecameHostPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 
@@ -37,10 +38,15 @@ const AppRoutes = () => {
             <Route path="/results" element={<ResultsPage setFilterState={setFilterState} filterData = {filterData}/>} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/became-host" element={<BecameHostPage />} />
-            <Route path="/newvan" element={<NewVanPage />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/*" element={<ErrorPage />} />
 
+            <Route path="/profile" element={<PrivateRoutes />} >
+                <Route path="" element={<ProfilePage />} />
+            </Route>
+            <Route path="/newvan" element={<PrivateRoutes />} >
+                <Route path="" element={<NewVanPage />} />
+            </Route>
         </Routes>
     );
 };
