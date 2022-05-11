@@ -19,7 +19,7 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {/* <NavLink to="/" className="nav-link">
+                        <NavLink to="/" className="nav-link">
                             HOME
                         </NavLink>
                         {
@@ -43,11 +43,11 @@ const Navigation = () => {
                         }
 
                         {
-                            user && <NavLink to="/profile" className="nav-link justify-content-end">helo, {user.username}</NavLink>
+                            user && <NavLink to="/profile" className="nav-link justify-content-end">hello, {user.username}</NavLink>
                         }
                         <NavLink to="/results" className="nav-link">
                             results
-                        </NavLink> */}
+                        </NavLink>
                         {/* <NavLink to="/profile" className="nav-link">
                             profile
                         </NavLink> */}
