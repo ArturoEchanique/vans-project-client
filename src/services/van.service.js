@@ -11,7 +11,8 @@ class VanService {
     }
 
     getVans = (query) => {
-        let queryComputed= "?name=nameQuery"
+        console.log("query is", query)
+        let queryComputed= `?name=${query}`
         return this.app.get(`/${queryComputed}`)
     }
 

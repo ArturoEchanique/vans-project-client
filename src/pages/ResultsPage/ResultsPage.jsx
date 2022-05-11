@@ -15,9 +15,9 @@ const ResultsPage = () => {
 
     useEffect(() => loadVans(), [])
 
-    const loadVans = () => {
+    const loadVans = (query) => {
         vanService
-            .getVans()
+            .getVans(query)
             .then(({ data }) => {
                 setFetched(true)
                 setVans(data)
@@ -25,21 +25,22 @@ const ResultsPage = () => {
             .then(err => console.log(err))
     }
 
-    const loadVansWithQuery = (query) => {
-        vanService
-            .getVansWithQuery(query)
-            .then(({ data }) => {
-                setVans(data)
-            })
-            .then(err => console.log(err))
-    }
+    // const loadVansWithQuery = (query) => {
+    //     vanService
+    //         .getVansWithQuery(query)
+    //         .then(({ data }) => {
+    //             setVans(data)
+    //         })
+    //         .then(err => console.log(err))
+    // }
 
     const handleSearch = e => {
-        if (e.target.value === "") {
+        // console.log("search input", searchInput)
+        if (!e.target.value) {
             loadVans()
         } else {
             setSearchInput(e.target.value)
-            loadVansWithQuery(searchInput)
+            loadVans(searchInput)
         }
 
 
