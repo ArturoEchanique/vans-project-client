@@ -20,8 +20,8 @@ class VanService {
         return this.app.post('/create', van)
     }
 
-    getVans = (query) => {
-        let queryComputed = `?name=${query}`
+    getVans = (filterData) => {
+        let queryComputed = `?name=${filterData.name}&solarPower=${filterData.solarPower}`
         return this.app.get(`/${queryComputed}`)
     }
 
