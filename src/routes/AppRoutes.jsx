@@ -6,6 +6,7 @@ import LoginPage from '../pages/loginPage/loginPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import NewVanPage from '../pages/NewVanPage/NewVanPage';
 import EditVanPage from '../pages/EditVanPage/EditVanPage';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const AppRoutes = () => {
 
@@ -19,6 +20,8 @@ const AppRoutes = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/newvan" element={<NewVanPage />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
+            <Route path="/*" element={<ErrorPage />} />
+
         </Routes>
     );
 };

@@ -6,10 +6,10 @@ class VanService {
         this.app = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vans` })
         this.app.interceptors.request.use((config) => {
 
-            const storedToken = localStorage.getItem("authToken");
+            const token = localStorage.getItem("authToken");
 
-            if (storedToken) {
-                config.headers = { Authorization: `Bexarer ${storedToken}` }
+            if (token) {
+                config.headers = { Authorization: `Bearer ${token}` }
             }
 
             return config

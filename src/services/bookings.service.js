@@ -5,10 +5,10 @@ class BookingsService {
         this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/bookings` });
         this.app.interceptors.request.use((config) => {
 
-            const storedToken = localStorage.getItem("authToken");
+            const token = localStorage.getItem("authToken");
 
-            if (storedToken) {
-                config.headers = { Authorization: `Bexarer ${storedToken}` }
+            if (token) {
+                config.headers = { Authorization: `Bearer ${token}` }
             }
 
             return config
