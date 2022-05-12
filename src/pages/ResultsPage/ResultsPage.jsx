@@ -3,25 +3,18 @@ import { useContext, useEffect, useState } from "react"
 import vanService from './../../services/van.service'
 import { AuthContext } from '../../context/auth.context'
 import VanCard from '../../components/VanCard/VanCard'
+import DatePicker from "../../components/DatePicker/DatePicker";
 import './ResultsPage.css'
 
-const ResultsPage = () => {
+const ResultsPage = ({ setFilterState, filterData }) => {
+    console.log("filterdata is ", filterData)
 
     const [fetching, setFetching] = useState(false)
     const [vans, setVans] = useState([])
-    // const [searchInput, setSearchInput] = useState("");
-    const [filterData, setFilterData] = useState({
-        name: "",
-        solarPower: false,
-        // imageUrl: "",
-        // dayPrice: "",
-        // longitude: "",
-        // latitude: ""
-
-    })
-
-    // const openModal = () => setShowModal(true)
-    // const closeModal = () => setShowModal(false)
+    // const [filterData, setFilterData] = useState({
+    //     name: "",
+    //     solarPower: false,
+    // })
 
     useEffect(() => loadVans(filterData), [])
 
@@ -37,30 +30,24 @@ const ResultsPage = () => {
             })
             .then(err => console.log(err))
     }
-
-    // const loadVansWithQuery = (query) => {
-    //     vanService
-    //         .getVansWithQuery(query)
-    //         .then(({ data }) => {
-    //             setVans(data)
-    //         })
-    //         .then(err => console.log(err))
-    // }
-
+    
     const handleFilterChange = e => {
+        
        
         const { name } = e.currentTarget
         if (name == "solarPower") {
             console.log("is solar power")
             const { checked } = e.currentTarget
             const formFilterData = { ...filterData, solarPower: checked }
-            setFilterData(formFilterData)
+            setFilterState(formFilterData)
+            // setFilterData(formFilterData)
             loadVans(formFilterData);
         }
         else {
             const { value } = e.currentTarget
             const formFilterData = { ...filterData, [name]: value }
-            setFilterData(formFilterData)
+            setFilterState(formFilterData)
+            // setFilterData(formFilterData)
             loadVans(formFilterData);
         }
     }
@@ -69,7 +56,7 @@ const handleSubmit = e => {
     e.preventDefault()
 }
 
-const { name, solarPower } = filterData
+    const { name, solarPower, startDate, endDate } = filterData
 
 return (
     <div className="resultsPage">
@@ -89,6 +76,10 @@ return (
                 <VanCard {...van} />
             )
         })}
+        <Container>
+            <hr />
+            <DatePicker setFilterState={setFilterState}/>
+        </Container>
 
     </div>
 )

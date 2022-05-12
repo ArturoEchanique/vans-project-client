@@ -1,0 +1,14 @@
+.firstSection{
+    
+    background-image: url("../../../public/images/fondoBecome.jpg");
+   
+}
+.section{
+    height: 500px;
+
+}
+.alignCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

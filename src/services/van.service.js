@@ -21,7 +21,9 @@ class VanService {
     }
 
     getVans = (filterData) => {
-        let queryComputed = `?name=${filterData.name}&solarPower=${filterData.solarPower}`
+        const startDate = filterData.startDate.getTime()
+        const endDate = filterData.endDate.getTime()
+        let queryComputed = `?name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.app.get(`/${queryComputed}`)
     }
 
