@@ -22,9 +22,13 @@ const AppRoutes = () => {
         solarPower: false,
     });
 
-    const setFilterState = (data) => {
+    const setFilterState = ((data) => {
         setFilterData(data);
-    };
+    });
+    
+     const setFilterDates = ((dates) => {
+        setFilterData({...filterData, ...dates});
+    })
      const [bookingData, setBookingData] = useState({
          startDate: new Date(),
          endDate: new Date(),
@@ -34,13 +38,15 @@ const AppRoutes = () => {
      const setBookingState = (data) => {
          setBookingData(data);
      };
+    
+   
 
     return (
         <Routes>
             <Route path="/" element={<HomePage setFilterState={setFilterState} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} filterData={filterData} />} />
+            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData = {filterData}/>} />
             <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingState={setBookingState} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />

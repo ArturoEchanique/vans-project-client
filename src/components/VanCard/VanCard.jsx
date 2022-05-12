@@ -12,6 +12,7 @@ const VanCard = ({ _id, imageUrl, name, description, solarPower }) => {
                 <Card.Title>{name}</Card.Title>
 
                 <Card.Text>
+                    {}
                     {description}
                     {solarPower ? "  has solar Power" : "No solar power"}
                 </Card.Text>

@@ -6,7 +6,7 @@ import VanCard from '../../components/VanCard/VanCard'
 import DatePicker from "../../components/DatePicker/DatePicker";
 import './ResultsPage.css'
 
-const ResultsPage = ({ setFilterState, filterData }) => {
+const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
     console.log("filterdata is ", filterData)
 
     const [fetching, setFetching] = useState(false)
@@ -78,7 +78,7 @@ return (
         })}
         <Container>
             <hr />
-            <DatePicker setFilterState={setFilterState}/>
+            <DatePicker setFilterDates={setFilterDates}/>
         </Container>
 
     </div>
