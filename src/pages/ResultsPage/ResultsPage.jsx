@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import vanService from "./../../services/van.service";
 import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import "./ResultsPage.css";
+import MyComponent from "../../components/Map/Map";
+import './ResultsPage.css'
 
-const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
+const ResultsPage = ({ setFilterInfo, filterData }) => {
    
 
     const [fetching, setFetching] = useState(false);
@@ -35,20 +36,20 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
           
             const { checked } = e.currentTarget;
             const formFilterData = { ...filterData, solarPower: checked };
-            setFilterState(formFilterData);
+            setFilterInfo(formFilterData);
             // setFilterData(formFilterData)
             loadVans(formFilterData);
         } else {
             const { value } = e.currentTarget;
             const formFilterData = { ...filterData, [name]: value };
-            setFilterState(formFilterData);
+            setFilterInfo(formFilterData);
             // setFilterData(formFilterData)
             loadVans(formFilterData);
         }
     };
 
     const handleFilterDatesChange = (dates) => {
-        setFilterDates(dates);
+        setFilterInfo(dates);
         loadVans({ ...filterData, ...dates });
     };
 
@@ -70,8 +71,11 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
                     <input type="checkbox" checked={solarPower} name="solarPower" onChange={handleFilterChange} />
                 </label>
             </form>
-            {vans.map((van) => {
-                return <VanCard {...van} />;
+            <MyComponent/>
+            {vans.map(van => {
+                return (
+                    <VanCard {...van} />
+                )
             })}
             <Container>
                 <hr />

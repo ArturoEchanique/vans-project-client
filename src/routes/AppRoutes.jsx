@@ -29,13 +29,8 @@ const AppRoutes = () => {
         van_id: "",
     });
 
-
-    const setFilterState = (data) => {
-        setFilterData(data);
-    };
-
-    const setFilterDates = (dates) => {
-        setFilterData({ ...filterData, ...dates });
+    const setFilterInfo = (data) => {
+        setFilterData({ ...filterData, ...data });
     };
    
 
@@ -45,12 +40,12 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<HomePage setFilterState={setFilterState} />} />
+            <Route path="/" element={<HomePage setFilterInfo={setFilterInfo} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
                 path="/results"
-                element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData={filterData} />}
+                element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />}
             />
             {/* <Route path="/become-host" element={<BecomeHostPage />} /> */}
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
