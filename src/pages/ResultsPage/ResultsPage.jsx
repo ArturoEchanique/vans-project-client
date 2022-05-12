@@ -4,6 +4,7 @@ import vanService from './../../services/van.service'
 import { AuthContext } from '../../context/auth.context'
 import VanCard from '../../components/VanCard/VanCard'
 import DatePicker from "../../components/DatePicker/DatePicker";
+import MyComponent from "../../components/Map/Map";
 import './ResultsPage.css'
 
 const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
@@ -77,6 +78,7 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
                 </label>
 
             </form>
+            <MyComponent/>
             {vans.map(van => {
                 return (
                     <VanCard {...van} />
