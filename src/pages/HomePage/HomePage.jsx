@@ -3,11 +3,11 @@ import DatePicker from "../../components/DatePicker/DatePicker";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const HomePage = ({setFilterState}) => {
+const HomePage = ({setFilterInfo}) => {
     return (
         <Container>
             <hr />
-            <DatePicker handleDatesChange={setFilterState} />
+            <DatePicker handleDatesChange={setFilterInfo} />
             <Button variant="dark">
                 <Link to="/results">Search Vans</Link>
             </Button>
