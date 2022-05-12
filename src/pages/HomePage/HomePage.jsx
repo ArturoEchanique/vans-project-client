@@ -5,7 +5,7 @@ const HomePage = ({setFilterState}) => {
     return (
         <Container>
             <hr />
-            <DatePicker setFilterState={setFilterState} />
+            <DatePicker setDatesState={setFilterState} />
         </Container>
     );
 };

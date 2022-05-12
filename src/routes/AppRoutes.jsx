@@ -25,6 +25,15 @@ const AppRoutes = () => {
     const setFilterState = (data) => {
         setFilterData(data);
     };
+     const [bookingData, setBookingData] = useState({
+         startDate: new Date(),
+         endDate: new Date(),
+        
+     });
+
+     const setBookingState = (data) => {
+         setBookingData(data);
+     };
 
     return (
         <Routes>
@@ -33,9 +42,9 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage setFilterState={setFilterState} filterData={filterData} />} />
             <Route path="/become-host" element={<BecomeHostPage />} />
-            <Route path="/:van_id/details" element={<VanDetails />} />
+            <Route path="/:van_id/details" element={<VanDetails setBookingState={setBookingState} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
-            <Route path="/booking" element={<BookingConfirmPage />} />
+            <Route path="/booking" element={<BookingConfirmPage bookingData={bookingData} />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />
