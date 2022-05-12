@@ -2,13 +2,13 @@ import { useState } from "react";
 import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite.css";
 
-const DatePicker = ({ setDatesState }) => {
+const DatePicker = ({ handleDatesChange }) => {
     const handleChange = (data) => {
-        const filterData = {
+        const filterDates = {
             startDate: data[0],
             endDate: data[1],
         };
-        setDatesState(filterData);
+        handleDatesChange(filterDates);
     };
 
     return (

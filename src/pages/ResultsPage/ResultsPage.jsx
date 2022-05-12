@@ -30,10 +30,10 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
             })
             .then(err => console.log(err))
     }
-    
+
     const handleFilterChange = e => {
-        
-       
+
+
         const { name } = e.currentTarget
         if (name == "solarPower") {
             console.log("is solar power")
@@ -52,37 +52,43 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
         }
     }
 
-const handleSubmit = e => {
-    e.preventDefault()
-}
+    const handleFilterDatesChange = dates => {
+
+        setFilterDates(dates)
+        loadVans({...filterData, ...dates});
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+    }
 
     const { name, solarPower, startDate, endDate } = filterData
 
-return (
-    <div className="resultsPage">
-        <form onSubmit={handleSubmit}>
-            <label>
-                Search
-                <input type="text" value={name} name="name" onChange={handleFilterChange} />
-            </label>
-            <label>
-                With solar Power
-                <input type="checkbox" checked={solarPower} name="solarPower" onChange={handleFilterChange} />
-            </label>
+    return (
+        <div className="resultsPage">
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Search
+                    <input type="text" value={name} name="name" onChange={handleFilterChange} />
+                </label>
+                <label>
+                    With solar Power
+                    <input type="checkbox" checked={solarPower} name="solarPower" onChange={handleFilterChange} />
+                </label>
 
-        </form>
-        {vans.map(van => {
-            return (
-                <VanCard {...van} />
-            )
-        })}
-        <Container>
-            <hr />
-            <DatePicker setFilterDates={setFilterDates}/>
-        </Container>
+            </form>
+            {vans.map(van => {
+                return (
+                    <VanCard {...van} />
+                )
+            })}
+            <Container>
+                <hr />
+                <DatePicker handleDatesChange={handleFilterDatesChange}/>
+            </Container>
 
-    </div>
-)
+        </div>
+    )
 }
 
 export default ResultsPage

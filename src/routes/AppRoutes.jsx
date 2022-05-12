@@ -8,7 +8,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
-import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+// import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
