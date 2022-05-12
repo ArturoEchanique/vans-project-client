@@ -1,13 +1,12 @@
-// import axios from "axios";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { Button } from "bootstrap";
-
-
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import stripeService from "../../services/stripe.service";
 
 
 const CheckoutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
+    const [loading, setLoading] = useState(false);
 
 
     const handleSubmit = async (e) => {
@@ -17,20 +16,19 @@ const CheckoutForm = () => {
             type: "card",
             card: elements.getElement(CardElement),
         })
+        setLoading(true)
+        // amount in cents
 
         if (!error) {
-            console.log(paymentMethod)
+            const { id } = paymentMethod
+            const { data } = await stripeService.checkout({ id, amount: 10000, })
+            console.log(data)
+
         }
-
+        elements.getElement(CardElement).clear();
+        setLoading(false);
     }
-
-
-
-
-
-
-
-
+    console.log(!stripe || loading);
 
     return (
         <form className="card card-body" onSubmit={handleSubmit}>
@@ -47,12 +45,14 @@ const CheckoutForm = () => {
                 <CardElement />
             </div>
             <hr />
-            <button className="btn btn-success">Book</button>
+            <button disabled={!stripe} className="btn btn-success">
+                {loading ? "Loading..." : "Book"}
+            </button>
             {/* <Button>Book now</Button> */}
         </form>
 
     )
-
-
 }
+
+
 export default CheckoutForm
