@@ -1,6 +1,6 @@
-import { Navbar, Container, Nav, Modal, Button, Card } from "react-bootstrap";
+import {  Button, Card } from "react-bootstrap";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const VanCard = ({ _id, imageUrl, name, description, solarPower }) => {
     console.log("solar power is...", solarPower);
@@ -12,7 +12,6 @@ const VanCard = ({ _id, imageUrl, name, description, solarPower }) => {
                 <Card.Title>{name}</Card.Title>
 
                 <Card.Text>
-                    {}
                     {description}
                     {solarPower ? "  has solar Power" : "No solar power"}
                 </Card.Text>
