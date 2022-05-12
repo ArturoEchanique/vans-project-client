@@ -21,13 +21,13 @@ const AppRoutes = () => {
         endDate: new Date(),
         name: "",
         solarPower: false,
-        
     });
 
     const setFilterState = ((data) => {
-
         setFilterData(data);
-
+    })
+    const setFilterDates = ((dates) => {
+        setFilterData({...filterData, ...dates});
     })
 
     return (
@@ -35,7 +35,7 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage setFilterState={setFilterState} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} filterData = {filterData}/>} />
+            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData = {filterData}/>} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/became-host" element={<BecameHostPage />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
