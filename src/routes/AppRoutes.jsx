@@ -7,7 +7,11 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
-import BecameHostPage from "../pages/BecameHostPage/BecameHostPage";
+import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
+import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
+
+
 
 
 
@@ -32,9 +36,11 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/became-host" element={<BecameHostPage />} />
+            <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/newvan" element={<NewVanPage />} />
+            <Route path="/:van_id/details" element={<VanDetails />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
+            <Route path="/booking" element={<BookingConfirmPage />} />
         </Routes>
     );
 };
