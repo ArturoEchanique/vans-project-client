@@ -3,12 +3,8 @@ import { useEffect, useState } from "react";
 import vanService from "./../../services/van.service";
 import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
-<<<<<<< HEAD
 import MyComponent from "../../components/Map/Map";
 import './ResultsPage.css'
-=======
-import "./ResultsPage.css";
->>>>>>> ab277dffbd130f53a7a35ce60c3dbf02379c12a6
 
 const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
    
