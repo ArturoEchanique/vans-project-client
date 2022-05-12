@@ -9,7 +9,7 @@ const VanDetailsCard = ({ imageUrl, dayPrice, name, description }) => {
             <hr />
             <img src={imageUrl} alt={name} />
             <section>
-                <p>day price:{dayPrice}</p>
+                <p>day price:{dayPrice}€</p>
                 <p>description: {description}</p>
             </section>
         </>

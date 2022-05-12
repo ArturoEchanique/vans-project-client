@@ -8,7 +8,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
-import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+// import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
@@ -22,20 +22,35 @@ const AppRoutes = () => {
         solarPower: false,
     });
 
-    const setFilterState = (data) => {
-        setFilterData(data);
+     const [bookingData, setBookingData] = useState({
+        startDate: new Date(),
+        endDate: new Date(),
+        price: 0,
+        van_id: "",
+    });
+
+    const setFilterInfo = (data) => {
+        setFilterData({ ...filterData, ...data });
+    };
+   
+
+    const setBookingInfo = (data) => {
+        setBookingData({ ...bookingData, ...data });
     };
 
     return (
         <Routes>
-            <Route path="/" element={<HomePage setFilterState={setFilterState} />} />
+            <Route path="/" element={<HomePage setFilterInfo={setFilterInfo} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} filterData={filterData} />} />
-            <Route path="/become-host" element={<BecomeHostPage />} />
-            <Route path="/:van_id/details" element={<VanDetails />} />
+            <Route
+                path="/results"
+                element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />}
+            />
+            {/* <Route path="/become-host" element={<BecomeHostPage />} /> */}
+            <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
-            <Route path="/booking" element={<BookingConfirmPage />} />
+            <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />
