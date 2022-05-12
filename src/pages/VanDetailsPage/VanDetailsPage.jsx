@@ -19,24 +19,25 @@ const VanDetails = ({ setBookingInfo }) => {
     }, []);
 
     const setDateAndPrice = (dates) => {
+        const startDay = dates.startDate;
+        const endDay = dates.endDate;
 
-        const startDay = dates.startDate.getTime()
-        const endDay = dates.endDate.getTime();
-
-      
-
-        const bookingDays = (endDay - startDay).setTime()
+        const diffTime = Math.abs(endDay - startDay);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const bookingPrice = diffDays * vanDetails.dayPrice;
         
-          console.log(bookingDays);
+        console.log(diffTime);
+        console.log(diffDays);
+    
 
-        const bookingPrice = endDay - startDay * vanDetails.dayPrice;
+        console.log(bookingPrice);
 
         let bookingInfo = {
             startDate: dates.startDate,
             endDate: dates.endDate,
             price: bookingPrice,
         };
-        
+
         setBookingInfo(bookingInfo);
     };
 
