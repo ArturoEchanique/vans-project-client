@@ -4,15 +4,26 @@ class VanService {
 
     constructor() {
         this.app = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vans` })
+        this.app.interceptors.request.use((config) => {
+
+            const token = localStorage.getItem("authToken");
+
+            if (token) {
+                config.headers = { Authorization: `Bearer ${token}` }
+            }
+
+            return config
+        })
     }
 
     createVan = van => {
         return this.app.post('/create', van)
     }
 
-    getVans = (query) => {
-        console.log("query is", query)
-        let queryComputed= `?name=${query}`
+    getVans = (filterData) => {
+        const startDate = filterData.startDate.getTime()
+        const endDate = filterData.endDate.getTime()
+        let queryComputed = `?name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.app.get(`/${queryComputed}`)
     }
 
