@@ -6,8 +6,7 @@ import DatePicker from "../../components/DatePicker/DatePicker";
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
 
-
-const VanDetails = ({ setBookingState }) => {
+const VanDetails = ({ setBookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({});
     const { van_id } = useParams();
 
@@ -19,6 +18,33 @@ const VanDetails = ({ setBookingState }) => {
             .catch((err) => console.log(err));
     }, []);
 
+    const setDateAndPrice = (dates) => {
+
+        const startDay = dates.startDate.getTime()
+        const endDay = dates.endDate.getTime();
+
+      
+
+        const bookingDays = (endDay - startDay).setTime()
+        
+          console.log(bookingDays);
+
+        const bookingPrice = endDay - startDay * vanDetails.dayPrice;
+
+        let bookingInfo = {
+            startDate: dates.startDate,
+            endDate: dates.endDate,
+            price: bookingPrice,
+        };
+        
+        setBookingInfo(bookingInfo);
+    };
+
+    // const setDateAndPriceHard = (dates) => {
+    //     let bookingInfo = { ...dates, price: 100,van_id:van_id };
+    //     setBookingInfo(bookingInfo);
+    // };
+
     return (
         <Container>
             <Row>
@@ -29,7 +55,7 @@ const VanDetails = ({ setBookingState }) => {
                     <h3>Aqui van nuestras reservas </h3>
                 </Col>
                 <Col>
-                    <DatePicker setDatesState={setBookingState} />
+                    <DatePicker handleDatesChange={setDateAndPrice} />
                     <Button variant="dark">
                         <Link to="/booking">reseve </Link>
                     </Button>

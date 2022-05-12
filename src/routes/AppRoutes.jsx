@@ -22,35 +22,40 @@ const AppRoutes = () => {
         solarPower: false,
     });
 
-    const setFilterState = ((data) => {
-        setFilterData(data);
-    });
-    
-     const setFilterDates = ((dates) => {
-        setFilterData({...filterData, ...dates});
-    })
      const [bookingData, setBookingData] = useState({
-         startDate: new Date(),
-         endDate: new Date(),
-        
-     });
+        startDate: new Date(),
+        endDate: new Date(),
+        price: 0,
+        van_id: "",
+    });
 
-     const setBookingState = (data) => {
-         setBookingData(data);
-     };
-    
+
+    const setFilterState = (data) => {
+        setFilterData(data);
+    };
+
+    const setFilterDates = (dates) => {
+        setFilterData({ ...filterData, ...dates });
+    };
    
+
+    const setBookingInfo = (data) => {
+        setBookingData({ ...bookingData, ...data });
+    };
 
     return (
         <Routes>
             <Route path="/" element={<HomePage setFilterState={setFilterState} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/results" element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData = {filterData}/>} />
-            <Route path="/become-host" element={<BecomeHostPage />} />
-            <Route path="/:van_id/details" element={<VanDetails setBookingState={setBookingState} />} />
+            <Route
+                path="/results"
+                element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData={filterData} />}
+            />
+            {/* <Route path="/become-host" element={<BecomeHostPage />} /> */}
+            <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
-            <Route path="/booking" element={<BookingConfirmPage bookingData={bookingData} />} />
+            <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />
