@@ -8,7 +8,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
-import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+// import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
@@ -36,7 +36,7 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage setFilterState={setFilterState} setFilterDates={setFilterDates} filterData = {filterData}/>} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/became-host" element={<BecameHostPage />} />
+            {/* <Route path="/became-host" element={<BecameHostPage />} /> */}
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage />} />
             <Route path="/*" element={<ErrorPage />} />
