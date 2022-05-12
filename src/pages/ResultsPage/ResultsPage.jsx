@@ -52,8 +52,9 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
         }
     }
 
-    const handleDatesChange = dates => {
+    const handleFilterDatesChange = dates => {
 
+        setFilterDates(dates)
         loadVans({...filterData, ...dates});
     }
 
@@ -83,7 +84,7 @@ const ResultsPage = ({ setFilterState, setFilterDates, filterData }) => {
             })}
             <Container>
                 <hr />
-                <DatePicker setFilterDates={setFilterDates} reloadFilterVans = {handleDatesChange} />
+                <DatePicker handleDatesChange={handleFilterDatesChange}/>
             </Container>
 
         </div>
