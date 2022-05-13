@@ -3,7 +3,7 @@ import axios from "axios";
 class BookingsService {
     constructor() {
         this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/bookings` });
-        this.app.interceptors.request.use((config) => {
+        this.api.interceptors.request.use((config) => {
 
             const token = localStorage.getItem("authToken");
 

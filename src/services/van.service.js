@@ -3,8 +3,8 @@ import axios from 'axios'
 class VanService {
 
     constructor() {
-        this.app = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vans` })
-        this.app.interceptors.request.use((config) => {
+        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/vans` })
+        this.api.interceptors.request.use((config) => {
 
             const token = localStorage.getItem("authToken");
 
@@ -17,7 +17,7 @@ class VanService {
     }
 
     createVan = van => {
-        return this.app.post('/create', van)
+        return this.api.post('/create', van)
     }
 
     getVans = (filterData) => {
@@ -32,15 +32,15 @@ class VanService {
     }
 
     getOneVan = id => {
-        return this.app.get(`/${id}`)
+        return this.api.get(`/${id}`)
     }
 
     getOneVanAndUpdate = (id, van) => {
-        return this.app.post(`/${id}/edit`, van)
+        return this.api.post(`/${id}/edit`, van)
     }
 
     getOneVanAndRemove = id => {
-        return this.app.post(`/${id}/delete`)
+        return this.api.post(`/${id}/delete`)
     }
 
 }
