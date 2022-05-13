@@ -1,12 +1,12 @@
 import { Card, ListGroup, ListGroupItem, Button, Container, Row, Col } from "react-bootstrap";
 
 const BookingConfirmCard = ({ imageUrl, dayPrice, name, description, startDate, endDate, price }) => {
-  
+
     return (
         <>
             <Container>
                 <Row>
-                    <Col>
+                    <Col >
                         {/* VAN AND PRICE INFORMATION */}
                         <Card>
                             <Card.Img variant="top" src={imageUrl} />

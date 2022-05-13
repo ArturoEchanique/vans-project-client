@@ -12,6 +12,7 @@ import { useState } from "react";
 import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
+import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 
 const AppRoutes = () => {
     // const [bookingDates, setBookingDates] = useState()
@@ -22,7 +23,7 @@ const AppRoutes = () => {
         solarPower: false,
     });
 
-     const [bookingData, setBookingData] = useState({
+    const [bookingData, setBookingData] = useState({
         startDate: new Date(),
         endDate: new Date(),
         price: 0,
@@ -32,7 +33,7 @@ const AppRoutes = () => {
     const setFilterInfo = (data) => {
         setFilterData({ ...filterData, ...data });
     };
-   
+
 
     const setBookingInfo = (data) => {
         setBookingData({ ...bookingData, ...data });
@@ -51,6 +52,8 @@ const AppRoutes = () => {
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
+            <Route path="/paydetails" element={<PaymentDetailsPage />} />
+
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />

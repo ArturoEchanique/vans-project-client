@@ -1,0 +1,10 @@
+#imgcard {
+    max-width: 200px;
+    max-height: 300px;
+}
+
+#colCard {
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+}
