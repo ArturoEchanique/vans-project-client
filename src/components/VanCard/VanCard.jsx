@@ -2,8 +2,8 @@ import {  Button, Card } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-const VanCard = ({ _id, imageUrl, name, description, vanSpecs }) => {
-    console.log("solar power is...", vanSpecs.solarPower);
+const VanCard = ({ _id, imageUrl, name, description, solarPower }) => {
+    console.log("solar power is...", solarPower);
 
     return (
         <Card style={{ width: "18rem" }}>
@@ -13,7 +13,7 @@ const VanCard = ({ _id, imageUrl, name, description, vanSpecs }) => {
 
                 <Card.Text>
                     {description}
-                    {vanSpecs.solarPower ? "  has solar Power" : "No solar power"}
+                    {solarPower ? "  has solar Power" : "No solar power"}
                 </Card.Text>
                 <Button variant="dark">
                     <Link to={`/${_id}/details`}>see details</Link>
