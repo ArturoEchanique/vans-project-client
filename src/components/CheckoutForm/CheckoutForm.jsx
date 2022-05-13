@@ -3,7 +3,7 @@ import { useState } from "react";
 import stripeService from "../../services/stripe.service";
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({price}) => {
     const stripe = useStripe()
     const elements = useElements()
     const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const CheckoutForm = () => {
 
         if (!error) {
             const { id } = paymentMethod
-            const { data } = await stripeService.checkout({ id, amount: 10000, })
+            const { data } = await stripeService.checkout({ id, amount: price*100 })
             console.log(data)
 
         }
@@ -38,7 +38,7 @@ const CheckoutForm = () => {
                 className="img-fluid"
             />
 
-            <h3 className="text-center my-2">Price: 1000$</h3>
+            <h3 className="text-center my-2">Price: {price}$</h3>
 
             {/* User Card Input */}
             <div className="form-group">
