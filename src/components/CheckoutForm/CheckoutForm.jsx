@@ -2,9 +2,10 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import stripeService from "../../services/stripe.service";
+import bookingsService from "../../services/bookings.service";
 
-
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ startDate, endDate, price, van_id }) => {
+    console.log({ startDate, endDate, price, van_id })
     const stripe = useStripe()
     const elements = useElements()
     const [loading, setLoading] = useState(false);
@@ -25,6 +26,9 @@ const CheckoutForm = ({ price }) => {
             const { data } = await stripeService.checkout({ id, amount: price * 100 })
             console.log(data)
         }
+        const { saveBooking } = await bookingsService.saveBooking({ startDate, endDate, price, van_id })
+        console.log(saveBooking)
+
         elements.getElement(CardElement).clear();
         navigate('/paydetails')
         setLoading(false);

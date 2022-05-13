@@ -26,7 +26,7 @@ const PaymentDetailsCard = ({ dayPrice, name, description, startDate, endDate, p
                                 <ListGroupItem>Booking Details</ListGroupItem>
                                 <ListGroupItem>{startDate.toLocaleString()}</ListGroupItem>
                                 <ListGroupItem>{endDate.toLocaleString()}</ListGroupItem>
-                                <ListGroupItem>Day Price{dayPrice}$</ListGroupItem>
+                                <ListGroupItem>Day Price:{dayPrice}$</ListGroupItem>
                                 <ListGroupItem>Total:{price}$</ListGroupItem>
                             </ListGroup>
                         </Card.Body>
