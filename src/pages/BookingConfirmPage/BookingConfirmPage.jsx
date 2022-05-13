@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
+
 import VanService from "../../services/van.service";
 
 import "./BookingConfirmPage.css";
