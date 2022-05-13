@@ -7,7 +7,7 @@ const BookingConfirmCard = () => {
 
             < Container >
                 <Row>
-                    <Col md={{ span: 6 }}>
+                    <Col md={{ span: 6, offset: 6 }}>
                         {/* VAN AND PRICE INFORMATION */}
                         <Card style={{ width: '30rem' }}>
                             <Card.Img variant="top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/ultimate-toys-camper-1634234458.jpg" />

@@ -14,7 +14,7 @@ const Navigation = () => {
                     <Link to="/" className="nav-link">
                         <img
                             id="logo"
-                            src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652280470/LOGO_CUADRADO-VMP_r997hc.png"
+                            src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652435796/LOGO-vmup_BUENOREDONDO_tqzye2.png"
                             alt=""
                             srcset=""
                         />
