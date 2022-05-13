@@ -21,15 +21,15 @@ class VanService {
     }
 
     getVans = (filterData) => {
-        const startDate = filterData.startDate.getTime()
-        const endDate = filterData.endDate.getTime()
-        let queryComputed = `?name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
-        return this.api.get(`/${queryComputed}`)
+        filterData.startDate = filterData.startDate.getTime()
+        filterData.endDate = filterData.endDate.getTime()
+        let query = ""
+        for (const [key, value] of Object.entries(filterData)) {
+            if (value) query += key + "=" + value + "&"
+        }
+        // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
+        return this.app.get(`/?${query}`)
     }
-
-    // getWithQuery = () => {
-    //     return this.app.get('/get-all')
-    // }
 
     getOneVan = id => {
         return this.api.get(`/${id}`)
