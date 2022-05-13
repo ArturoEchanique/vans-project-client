@@ -1,14 +1,15 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import stripeService from "../../services/stripe.service";
 
 
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({ price }) => {
     const stripe = useStripe()
     const elements = useElements()
     const [loading, setLoading] = useState(false);
 
-
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -21,11 +22,11 @@ const CheckoutForm = ({price}) => {
 
         if (!error) {
             const { id } = paymentMethod
-            const { data } = await stripeService.checkout({ id, amount: price*100 })
+            const { data } = await stripeService.checkout({ id, amount: price * 100 })
             console.log(data)
-
         }
         elements.getElement(CardElement).clear();
+        navigate('/paydetails')
         setLoading(false);
     }
     console.log(!stripe || loading);
@@ -45,10 +46,11 @@ const CheckoutForm = ({price}) => {
                 <CardElement />
             </div>
             <hr />
+
             <button disabled={!stripe} className="btn btn-success">
                 {loading ? "Loading..." : "Book"}
             </button>
-            {/* <Button>Book now</Button> */}
+
         </form>
 
     )

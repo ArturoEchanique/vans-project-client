@@ -52,7 +52,7 @@ const AppRoutes = () => {
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
-            <Route path="/paydetails" element={<PaymentDetailsPage />} />
+            <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
 
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
