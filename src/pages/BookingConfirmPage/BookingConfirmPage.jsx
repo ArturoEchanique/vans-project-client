@@ -11,9 +11,8 @@ import "./BookingConfirmPage.css";
 
 const stripePromise = loadStripe("pk_test_51KwTPNGY00AWRT2Z6hsVVc0UNqWQLfAo9BUJlrRy5Nhcu1LKT4CeeEaJbZ2KmsQDmJaVFVT7ElohXWqPxZ5NmOrX00cLoHIJ5W");
 
-
-
 const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
+
 
     const [vanDetails, setVanDetails] = useState({});
     useEffect(() => {
@@ -24,45 +23,32 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
             .catch((err) => console.log(err));
     }, []);
 
+    
 
     return (
         <>
-            <Elements stripe={stripePromise}>
-                <div className="container p-4">
-                    <div className="row h-100">
-                        <div className="col-md-4 offset-md-4 h-100">
-                            <CheckoutForm />
-                        </div>
-                    </div>
-                </div>
-            </Elements>
             <Container>
                 <Row>
                     <Col>
-                        <section>
-                            <h3>booking details</h3>
-                            <p>start date : {startDate.toLocaleString()}</p>
-                            <p>end date : {endDate.toLocaleString()}</p>
-                            <p>price: {price}</p>
-                        </section>
+                        <BookingConfirmCard {...vanDetails} startDate={startDate} endDate={endDate} price={price} />
                     </Col>
                     <Col>
-                        <div className="siceCard">
-                            <VanDetailsCard {...vanDetails} />
-                        </div>
-
                         <section>
-                            <hr />
-                            <h3>pasarela de pago</h3>
-                            <hr />
+                            <Elements stripe={stripePromise}>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <CheckoutForm price={price} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </Elements>
                         </section>
                     </Col>
                 </Row>
             </Container>
-            {/* <BookingConfirmCard /> */}
         </>
-    )
-}
-
+    );
+};
 
 export default BookingConfirmPage;

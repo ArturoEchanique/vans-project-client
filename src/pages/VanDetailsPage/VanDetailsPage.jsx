@@ -25,17 +25,12 @@ const VanDetails = ({ setBookingInfo }) => {
         const diffTime = Math.abs(endDay - startDay);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const bookingPrice = diffDays * vanDetails.dayPrice;
-        
-        console.log(diffTime);
-        console.log(diffDays);
-    
-
-        console.log(bookingPrice);
-
+ 
         let bookingInfo = {
             startDate: dates.startDate,
             endDate: dates.endDate,
             price: bookingPrice,
+            van_id: van_id,
         };
 
         setBookingInfo(bookingInfo);
