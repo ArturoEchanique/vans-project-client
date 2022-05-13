@@ -1,41 +1,55 @@
-import { useState } from "react"
-import { Form, Button } from "react-bootstrap"
-import authService from "../../services/auth.service"
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import authService from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
+import uploadService from "../../services/upload.service";
 
 const SignupForm = () => {
-
     const [signupData, setSignupData] = useState({
-        username: '',
-        password: '',
-        email: '',
-        imageUrl: ""
-    })
+        username: "",
+        password: "",
+        email: "",
+        imageUrl: "",
+    });
 
-    const navigate = useNavigate()
+      const [loadingImage, setLoadingImage] = useState(false);
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
         authService
             .signup(signupData)
-            .then(res => {
-                navigate('/')
+            .then((res) => {
+                navigate("/");
             })
-            .catch(err => console.log(err))
-    }
+            .catch((err) => console.log(err));
+    };
 
-    const handleInputChange = e => {
-        const { value, name } = e.currentTarget
-        setSignupData({ ...signupData, [name]: value })
-    }
+    const handleInputChange = (e) => {
+        const { value, name } = e.currentTarget;
+        setSignupData({ ...signupData, [name]: value });
+    };
+    const handleImageUpload = (e) => {
+        setLoadingImage(true);
 
-    const { username, password, email, imageUrl } = signupData
+        const uploadData = new FormData();
+        uploadData.append("imageData", e.target.files[0]);
+
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setLoadingImage(false);
+                setSignupData({ ...signupData, imageUrl: data.cloudinary_url });
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const { username, password, email, imageUrl } = signupData;
 
     return (
-
         <Form onSubmit={handleSubmit}>
-
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>User Name</Form.Label>
                 <Form.Control type="text" onChange={handleInputChange} name="username" value={username} />
@@ -51,15 +65,16 @@ const SignupForm = () => {
                 <Form.Control type="password" onChange={handleInputChange} name="password" value={password} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Image Url</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="imageUrl" value={imageUrl} />
+            <Form.Group className="mb-3" controlId="imageUrl">
+                <Form.Label>Image (import)</Form.Label>
+                <Form.Control type="file" onChange={handleImageUpload} />
             </Form.Group>
 
-            <Button variant="dark" type="submit">Sing Up</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage}>
+                {loadingImage ? "Loading..." : "send"}
+            </Button>
         </Form>
+    );
+};
 
-    )
-}
-
-export default SignupForm
+export default SignupForm;
