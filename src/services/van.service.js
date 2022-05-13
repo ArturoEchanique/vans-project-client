@@ -25,7 +25,7 @@ class VanService {
         filterData.endDate = filterData.endDate.getTime()
         let query = ""
         for (const [key, value] of Object.entries(filterData)) {
-            if (value) query += key + "=" + value + "&"
+            if (value || key == "name") query += key + "=" + value + "&"
         }
         // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.app.get(`/?${query}`)
