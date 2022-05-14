@@ -28,7 +28,7 @@ class VanService {
             if (value || key == "name") query += key + "=" + value + "&"
         }
         // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
-        return this.app.get(`/?${query}`)
+        return this.api.get(`/?${query}`)
     }
 
     getOneVan = id => {

@@ -30,7 +30,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
             <Container>
                 <Row>
                     <Col>
-                        <BookingConfirmCard {...vanDetails} startDate={startDate} endDate={endDate} price={price} />
+                        <BookingConfirmCard {...vanDetails} van_id={van_id} startDate={startDate} endDate={endDate} price={price} />
                     </Col>
                     <Col>
                         <section>
