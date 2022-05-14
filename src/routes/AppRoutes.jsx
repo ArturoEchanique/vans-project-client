@@ -17,10 +17,14 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 const AppRoutes = () => {
     // const [bookingDates, setBookingDates] = useState()
     const [filterData, setFilterData] = useState({
+        priceStart: 0,
+        priceEnd: 400,
         startDate: new Date(),
         endDate: new Date(),
         name: "",
         solarPower: false,
+        shower: false,
+        bathroom: false,
     });
 
     const [bookingData, setBookingData] = useState({

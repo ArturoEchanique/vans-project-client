@@ -5,6 +5,7 @@ import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import MyComponent from "../../components/Map/Map";
 import './ResultsPage.css'
+import PriceSlider from "../../components/PriceSlider/PriceSlider";
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
    
@@ -27,10 +28,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     };
 
     const handleFilterChange = (e) => {
-        console.log("e is...", e)
         const { name } = e.currentTarget;
         if (e.currentTarget.hasOwnProperty('checked')) {
-          console.log("YES IS CHECK")
             const { checked } = e.currentTarget;
             const formFilterData = { ...filterData, [name]: checked };
             setFilterInfo(formFilterData);
@@ -46,6 +45,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const handleFilterDatesChange = (dates) => {
         setFilterInfo(dates);
         loadVans({ ...filterData, ...dates });
+    };
+
+    const handleFilterPriceChange = (priceRange) => {
+        setFilterInfo(priceRange);
+        loadVans({ ...filterData, ...priceRange });
     };
 
     const handleSubmit = (e) => {
@@ -73,6 +77,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     BathRoom
                     <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
                 </label>
+                <PriceSlider handlePriceChange={handleFilterPriceChange}/>
             </form>
             <MyComponent/>
             {vans.map((van, idx) => {
