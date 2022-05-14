@@ -14,9 +14,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 
-
 const AppRoutes = () => {
-
     const [filterData, setFilterData] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -28,13 +26,12 @@ const AppRoutes = () => {
         startDate: new Date(),
         endDate: new Date(),
         price: 0,
-        van_id: "",
+        bookedVan: "",
     });
 
     const setFilterInfo = (data) => {
         setFilterData({ ...filterData, ...data });
     };
-
 
     const setBookingInfo = (data) => {
         setBookingData({ ...bookingData, ...data });
@@ -50,8 +47,10 @@ const AppRoutes = () => {
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
-            <Route path="/paydetails" element={<PaymentDetailsPage />} />
+
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
+
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
                 <Route path="" element={<ProfilePage />} />

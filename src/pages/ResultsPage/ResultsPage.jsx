@@ -27,11 +27,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     };
 
     const handleFilterChange = (e) => {
+        console.log("e is...", e)
         const { name } = e.currentTarget;
-        if (name == "solarPower") {
-          
+        if (e.currentTarget.hasOwnProperty('checked')) {
+          console.log("YES IS CHECK")
             const { checked } = e.currentTarget;
-            const formFilterData = { ...filterData, solarPower: checked };
+            const formFilterData = { ...filterData, [name]: checked };
             setFilterInfo(formFilterData);
             loadVans(formFilterData);
         } else {
@@ -51,7 +52,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         e.preventDefault();
     };
 
-    const { name, solarPower, startDate, endDate } = filterData;
+    const { name, solarPower, shower, bathroom, startDate, endDate } = filterData;
 
     return (
         <div className="resultsPage">
@@ -61,8 +62,16 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     <input type="text" value={name} name="name" onChange={handleFilterChange} />
                 </label>
                 <label>
-                    With solar Power
+                    Solar Power
                     <input type="checkbox" checked={solarPower} name="solarPower" onChange={handleFilterChange} />
+                </label>
+                <label>
+                    Shower
+                    <input type="checkbox" checked={shower} name="shower" onChange={handleFilterChange} />
+                </label>
+                <label>
+                    BathRoom
+                    <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
                 </label>
             </form>
             <MyComponent/>

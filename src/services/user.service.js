@@ -22,11 +22,15 @@ class UserService {
         return this.api.get(`/${user_id}`);
     };
     editUser = (user_id) => {
-        return this.api.get(`/edit/${user_id}`);
+        return this.api.post(`/edit/${user_id}`);
     };
     deleteUser = (user_id) => {
-        return this.api.get(`/delete/${user_id}`);
+        return this.api.post(`/delete/${user_id}`);
     };
+    addUserBookings = (user_id, ownerBookings) => {
+        return this.api.post(`/${user_id}/addUserBookings`, ownerBookings)
+    }
+
 }
 
 const userService = new UserService();
