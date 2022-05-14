@@ -16,9 +16,11 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
 
     const [vanDetails, setVanDetails] = useState({});
     useEffect(() => {
+        console.log("id is", van_id)
         VanService.getOneVan(van_id)
             .then(({ data }) => {
                 setVanDetails(data);
+                console.log("data is", data)
             })
             .catch((err) => console.log(err));
     }, []);
