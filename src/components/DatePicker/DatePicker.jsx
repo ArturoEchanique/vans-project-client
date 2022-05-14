@@ -12,11 +12,11 @@ const DatePicker = ({ handleDatesChange }) => {
     };
 
     return (
-        <>
+        <div className="datePicker">
             <h1>selected a range of dates</h1>
 
             <DateRangePicker onChange={handleChange} />
-        </>
+        </div>
     );
 };
 

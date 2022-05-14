@@ -3,7 +3,6 @@ import {  Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const VanCard = ({ _id, imageUrl, name, description, solarPower }) => {
-    console.log("solar power is...", solarPower);
 
     return (
         <Card style={{ width: "18rem" }}>

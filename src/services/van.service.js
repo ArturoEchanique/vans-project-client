@@ -21,12 +21,13 @@ class VanService {
     }
 
     getVans = (filterData) => {
-        filterData.startDate = filterData.startDate.getTime()
-        filterData.endDate = filterData.endDate.getTime()
+        if (typeof filterData.startDate === 'object') filterData.startDate = filterData.startDate.getTime()
+        if (typeof filterData.endDate === 'object') filterData.endDate = filterData.endDate.getTime()
         let query = ""
         for (const [key, value] of Object.entries(filterData)) {
-            if (value || key == "name") query += key + "=" + value + "&"
+            query += key + "=" + value + "&"
         }
+        console.log("query is", query)
         // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.api.get(`/?${query}`)
     }
