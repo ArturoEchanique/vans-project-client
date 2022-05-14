@@ -3,9 +3,37 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import userService from "../../services/user.service";
+import { useEffect, useState } from "react";
 
 const Navigation = () => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext);
+  
+
+
+    
+
+    const [userDetails, setUserDetails] = useState({});
+
+    const getUser = () => {
+        userService
+            .getOneUser(user?._id)
+
+            .then(({ data }) => {
+                setUserDetails(data);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    useEffect(() => {
+        getUser();
+    }, [user]);
+
+    const { role } = userDetails;
+
+   console.log(role);
+
+    
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -48,7 +76,6 @@ const Navigation = () => {
                                 </NavLink>
                             </>
                         )}
-
                         {user && (
                             <NavLink to="/profile" className="nav-link justify-content-end">
                                 helo, {user.username}
@@ -57,9 +84,16 @@ const Navigation = () => {
                         <NavLink to="/results" className="nav-link">
                             results
                         </NavLink>
-                        {/* <NavLink to="/profile" className="nav-link">
-                            profile
-                        </NavLink> */}
+
+                        {role == "ADMIN" ? (
+                            <NavLink to="/admin" className="nav-link">
+                                admin
+                            </NavLink>
+                        ) : (
+                            <NavLink to="/#" className="nav-link">
+                               soyfake
+                            </NavLink>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
