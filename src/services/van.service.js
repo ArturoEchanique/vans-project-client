@@ -27,6 +27,7 @@ class VanService {
         for (const [key, value] of Object.entries(filterData)) {
             query += key + "=" + value + "&"
         }
+        console.log("query is", query)
         // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.api.get(`/?${query}`)
     }
