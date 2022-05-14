@@ -8,14 +8,13 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import NewVanPage from "../pages/NewVanPage/NewVanPage";
 import EditVanPage from "../pages/EditVanPage/EditVanPage";
 import { useState } from "react";
-
 import VanDetails from "../pages/VanDetailsPage/VanDetailsPage";
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
 import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
+import AdminPage from "../pages/AdminPage/AdminPage";
 
 const AppRoutes = () => {
-    // const [bookingDates, setBookingDates] = useState()
     const [filterData, setFilterData] = useState({
         priceStart: 0,
         priceEnd: 400,
@@ -38,7 +37,6 @@ const AppRoutes = () => {
         setFilterData({ ...filterData, ...data });
     };
 
-
     const setBookingInfo = (data) => {
         setBookingData({ ...bookingData, ...data });
     };
@@ -48,15 +46,14 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage setFilterInfo={setFilterInfo} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route
-                path="/results"
-                element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />}
-            />
+            <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />
             {/* <Route path="/become-host" element={<BecomeHostPage />} /> */}
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
-            <Route path="/paydetails" element={<PaymentDetailsPage />} />
+
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
 
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>

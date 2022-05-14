@@ -25,14 +25,14 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
             .catch((err) => console.log(err));
     }, []);
 
-    
+
 
     return (
         <>
             <Container>
                 <Row>
                     <Col>
-                        <BookingConfirmCard {...vanDetails} startDate={startDate} endDate={endDate} price={price} />
+                        <BookingConfirmCard {...vanDetails} van_id={van_id} startDate={startDate} endDate={endDate} price={price} />
                     </Col>
                     <Col>
                         <section>
@@ -40,7 +40,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 <div>
                                     <div>
                                         <div>
-                                            <CheckoutForm price={price} />
+                                            <CheckoutForm van_id={van_id} startDate={startDate} endDate={endDate} price={price} />
                                         </div>
                                     </div>
                                 </div>
