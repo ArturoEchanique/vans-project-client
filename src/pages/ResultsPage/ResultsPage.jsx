@@ -49,6 +49,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     };
 
     const handleFilterDatesChange = (dates) => {
+        // dates[0] = dates[0].getTime()
+        // dates[1] = dates[1].getTime()
         setFilterInfo(dates);
         loadVans({ ...filterData, ...dates });
     };
@@ -72,9 +74,9 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 </label>
             </form>
             <MyComponent/>
-            {vans.map(van => {
+            {vans.map((van, idx) => {
                 return (
-                    <VanCard {...van} />
+                    <VanCard key={idx} {...van} />
                 )
             })}
             <Container>

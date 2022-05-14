@@ -16,7 +16,7 @@ const Navigation = () => {
                             id="logo"
                             src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652435796/LOGO-vmup_BUENOREDONDO_tqzye2.png"
                             alt=""
-                            srcset=""
+                            srcSet=""
                         />
                     </Link>
                 </Navbar.Brand>
