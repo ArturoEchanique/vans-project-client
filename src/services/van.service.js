@@ -21,9 +21,8 @@ class VanService {
     }
 
     getVans = (filterData) => {
-        console.log("filterdata is", filterData)
-        filterData.startDate = filterData.startDate.getTime()
-        filterData.endDate = filterData.endDate.getTime()
+        if (typeof filterData.startDate === 'object') filterData.startDate = filterData.startDate.getTime()
+        if (typeof filterData.endDate === 'object') filterData.endDate = filterData.endDate.getTime()
         let query = ""
         for (const [key, value] of Object.entries(filterData)) {
             query += key + "=" + value + "&"
