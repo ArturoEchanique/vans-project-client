@@ -27,7 +27,7 @@ const AppRoutes = () => {
         startDate: new Date(),
         endDate: new Date(),
         price: 0,
-        van_id: "",
+        bookedVan: "",
     });
 
     const setFilterInfo = (data) => {
