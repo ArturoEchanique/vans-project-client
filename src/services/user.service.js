@@ -27,7 +27,10 @@ class UserService {
     deleteUser = (user_id) => {
         return this.api.post(`/delete/${user_id}`);
     };
-    addUserBookings = (user_id, ownerBookings) => {
+    addUserBookings = (user_id, userBookings) => {
+        return this.api.post(`/${user_id}/addUserBookings`, userBookings)
+    }
+    addOwnerBookings = (user_id, ownerBookings) => {
         return this.api.post(`/${user_id}/addUserBookings`, ownerBookings)
     }
 
