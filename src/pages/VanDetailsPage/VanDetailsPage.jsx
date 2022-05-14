@@ -10,12 +10,16 @@ const VanDetails = ({ setBookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({});
     const { van_id } = useParams();
 
-    useEffect(() => {
+    const getVan = () => {
         VanService.getOneVan(van_id)
             .then(({ data }) => {
                 setVanDetails(data);
             })
             .catch((err) => console.log(err));
+    };
+
+    useEffect(() => {
+        getVan();
     }, []);
 
     const setDateAndPrice = (dates) => {
@@ -26,15 +30,13 @@ const VanDetails = ({ setBookingInfo }) => {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const bookingPrice = diffDays * vanDetails.dayPrice;
 
-        console.log(diffTime);
-        console.log(diffDays);
-
-        console.log(bookingPrice);
+       
 
         let bookingInfo = {
             startDate: dates.startDate,
             endDate: dates.endDate,
             price: bookingPrice,
+            van_id: van_id,
         };
 
         setBookingInfo(bookingInfo);
