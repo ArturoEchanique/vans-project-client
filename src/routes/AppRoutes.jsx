@@ -13,6 +13,8 @@ import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage";
 import PrivateRoutes from "./PrivateRoutes";
 import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
+import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
+import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
@@ -47,13 +49,13 @@ const AppRoutes = () => {
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />
-            {/* <Route path="/become-host" element={<BecomeHostPage />} /> */}
+            <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
-
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
+            <Route path="/privacyterms" element={<PrivacyTermsPage />} />
 
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
