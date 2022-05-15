@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import authService from "../../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import uploadService from "../../services/upload.service";
 
 const SignupForm = () => {
@@ -12,7 +12,7 @@ const SignupForm = () => {
         imageUrl: "",
     });
 
-      const [loadingImage, setLoadingImage] = useState(false);
+    const [loadingImage, setLoadingImage] = useState(false);
 
     const navigate = useNavigate();
 
@@ -69,6 +69,12 @@ const SignupForm = () => {
                 <Form.Label>Image (import)</Form.Label>
                 <Form.Control type="file" onChange={handleImageUpload} />
             </Form.Group>
+            <Form.Check >
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <Link to={'/'} >
+                    <Form.Label > Privacy policy terms</Form.Label>
+                </Link>
+            </Form.Check>
 
             <Button variant="dark" type="submit" disabled={loadingImage}>
                 {loadingImage ? "Loading..." : "send"}

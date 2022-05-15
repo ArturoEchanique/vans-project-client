@@ -1,15 +1,19 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import vanService from "../../services/van.service"
 import { useNavigate } from 'react-router-dom'
 import uploadService from "../../services/upload.service"
+import { AuthContext } from "../../context/auth.context";
+import userService from "../../services/user.service";
 
 
 
 const NewVanForm = () => {
+    const { user } = useContext(AuthContext);
 
 
     const [formData, setFormData] = useState({
+        owner: user._id,
         name: "",
         description: "",
         imageUrl: "",
@@ -28,6 +32,11 @@ const NewVanForm = () => {
         //****** */
         vanService
             .createVan(formData)
+
+            .then(() => {
+                userService.editUser(user._id, { role: "OWNER" })
+                    .then((rrr) => console.log("el usuariooo", rrr))
+            })
             .then(res => {
                 navigate('/')
             })

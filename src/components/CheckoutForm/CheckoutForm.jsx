@@ -1,4 +1,4 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements, PaymentElemen } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import stripeService from "../../services/stripe.service";
@@ -6,6 +6,8 @@ import bookingsService from "../../services/bookings.service";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import userService from "../../services/user.service";
+import vanService from "../../services/van.service";
+
 
 
 
@@ -36,10 +38,15 @@ const CheckoutForm = ({ startDate, endDate, price, van_id }) => {
         }
 
         const booking = await bookingsService.saveBooking({ startDate, endDate, price, van_id })
+        const owner = await vanService.getOneVan(van_id)
 
-        const ownerBookings = booking.data._id
+        const ownerId = owner.data.owner
+        const bookingId = booking.data._id
 
-        const getUser = await userService.addUserBookings(user._id, ownerBookings)
+        const getUser = await userService.addUserBookings(user._id, bookingId)
+        const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
+
+        console.log("-----------", getOwner)
 
         elements.getElement(CardElement).clear()
         navigate('/paydetails')
