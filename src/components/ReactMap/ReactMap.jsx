@@ -33,10 +33,13 @@ function ReactMap({ vans, handleMapBoundsChange}) {
             ({ coords: { latitude: lat, longitude: lng } }) => {
                 const pos = { lat, lng };
                 setCenter(pos);
+                mapBoundsChange(map)
+                
             }
+            
         )
         const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);
+        // map.fitBounds(bounds);
         setMap(map)
     }, [])
 
@@ -44,23 +47,30 @@ function ReactMap({ vans, handleMapBoundsChange}) {
         setMap(null)
     }, [])
 
+    const mapBoundsChange = (map) =>{
+        const bounds = map.getBounds()
+        // setVisibleMarker(-1)
+        handleMapBoundsChange({ mapYBounds: [bounds.Ab.h-0.05, bounds.Ab.j+0.05], mapXBounds: [bounds.Va.h-0.05, bounds.Va.j+0.05] })
+    }
+
+    
+
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
+
             onLoad={onLoad}
-            onDragEnd={() => {
-                const bounds = map.getBounds()
-                handleMapBoundsChange({ mapYBounds: [bounds.Ab.h, bounds.Ab.j], mapXBounds:[bounds.Va.h,bounds.Va.j]})
-                console.log("bounds are", bounds)}}
+            onZoomChanged={map && (() => mapBoundsChange(map))}
+            onDragEnd={map && (() => mapBoundsChange(map))}
             onUnmount={onUnmount}>
                 
 
               <>
                 {vans.map((van, idx) => {
                     return (
-                        <MapMarker showInfo={visibleMarker === idx} setVisibleMarker={setVisibleMarkerFn} van={van} key="idx "markerIdx={idx}/>
+                        <MapMarker showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={idx} markerIdx={idx}/>
                     )
                 })} 
               </> 
