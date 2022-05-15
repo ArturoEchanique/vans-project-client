@@ -28,7 +28,6 @@ function ReactMap({ vans, handleMapBoundsChange }) {
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(function callback(map) {
-        console.log("loading")
         navigator.geolocation.getCurrentPosition(
             ({ coords: { latitude: lat, longitude: lng } }) => {
                 const pos = { lat, lng };
@@ -48,7 +47,6 @@ function ReactMap({ vans, handleMapBoundsChange }) {
     }, [])
 
     const mapBoundsChange = (map) => {
-        console.log(map.getZoom())
         const bounds = map.getBounds()
         const margin = 150 / 2 ** map.getZoom()
         handleMapBoundsChange({ mapYBounds: [bounds.Ab.h - margin * 2, bounds.Ab.j + margin], mapXBounds: [bounds.Va.h - margin, bounds.Va.j + margin] })
