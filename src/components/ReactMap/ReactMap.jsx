@@ -10,7 +10,7 @@ const containerStyle = {
     height: '800px'
 };
 
-function ReactMap({ vans, handleMapBoundsChange}) {
+function ReactMap({ vans, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
 
@@ -34,9 +34,9 @@ function ReactMap({ vans, handleMapBoundsChange}) {
                 const pos = { lat, lng };
                 setCenter(pos);
                 mapBoundsChange(map)
-                
+
             }
-            
+
         )
         const bounds = new window.google.maps.LatLngBounds(center);
         // map.fitBounds(bounds);
@@ -47,13 +47,14 @@ function ReactMap({ vans, handleMapBoundsChange}) {
         setMap(null)
     }, [])
 
-    const mapBoundsChange = (map) =>{
+    const mapBoundsChange = (map) => {
+        console.log(map.getZoom())
         const bounds = map.getBounds()
-        // setVisibleMarker(-1)
-        handleMapBoundsChange({ mapYBounds: [bounds.Ab.h-0.05, bounds.Ab.j+0.05], mapXBounds: [bounds.Va.h-0.05, bounds.Va.j+0.05] })
+        const margin = 150 / 2 ** map.getZoom()
+        handleMapBoundsChange({ mapYBounds: [bounds.Ab.h - margin * 2, bounds.Ab.j + margin], mapXBounds: [bounds.Va.h - margin, bounds.Va.j + margin] })
     }
 
-    
+
 
     return isLoaded ? (
         <GoogleMap
@@ -65,15 +66,15 @@ function ReactMap({ vans, handleMapBoundsChange}) {
             onZoomChanged={map && (() => mapBoundsChange(map))}
             onDragEnd={map && (() => mapBoundsChange(map))}
             onUnmount={onUnmount}>
-                
 
-              <>
+
+            <>
                 {vans.map((van, idx) => {
                     return (
-                        <MapMarker showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={idx} markerIdx={idx}/>
+                        <MapMarker showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
                     )
-                })} 
-              </> 
+                })}
+            </>
             <></>
         </GoogleMap>
     ) : <></>

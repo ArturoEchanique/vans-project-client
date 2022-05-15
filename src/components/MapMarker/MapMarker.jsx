@@ -19,12 +19,10 @@ const MapMarker = ({ van, markerIdx, showInfo, setVisibleMarker }) => {
 
     const label = {
 
-        textAlign: "center",
         text: `${van.dayPrice}€`,
-        fontSize: "26px",
+        fontSize: "24px",
         color: "#222222",
         fontWeight: "bolder",
-        width: "100%"
     }
 
     return (
