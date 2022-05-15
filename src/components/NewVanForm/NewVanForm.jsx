@@ -32,12 +32,13 @@ const NewVanForm = () => {
         //****** */
         vanService
             .createVan(formData)
-            // .then(res => {
-            //     navigate('/')
-            // })
+
             .then(() => {
                 userService.editUser(user._id, { role: "OWNER" })
                     .then((rrr) => console.log("el usuariooo", rrr))
+            })
+            .then(res => {
+                navigate('/')
             })
             .catch(err => console.log(err))
     }
