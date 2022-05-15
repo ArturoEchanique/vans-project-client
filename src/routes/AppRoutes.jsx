@@ -16,6 +16,8 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
+        mapXBounds: [39, 40],
+        mapYBounds: [-3, -2],
         priceStart: 0,
         priceEnd: 400,
         startDate: new Date(),

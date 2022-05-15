@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import vanService from "./../../services/van.service";
 import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import MyComponent from "../../components/Map/Map";
+import ReactMap  from "../../components/ReactMap/ReactMap";
 import './ResultsPage.css'
 import PriceSlider from "../../components/PriceSlider/PriceSlider";
 
@@ -40,6 +40,10 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             setFilterInfo(formFilterData);
             loadVans(formFilterData);
         }
+    };
+    const handleMapBoundsChange = (bounds) => {
+        setFilterInfo(bounds);
+        loadVans({ ...filterData, ...bounds });
     };
 
     const handleFilterDatesChange = (dates) => {
@@ -79,7 +83,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 </label>
                 <PriceSlider handlePriceChange={handleFilterPriceChange}/>
             </form>
-            <MyComponent/>
+            <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans}/>
             {vans.map((van, idx) => {
                 return (
                     <VanCard key={idx} {...van} />
