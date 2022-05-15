@@ -6,6 +6,7 @@ import DatePicker from "../../components/DatePicker/DatePicker";
 import ReactMap  from "../../components/ReactMap/ReactMap";
 import './ResultsPage.css'
 import PriceSlider from "../../components/PriceSlider/PriceSlider";
+import { Row } from "react-bootstrap";
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
    
@@ -84,11 +85,16 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 <PriceSlider handlePriceChange={handleFilterPriceChange}/>
             </form>
             <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans}/>
-            {vans.map((van, idx) => {
-                return (
-                    <VanCard key={idx} {...van} />
-                )
-            })}
+            <Container>
+                <Row>
+                    {vans.map((van, idx) => {
+                        return (
+                            <VanCard key={idx} {...van} />
+                        )
+                    })}
+                </Row>
+            </Container>
+            
             <Container>
                 <hr />
                 <DatePicker handleDatesChange={handleFilterDatesChange} />

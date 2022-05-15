@@ -2,7 +2,7 @@ import {  Button, Card } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-const VanCard = ({ _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice }) => {
+const VanCard = ({ _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating }) => {
 
     return (
         <Card style={{ width: "18rem" }}>
@@ -17,6 +17,8 @@ const VanCard = ({ _id, imageUrl, name, description, solarPower, shower, bathroo
                     {bathroom ? "  has bathroom" : "No bathroom"}
                     <hr></hr>
                     {dayPrice + "€"}
+                    <hr></hr>
+                    {vanRating + " stars"}
                 </Card.Text>
                 <Button variant="dark">
                     <Link to={`/${_id}/details`}>see details</Link>

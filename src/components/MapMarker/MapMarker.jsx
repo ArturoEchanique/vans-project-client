@@ -28,8 +28,8 @@ const MapMarker = ({ van, markerIdx, showInfo, setVisibleMarker }) => {
     }
 
     return (
-        <Marker onClick={() => setVisibleMarker(showInfo ? -1 : markerIdx)} position={{ lat: van.location.coordinates[0], lng: van.location.coordinates[1]}} label={label} icon={iconMarker}>
-            {showInfo && <InfoWindow visible={false} onCloseClick={() => setVisibleMarker(-1)}>
+        <Marker onClick={() => setVisibleMarker(showInfo ? -1 : van._id)} position={{ lat: van.location.coordinates[0], lng: van.location.coordinates[1]}} label={label} icon={iconMarker}>
+            {showInfo && <InfoWindow position={{ lat: van.location.coordinates[0], lng: van.location.coordinates[1] }} onCloseClick={() => setVisibleMarker(-1)}>
                 <VanCard {...van} />
             </InfoWindow>}
 
