@@ -11,12 +11,7 @@ const AdminPage = () => {
             <Row>
                 <UsersAdmin/>
             </Row>
-            <Row>
-                <Col></Col>
-            </Row>
-            <Row>
-                <Col></Col>
-            </Row>
+            
         </Container>
     );
 };

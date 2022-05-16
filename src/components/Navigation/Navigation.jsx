@@ -27,7 +27,7 @@ const Navigation = () => {
 
     const { role } = userDetails;
 
-   console.log(user?._id);
+   console.log(user);
 
     
 

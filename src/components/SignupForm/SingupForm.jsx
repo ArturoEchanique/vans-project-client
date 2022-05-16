@@ -71,7 +71,7 @@ const SignupForm = () => {
             </Form.Group>
             <Form.Check >
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                <Link to={'/'} >
+                <Link to={'/privacyterms'} >
                     <Form.Label > Privacy policy terms</Form.Label>
                 </Link>
             </Form.Check>

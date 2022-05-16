@@ -32,7 +32,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
             <Container>
                 <Row>
                     <Col>
-                        <BookingConfirmCard {...vanDetails} van_id={van_id} startDate={startDate} endDate={endDate} price={price} />
+                        <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
                     </Col>
                     <Col>
                         <section>
@@ -40,7 +40,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 <div>
                                     <div>
                                         <div>
-                                            <CheckoutForm van_id={van_id} startDate={startDate} endDate={endDate} price={price} />
+                                            <CheckoutForm bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
                                         </div>
                                     </div>
                                 </div>
