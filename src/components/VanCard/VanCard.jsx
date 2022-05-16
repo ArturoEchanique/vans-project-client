@@ -4,20 +4,10 @@ import { Link } from "react-router-dom";
 import userService from "./../../services/user.service";
 import { AuthContext } from "../../context/auth.context"
 
-const VanCard = ({ addFavorite, removeFavorite, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, favorite }) => {
+const VanCard = ({ isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, }) => {
 
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
 
-    // const addFavoriteVan = () => {
-    //     userService
-    //         .addFavoriteVan(user._id, _id)
-    //         .catch((err) => console.log(err));
-    // }
-    // const removeFavoriteVan = () => {
-    //     userService
-    //         .removeFavoriteVan(user._id, _id)
-    //         .catch((err) => console.log(err));
-    // }
 
 
     return (
@@ -41,7 +31,7 @@ const VanCard = ({ addFavorite, removeFavorite, _id, imageUrl, name, description
                         see details
                     </Button>
                 </Link>
-                <Button onClick={favorite ? (() => removeFavorite(_id)) : (() => addFavorite(_id))} variant={favorite ? "danger" : "outline-danger"} size="lg">
+                <Button onClick={isFavorite ? (() => removeFavoriteVan(_id)) : (() => addFavoriteVan(_id))} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                     favorite
                 </Button>
             </Card.Body>

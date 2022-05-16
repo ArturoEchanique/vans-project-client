@@ -142,7 +142,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 </label>
                 <PriceSlider handlePriceChange={handleFilterPriceChange} />
             </form>
-            <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
+            <ReactMap favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
             <InfiniteScroll
                 dataLength={vans.length / 4}
                 next={fetchMoreData}
@@ -153,7 +153,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     <Row>
                         {vans.map((van, idx) => {
                             return (
-                                <VanCard key={idx} {...van} favorite={favoriteVans.includes(van._id)} addFavorite={addFavoriteVan} removeFavorite={removeFavoriteVan} />
+                                <VanCard key={idx} {...van} isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} />
                             )
                         })}
                     </Row>

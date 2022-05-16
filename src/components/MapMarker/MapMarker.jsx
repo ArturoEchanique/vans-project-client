@@ -5,7 +5,7 @@ import userService from "../../services/user.service";
 import { useEffect, useState } from "react";
 import VanCard from "../VanCard/VanCard";
 
-const MapMarker = ({ van, markerIdx, showInfo, setVisibleMarker }) => {
+const MapMarker = ({ isFavorite, addFavoriteVan, removeFavoriteVan, van, markerIdx, showInfo, setVisibleMarker }) => {
 
     // const [showInfo, setShowInfo] = useState(false)
 
@@ -28,7 +28,7 @@ const MapMarker = ({ van, markerIdx, showInfo, setVisibleMarker }) => {
     return (
         <Marker onClick={() => setVisibleMarker(showInfo ? -1 : van._id)} position={{ lat: van.location.coordinates[0], lng: van.location.coordinates[1]}} label={label} icon={iconMarker}>
             {showInfo && <InfoWindow position={{ lat: van.location.coordinates[0], lng: van.location.coordinates[1] }} onCloseClick={() => setVisibleMarker(-1)}>
-                <VanCard {...van} />
+                <VanCard isFavorite={isFavorite} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} {...van} />
             </InfoWindow>}
 
         </Marker>

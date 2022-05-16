@@ -10,7 +10,7 @@ const containerStyle = {
     height: '800px'
 };
 
-function ReactMap({ vans, handleMapBoundsChange }) {
+function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
     const [center, setCenter] = useState({ lat: 40.39103445694156, lng: -3.7007285931754588 });
@@ -76,7 +76,7 @@ function ReactMap({ vans, handleMapBoundsChange }) {
             <>
                 {vans.map((van, idx) => {
                     return (
-                        <MapMarker showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
+                        <MapMarker isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
                     )
                 })}
             </>
