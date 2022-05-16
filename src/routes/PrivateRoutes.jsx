@@ -5,20 +5,25 @@ import { Navigate, Outlet } from 'react-router-dom'
 import Loader from "../components/Loader/Loader"
 
 
-const PrivateRoutes = () => {
-    const { isLoggedIn, isLoading } = useContext(AuthContext)
+const PrivateRoutes = ({requiredRole}) => {
+    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
 
     if (isLoading) {
         return <Loader />
     }
-
     if (!isLoggedIn) {
         showMessage('Unauthorized', 'Please Log in ')
         return <Navigate to="/login" />
     }
 
-    return <Outlet />
+    if(requiredRole === user.role || user.role === "ADMIN"){
+        return <Outlet />
+    }
+    else{
+        showMessage('Unauthorized')
+        return <Navigate to="/" />
+    }
 }
 
 

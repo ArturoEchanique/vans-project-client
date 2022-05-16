@@ -73,10 +73,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     const fetchMoreData = () => {
         console.log("fetching more data")
-        setTimeout(() =>{
-            loadVans({ ...filterData, skip: vans.length });
-        }, 1000)
-        
+        loadVans({ ...filterData, skip: vans.length });
+        // setTimeout(() =>{
+        //     loadVans({ ...filterData, skip: vans.length });
+        // }, 1000)
+
     };
 
     const { name, solarPower, shower, bathroom, startDate, endDate } = filterData;
