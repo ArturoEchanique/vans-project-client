@@ -29,16 +29,6 @@ const ProfileCard = () => {
             <h1>{user.username}</h1>
             <img src={imageUrl} />
             <hr />
-
-            <div>
-                <h3>activ bookings</h3>
-                {/* <section>{user.bookings}</section> */}
-            </div>
-
-            <div>
-                <h3>my vans</h3>
-                {/* <section>{user.vans}</section> */}
-            </div>
         </div>
     );
 };

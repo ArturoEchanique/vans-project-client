@@ -1,4 +1,4 @@
-import SignupPage from "../pages/SingupPage/SingupPage";
+import SignupPage from "../pages/SingupPage/SingUpPage";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import ResultsPage from "../pages/ResultsPage/ResultsPage";
@@ -18,6 +18,7 @@ import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
+        owner: "",
         mapXBounds: [39, 40],
         mapYBounds: [-3, -2],
         priceStart: 0,
