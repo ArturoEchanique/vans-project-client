@@ -4,7 +4,7 @@ const MessageContext = createContext()
 
 function MessageProviderWrapper(props) {
 
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
     const [messageInfo, setMessageInfo] = useState({
         title: 'welcome',
         description: ''
