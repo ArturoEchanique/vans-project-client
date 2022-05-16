@@ -13,8 +13,7 @@ const containerStyle = {
 function ReactMap({ vans, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
-
-    const [center, setCenter] = useState({ lat: 40, lng: -3 });
+    const [center, setCenter] = useState({ lat: 40.39103445694156, lng: -3.7007285931754588 });
 
     const setVisibleMarkerFn = (idx) => {
         setVisibleMarker(idx)
@@ -33,13 +32,13 @@ function ReactMap({ vans, handleMapBoundsChange }) {
         //         const pos = { lat, lng };
         //         setCenter(pos);
         //         mapLoaded()
-
+        //         mapBoundsChange(map)
         //     }
-
         // )
         const bounds = new window.google.maps.LatLngBounds(center);
         // map.fitBounds(bounds);
         setMap(map)
+        //temporal, sin timeout no funciona
         setTimeout(() =>{
             mapBoundsChange(map)
         }, 500)

@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import vanService from "./../../services/van.service";
 import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import ReactMap  from "../../components/ReactMap/ReactMap";
+import ReactMap from "../../components/ReactMap/ReactMap";
 import './ResultsPage.css'
 import PriceSlider from "../../components/PriceSlider/PriceSlider";
 import { Row } from "react-bootstrap";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
-   
+
 
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([]);
+    const [hasMoreVans, setHasMoreVans] = useState(true);
 
     useEffect(() => loadVans(filterData), []);
 
@@ -21,9 +23,14 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
             .getVans(query)
             .then(({ data }) => {
-              
+
                 // setFetching(true);
-                setVans(data);
+                if (query.skip === 0) setVans(data)
+                else {
+                    setVans([...vans, ...data])
+                    if (data.length === 0) setHasMoreVans(false)
+                    else (setHasMoreVans(true))
+                }
             })
             .catch((err) => console.log(err));
     };
@@ -43,16 +50,19 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         }
     };
     const handleMapBoundsChange = (bounds) => {
+        (setHasMoreVans(true))
         setFilterInfo(bounds);
         loadVans({ ...filterData, ...bounds });
     };
 
     const handleFilterDatesChange = (dates) => {
+        (setHasMoreVans(true))
         setFilterInfo(dates);
         loadVans({ ...filterData, ...dates });
     };
 
     const handleFilterPriceChange = (priceRange) => {
+        (setHasMoreVans(true))
         setFilterInfo(priceRange);
         loadVans({ ...filterData, ...priceRange });
     };
@@ -61,10 +71,22 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         e.preventDefault();
     };
 
+    const fetchMoreData = () => {
+        console.log("fetching more data")
+        setTimeout(() =>{
+            loadVans({ ...filterData, skip: vans.length });
+        }, 1000)
+        
+    };
+
     const { name, solarPower, shower, bathroom, startDate, endDate } = filterData;
 
     return (
         <div className="resultsPage">
+            <Container>
+                <hr />
+                <DatePicker handleDatesChange={handleFilterDatesChange} />
+            </Container>
             <form onSubmit={handleSubmit}>
                 <label>
                     Search
@@ -82,23 +104,25 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     BathRoom
                     <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
                 </label>
-                <PriceSlider handlePriceChange={handleFilterPriceChange}/>
+                <PriceSlider handlePriceChange={handleFilterPriceChange} />
             </form>
-            <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans}/>
-            <Container>
-                <Row>
-                    {vans.map((van, idx) => {
-                        return (
-                            <VanCard key={idx} {...van} />
-                        )
-                    })}
-                </Row>
-            </Container>
-            
-            <Container>
-                <hr />
-                <DatePicker handleDatesChange={handleFilterDatesChange} />
-            </Container>
+            <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
+            <InfiniteScroll
+                dataLength={vans.length / 4}
+                next={fetchMoreData}
+                hasMore={hasMoreVans}
+                loader={<h4>Loading...</h4>}
+            >
+                <Container>
+                    <Row>
+                        {vans.map((van, idx) => {
+                            return (
+                                <VanCard key={idx} {...van} />
+                            )
+                        })}
+                    </Row>
+                </Container>
+            </InfiniteScroll>
         </div>
     );
 };
