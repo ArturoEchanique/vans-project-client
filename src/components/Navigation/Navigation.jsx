@@ -8,10 +8,6 @@ import { useEffect, useState } from "react";
 
 const Navigation = () => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext);
-  
-
-
-    
 
     const [userDetails, setUserDetails] = useState({});
 
@@ -31,7 +27,7 @@ const Navigation = () => {
 
     const { role } = userDetails;
 
-   console.log(role);
+   console.log(user?._id);
 
     
 
@@ -91,7 +87,6 @@ const Navigation = () => {
                             </NavLink>
                         ) : (
                             <NavLink to="/#" className="nav-link">
-                               soyfake
                             </NavLink>
                         )}
                     </Nav>
