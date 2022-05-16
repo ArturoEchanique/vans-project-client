@@ -12,7 +12,7 @@ import vanService from "../../services/van.service";
 
 
 
-const CheckoutForm = ({ startDate, endDate, price, van_id }) => {
+const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
 
     const stripe = useStripe()
@@ -33,20 +33,23 @@ const CheckoutForm = ({ startDate, endDate, price, van_id }) => {
 
         if (!error) {
             const { id } = paymentMethod
-            const { data } = await stripeService.checkout({ id, amount: price * 100 }) // amount in cents
+            const { data } = await stripeService.checkout({ id, amount: (price * 100) }) // amount in cents
 
         }
 
-        const booking = await bookingsService.saveBooking({ startDate, endDate, price, van_id })
-        const owner = await vanService.getOneVan(van_id)
+        const booking = await bookingsService.saveBooking({ startDate, endDate, price, bookedVan })
+        console.log("the booking is", booking)
+        const owner = await vanService.getOneVan(bookedVan)
+        console.log("the van is", owner)
 
         const ownerId = owner.data.owner
         const bookingId = booking.data._id
 
         const getUser = await userService.addUserBookings(user._id, bookingId)
-        const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
+        console.log("the user is----", getUser)
 
-        console.log("-----------", getOwner)
+        const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
+        console.log("the owner is -------", getOwner)
 
         elements.getElement(CardElement).clear()
         navigate('/paydetails')

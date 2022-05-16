@@ -1,7 +1,7 @@
 import { Card, ListGroup, ListGroupItem, Button, Container, Row, Col } from "react-bootstrap";
 
-const BookingConfirmCard = ({ imageUrl, van_id, dayPrice, name, description, startDate, endDate, price }) => {
-    console.log("el id es", van_id)
+const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, startDate, endDate, price }) => {
+    console.log("el id es", bookedVan)
 
     return (
         <>
