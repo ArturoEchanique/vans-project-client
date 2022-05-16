@@ -28,23 +28,31 @@ function ReactMap({ vans, handleMapBoundsChange }) {
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(function callback(map) {
-        navigator.geolocation.getCurrentPosition(
-            ({ coords: { latitude: lat, longitude: lng } }) => {
-                const pos = { lat, lng };
-                setCenter(pos);
-                mapBoundsChange(map)
+        // navigator.geolocation.getCurrentPosition(
+        //     ({ coords: { latitude: lat, longitude: lng } }) => {
+        //         const pos = { lat, lng };
+        //         setCenter(pos);
+        //         mapLoaded()
 
-            }
+        //     }
 
-        )
+        // )
         const bounds = new window.google.maps.LatLngBounds(center);
         // map.fitBounds(bounds);
         setMap(map)
+        setTimeout(() =>{
+            mapBoundsChange(map)
+        }, 500)
+        
     }, [])
 
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])
+
+    const mapLoaded = () => {
+        console.log("the map is loaded with geo")
+    }
 
     const mapBoundsChange = (map) => {
         const bounds = map.getBounds()
