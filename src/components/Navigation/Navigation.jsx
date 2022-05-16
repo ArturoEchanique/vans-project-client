@@ -25,7 +25,7 @@ const Navigation = () => {
         if (user) getUser();
     }, [user]);
 
-    const { role } = userDetails;
+    // const { role } = userDetails;
 
     console.log(user);
 
@@ -79,7 +79,7 @@ const Navigation = () => {
                             results
                         </NavLink>
 
-                        {role == "ADMIN" ? (
+                        {user?.role == "ADMIN" ? (
                             <NavLink to="/admin" className="nav-link">
                                 admin
                             </NavLink>

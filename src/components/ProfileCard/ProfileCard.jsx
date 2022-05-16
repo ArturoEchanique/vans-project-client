@@ -22,12 +22,12 @@ const ProfileCard = () => {
         getUser();
     }, [user]);
 
-    const { imageUrl } = userDetails;
+    // const { imageUrl } = userDetails;
 
     return (
         <div>
             <h1>{user.username}</h1>
-            <img src={imageUrl} />
+            <img src={userDetails?.imageUrl} />
             <hr />
         </div>
     );

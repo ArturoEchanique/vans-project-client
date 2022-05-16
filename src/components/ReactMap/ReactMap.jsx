@@ -10,11 +10,10 @@ const containerStyle = {
     height: '800px'
 };
 
-function ReactMap({ vans, handleMapBoundsChange }) {
+function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
-
-    const [center, setCenter] = useState({ lat: 40, lng: -3 });
+    const [center, setCenter] = useState({ lat: 40.39103445694156, lng: -3.7007285931754588 });
 
     const setVisibleMarkerFn = (idx) => {
         setVisibleMarker(idx)
@@ -33,13 +32,13 @@ function ReactMap({ vans, handleMapBoundsChange }) {
         //         const pos = { lat, lng };
         //         setCenter(pos);
         //         mapLoaded()
-
+        //         mapBoundsChange(map)
         //     }
-
         // )
         const bounds = new window.google.maps.LatLngBounds(center);
         // map.fitBounds(bounds);
         setMap(map)
+        //temporal, sin timeout no funciona
         setTimeout(() =>{
             mapBoundsChange(map)
         }, 500)
@@ -77,7 +76,7 @@ function ReactMap({ vans, handleMapBoundsChange }) {
             <>
                 {vans.map((van, idx) => {
                     return (
-                        <MapMarker showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
+                        <MapMarker isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
                     )
                 })}
             </>

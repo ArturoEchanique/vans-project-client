@@ -1,9 +1,13 @@
-import { Button, Card } from "react-bootstrap";
-import { useState } from "react";
+import {  Button, Card } from "react-bootstrap";
+import { useContext } from "react"
 import { Link } from "react-router-dom";
-import vanService from "../../services/van.service";
+import userService from "./../../services/user.service";
+import { AuthContext } from "../../context/auth.context"
+    import vanService from "../../services/van.service";
 
-const VanCard = ({ setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating }) => {
+const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, }) => {
+
+    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const [deleteState, setDeleteState] = useState(false);
 
     const handleDelete = () => {
@@ -12,6 +16,8 @@ const VanCard = ({ setReload, _id, imageUrl, name, description, solarPower, show
             setReload(true);
         });
     };
+
+
 
     return (
         <Card style={{ width: "25rem" }}>
@@ -27,8 +33,13 @@ const VanCard = ({ setReload, _id, imageUrl, name, description, solarPower, show
                     {dayPrice + "€"}
                     {vanRating + " stars"}
                 </Card.Text>
-                <Button variant="dark">
-                    <Link to={`/${_id}/details`}>see details</Link>
+                <Link to={`/${_id}/details`}>
+                    <Button variant="outline-dark" size="lg">
+                        see details
+                    </Button>
+                </Link>
+                <Button onClick={isFavorite ? (() => removeFavoriteVan(_id)) : (() => addFavoriteVan(_id))} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                    favorite
                 </Button>
                 <Button variant="dark" onClick={handleDelete}>
                     delete
