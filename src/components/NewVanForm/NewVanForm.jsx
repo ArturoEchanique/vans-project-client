@@ -13,8 +13,6 @@ const NewVanForm = () => {
     const { user } = useContext(AuthContext);
 
 
-
-
     const [formData, setFormData] = useState({
         owner: user._id,
         name: "",
@@ -46,17 +44,29 @@ const NewVanForm = () => {
     }
     const handleImageUpload = (e) => {
 
+
+
         setLoadingImage(true)
 
         const uploadData = new FormData()
-        uploadData.append('imageData', e.target.files[0])
+        for (let i = 0; i < e.target.files.length; i++) {
+            uploadData.append('photos', e.target.files[i])
+        }
+
+        // let arr = []
+
 
         uploadService
-            .uploadImage(uploadData)
+            .uploadMultipleImage(uploadData)
             .then(({ data }) => {
+                // arr.push(data.cloudinary_url)
+                console.log("data is..fffffff.", data)
+                // console.log("aray is..aaaaaaaa.", arr)
+
                 setLoadingImage(false)
-                setFormData({ ...formData, imageUrl: data.cloudinary_url })
+                setFormData({ ...formData, imageUrl: data.cloudinary_urls })
             })
+
             .catch(err => console.log(err))
     }
 
@@ -84,17 +94,10 @@ const NewVanForm = () => {
                             <Form.Control type="text" onChange={handleInputChange} name="description" value={description} />
                         </Form.Group>
 
-                        {/* <Form.Group className="mb-3" controlId="email">
-                            <Form.Label>Image Url</Form.Label>
-                            <Form.Control type="text" onChange={handleInputChange} name="imageUrl" value={imageUrl} />
-                        </Form.Group> */}
                         <Form.Group className="mb-3" controlId="imageUrl">
                             <Form.Label>Image (import)</Form.Label>
-                            <Form.Control type="file" onChange={handleImageUpload} />
+                            <Form.Control type="file" multiple onChange={handleImageUpload} />
                         </Form.Group>
-
-                        <MultipleImage />
-
 
                         <Form.Group className="mb-3" controlId="dayPrice">
                             <Form.Label>Price per day</Form.Label>

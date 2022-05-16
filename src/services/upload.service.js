@@ -21,6 +21,10 @@ class UploadService {
     uploadImage(imageForm) {
         return this.app.post('/image', imageForm)
     }
+
+    uploadMultipleImage(photos) {
+        return this.app.post('/multipleImages', photos)
+    }
 }
 
 const uploadService = new UploadService()
