@@ -18,6 +18,7 @@ import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
+        owner: "",
         mapXBounds: [39, 40],
         mapYBounds: [-3, -2],
         priceStart: 0,
