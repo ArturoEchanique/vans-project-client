@@ -1,15 +1,22 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import vanService from "../../services/van.service"
 import { useNavigate } from 'react-router-dom'
 import uploadService from "../../services/upload.service"
+import { AuthContext } from "../../context/auth.context";
+import userService from "../../services/user.service";
+import MultipleImage from "../MultipleImage/MultipleImage";
 
 
 
 const NewVanForm = () => {
+    const { user } = useContext(AuthContext);
+
+
 
 
     const [formData, setFormData] = useState({
+        owner: user._id,
         name: "",
         description: "",
         imageUrl: "",
@@ -25,9 +32,13 @@ const NewVanForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        //****** */
+
         vanService
             .createVan(formData)
+
+            .then(() => {
+                userService.editUser(user._id, { role: "OWNER" })
+            })
             .then(res => {
                 navigate('/')
             })
@@ -81,6 +92,9 @@ const NewVanForm = () => {
                             <Form.Label>Image (import)</Form.Label>
                             <Form.Control type="file" onChange={handleImageUpload} />
                         </Form.Group>
+
+                        <MultipleImage />
+
 
                         <Form.Group className="mb-3" controlId="dayPrice">
                             <Form.Label>Price per day</Form.Label>

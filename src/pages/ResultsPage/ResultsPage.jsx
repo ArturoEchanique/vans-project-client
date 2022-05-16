@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import vanService from "./../../services/van.service";
 import VanCard from "../../components/VanCard/VanCard";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import MyComponent from "../../components/Map/Map";
+import ReactMap  from "../../components/ReactMap/ReactMap";
 import './ResultsPage.css'
+import PriceSlider from "../../components/PriceSlider/PriceSlider";
+import { Row } from "react-bootstrap";
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
    
@@ -27,10 +29,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     };
 
     const handleFilterChange = (e) => {
-        console.log("e is...", e)
         const { name } = e.currentTarget;
         if (e.currentTarget.hasOwnProperty('checked')) {
-          console.log("YES IS CHECK")
             const { checked } = e.currentTarget;
             const formFilterData = { ...filterData, [name]: checked };
             setFilterInfo(formFilterData);
@@ -42,10 +42,19 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             loadVans(formFilterData);
         }
     };
+    const handleMapBoundsChange = (bounds) => {
+        setFilterInfo(bounds);
+        loadVans({ ...filterData, ...bounds });
+    };
 
     const handleFilterDatesChange = (dates) => {
         setFilterInfo(dates);
         loadVans({ ...filterData, ...dates });
+    };
+
+    const handleFilterPriceChange = (priceRange) => {
+        setFilterInfo(priceRange);
+        loadVans({ ...filterData, ...priceRange });
     };
 
     const handleSubmit = (e) => {
@@ -73,13 +82,19 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     BathRoom
                     <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
                 </label>
+                <PriceSlider handlePriceChange={handleFilterPriceChange}/>
             </form>
-            <MyComponent/>
-            {vans.map((van, idx) => {
-                return (
-                    <VanCard key={idx} {...van} />
-                )
-            })}
+            <ReactMap handleMapBoundsChange={handleMapBoundsChange} vans={vans}/>
+            <Container>
+                <Row>
+                    {vans.map((van, idx) => {
+                        return (
+                            <VanCard key={idx} {...van} />
+                        )
+                    })}
+                </Row>
+            </Container>
+            
             <Container>
                 <hr />
                 <DatePicker handleDatesChange={handleFilterDatesChange} />

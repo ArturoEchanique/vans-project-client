@@ -21,13 +21,16 @@ class UserService {
     getOneUser = (user_id) => {
         return this.api.get(`/${user_id}`);
     };
-    editUser = (user_id) => {
-        return this.api.post(`/edit/${user_id}`);
+    editUser = (user_id, user) => {
+        return this.api.post(`/edit/${user_id}`, user);
     };
     deleteUser = (user_id) => {
         return this.api.post(`/delete/${user_id}`);
     };
-    addUserBookings = (user_id, ownerBookings) => {
+    addUserBookings = (user_id, userBookings) => {
+        return this.api.post(`/${user_id}/addUserBookings`, userBookings)
+    }
+    addOwnerBookings = (user_id, ownerBookings) => {
         return this.api.post(`/${user_id}/addUserBookings`, ownerBookings)
     }
 
