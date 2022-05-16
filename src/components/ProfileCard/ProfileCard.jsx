@@ -16,7 +16,7 @@ const ProfileCard = () => {
                 setUserDetails(data);
             })
             .catch((err) => console.log(err));
-    }
+    };
 
     useEffect(() => {
         getUser();

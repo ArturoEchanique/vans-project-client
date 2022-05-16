@@ -1,4 +1,4 @@
-import { Card, ListGroup, ListGroupItem, Button, Container, Row, Col } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Container, Row, Col } from "react-bootstrap";
 
 const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, startDate, endDate, price }) => {
     console.log("el id es", bookedVan)
@@ -8,7 +8,7 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
             <Container>
                 <Row>
                     <Col >
-                        {/* VAN AND PRICE INFORMATION */}
+                      
                         <Card>
                             <Card.Img variant="top" src={imageUrl} />
                             <Card.Body>

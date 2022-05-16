@@ -3,15 +3,24 @@ import { useContext } from "react"
 import { Link } from "react-router-dom";
 import userService from "./../../services/user.service";
 import { AuthContext } from "../../context/auth.context"
+    import vanService from "../../services/van.service";
 
-const VanCard = ({ isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, }) => {
+const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, }) => {
 
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+    const [deleteState, setDeleteState] = useState(false);
+
+    const handleDelete = () => {
+        setDeleteState(true);
+        vanService.getOneVanAndRemove(_id).then(() => {
+            setReload(true);
+        });
+    };
 
 
 
     return (
-        <Card style={{ width: "18rem" }}>
+        <Card style={{ width: "25rem" }}>
             <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
@@ -21,9 +30,7 @@ const VanCard = ({ isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl,
                     {solarPower ? "  has solar Power" : "No solar power"}
                     {shower ? "  has shower" : "No shower"}
                     {bathroom ? "  has bathroom" : "No bathroom"}
-                    <hr></hr>
                     {dayPrice + "€"}
-                    <hr></hr>
                     {vanRating + " stars"}
                 </Card.Text>
                 <Link to={`/${_id}/details`}>
@@ -33,6 +40,9 @@ const VanCard = ({ isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl,
                 </Link>
                 <Button onClick={isFavorite ? (() => removeFavoriteVan(_id)) : (() => addFavoriteVan(_id))} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                     favorite
+                </Button>
+                <Button variant="dark" onClick={handleDelete}>
+                    delete
                 </Button>
             </Card.Body>
         </Card>

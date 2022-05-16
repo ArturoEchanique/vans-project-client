@@ -5,28 +5,8 @@ import { useEffect, useState } from "react";
 import VanCard from "../VanCard/VanCard";
 
 const UserBookings = () => {
-    const { user } = useContext(AuthContext);
-
-    const [userVans, setUserVans] = useState([]);
-
-    const getUserVans = () => {
-        vanService
-            .getUserVans(user._id)
-            .then(({ data }) => {
-                setUserVans(data);
-            })
-            .catch((err) => console.log(err));
-    };
-
-    useEffect(() => {
-        getUserVans();
-    }, [userVans]);
-
-    const vansList = userVans.map((van) => {
-        return <VanCard {...van} key={van._id} />;
-    });
-
-    return <>{vansList}</>;
+  
+    return <>holi</>;
 };
 
 export default UserBookings

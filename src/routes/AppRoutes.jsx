@@ -15,6 +15,7 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
