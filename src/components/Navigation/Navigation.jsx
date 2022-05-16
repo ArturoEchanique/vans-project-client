@@ -13,7 +13,7 @@ const Navigation = () => {
 
     const getUser = () => {
         userService
-            .getOneUser(user?._id)
+            .getOneUser(user._id)
 
             .then(({ data }) => {
                 setUserDetails(data);
@@ -22,14 +22,12 @@ const Navigation = () => {
     };
 
     useEffect(() => {
-        getUser();
+        if (user) getUser();
     }, [user]);
 
     const { role } = userDetails;
 
-   console.log(user);
-
-    
+    console.log(user);
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -86,8 +84,7 @@ const Navigation = () => {
                                 admin
                             </NavLink>
                         ) : (
-                            <NavLink to="/#" className="nav-link">
-                            </NavLink>
+                            <NavLink to="/#" className="nav-link"></NavLink>
                         )}
                     </Nav>
                 </Navbar.Collapse>

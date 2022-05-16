@@ -24,7 +24,7 @@ const UsersAdmin = () => {
 
     const usersList = users.map((user) => {
         return (
-            <Card style={{ width: "10rem" }} key={user._id}>
+            <Card style={{ width: "15rem" }} key={user._id}>
                 <UserCard setReload={ setReload}{...user} />
             </Card>
         );
