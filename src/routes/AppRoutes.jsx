@@ -15,8 +15,8 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
-import SocketPage from "../pages/SocketPage/SocketPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
+import Map from "../components/geocodeMap/geocodeMap";
 import MessagesPage from "../pages/MessagesPage/MessagesPage";
 
 const AppRoutes = () => {
@@ -58,6 +58,14 @@ const AppRoutes = () => {
             <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
+<<<<<<< HEAD
+=======
+            <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
+            <Route path="/privacyterms" element={<PrivacyTermsPage />} />
+
+            <Route path="/map" element={<Map />} />
+
+>>>>>>> a0bbd07fe82baad424b9dac027ef14038bdd7b95
 
             <Route path="/booking" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<BookingConfirmPage {...bookingData} />} />
@@ -67,13 +75,16 @@ const AppRoutes = () => {
                 <Route path="" element={<AdminPage />} />
                 <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
             </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0bbd07fe82baad424b9dac027ef14038bdd7b95
 
             <Route path="/paydetails" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
 
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
-            <Route path="/chat" element={<SocketPage />} />
 
             <Route path="/profile" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<ProfilePage />} />

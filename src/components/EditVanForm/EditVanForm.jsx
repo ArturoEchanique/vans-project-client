@@ -10,11 +10,16 @@ const EditVanForm = () => {
 
     const [formData, setFormData] = useState({
         name: "",
+        name: "",
         description: "",
         imageUrl: "",
         dayPrice: "",
         longitude: "",
-        latitude: ""
+        latitude: "",
+        solarPower: "",
+        shower: "",
+        bathroom: "",
+        maxPassengers: ""
 
     })
 
@@ -43,11 +48,20 @@ const EditVanForm = () => {
     }
 
     const handleInputChange = e => {
-        const { value, name } = e.currentTarget
-        setFormData({ ...formData, [name]: value })
+        const { name } = e.currentTarget
+
+        if (e.currentTarget.hasOwnProperty('checked')) {
+            const { checked } = e.currentTarget
+            setFormData({ ...formData, [name]: checked })
+
+        } else {
+            const { value } = e.currentTarget
+            setFormData({ ...formData, [name]: value })
+        }
     }
 
-    const { name, description, imageUrl, dayPrice, longitude, latitude } = formData
+    const { name, description, imageUrl, dayPrice, longitude, latitude, solarPower, shower,
+        bathroom, maxPassengers } = formData
 
     return (
 
@@ -75,12 +89,32 @@ const EditVanForm = () => {
 
             <Form.Group className="mb-3" controlId="longitude">
                 <Form.Label>Longitude</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="longitude" value={longitude} />
+                <Form.Control type="number" onChange={handleInputChange} name="longitude" value={longitude} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="latitude">
                 <Form.Label>Latitude</Form.Label>
-                <Form.Control type="text" onChange={handleInputChange} name="latitude" value={latitude} />
+                <Form.Control type="number" onChange={handleInputChange} name="latitude" value={latitude} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="maxPassengers">
+                <Form.Label>Maximun Passengers</Form.Label>
+                <Form.Control type="number" min={0} onChange={handleInputChange} name="maxPassengers" value={maxPassengers} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="solarPower">
+                <input type="checkbox" onChange={handleInputChange} name="solarPower" checked={solarPower} />
+                <Form.Label>Solar Power</Form.Label>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="shower">
+                <input type="checkbox" onChange={handleInputChange} name="shower" checked={shower} />
+                <Form.Label>Shower</Form.Label>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="bathroom">
+                <input type="checkbox" onChange={handleInputChange} name="bathroom" checked={bathroom} />
+                <Form.Label>Bathroom</Form.Label>
             </Form.Group>
 
             <Button variant="dark" type="submit">Update</Button>

@@ -22,9 +22,17 @@ class MessagesService {
         return this.api.get(`/get-user-messages/${user_id}`);
     };
 
+    getChatMessages = (chat_id) => {
+        return this.api.get(`/get-chat-messages/${chat_id}`);
+    };
+
     getOneMessage = (message_id) => {
         return this.api.get(`/${message_id}`);
     };
+
+    createMessage = (message) =>{
+        return this.api.post("/create-message", message);
+    }
 
     editMessage = (message_id, message) => {
         return this.api.post(`/edit/${message_id}`, message);

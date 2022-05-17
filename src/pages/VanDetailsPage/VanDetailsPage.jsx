@@ -7,12 +7,27 @@ import userService from "./../../services/user.service";
 import { AuthContext } from "../../context/auth.context"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
+import BookingsService from "../../services/bookings.service";
 
 const VanDetails = ({ setBookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({});
     const [isFavorite, setIsFavorite] = useState(false);
+    const [reservedDays, setReservedDays] = useState([]);
     const { van_id } = useParams();
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+
+    useEffect(() => {
+        getVan();
+    }, []);
+
+    useEffect(() => {
+        vanDetails && getReservedDays()
+    }, [vanDetails]);
+
+    useEffect(() => {
+
+        user && getIsFavorite()
+    }, [user]);
 
     const getVan = () => {
         VanService.getOneVan(van_id)
@@ -22,14 +37,26 @@ const VanDetails = ({ setBookingInfo }) => {
             .catch((err) => console.log(err));
     };
 
-    useEffect(() => {
-        getVan();
-    }, []);
+    const getReservedDays = () => {
+        const reservedDaysArr = []
+        BookingsService.getVanBookings(van_id)
+            .then(({ data }) => {
+                data.forEach(booking => {
+                    console.log("dates are", booking.startDate, booking.endDate)
+                    for (let d = new Date(booking.startDate); d <= new Date(booking.endDate); d.setDate(d.getDate() + 1)) {
+                        console.log("adding day")
+                        reservedDaysArr.push(new Date(d))
+                    }
+                })
+                setReservedDays(reservedDaysArr);
+            })
+            .catch((err) => console.log(err));
+        // const reservedDays = 
+        // console.log("Here reserved days are", reservedDays)
+        
+    };
 
-    useEffect(() => {
 
-        user && getIsFavorite()
-    }, [user]);
 
     const getIsFavorite = () => {
 
@@ -89,12 +116,23 @@ const VanDetails = ({ setBookingInfo }) => {
                     <h3>Aqui van nuestras reservas </h3>
                 </Col>
                 <Col>
-                    <DatePicker handleDatesChange={setDateAndPrice} />
-                    <Link to={"/booking"}>
-                        <Button variant="outline-dark" size="lg">
-                            Reserve
-                        </Button>
-                    </Link>
+                    <DatePicker reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                    {vanDetails.owner !== user?._id
+                        ?
+                        <Link to={"/booking"}>
+                            <Button variant="outline-dark" size="lg">
+                                Reserve
+                            </Button>
+                        </Link>
+                        :
+                        <Link to={`/${vanDetails._id}/edit`}>
+                            <Button variant="outline-dark" size="lg">
+                                Edit my van
+                            </Button>
+                        </Link>
+
+                    }
+
                     <Button onClick={isFavorite ? (() => removeFavoriteVan()) : (() => addFavoriteVan())} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                         favorite
                     </Button>
