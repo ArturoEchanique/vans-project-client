@@ -9,25 +9,54 @@ import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
 import messagesService from "./../../services/messages.service";
 import bookingsService from "./../../services/bookings.service";
+
+
 const MessagesPage = ({ setBookingInfo }) => {
 
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const [messages, setMessages] = useState([]);
+    const [userDetails, setUserDetails] = useState({});
     // const [vanDetails, setVanDetails] = useState({});
     // const [isFavorite, setIsFavorite] = useState(false);
     // const { van_id } = useParams();
     // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
 
     useEffect(() => {
+        getUser()
         loadMessages()
-    }, []);
+    }, [user])
+
+    const getUser = () => {
+        userService
+            .getOneUser(user._id)
+
+            .then(({ data }) => {
+                console.log("user data is,", data)
+
+                setUserDetails(data);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const getChats = () => {
+        userService
+            .getOneUser(user._id)
+
+            .then(({ data }) => {
+                console.log("user data is,", data)
+
+                setUserDetails(data);
+            })
+            .catch((err) => console.log(err));
+    };
+
 
     const loadMessages = () => {
         
         messagesService
             .getUserMessages(user._id)
             .then(({ data }) => {
-                   console.log("data is...", data)
+                   console.log("messages data is...", data)
                    setMessages(data)
             })
             .catch((err) => console.log(err));
