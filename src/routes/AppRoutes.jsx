@@ -63,13 +63,13 @@ const AppRoutes = () => {
 
             <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
                 <Route path="" element={<AdminPage />} />
+                <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
             </Route>
-            {/* <Route path="/admin" element={<AdminPage />} /> */}
-            {/* <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} /> */}
+           
+
             <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
-
 
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
             <Route path="/chat" element={<SocketPage />} />

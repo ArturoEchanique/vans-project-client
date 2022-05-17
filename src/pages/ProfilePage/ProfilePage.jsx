@@ -3,23 +3,59 @@ import HostButton from "../../components/HostButton/HostButton";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import UserVans from "../../components/UserVans/UserVans";
 import UserBookings from "../../components/UserBookings/UserBookings";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+import userService from "../../services/user.service";
+import { useEffect, useState } from "react";
+import OwnerBookings from "../../components/OwnerBookings/OwnerBookings";
+import FavoritesVans from "../../components/FavoritesVans/FavoritesVans";
+
 
 const ProfilePage = () => {
+
+     const { user } = useContext(AuthContext);
+
+     const [userDetails, setUserDetails] = useState({});
+
+     const getUser = () => {
+         userService
+             .getOneUser(user._id)
+             
+             .then(({ data }) => {
+             
+                 setUserDetails(data);
+             })
+             .catch((err) => console.log(err));
+     };
+
+     useEffect(() => {
+         getUser();
+     }, [user]);
+    
+    
+    
     return (
         <Container>
             <Row>
                 <Col>
-                    <ProfileCard />
+                    <ProfileCard {...userDetails} />
                 </Col>
                 <Col>
                     <HostButton />
                 </Col>
             </Row>
             <Row>
-                <UserVans />
+                <FavoritesVans {...userDetails} />
             </Row>
             <Row>
-                <UserBookings />
+                <UserBookings {...userDetails} />
+            </Row>
+            <Row>
+                <UserVans />
+            </Row>
+
+            <Row>
+                <OwnerBookings {...userDetails} />
             </Row>
         </Container>
     );
