@@ -25,9 +25,7 @@ const Navigation = () => {
         if (user) getUser();
     }, [user]);
 
-    // const { role } = userDetails;
-
-    // console.log(user);
+    
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -79,12 +77,10 @@ const Navigation = () => {
                             results
                         </NavLink>
 
-                        {user?.role == "ADMIN" ? (
+                        {user?.role == "ADMIN" && (
                             <NavLink to="/admin" className="nav-link">
                                 admin
                             </NavLink>
-                        ) : (
-                            <NavLink to="/#" className="nav-link"></NavLink>
                         )}
                     </Nav>
                 </Navbar.Collapse>

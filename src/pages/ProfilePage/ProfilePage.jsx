@@ -57,7 +57,7 @@ const ProfilePage = () => {
             </Row>
             <Row>
                 <p>vans</p>
-                <UserVans  {...userDetails} />
+                <UserVans  />
             </Row>
 
             <Row>

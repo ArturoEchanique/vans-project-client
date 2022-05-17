@@ -39,9 +39,13 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         const owner = await vanService.getOneVan(bookedVan)
 
         const user_id = user._id
+        console.log("user id ", user_id);
+
         const owner_Id = owner.data.owner
 
-        const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
+        console.log("owner id ", owner_Id);
+
+        const booking = await bookingsService.saveBooking(owner_Id, user_id, { startDate, endDate, price, bookedVan });
         console.log("data of the booking", booking)
 
 

@@ -19,7 +19,6 @@ import SocketPage from "../pages/SocketPage/SocketPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
 import MessagesPage from "../pages/MessagesPage/MessagesPage";
 
-
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
         skip: 0,
@@ -59,28 +58,30 @@ const AppRoutes = () => {
             <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
-            <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
 
-            <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
+            <Route path="/booking" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
+                <Route path="" element={<BookingConfirmPage {...bookingData} />} />
+            </Route>
+
+            <Route path="/admin" element={<PrivateRoutes requiredRoles={["ADMIN"]} />}>
                 <Route path="" element={<AdminPage />} />
                 <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
             </Route>
-           
 
-            <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/paydetails" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
 
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
             <Route path="/chat" element={<SocketPage />} />
 
-            <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/profile" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
-            <Route path="/profile/messages" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<MessagesPage />} />
             </Route>
-            <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/newvan" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<NewVanPage />} />
             </Route>
             <Route path="/*" element={<ErrorPage />} />
