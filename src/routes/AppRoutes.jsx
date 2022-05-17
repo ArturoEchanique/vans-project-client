@@ -15,6 +15,7 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+import SocketPage from "../pages/SocketPage/SocketPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
@@ -59,6 +60,7 @@ const AppRoutes = () => {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
+            <Route path="/chat" element={<SocketPage />} />
 
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/profile" element={<PrivateRoutes />}>
