@@ -19,11 +19,7 @@ const NewVanForm = () => {
 
 
     const [loadingImage, setLoadingImage] = useState(false)
-    const [latData, setLatData] = useState(0)
-    console.log("latdata", latData.latitude)
 
-    const [lngData, setLngData] = useState(0)
-    console.log("lngdata", lngData.longitude)
 
     const [formData, setFormData] = useState({
         owner: user._id,
@@ -54,23 +50,19 @@ const NewVanForm = () => {
     const handleLocation = (e) => {
 
         const { name, value } = e.currentTarget
-        console.log(e.currentTarget)
-        const formData = { ...geoData, [name]: value }
+        const geoForn = { ...geoData, [name]: value }
         setGeoData({ ...geoData, [name]: value })
 
 
         Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc");
 
-        console.log(formData.street, formData.city)
 
         Geocode
-            .fromAddress(`${formData.street}, ${formData.city},${formData.country}`)
+            .fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`)
             .then((response) => {
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log('los datos --->', lat, lng)
-                setLatData({ latitude: lat })
-                setLngData({ longitude: lng })
-                setFormData({ latitude: lat, longitude: lng })
+
+                setFormData({ ...formData, latitude: lat, longitude: lng })
 
             },
                 (error) => {
