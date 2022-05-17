@@ -27,7 +27,7 @@ const Navigation = () => {
 
     // const { role } = userDetails;
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
