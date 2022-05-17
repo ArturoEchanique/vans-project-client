@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Button, ButtonGroup, Row, Col, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
@@ -9,24 +9,40 @@ import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
 import messagesService from "./../../services/messages.service";
 import bookingsService from "./../../services/bookings.service";
+import chatService from "./../../services/chat.service";
 
 
 const MessagesPage = ({ setBookingInfo }) => {
 
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+    const [chats, setChats] = useState([]);
+    const [selectedChat, setSelectedChat] = useState(0);
     const [messages, setMessages] = useState([]);
+    const [messageText, setMessageText] = useState("");
+    const [bookingDetails, setBookingDetails] = useState([]);
     const [userDetails, setUserDetails] = useState({});
     // const [vanDetails, setVanDetails] = useState({});
     // const [isFavorite, setIsFavorite] = useState(false);
     // const { van_id } = useParams();
     // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
 
+
     useEffect(() => {
-        getUser()
-        loadMessages()
+        loadUser()
+        loadUserChats()
+
     }, [user])
 
-    const getUser = () => {
+    useEffect(() => {
+        if (chats.length > 0) loadChatMessages()
+    }, [chats, selectedChat])
+
+    const getChatPartner = (chat) => {
+        if (chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
+        return chat.owners[0]
+    }
+
+    const loadUser = () => {
         userService
             .getOneUser(user._id)
 
@@ -34,104 +50,61 @@ const MessagesPage = ({ setBookingInfo }) => {
                 console.log("user data is,", data)
 
                 setUserDetails(data);
+
             })
             .catch((err) => console.log(err));
     };
 
-    const getChats = () => {
-        userService
-            .getOneUser(user._id)
+    const loadUserChats = () => {
+        console.log("trying getting chats")
+        chatService
+            .getUserChats(user._id)
 
             .then(({ data }) => {
-                console.log("user data is,", data)
+                console.log("chats are,", data)
 
-                setUserDetails(data);
+                setChats(data);
             })
             .catch((err) => console.log(err));
     };
 
 
-    const loadMessages = () => {
-        
+    const loadChatMessages = () => {
+
+        console.log("chats are", chats)
         messagesService
-            .getUserMessages(user._id)
+            .getChatMessages(chats[selectedChat]._id)
             .then(({ data }) => {
-                   console.log("messages data is...", data)
-                   setMessages(data)
-            })
-            .catch((err) => console.log(err));
-    };
-
-    const loadBookings = () => {
-
-        bookingsService
-            .getUserMessages(user._id)
-            .then(({ data }) => {
-                console.log("data is...", data)
+                console.log("messages data is...", data)
                 setMessages(data)
             })
             .catch((err) => console.log(err));
-    };
+    }
 
-    // const getVan = () => {
-    //     VanService.getOneVan(van_id)
-    //         .then(({ data }) => {
-    //             setVanDetails(data);
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
+    const handleMessageSubmit = (e) => {
+        e.preventDefault();
+        const message = {
+            owner: user._id,
+            chat: chats[selectedChat],
+            messageDate: new Date(),
+            text: messageText,
+        }
+        messagesService
+            .createMessage(message)
+            .then(({ data }) => {
+                console.log("message created")
+                loadChatMessages()
+                setMessageText("")
+            })
+            
+            .catch((err) => console.log(err));
 
-    // useEffect(() => {
-    //     getVan();
-    // }, []);
+    }
 
-    // useEffect(() => {
-
-    //     user && getIsFavorite()
-    // }, [user]);
-
-    // const getIsFavorite = () => {
-
-    //     userService
-    //         .getOneUser(user._id)
-    //         .then(({ data }) => {
-    //             setIsFavorite(data.favoriteVans.includes(van_id))
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
-
-    // const addFavoriteVan = () => {
-    //     userService
-    //         .addFavoriteVan(user._id, van_id)
-    //         .then(() => getIsFavorite())
-    //         .catch((err) => console.log(err));
-    // }
-    // const removeFavoriteVan = () => {
-    //     userService
-    //         .removeFavoriteVan(user._id, van_id)
-    //         .then(() => getIsFavorite())
-    //         .catch((err) => console.log(err));
-    // }
-
-    // const setDateAndPrice = (dates) => {
-    //     const startDay = dates.startDate;
-    //     const endDay = dates.endDate;
-
-    //     const diffTime = Math.abs(endDay - startDay);
-    //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    //     const bookingPrice = diffDays * vanDetails.dayPrice;
-
-
-
-    //     let bookingInfo = {
-    //         startDate: dates.startDate,
-    //         endDate: dates.endDate,
-    //         price: bookingPrice,
-    //         van_id: van_id,
-    //     };
-
-    //     setBookingInfo(bookingInfo);
-    // };
+    const handleInputChange = (e) => {
+        const { value, name } = e.target
+        setMessageText(value)
+    }
 
 
 
@@ -139,13 +112,42 @@ const MessagesPage = ({ setBookingInfo }) => {
         <Container>
             <Row>
                 <Col>
-                    <h3>Chats </h3>
+                    <ButtonGroup>
+                        {chats.map((chat, idx) => {
+                            return (
+                                <Button key={idx} onClick={() => setSelectedChat(idx)}
+                                    active={selectedChat === idx} >
+                                    {getChatPartner(chat).username}
+                                </Button>
+
+                            )
+                        })}
+                    </ButtonGroup>
+
+
+
                 </Col>
                 <Col>
-                    <h3>Mensajes </h3>
+                    <h3>{messages.map(message => {
+                        return (
+                            <p>{message.text}</p>
+                        )
+                    })}</h3>
+                    <form onSubmit={handleMessageSubmit}>
+                        <label>
+                            new messate
+                            <textarea value={messageText} onChange={handleInputChange} />
+                        </label>
+                        <input type="submit" value="Submit" />
+                    </form>
+
                 </Col>
                 <Col>
-                    <h3>Quiza info de la reserva</h3>
+                    <h3>Reservation info
+                        van owner:
+                        {chats.length > 0 && chats[selectedChat].booking.bookedVan.owner.username}
+                    </h3>
+
                 </Col>
             </Row>
         </Container>
