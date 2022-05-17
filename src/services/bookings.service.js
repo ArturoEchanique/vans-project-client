@@ -21,6 +21,11 @@ class BookingsService {
         return this.api.get("/get-all");
     };
 
+    getVanBookings = (van_id) => {
+        const reservedDays = []
+        return this.api.get(`/get-van-bookings/${van_id}`)
+    }
+
     getOneBooking = (booking_id) => {
         return this.api.get(`/${booking_id}`);
     };

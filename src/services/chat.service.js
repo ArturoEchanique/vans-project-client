@@ -26,6 +26,10 @@ class ChatsService {
         return this.api.get(`/${chat_id}`);
     };
 
+    createChat= (chat) => {
+        return this.api.post("/create-chat", chat);
+    }
+
     editChat = (chat_id, chat) => {
         return this.api.post(`/edit/${chat_id}`, chat);
     };

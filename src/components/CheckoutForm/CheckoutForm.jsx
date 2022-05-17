@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import stripeService from "../../services/stripe.service";
 import bookingsService from "../../services/bookings.service";
+import chatService from "../../services/chat.service";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import userService from "../../services/user.service";
@@ -42,6 +43,8 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         const owner_Id = owner.data.owner
 
         const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
+        const newChat = {owners: [user_id, owner_Id], booking: booking.data._id}
+        const chat = await chatService.createChat(newChat)
         console.log("data of the booking", booking)
 
 

@@ -16,12 +16,9 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
-<<<<<<< HEAD
 import Map from "../components/geocodeMap/geocodeMap";
-=======
 import MessagesPage from "../pages/MessagesPage/MessagesPage";
 
->>>>>>> 47a166d7082cc7b28979c1f75d997391f3910e61
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
@@ -79,7 +76,6 @@ const AppRoutes = () => {
             </Route>
 
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
-            <Route path="/chat" element={<SocketPage />} />
 
             <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<ProfilePage />} />
