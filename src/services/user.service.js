@@ -27,7 +27,7 @@ class UserService {
     };
 
     addFavoriteVan = (user_id, vanId) => {
-        return this.api.post(`/${user_id}/add-favorite-van`, {vanId});
+        return this.api.post(`/${user_id}/add-favorite-van`, { vanId });
     };
 
     removeFavoriteVan = (user_id, vanId) => {
@@ -37,13 +37,6 @@ class UserService {
     deleteUser = (user_id) => {
         return this.api.post(`/delete/${user_id}`);
     };
-
-    addUserBookings = (user_id, userBookings) => {
-        return this.api.post(`/${user_id}/addUserBookings`, userBookings)
-    }
-    addOwnerBookings = (user_id, ownerBookings) => {
-        return this.api.post(`/${user_id}/addUserBookings`, ownerBookings)
-    }
 
 }
 

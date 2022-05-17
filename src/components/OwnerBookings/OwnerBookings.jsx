@@ -7,7 +7,7 @@ console.log(ownerBookings);
 
    const bookingList = ownerBookings?.map((booking) => {
        return (
-           <Col >
+           <Col key={booking._id}>
                <UserBookingsCard {...booking} />
            </Col>
        );

@@ -46,7 +46,7 @@ const AdminEditUserPage = () => {
                 <UserBookings {...userDetails} />
             </Row>
             <Row>
-                <UserVans />
+                <UserVans {...userDetails} />
             </Row>
 
             <Row>

@@ -6,7 +6,7 @@ import VanCard from "../VanCard/VanCard";
 const FavoritesVans = ({ favoriteVans }) => {
     const vansList = favoriteVans?.map((van) => {
         return (
-            <Col>
+            <Col key={van._id}>
                 <VanCard {...van} />
             </Col>
         );
