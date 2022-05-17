@@ -15,7 +15,8 @@ const ProfilePage = () => {
 
      const { user } = useContext(AuthContext);
 
-     const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState({});
+    
 
      const getUser = () => {
          userService
@@ -30,7 +31,11 @@ const ProfilePage = () => {
 
      useEffect(() => {
          getUser();
+         
+         
      }, [user]);
+    
+   
     
     
     
@@ -51,7 +56,8 @@ const ProfilePage = () => {
                 <UserBookings {...userDetails} />
             </Row>
             <Row>
-                <UserVans />
+                <p>vans</p>
+                <UserVans  {...userDetails} />
             </Row>
 
             <Row>

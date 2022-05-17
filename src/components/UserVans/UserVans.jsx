@@ -4,16 +4,18 @@ import { AuthContext } from "../../context/auth.context";
 import { useEffect, useState } from "react";
 import VanCard from "../VanCard/VanCard";
 
+const UserVans = ({ _id }) => {
 
-const UserVans = () => {
-    const { user } = useContext(AuthContext);
+     const { user } = useContext(AuthContext);
+
 
     const [userVans, setUserVans] = useState([]);
-
+    
     const getUserVans = () => {
         vanService
-            .getUserVans(user._id)
+            .getUserVans(_id)
             .then(({ data }) => {
+                console.log(data)
                 setUserVans(data);
             })
             .catch((err) => console.log(err));
@@ -21,7 +23,9 @@ const UserVans = () => {
 
     useEffect(() => {
         getUserVans();
-    }, [user]);
+    }, []);
+
+    console.log(userVans);
 
     const vansList = userVans.map((van) => {
         return <VanCard {...van} key={van._id} />;
