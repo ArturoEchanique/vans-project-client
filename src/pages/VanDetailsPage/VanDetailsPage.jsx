@@ -62,7 +62,7 @@ const VanDetails = ({ setBookingInfo }) => {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const bookingPrice = diffDays * vanDetails.dayPrice;
 
-       
+
 
         let bookingInfo = {
             startDate: dates.startDate,
@@ -100,8 +100,8 @@ const VanDetails = ({ setBookingInfo }) => {
                     </Button>
                 </Col>
             </Row>
-            <Row>{vanDetails.reviews && <ReviewsSection reviewData={vanDetails.reviews[0]}></ReviewsSection>}
-                
+            <Row>
+                {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
             </Row>
         </Container>
     );

@@ -9,6 +9,7 @@ const PrivateRoutes = ({ requiredRole }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
 
+    console.log("user is", user.role, "it has to be", requiredRole)
 
     if (isLoading) {
         return <Loader />
@@ -25,6 +26,7 @@ const PrivateRoutes = ({ requiredRole }) => {
         showMessage('Unauthorized')
         return <Navigate to="/" />
     }
+
 }
 
 

@@ -1,10 +1,10 @@
-import { Button, Card } from "react-bootstrap";
-import { useContext } from "react";
+import {  Button, Card } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-import userService from "./../../services/user.service";
+
 import { AuthContext } from "../../context/auth.context";
 import vanService from "../../services/van.service";
-import { useEffect, useState } from "react";
+
 
 const VanCard = ({
     setReload,
@@ -32,7 +32,7 @@ const VanCard = ({
     };
 
     return (
-        <Card style={{ width: "25rem" }}>
+        <Card style={{ width: "25rem" }} >
             <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>

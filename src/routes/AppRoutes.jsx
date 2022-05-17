@@ -16,7 +16,12 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
+<<<<<<< HEAD
 import Map from "../components/geocodeMap/geocodeMap";
+=======
+import MessagesPage from "../pages/MessagesPage/MessagesPage";
+
+>>>>>>> 47a166d7082cc7b28979c1f75d997391f3910e61
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
@@ -65,14 +70,22 @@ const AppRoutes = () => {
 
             <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
                 <Route path="" element={<AdminPage />} />
+                <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
             </Route>
-            {/* <Route path="/admin" element={<AdminPage />} /> */}
-            {/* <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} /> */}
+
+
             <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
+
+            <Route path="/privacyterms" element={<PrivacyTermsPage />} />
+            <Route path="/chat" element={<SocketPage />} />
+
             <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<ProfilePage />} />
+            </Route>
+            <Route path="/profile/messages" element={<PrivateRoutes requiredRole={"USER"} />}>
+                <Route path="" element={<MessagesPage />} />
             </Route>
             <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<NewVanPage />} />

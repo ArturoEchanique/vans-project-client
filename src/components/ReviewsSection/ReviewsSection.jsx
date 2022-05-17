@@ -1,11 +1,21 @@
 import React from 'react'
 
-const ReviewsSection = ({ reviewData }) => {
+const ReviewsSection = ({ vanReviews }) => {
     return (
         <>
             <h2>{"Reviews Section"}</h2>
-            <div>{"autor: " + reviewData}</div>
-            <div>{"comment: " + reviewData}</div>
+            {vanReviews && vanReviews.map(review => {
+                return (
+                    <>
+                        <div>{"date: " + review.reviewDate}</div>
+                        <div>{"stars: " + review.rating}</div>
+                        <div>{"autor: " + review.owner}</div>
+                        <div>{"comment: " + review.text}</div>
+                    </>
+
+                )
+            })}
+
         </>
 
     )
