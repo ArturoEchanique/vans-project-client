@@ -21,12 +21,23 @@ class UserService {
     getOneUser = (user_id) => {
         return this.api.get(`/${user_id}`);
     };
+
     editUser = (user_id, user) => {
         return this.api.post(`/edit/${user_id}`, user);
     };
+
+    addFavoriteVan = (user_id, vanId) => {
+        return this.api.post(`/${user_id}/add-favorite-van`, {vanId});
+    };
+
+    removeFavoriteVan = (user_id, vanId) => {
+        return this.api.post(`/${user_id}/remove-favorite-van`, { vanId });
+    };
+
     deleteUser = (user_id) => {
         return this.api.post(`/delete/${user_id}`);
     };
+
     addUserBookings = (user_id, userBookings) => {
         return this.api.post(`/${user_id}/addUserBookings`, userBookings)
     }

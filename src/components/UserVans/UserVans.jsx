@@ -21,7 +21,7 @@ const UserVans = () => {
 
     useEffect(() => {
         getUserVans();
-    }, [userVans]);
+    }, [user]);
 
     const vansList = userVans.map((van) => {
         return <VanCard {...van} key={van._id} />;

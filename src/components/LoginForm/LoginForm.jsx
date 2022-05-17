@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from './../../context/auth.context'
+import { MessageContext } from '../../context/message.context'
 
 
 const Loginform = () => {
@@ -15,6 +16,7 @@ const Loginform = () => {
     const navigate = useNavigate()
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
+    const { showMessage } = useContext(MessageContext)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -23,6 +25,7 @@ const Loginform = () => {
             .login(loginData)
             .then(({ data }) => {
                 storeToken(data.authToken)
+                showMessage("Bienvenid@", "Sesión iniciada correctamente")
                 authenticateUser()
                 navigate('/')
             })

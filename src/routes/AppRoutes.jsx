@@ -16,12 +16,13 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import SocketPage from "../pages/SocketPage/SocketPage";
+import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
-        owner: "",
-        mapXBounds: [39, 40],
-        mapYBounds: [-3, -2],
+        skip: 0,
+        mapXBounds: [40, 41],
+        mapYBounds: [-4, -3],
         priceStart: 0,
         priceEnd: 400,
         startDate: new Date(),
@@ -57,18 +58,28 @@ const AppRoutes = () => {
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} />
+
+            <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
+                <Route path="" element={<AdminPage />} />
+            </Route>
+            {/* <Route path="/admin" element={<AdminPage />} /> */}
+            {/* <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} /> */}
+            <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
+                <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
+            </Route>
+
+
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
             <Route path="/chat" element={<SocketPage />} />
 
-            <Route path="/*" element={<ErrorPage />} />
-            <Route path="/profile" element={<PrivateRoutes />}>
+
+            <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
-            <Route path="/newvan" element={<PrivateRoutes />}>
+            <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<NewVanPage />} />
             </Route>
+            <Route path="/*" element={<ErrorPage />} />
         </Routes>
     );
 };
