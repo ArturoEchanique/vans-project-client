@@ -22,7 +22,7 @@ const SignupForm = () => {
         authService
             .signup(signupData)
             .then((res) => {
-                navigate("/");
+                navigate("/login");
             })
             .catch((err) => console.log(err));
     };
@@ -46,7 +46,7 @@ const SignupForm = () => {
             .catch((err) => console.log(err));
     };
 
-    const { username, password, email, imageUrl } = signupData;
+    const { username, password, email } = signupData;
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -70,7 +70,7 @@ const SignupForm = () => {
                 <Form.Control type="file" onChange={handleImageUpload} />
             </Form.Group>
             <Form.Check >
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
                 <Link to={'/privacyterms'} >
                     <Form.Label > Privacy policy terms</Form.Label>
                 </Link>

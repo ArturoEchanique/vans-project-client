@@ -5,9 +5,10 @@ import { Navigate, Outlet } from 'react-router-dom'
 import Loader from "../components/Loader/Loader"
 
 
-const PrivateRoutes = ({requiredRole}) => {
+const PrivateRoutes = ({ requiredRole }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
+
 
     if (isLoading) {
         return <Loader />
@@ -17,10 +18,10 @@ const PrivateRoutes = ({requiredRole}) => {
         return <Navigate to="/login" />
     }
 
-    if(requiredRole === user.role || user.role === "ADMIN"){
+    if (requiredRole === user.role || user.role === "ADMIN" || user.role === "OWNER") {
         return <Outlet />
     }
-    else{
+    else {
         showMessage('Unauthorized')
         return <Navigate to="/" />
     }
