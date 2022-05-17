@@ -2,12 +2,26 @@ import {  Button, Card } from "react-bootstrap";
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom";
 import userService from "./../../services/user.service";
-import { AuthContext } from "../../context/auth.context"
-    import vanService from "../../services/van.service";
+import { AuthContext } from "../../context/auth.context";
+import vanService from "../../services/van.service";
+import { useEffect, useState } from "react";
 
-const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, }) => {
-
-    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+const VanCard = ({
+    setReload,
+    isFavorite,
+    addFavoriteVan,
+    removeFavoriteVan,
+    _id,
+    imageUrl,
+    name,
+    description,
+    solarPower,
+    shower,
+    bathroom,
+    dayPrice,
+    vanRating,
+}) => {
+    const { isLoggedIn, isLoading, user } = useContext(AuthContext);
     const [deleteState, setDeleteState] = useState(false);
 
     const handleDelete = () => {
@@ -16,8 +30,6 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
             setReload(true);
         });
     };
-
-
 
     return (
         <Card style={{ width: "25rem" }}>
@@ -38,7 +50,11 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                         see details
                     </Button>
                 </Link>
-                <Button onClick={isFavorite ? (() => removeFavoriteVan(_id)) : (() => addFavoriteVan(_id))} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                <Button
+                    onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}
+                    variant={isFavorite ? "danger" : "outline-danger"}
+                    size="lg"
+                >
                     favorite
                 </Button>
                 <Button variant="dark" onClick={handleDelete}>

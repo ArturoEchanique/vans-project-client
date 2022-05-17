@@ -14,8 +14,8 @@ class BookingsService {
             return config
         })
     }
-    saveBooking = (booking) => {
-        return this.api.post(`/create`, booking);
+    saveBooking = (owner_id, user_id, booking) => {
+        return this.api.post(`/create?owner_id=${owner_id}&user_id=${user_id}`, booking);
     };
     getAllBooking = () => {
         return this.api.get("/get-all");

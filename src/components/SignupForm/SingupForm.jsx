@@ -70,7 +70,7 @@ const SignupForm = () => {
                 <Form.Control type="file" onChange={handleImageUpload} />
             </Form.Group>
             <Form.Check >
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <Link to={'/privacyterms'} >
                     <Form.Label > Privacy policy terms</Form.Label>
                 </Link>

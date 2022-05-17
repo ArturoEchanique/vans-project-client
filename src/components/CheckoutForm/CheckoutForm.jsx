@@ -36,20 +36,24 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
             const { data } = await stripeService.checkout({ id, amount: (price * 100) }) // amount in cents
 
         }
-
-        const booking = await bookingsService.saveBooking({ startDate, endDate, price, bookedVan })
-        console.log("the booking is", booking)
         const owner = await vanService.getOneVan(bookedVan)
-        console.log("the van is", owner)
 
-        const ownerId = owner.data.owner
-        const bookingId = booking.data._id
+        const user_id = user._id
+        const owner_Id = owner.data.owner
 
-        const getUser = await userService.addUserBookings(user._id, bookingId)
-        console.log("the user is----", getUser)
+        const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
+        console.log("data of the booking", booking)
 
-        const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
-        console.log("the owner is -------", getOwner)
+
+        // console.log("la van es", owner.data)
+        // const bookingId = booking.data._id
+        // console.log("la booking es", booking.data)
+
+        // const getUser = await userService.addUserBookings(user._id, bookingId)
+        // console.log("the user is----", getUser)
+
+        // const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
+        // console.log("the owner is -------", getOwner)
 
         elements.getElement(CardElement).clear()
         navigate('/paydetails')

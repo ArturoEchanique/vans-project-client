@@ -15,6 +15,7 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
+import SocketPage from "../pages/SocketPage/SocketPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
 
 const AppRoutes = () => {
@@ -58,23 +59,24 @@ const AppRoutes = () => {
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
 
-            <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"}/>}>
+            <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
                 <Route path="" element={<AdminPage />} />
             </Route>
             {/* <Route path="/admin" element={<AdminPage />} /> */}
             {/* <Route path="/paydetails" element={<PaymentDetailsPage {...bookingData} />} /> */}
-            <Route path="/paydetails" element={<PrivateRoutes  requiredRole={"USER"} />}>
-                <Route path="" element={<PaymentDetailsPage {...bookingData}/>} />
+            <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
+                <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
 
 
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
+            <Route path="/chat" element={<SocketPage />} />
 
-            
-            <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"}/>}>
+
+            <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
-            <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"}/>}>
+            <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<NewVanPage />} />
             </Route>
             <Route path="/*" element={<ErrorPage />} />
