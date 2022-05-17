@@ -17,6 +17,8 @@ import PrivacyTermsPage from "../pages/PrivacyTermsPage/PrivacyTermsPage";
 import BecomeHostPage from "../pages/BecomeHostPage/BecomeHostPage";
 import SocketPage from "../pages/SocketPage/SocketPage";
 import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
+import MessagesPage from "../pages/MessagesPage/MessagesPage";
+
 
 const AppRoutes = () => {
     const [filterData, setFilterData] = useState({
@@ -72,9 +74,11 @@ const AppRoutes = () => {
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
             <Route path="/chat" element={<SocketPage />} />
 
-
             <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<ProfilePage />} />
+            </Route>
+            <Route path="/profile/messages" element={<PrivateRoutes requiredRole={"USER"} />}>
+                <Route path="" element={<MessagesPage />} />
             </Route>
             <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
                 <Route path="" element={<NewVanPage />} />
