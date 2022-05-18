@@ -45,20 +45,8 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         const owner_Id = owner.data.owner
 
         const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
-        const newChat = {owners: [user_id, owner_Id], booking: booking.data._id}
+        const newChat = { owners: [user_id, owner_Id], booking: booking.data._id }
         const chat = await chatService.createChat(newChat)
-        console.log("data of the booking", booking)
-
-
-        // console.log("la van es", owner.data)
-        // const bookingId = booking.data._id
-        // console.log("la booking es", booking.data)
-
-        // const getUser = await userService.addUserBookings(user._id, bookingId)
-        // console.log("the user is----", getUser)
-
-        // const getOwner = await userService.addOwnerBookings(ownerId, bookingId)
-        // console.log("the owner is -------", getOwner)
 
         elements.getElement(CardElement).clear()
         navigate('/paydetails')

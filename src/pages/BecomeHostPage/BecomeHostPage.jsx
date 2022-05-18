@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import BarChart from "../../components/Charts/Charts";
 import "./BecomeHostPage.css"
 
 const BecomeHostPage = () => {
@@ -34,6 +34,8 @@ const BecomeHostPage = () => {
                     <p>here we put our best vans or something like this </p>
                     {/* <BestVans/> */}
                 </section>
+
+                {/* <BarChart data={[10, 20, 30]} /> */}
             </Container>
         </>
     );

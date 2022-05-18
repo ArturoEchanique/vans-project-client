@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const ReviewsSection = ({ vanReviews }) => {
+
+
     return (
         <>
             <h2>{"Reviews Section"}</h2>
             {vanReviews && vanReviews.map(review => {
                 return (
                     <>
-                        <div>{"date: " + review.reviewDate}</div>
+                        <div>{"date: " + review.reviewDate.toString()}</div>
                         <div>{"stars: " + review.rating}</div>
-                        <div>{"autor: " + review.owner}</div>
+                        <div>{"autor: " + review.owner.username}</div>
                         <div>{"comment: " + review.text}</div>
                     </>
 

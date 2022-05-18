@@ -18,6 +18,10 @@ class VanService {
         return this.api.post("/create", van);
     };
 
+    addReview = (van_id, review_id) => {
+        return this.api.post("/addreview", { van_id, review_id });
+    };
+
     getVans = (filterData) => {
         console.log("filterData", filterData);
         if (typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime();
@@ -32,9 +36,9 @@ class VanService {
     };
 
     getUserVans = (filterData) => {
-    
+
         console.log(filterData);
-        
+
         return this.api.get(`/get-vans?owner=${filterData}`);
     };
 

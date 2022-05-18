@@ -13,6 +13,9 @@ class ReviewsService {
             return config;
         });
     }
+    createReviews = (review) => {
+        return this.api.post("/create", review)
+    };
 
     getReviews = () => {
         return this.api.get("/get-all");

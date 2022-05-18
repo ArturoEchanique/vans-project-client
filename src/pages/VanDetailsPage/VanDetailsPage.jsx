@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Button, Row, Col, Container, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/auth.context"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
 import BookingsService from "../../services/bookings.service";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 const VanDetails = ({ setBookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({});
@@ -51,9 +52,8 @@ const VanDetails = ({ setBookingInfo }) => {
                 setReservedDays(reservedDaysArr);
             })
             .catch((err) => console.log(err));
-        // const reservedDays = 
-        // console.log("Here reserved days are", reservedDays)
-        
+
+
     };
 
 
@@ -105,6 +105,16 @@ const VanDetails = ({ setBookingInfo }) => {
     //     let bookingInfo = { ...dates, price: 100,van_id:van_id };
     //     setBookingInfo(bookingInfo);
     // };
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const fireFinalActions = () => {
+        closeModal()
+        getVan()
+
+    }
 
     return (
         <Container>
@@ -141,6 +151,19 @@ const VanDetails = ({ setBookingInfo }) => {
             <Row>
                 {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
             </Row>
+            <hr />
+
+            {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+
+
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Review</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <ReviewForm fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal>
         </Container>
     );
 };

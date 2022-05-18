@@ -15,9 +15,6 @@ const NewVanForm = () => {
 
     const { user } = useContext(AuthContext);
 
-
-
-
     const [loadingImage, setLoadingImage] = useState(false)
 
 
@@ -135,7 +132,6 @@ const NewVanForm = () => {
                     <hr />
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="owner">
-
                             <Form.Control type="hidden" onChange={handleInputChange} name="owner" value={owner} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="name">
