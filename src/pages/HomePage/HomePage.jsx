@@ -22,7 +22,6 @@ const HomePage = ({ setFilterInfo, filterData }) => {
         e.preventDefault()
         Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc");
 
-        const geoForn = { ...geoData }
         console.log("geodata is...", geoData)
         Geocode
             .fromAddress(`${geoData.street}, ${geoData.address},${geoData.country}`)
@@ -30,7 +29,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                 const { lat, lng } = response.results[0].geometry.location;
                 console.log("geocode results are:", "lat", lat, "lng,", lng)
 
-                setFilterInfo({ ...filterData, address: "barcelona", mapInitLocationX: lat, mapInitLocationY: lng })
+                setFilterInfo({ ...filterData, address: geoData.address, mapInitLocationX: lat, mapInitLocationY: lng })
                 navigate('/results')
 
             },
