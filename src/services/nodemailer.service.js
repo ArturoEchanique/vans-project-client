@@ -1,12 +1,10 @@
-import axios from "axios";
+import axios from "axios"
 
 class NodemailerService {
-
     constructor() {
-        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/mail` });
+        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/mail` })
         this.api.interceptors.request.use((config) => {
-
-            const token = localStorage.getItem("authToken");
+            const token = localStorage.getItem("authToken")
 
             if (token) {
                 config.headers = { Authorization: `Bearer ${token}` }
@@ -17,5 +15,5 @@ class NodemailerService {
     }
     sendMail = (mailInfo) => {
         return this.api.get("/bookingmail", mailInfo)
-    };
+    }
 }

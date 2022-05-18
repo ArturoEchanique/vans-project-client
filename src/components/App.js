@@ -1,19 +1,17 @@
-import './App.css';
-import Navigation from './Navigation/Navigation';
-import AppRoutes from '../routes/AppRoutes';
-import UserMessage from './UserMessage/UserMessage';
-
-
+import "./App.css"
+import AppRoutes from "../routes/AppRoutes"
+import Navigation from "./Navigation/Navigation"
+import UserMessage from "./UserMessage/UserMessage"
 
 const App = () => {
-  return (
-    <>
-      <Navigation />
-      <AppRoutes />
-      <UserMessage />
-      {/* <Footer /> */}
-    </>
-  );
+    return (
+        <>
+            <Navigation />
+            <AppRoutes />
+            <UserMessage />
+            {/* <Footer /> */}
+        </>
+    )
 }
 
 export default App

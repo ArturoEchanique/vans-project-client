@@ -21,10 +21,7 @@ const MessagesPage = ({ setBookingInfo }) => {
     const [messageText, setMessageText] = useState("");
     const [bookingDetails, setBookingDetails] = useState([]);
     const [userDetails, setUserDetails] = useState({});
-    // const [vanDetails, setVanDetails] = useState({});
-    // const [isFavorite, setIsFavorite] = useState(false);
-    // const { van_id } = useParams();
-    // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+  
 
 
     useEffect(() => {
@@ -128,9 +125,9 @@ const MessagesPage = ({ setBookingInfo }) => {
 
                 </Col>
                 <Col>
-                    <h3>{messages.map(message => {
+                    <h3>{messages.map((message,idx) => {
                         return (
-                            <p>{message.text}</p>
+                            <p key={idx}>{message.text}</p>
                         )
                     })}</h3>
                     <form onSubmit={handleMessageSubmit}>

@@ -1,8 +1,7 @@
-
-import NewVanForm from "../../components/NewVanForm/NewVanForm";
+import NewVanForm from "../../components/NewVanForm/NewVanForm"
 
 const NewVanPage = () => {
-    return <NewVanForm />;
-};
+    return <NewVanForm />
+}
 
-export default NewVanPage;
+export default NewVanPage

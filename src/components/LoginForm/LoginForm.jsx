@@ -1,16 +1,14 @@
 import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 import authService from "../../services/auth.service"
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from './../../context/auth.context'
-import { MessageContext } from '../../context/message.context'
-
+import { AuthContext } from "./../../context/auth.context"
+import { MessageContext } from "../../context/message.context"
 
 const Loginform = () => {
-
     const [loginData, setLoginData] = useState({
-        password: '',
-        email: ''
+        password: "",
+        email: "",
     })
 
     const navigate = useNavigate()
@@ -18,7 +16,7 @@ const Loginform = () => {
     const { storeToken, authenticateUser } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         authService
@@ -27,12 +25,12 @@ const Loginform = () => {
                 storeToken(data.authToken)
                 showMessage("Bienvenid@", "Sesión iniciada correctamente")
                 authenticateUser()
-                navigate('/')
+                navigate("/")
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         const { value, name } = e.currentTarget
         setLoginData({ ...loginData, [name]: value })
     }
@@ -40,9 +38,7 @@ const Loginform = () => {
     const { password, email } = loginData
 
     return (
-
         <Form onSubmit={handleSubmit}>
-
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" onChange={handleInputChange} name="email" value={email} />
@@ -53,9 +49,10 @@ const Loginform = () => {
                 <Form.Control type="password" onChange={handleInputChange} name="password" value={password} />
             </Form.Group>
 
-            <Button variant="dark" type="submit">Log In</Button>
+            <Button variant="dark" type="submit">
+                Log In
+            </Button>
         </Form>
-
     )
 }
 
