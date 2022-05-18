@@ -16,7 +16,6 @@ class VanService {
         return this.api.post("/create", van)
     }
 
-<<<<<<< HEAD
     createVan = (van) => {
         return this.api.post("/create", van);
     };
@@ -25,8 +24,6 @@ class VanService {
         return this.api.post("/addreview", { van_id, review_id });
     };
 
-=======
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
     getVans = (filterData) => {
         if (filterData.startDate && typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime()
         if (filterData.endDate && typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime()
@@ -40,18 +37,9 @@ class VanService {
         return this.api.get(`/?${query}`)
     }
 
-<<<<<<< HEAD
-    getUserVans = (filterData) => {
-
-        console.log(filterData);
-
-        return this.api.get(`/get-vans?owner=${filterData}`);
-    };
-=======
     getUserVans = (_id) => {
         return this.api.get(`/get-vans?owner=${_id}`);
     }
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
 
     getOneVan = (id) => {
         return this.api.get(`/${id}`)

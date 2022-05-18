@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import BarChart from "../../components/Charts/Charts";
-=======
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
 import "./BecomeHostPage.css"
 import { Link } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"

@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import { useEffect, useState, useContext } from "react";
-import { Button, Row, Col, Container, Modal } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import DatePicker from "../../components/DatePicker/DatePicker";
-import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
-import userService from "./../../services/user.service";
-import { AuthContext } from "../../context/auth.context"
-import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
-import VanService from "../../services/van.service";
-import BookingsService from "../../services/bookings.service";
-import ReviewForm from "../../components/ReviewForm/ReviewForm";
-=======
 import { Link, useParams } from "react-router-dom"
 import VanService from "../../services/van.service"
 import { useEffect, useState, useContext } from "react"
@@ -20,9 +7,9 @@ import { Button, Row, Col, Container } from "react-bootstrap"
 import BookingsService from "../../services/bookings.service"
 import { MessageContext } from "../../context/message.context"
 import DatePicker from "../../components/DatePicker/DatePicker"
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -63,17 +50,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                 })
                 setReservedDays(reservedDaysArr)
             })
-<<<<<<< HEAD
-            .catch((err) => console.log(err));
-
-
-    };
-
-
-=======
             .catch((err) => console.log(err))
     }
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
 
     const getIsFavorite = () => {
         userService
@@ -115,11 +93,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         setBookingInfo(bookingInfo)
     }
 
-<<<<<<< HEAD
-    // const setDateAndPriceHard = (dates) => {
-    //     let bookingInfo = { ...dates, price: 100,van_id:van_id };
-    //     setBookingInfo(bookingInfo);
-    // };
+
     const [showModal, setShowModal] = useState(false)
 
     const openModal = () => setShowModal(true)
@@ -129,73 +103,68 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         closeModal()
         getVan()
 
-=======
-    const reserveButtonClicked = (e) => {
-        if (!bookingInfo.startDate) {
-            showMessage("Error", "Insert an start date to reserve")
+        const reserveButtonClicked = (e) => {
+            if (!bookingInfo.startDate) {
+                showMessage("Error", "Insert an start date to reserve")
 
-            e.preventDefault()
-        }
-        if (!bookingInfo.endDate) {
-            showMessage("Error", "Insert an end date to reserve")
+                e.preventDefault()
+            }
+            if (!bookingInfo.endDate) {
+                showMessage("Error", "Insert an end date to reserve")
 
-            e.preventDefault()
+                e.preventDefault()
+            }
         }
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
+
+        return (
+            <Container>
+                <Row>
+                    <VanDetailsCard {...vanDetails} />
+                </Row>
+                <Row>
+                    <Col>
+                        <h3>Aqui van nuestras reservas </h3>
+                    </Col>
+                    <Col>
+                        <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                        {vanDetails.owner !== user?._id ? (
+                            <Link onClick={reserveButtonClicked} to={"/booking"}>
+                                <Button variant="outline-dark" size="lg">
+                                    Reserve
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Link to={`/${vanDetails._id}/edit`}>
+                                <Button variant="outline-dark" size="lg">
+                                    Edit my van
+                                </Button>
+                            </Link>
+                        )}
+
+                        <Button onClick={isFavorite ? () => removeFavoriteVan() : () => addFavoriteVan()} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                            favorite
+                        </Button>
+                    </Col>
+                </Row>
+
+                <Modal show={showModal} onHide={closeModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Review</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <ReviewForm fireFinalActions={fireFinalActions} />
+                    </Modal.Body>
+                </Modal>
+                <Row>
+                    {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
+                </Row>
+                <hr />
+
+                {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+
+            </Container >
+        )
     }
-
-    return (
-        <Container>
-            <Row>
-                <VanDetailsCard {...vanDetails} />
-            </Row>
-            <Row>
-                <Col>
-                    <h3>Aqui van nuestras reservas </h3>
-                </Col>
-                <Col>
-                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
-                    {vanDetails.owner !== user?._id ? (
-                        <Link onClick={reserveButtonClicked} to={"/booking"}>
-                            <Button variant="outline-dark" size="lg">
-                                Reserve
-                            </Button>
-                        </Link>
-                    ) : (
-                        <Link to={`/${vanDetails._id}/edit`}>
-                            <Button variant="outline-dark" size="lg">
-                                Edit my van
-                            </Button>
-                        </Link>
-                    )}
-
-                    <Button onClick={isFavorite ? () => removeFavoriteVan() : () => addFavoriteVan()} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
-                        favorite
-                    </Button>
-                </Col>
-            </Row>
-<<<<<<< HEAD
-            <Row>
-                {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
-            </Row>
-            <hr />
-
-            {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
-
-
-            <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Review</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <ReviewForm fireFinalActions={fireFinalActions} />
-                </Modal.Body>
-            </Modal>
-=======
-            <Row>{<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}</Row>
->>>>>>> bba9f07604401c0e912af1d56a7215f8b831dc6e
-        </Container>
-    )
 }
 
 export default VanDetails
