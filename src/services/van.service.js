@@ -16,6 +16,14 @@ class VanService {
         return this.api.post("/create", van)
     }
 
+    createVan = (van) => {
+        return this.api.post("/create", van);
+    };
+
+    addReview = (van_id, review_id) => {
+        return this.api.post("/addreview", { van_id, review_id });
+    };
+
     getVans = (filterData) => {
         if (filterData.startDate && typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime()
         if (filterData.endDate && typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime()

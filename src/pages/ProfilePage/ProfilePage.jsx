@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { useEffect, useState } from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import BarChart from "../../components/Charts/Charts";
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import UserVans from "../../components/UserVans/UserVans"
@@ -58,12 +59,19 @@ const ProfilePage = () => {
                 <UserVans />
             </Row>
 
+
+
             {(role === "OWNER" || role === "ADMIN") && (
-                <Row>
-                    <OwnerBookings {...userDetails} />
-                </Row>
+                <>
+                    <Row>
+                        <OwnerBookings {...userDetails} />
+                    </Row>
+                    <Row>
+                        <BarChart {...userDetails} />
+                    </Row>
+                </>
             )}
-        </Container>
+        </Container >
     )
 }
 

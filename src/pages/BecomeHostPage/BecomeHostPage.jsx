@@ -30,6 +30,8 @@ const BecomeHostPage = () => {
 
                     <p>here we put our best vans or something like this </p>
                 </section>
+
+                {/* <BarChart data={[10, 20, 30]} /> */}
             </Container>
         </>
     )

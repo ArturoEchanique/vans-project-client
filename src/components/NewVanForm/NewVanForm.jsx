@@ -47,10 +47,10 @@ const NewVanForm = () => {
 
                 setFormData({ ...formData, latitude: lat, longitude: lng })
             },
-            (error) => {
-                console.error(error)
-            }
-        )
+                (error) => {
+                    console.error(error)
+                }
+            )
     }
 
     const navigate = useNavigate()
