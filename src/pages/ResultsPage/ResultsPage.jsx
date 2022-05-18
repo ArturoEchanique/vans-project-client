@@ -121,7 +121,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         <div className="resultsPage">
             <Container>
                 <hr />
-                <DatePicker handleDatesChange={handleFilterDatesChange} />
+                <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />
             </Container>
             <form onSubmit={handleSubmit}>
                 <label>

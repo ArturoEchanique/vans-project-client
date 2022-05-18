@@ -19,15 +19,18 @@ import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage";
 import Map from "../components/geocodeMap/geocodeMap";
 import MessagesPage from "../pages/MessagesPage/MessagesPage";
 
+const today = new Date()
+
 const AppRoutes = () => {
+
     const [filterData, setFilterData] = useState({
         skip: 0,
         mapXBounds: [40, 41],
         mapYBounds: [-4, -3],
         priceStart: 0,
         priceEnd: 400,
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: today,
+        endDate: null,
         name: "",
         solarPower: false,
         shower: false,
@@ -35,8 +38,8 @@ const AppRoutes = () => {
     });
 
     const [bookingData, setBookingData] = useState({
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: today,
+        endDate: null,
         price: 0,
         bookedVan: "",
     });
@@ -56,7 +59,7 @@ const AppRoutes = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />
             <Route path="/become-host" element={<BecomeHostPage />} />
-            <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} />} />
+            <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} bookingInfo={bookingData} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
             <Route path="/map" element={<Map />} />

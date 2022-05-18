@@ -20,8 +20,8 @@ class VanService {
 
     getVans = (filterData) => {
         console.log("filterData", filterData);
-        if (typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime();
-        if (typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime();
+        if (filterData.startDate && typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime();
+        if (filterData.endDate && typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime();
         let query = "";
         for (const [key, value] of Object.entries(filterData)) {
             if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&";
