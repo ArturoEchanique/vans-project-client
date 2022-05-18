@@ -1,12 +1,10 @@
-import { Container } from "react-bootstrap";
 import { useState } from "react"
-import DatePicker from "../../components/DatePicker/DatePicker";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Geocode from "react-geocode";
-
-
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import DatePicker from "../../components/DatePicker/DatePicker";
 
 const HomePage = ({ setFilterInfo, filterData }) => {
 
@@ -15,7 +13,6 @@ const HomePage = ({ setFilterInfo, filterData }) => {
 
     })
     const navigate = useNavigate()
-
     const today = new Date()
     let tomorrow = new Date(today)
     tomorrow = tomorrow.setDate(today.getDate() + 1)
@@ -75,7 +72,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                 <Link onClick={searchVansClicked} to="/results">Search Vans</Link>
             </Button>
         </Container>
-    );
-};
+    )
+}
 
-export default HomePage;
+export default HomePage

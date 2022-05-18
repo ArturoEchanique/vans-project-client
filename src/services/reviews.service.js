@@ -1,35 +1,35 @@
-import axios from "axios";
+import axios from "axios"
 
 class ReviewsService {
     constructor() {
-        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/reviews` });
+        this.api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/reviews` })
         this.api.interceptors.request.use((config) => {
-            const token = localStorage.getItem("authToken");
+            const token = localStorage.getItem("authToken")
 
             if (token) {
-                config.headers = { Authorization: `Bearer ${token}` };
+                config.headers = { Authorization: `Bearer ${token}` }
             }
 
-            return config;
-        });
+            return config
+        })
     }
 
     getReviews = () => {
-        return this.api.get("/get-all");
-    };
+        return this.api.get("/get-all")
+    }
 
     getOneReview = (review_id) => {
-        return this.api.get(`/${review_id}`);
-    };
+        return this.api.get(`/${review_id}`)
+    }
 
     editReview = (review_id, review) => {
-        return this.api.post(`/edit/${review_id}`, review);
-    };
+        return this.api.post(`/edit/${review_id}`, review)
+    }
 
     deleteReview = (review_id) => {
-        return this.api.post(`/delete/${review_id}`);
-    };
+        return this.api.post(`/delete/${review_id}`)
+    }
 }
 
-const reviewsService = new ReviewsService();
-export default reviewsService;
+const reviewsService = new ReviewsService()
+export default reviewsService

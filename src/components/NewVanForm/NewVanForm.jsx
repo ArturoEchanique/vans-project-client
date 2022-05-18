@@ -1,25 +1,17 @@
+import React from "react"
+import Geocode from "react-geocode"
 import { useContext, useState } from "react"
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import vanService from "../../services/van.service"
-import { useNavigate } from 'react-router-dom'
+import userService from "../../services/user.service"
+import { AuthContext } from "../../context/auth.context"
 import uploadService from "../../services/upload.service"
-import { AuthContext } from "../../context/auth.context";
-import userService from "../../services/user.service";
-import Geocode from "react-geocode";
-import React from 'react'
-
-
-
+import { Form, Button, Container, Row, Col } from "react-bootstrap"
+import vanService from "../../services/van.service"
+import { useNavigate } from "react-router-dom"
 
 const NewVanForm = () => {
-
-    const { user } = useContext(AuthContext);
-
-
-
+    const { user } = useContext(AuthContext)
 
     const [loadingImage, setLoadingImage] = useState(false)
-
 
     const [formData, setFormData] = useState({
         owner: user._id,
@@ -33,48 +25,37 @@ const NewVanForm = () => {
         shower: false,
         bathroom: false,
         maxPassengers: 0,
-
     })
-    console.log("labuena esssss", formData)
-
-
 
     const [geoData, setGeoData] = useState({
         street: "",
         city: "",
         country: "",
-
     })
 
-
     const handleLocation = (e) => {
-
         const { name, value } = e.currentTarget
         const geoForn = { ...geoData, [name]: value }
         setGeoData({ ...geoData, [name]: value })
 
-
-        Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc");
-
+        Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
 
         Geocode
             .fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`)
             .then((response) => {
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log("lat", lat, "lng,", lng)
 
                 setFormData({ ...formData, latitude: lat, longitude: lng })
-
             },
-                (error) => {
-                    console.error(error)
-                }
-            );
+            (error) => {
+                console.error(error)
+            }
+        )
     }
 
     const navigate = useNavigate()
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
         vanService
@@ -83,18 +64,17 @@ const NewVanForm = () => {
             .then(() => {
                 userService.editUser(user._id, { role: "OWNER" })
             })
-            .then(res => {
-                navigate('/')
+            .then((res) => {
+                navigate("/")
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
     const handleImageUpload = (e) => {
-
         setLoadingImage(true)
 
         const uploadData = new FormData()
         for (let i = 0; i < e.target.files.length; i++) {
-            uploadData.append('photos', e.target.files[i])
+            uploadData.append("photos", e.target.files[i])
         }
 
         uploadService
@@ -104,28 +84,22 @@ const NewVanForm = () => {
                 setFormData({ ...formData, imageUrl: data.cloudinary_urls })
             })
 
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
 
-
-    const handleInputChange = e => {
-
+    const handleInputChange = (e) => {
         const { name } = e.currentTarget
 
-        if (e.currentTarget.hasOwnProperty('checked')) {
+        if (e.currentTarget.hasOwnProperty("checked")) {
             const { checked } = e.currentTarget
             setFormData({ ...formData, [name]: checked })
-
-        }
-        else if (!e.currentTarget.value === "street" || "city" || "country") {
+        } else if (!e.currentTarget.value === "street" || "city" || "country") {
             const { value } = e.currentTarget
             setFormData({ ...formData, [name]: value, owner: user._id })
-            console.log(formData)
         }
     }
     const { street, country, city } = geoData
-    const { owner, name, description, dayPrice, longitude, latitude, solarPower, shower,
-        bathroom, maxPassengers } = formData
+    const { owner, name, description, dayPrice, longitude, latitude, solarPower, shower, bathroom, maxPassengers } = formData
 
     return (
         <Container>
@@ -135,7 +109,6 @@ const NewVanForm = () => {
                     <hr />
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="owner">
-
                             <Form.Control type="hidden" onChange={handleInputChange} name="owner" value={owner} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="name">
@@ -160,8 +133,7 @@ const NewVanForm = () => {
 
                         <Form.Group className="mb-3" controlId="longitude">
                             {/* <Form.Label>Longitude</Form.Label> */}
-                            <Form.Control type="hidden" onChange={handleInputChange} name="longitude" value={longitude}
-                            />
+                            <Form.Control type="hidden" onChange={handleInputChange} name="longitude" value={longitude} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="latitude">
@@ -202,13 +174,14 @@ const NewVanForm = () => {
                             <Form.Label>Bathroom</Form.Label>
                         </Form.Group>
 
-
-                        <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Loading...' : 'Add Van'}</Button>
+                        <Button variant="dark" type="submit" disabled={loadingImage}>
+                            {loadingImage ? "Loading..." : "Add Van"}
+                        </Button>
                     </Form>
                 </Col>
             </Row>
         </Container>
-    );
+    )
 }
 
 export default NewVanForm

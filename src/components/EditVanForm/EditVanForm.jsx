@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import vanService from "../../services/van.service"
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from "react-router-dom"
 
 const EditVanForm = () => {
     const { van_id } = useParams()
@@ -19,12 +19,10 @@ const EditVanForm = () => {
         solarPower: "",
         shower: "",
         bathroom: "",
-        maxPassengers: ""
-
+        maxPassengers: "",
     })
 
-    useEffect(() => loadVans(),
-        [])
+    useEffect(() => loadVans(), [])
 
     const loadVans = () => {
         vanService
@@ -32,41 +30,35 @@ const EditVanForm = () => {
             .then(({ data }) => {
                 setFormData(data)
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
 
-
-
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         vanService
             .getOneVanAndUpdate(van_id, formData)
-            .then(res => {
-                navigate('/')
+            .then((res) => {
+                navigate("/")
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
     }
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         const { name } = e.currentTarget
 
-        if (e.currentTarget.hasOwnProperty('checked')) {
+        if (e.currentTarget.hasOwnProperty("checked")) {
             const { checked } = e.currentTarget
             setFormData({ ...formData, [name]: checked })
-
         } else {
             const { value } = e.currentTarget
             setFormData({ ...formData, [name]: value })
         }
     }
 
-    const { name, description, imageUrl, dayPrice, longitude, latitude, solarPower, shower,
-        bathroom, maxPassengers } = formData
+    const { name, description, imageUrl, dayPrice, longitude, latitude, solarPower, shower, bathroom, maxPassengers } = formData
 
     return (
-
         <Form onSubmit={handleSubmit}>
-
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Model name</Form.Label>
                 <Form.Control type="text" onChange={handleInputChange} name="name" value={name} />
@@ -117,9 +109,10 @@ const EditVanForm = () => {
                 <Form.Label>Bathroom</Form.Label>
             </Form.Group>
 
-            <Button variant="dark" type="submit">Update</Button>
+            <Button variant="dark" type="submit">
+                Update
+            </Button>
         </Form>
-
     )
 }
 

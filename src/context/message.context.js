@@ -1,13 +1,12 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState } from "react"
 
 const MessageContext = createContext()
 
 function MessageProviderWrapper(props) {
-
     const [show, setShow] = useState(false)
     const [messageInfo, setMessageInfo] = useState({
-        title: 'welcome',
-        description: ''
+        title: "welcome",
+        description: "",
     })
 
     const showMessage = (title, description) => {
@@ -15,11 +14,7 @@ function MessageProviderWrapper(props) {
         setMessageInfo({ title, description })
     }
 
-    return (
-        <MessageContext.Provider value={{ show, setShow, messageInfo, showMessage }}>
-            {props.children}
-        </MessageContext.Provider>
-    )
+    return <MessageContext.Provider value={{ show, setShow, messageInfo, showMessage }}>{props.children}</MessageContext.Provider>
 }
 
 export { MessageContext, MessageProviderWrapper }

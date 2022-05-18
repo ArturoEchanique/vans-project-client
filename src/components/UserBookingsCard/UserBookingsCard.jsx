@@ -1,5 +1,5 @@
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
-const UserBookingsCard = ({ startDate, endDate, price, bookedVan, Col }) => {
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap"
+const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
     return (
         <h3>
             <Card style={{ width: "20rem" }}>
@@ -16,7 +16,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan, Col }) => {
                 </ListGroup>
             </Card>
         </h3>
-    );
-};
+    )
+}
 
-export default UserBookingsCard;
+export default UserBookingsCard

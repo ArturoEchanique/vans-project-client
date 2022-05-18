@@ -1,53 +1,36 @@
-import React from 'react'
-import { useState } from "react";
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
-import TestComponent from "../TestComponent/TestComponent";
-import MapMarker from "../MapMarker/MapMarker";
-import VanCard from '../VanCard/VanCard';
+import React from "react"
+import { useState } from "react"
+import MapMarker from "../MapMarker/MapMarker"
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api"
 
 const containerStyle = {
-    width: '1200px',
-    height: '800px'
-};
+    width: "1200px",
+    height: "800px",
+}
 
-function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
-
-    console.log("loc x is", initLocationX)
+function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
     const [visibleMarker, setVisibleMarker] = useState(-1)
-    const [center, setCenter] = useState({ lat: initLocationX, lng: initLocationY });
+    const [center, setCenter] = useState({ lat: 40.39103445694156, lng: -3.7007285931754588 })
 
     const setVisibleMarkerFn = (idx) => {
         setVisibleMarker(idx)
     }
 
     const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyCJXfnCjCNoZ5DFVcicZ182oaJT54TZPb4"
+        id: "google-map-script",
+        googleMapsApiKey: "AIzaSyCJXfnCjCNoZ5DFVcicZ182oaJT54TZPb4",
     })
 
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(function callback(map) {
+        const bounds = new window.google.maps.LatLngBounds(center)
 
-        // const pos = { lat: initLocationX, lng: initLocationY }
-        // setCenter(pos)
-
-        // navigator.geolocation.getCurrentPosition(
-        //     ({ coords: { latitude: lat, longitude: lng } }) => {
-        //         const pos = { lat, lng };
-        //         setCenter(pos);
-        //         mapLoaded()
-        //         mapBoundsChange(map)
-        //     }
-        // )
-        const bounds = new window.google.maps.LatLngBounds(center);
-        // map.fitBounds(bounds);
         setMap(map)
-        //temporal, sin timeout no funciona
-        setTimeout(() =>{
+
+        setTimeout(() => {
             mapBoundsChange(map)
         }, 500)
-        
     }, [])
 
     const onUnmount = React.useCallback(function callback(map) {
@@ -64,14 +47,11 @@ function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavorit
         handleMapBoundsChange({ mapYBounds: [bounds.Ab.h - margin * 2, bounds.Ab.j + margin], mapXBounds: [bounds.Va.h - margin, bounds.Va.j + margin] })
     }
 
-
-
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
-
             onLoad={onLoad}
             onZoomChanged={map && (() => mapBoundsChange(map))}
             onDragEnd={map && (() => mapBoundsChange(map))}
@@ -81,13 +61,24 @@ function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavorit
             <>
                 {vans.map((van, idx) => {
                     return (
-                        <MapMarker isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
+                        <MapMarker
+                            isFavorite={favoriteVans.includes(van._id)}
+                            addFavoriteVan={addFavoriteVan}
+                            removeFavoriteVan={removeFavoriteVan}
+                            showInfo={visibleMarker === van._id}
+                            setVisibleMarker={setVisibleMarkerFn}
+                            van={van}
+                            key={van._id}
+                            markerIdx={idx}
+                        />
                     )
                 })}
             </>
             <></>
         </GoogleMap>
-    ) : <></>
+    ) : (
+        <></>
+    )
 }
 
 export default React.memo(ReactMap)

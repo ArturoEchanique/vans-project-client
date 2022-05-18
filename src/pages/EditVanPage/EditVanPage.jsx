@@ -1,10 +1,7 @@
-import { Container, Row, Col } from 'react-bootstrap'
-import EditVanForm from '../../components/EditVanForm/EditVanForm'
-
-
+import { Container, Row, Col } from "react-bootstrap"
+import EditVanForm from "../../components/EditVanForm/EditVanForm"
 
 const EditVanPage = () => {
-
     return (
         <Container>
             <Row>
@@ -12,7 +9,6 @@ const EditVanPage = () => {
                     <h1>Edit Vehicle</h1>
                     <hr />
                     <EditVanForm />
-
                 </Col>
             </Row>
         </Container>

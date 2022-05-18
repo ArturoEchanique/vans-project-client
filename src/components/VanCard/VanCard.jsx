@@ -1,36 +1,19 @@
-import { Button, Card } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { Button, Card } from "react-bootstrap"
+import vanService from "../../services/van.service"
+import { useContext, useState } from "react"
+import { AuthContext } from "../../context/auth.context"
 
-import { AuthContext } from "../../context/auth.context";
-import vanService from "../../services/van.service";
-
-const VanCard = ({
-    setReload,
-    isFavorite,
-    addFavoriteVan,
-    removeFavoriteVan,
-    _id,
-    imageUrl,
-    name,
-    description,
-    solarPower,
-    shower,
-    bathroom,
-    dayPrice,
-    vanRating,
-    owner,
-    hideDeleteButton,
-}) => {
-    const { isLoggedIn, isLoading, user } = useContext(AuthContext);
-    const [deleteState, setDeleteState] = useState(false);
+const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton }) => {
+    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+    const [deleteState, setDeleteState] = useState(false)
 
     const handleDelete = () => {
-        setDeleteState(true);
+        setDeleteState(true)
         vanService.getOneVanAndRemove(_id).then(() => {
-            setReload(true);
-        });
-    };
+            setReload(true)
+        })
+    }
 
     return (
         <Card style={{ width: "25rem" }}>
@@ -51,11 +34,7 @@ const VanCard = ({
                         see details
                     </Button>
                 </Link>
-                <Button
-                    onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}
-                    variant={isFavorite ? "danger" : "outline-danger"}
-                    size="lg"
-                >
+                <Button onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                     favorite
                 </Button>
                 {!hideDeleteButton && (user?.role == "ADMIN" || owner == user?._id) && (
@@ -65,7 +44,7 @@ const VanCard = ({
                 )}
             </Card.Body>
         </Card>
-    );
-};
+    )
+}
 
-export default VanCard;
+export default VanCard
