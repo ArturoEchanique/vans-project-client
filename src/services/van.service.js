@@ -24,17 +24,18 @@ class VanService {
         if (filterData.endDate && typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime();
         let query = "";
         for (const [key, value] of Object.entries(filterData)) {
-            if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&";
+            if (key == "mapInitLocationX" || key == "mapInitLocationY") continue
+            else {
+                if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&";
+            }
         }
-        console.log("query is", query);
-        // let queryComputed = `name=${filterData.name}&solarPower=${filterData.solarPower}&startDate=${startDate}&endDate=${endDate}`
         return this.api.get(`/?${query}`);
     };
 
     getUserVans = (_id) => {
-    
+
         console.log(_id);
-        
+
         return this.api.get(`/get-vans?owner=${_id}`);
     };
 

@@ -10,10 +10,11 @@ const containerStyle = {
     height: '800px'
 };
 
-function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
+function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
+    console.log("loc x is", initLocationX)
     const [visibleMarker, setVisibleMarker] = useState(-1)
-    const [center, setCenter] = useState({ lat: 40.39103445694156, lng: -3.7007285931754588 });
+    const [center, setCenter] = useState({ lat: initLocationX, lng: initLocationY });
 
     const setVisibleMarkerFn = (idx) => {
         setVisibleMarker(idx)
@@ -27,6 +28,10 @@ function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handl
     const [map, setMap] = React.useState(null)
 
     const onLoad = React.useCallback(function callback(map) {
+
+        // const pos = { lat: initLocationX, lng: initLocationY }
+        // setCenter(pos)
+
         // navigator.geolocation.getCurrentPosition(
         //     ({ coords: { latitude: lat, longitude: lng } }) => {
         //         const pos = { lat, lng };
@@ -71,7 +76,7 @@ function ReactMap({ vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handl
             onZoomChanged={map && (() => mapBoundsChange(map))}
             onDragEnd={map && (() => mapBoundsChange(map))}
             onUnmount={onUnmount}>
-
+           <button>holiii</button>
 
             <>
                 {vans.map((van, idx) => {

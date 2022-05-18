@@ -115,7 +115,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     };
 
-    const { name, solarPower, shower, bathroom, startDate, endDate } = filterData;
+    const { name, solarPower, shower, bathroom, startDate, endDate, mapInitLocationX, mapInitLocationY } = filterData;
 
     return (
         <div className="resultsPage">
@@ -142,7 +142,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 </label>
                 <PriceSlider handlePriceChange={handleFilterPriceChange} />
             </form>
-            <ReactMap favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
+            <ReactMap initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
             <InfiniteScroll
                 dataLength={vans.length / 4}
                 next={fetchMoreData}

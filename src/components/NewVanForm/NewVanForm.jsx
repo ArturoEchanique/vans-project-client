@@ -61,6 +61,7 @@ const NewVanForm = () => {
             .fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`)
             .then((response) => {
                 const { lat, lng } = response.results[0].geometry.location;
+                console.log("lat", lat, "lng,", lng)
 
                 setFormData({ ...formData, latitude: lat, longitude: lng })
 
@@ -69,7 +70,6 @@ const NewVanForm = () => {
                     console.error(error)
                 }
             );
-
     }
 
     const navigate = useNavigate()

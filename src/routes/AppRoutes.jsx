@@ -27,6 +27,9 @@ const AppRoutes = () => {
         skip: 0,
         mapXBounds: [40, 41],
         mapYBounds: [-4, -3],
+        address: "barcelona",
+        mapInitLocationX: 40.39103445694156,
+        mapInitLocationY: -3.7007285931754588,
         priceStart: 0,
         priceEnd: 400,
         startDate: today,
@@ -54,7 +57,7 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<HomePage setFilterInfo={setFilterInfo} />} />
+            <Route path="/" element={<HomePage filterData={filterData} setFilterInfo={setFilterInfo} />} />
             <Route path="/singup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />

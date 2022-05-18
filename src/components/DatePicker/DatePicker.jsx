@@ -26,16 +26,29 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
     const [focusedInput, setFocusedInput] = useState()
 
     const handleChange = ({ startDate, endDate }) => {
-        setDates({startDate, endDate})
+        let datesCollision = false
+        let computedEndDate = endDate
+        reservedDays?.forEach(day => {
+            if ((day.getTime() <= endDate) && (startDate <= day.getTime())) {
+                datesCollision = true
+            }
+        })
+        if (!datesCollision) {
+            computedEndDate = endDate
+        }
+        else {
+            computedEndDate = null
+        }
+        setDates({ startDate, endDate: computedEndDate })
         const filterDates = {
-            startDate: startDate.toDate(),
-            endDate: endDate?.toDate()
+            startDate: startDate?.toDate(),
+            endDate: computedEndDate?.toDate()
         };
         handleDatesChange(filterDates);
     };
 
-    const dayAlreadyReserved = (day) =>{
-        
+    const dayAlreadyReserved = (day) => {
+
         const today = new Date()
         const tomorrow = new Date(today)
         tomorrow.setDate(tomorrow.getDate() + 1)
