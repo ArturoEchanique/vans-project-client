@@ -7,6 +7,7 @@ import chatService from "../../services/chat.service"
 import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 import vanService from "../../services/van.service"
+import nodemailerService from "../../services/nodemailer.service"
 
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const stripe = useStripe()
@@ -38,6 +39,15 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
         const newChat = { owners: [user_id, owner_Id], booking: booking.data._id }
         const chat = await chatService.createChat(newChat)
+        let name = "vanmeup"
+        let subject = "new Booking"
+        let message = "you have a new booking on day 12/03"
+        let email = "pablo.andreu.martin@gmail.com"
+        const sendMail = await nodemailerService.sendMail({
+            email, subject, message, name
+        })
+        console.log(sendMail)
+
 
         elements.getElement(CardElement).clear()
         navigate("/paydetails")
