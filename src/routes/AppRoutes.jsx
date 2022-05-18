@@ -20,8 +20,6 @@ import Map from "../components/geocodeMap/geocodeMap";
 import MessagesPage from "../pages/MessagesPage/MessagesPage";
 
 const today = new Date()
-let tomorrow = new Date(today)
-tomorrow = tomorrow.setDate(today.getDate() + 1)
 
 const AppRoutes = () => {
 
@@ -63,31 +61,28 @@ const AppRoutes = () => {
             <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} bookingInfo={bookingData} />} />
             <Route path="/:van_id/edit" element={<EditVanPage />} />
-            <Route path="/booking" element={<BookingConfirmPage {...bookingData} />} />
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
-
             <Route path="/map" element={<Map />} />
 
 
-            <Route path="/admin" element={<PrivateRoutes requiredRole={"ADMIN"} />}>
+            <Route path="/booking" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
+                <Route path="" element={<BookingConfirmPage {...bookingData} />} />
+            </Route>
+            
+            <Route path="/admin" element={<PrivateRoutes requiredRoles={["ADMIN"]} />}>
                 <Route path="" element={<AdminPage />} />
                 <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
             </Route>
-
-
-            <Route path="/paydetails" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/paydetails" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
-
-            <Route path="/privacyterms" element={<PrivacyTermsPage />} />
-
-            <Route path="/profile" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/profile" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
-            <Route path="/profile/messages" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<MessagesPage />} />
             </Route>
-            <Route path="/newvan" element={<PrivateRoutes requiredRole={"USER"} />}>
+            <Route path="/newvan" element={<PrivateRoutes requiredRoles={["USER"]} />}>
                 <Route path="" element={<NewVanPage />} />
             </Route>
             <Route path="/*" element={<ErrorPage />} />

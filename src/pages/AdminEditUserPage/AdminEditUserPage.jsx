@@ -6,14 +6,16 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import OwnerBookings from "../../components/OwnerBookings/OwnerBookings";
 import FavoritesVans from "../../components/FavoritesVans/FavoritesVans";
 import UserBookings from "../../components/UserBookings/UserBookings";
-import UserVans from "../../components/UserVans/UserVans";
-import userService from "../../services/user.service";
 
+import userService from "../../services/user.service";
+import AdminUserVans from "../../components/AdminUserVans/AdminUserVans";
+
+import Loader from "../../components/Loader/Loader";
 
 const AdminEditUserPage = () => {
     const { _id } = useParams();
 
-    const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState(undefined);
 
     const getUser = () => {
         userService
@@ -29,24 +31,23 @@ const AdminEditUserPage = () => {
         getUser();
     }, []);
 
-    return (
+    return userDetails === undefined ? (
+        <Loader />
+    ) : (
         <Container>
             <Row>
                 <Col>
                     <ProfileCard {...userDetails} />
                 </Col>
-                <Col>
-                    <HostButton />
-                </Col>
             </Row>
-            <Row>
-                <FavoritesVans {...userDetails} />
-            </Row>
+
             <Row>
                 <UserBookings {...userDetails} />
             </Row>
             <Row>
-                <UserVans {...userDetails} />
+                <h3>vans</h3>
+
+                <AdminUserVans {...userDetails} />
             </Row>
 
             <Row>

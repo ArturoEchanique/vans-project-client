@@ -1,10 +1,9 @@
-import {  Button, Card } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react"
+import { Button, Card } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/auth.context";
 import vanService from "../../services/van.service";
-
 
 const VanCard = ({
     setReload,
@@ -20,6 +19,8 @@ const VanCard = ({
     bathroom,
     dayPrice,
     vanRating,
+    owner,
+    hideDeleteButton,
 }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext);
     const [deleteState, setDeleteState] = useState(false);
@@ -32,8 +33,8 @@ const VanCard = ({
     };
 
     return (
-        <Card style={{ width: "25rem" }} >
-            <Card.Img variant="top" src={imageUrl} />
+        <Card style={{ width: "25rem" }}>
+            <Card.Img variant="top" src={imageUrl[0]} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
 
@@ -57,9 +58,11 @@ const VanCard = ({
                 >
                     favorite
                 </Button>
-                <Button variant="dark" onClick={handleDelete}>
-                    delete
-                </Button>
+                {!hideDeleteButton && (user?.role == "ADMIN" || owner == user?._id) && (
+                    <Button variant="dark" onClick={handleDelete}>
+                        delete
+                    </Button>
+                )}
             </Card.Body>
         </Card>
     );
