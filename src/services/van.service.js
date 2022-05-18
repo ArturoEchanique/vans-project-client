@@ -31,11 +31,11 @@ class VanService {
         return this.api.get(`/?${query}`);
     };
 
-    getUserVans = (filterData) => {
+    getUserVans = (_id) => {
     
-        console.log(filterData);
+        console.log(_id);
         
-        return this.api.get(`/get-vans?owner=${filterData}`);
+        return this.api.get(`/get-vans?owner=${_id}`);
     };
 
     getOneVan = (id) => {

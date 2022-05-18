@@ -9,45 +9,47 @@ import userService from "../../services/user.service";
 import { useEffect, useState } from "react";
 import OwnerBookings from "../../components/OwnerBookings/OwnerBookings";
 import FavoritesVans from "../../components/FavoritesVans/FavoritesVans";
+import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton";
 
 
 const ProfilePage = () => {
-
-     const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const [userDetails, setUserDetails] = useState({});
-    
 
-     const getUser = () => {
-         userService
-             .getOneUser(user._id)
-             
-             .then(({ data }) => {
-             
-                 setUserDetails(data);
-             })
-             .catch((err) => console.log(err));
-     };
+    const getUser = () => {
+        userService
+            .getOneUser(user._id)
 
-     useEffect(() => {
-         getUser();
-         
-         
-     }, [user]);
-    
-   
-    
-    
-    
+            .then(({ data }) => {
+                setUserDetails(data);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    useEffect(() => {
+        getUser();
+    }, [user]);
+
+    const { role } = userDetails;
+
     return (
         <Container>
             <Row>
                 <Col>
                     <ProfileCard {...userDetails} />
                 </Col>
+                {role === "USER" && (
+                    <Col>
+                        <HostButton />
+                    </Col>
+                )}
                 <Col>
-                    <HostButton />
+                    <DeleteButton />
                 </Col>
+                {/* <Col>
+                    <EditButton />
+                </Col> */}
             </Row>
             <Row>
                 <FavoritesVans {...userDetails} />
@@ -57,12 +59,14 @@ const ProfilePage = () => {
             </Row>
             <Row>
                 <p>vans</p>
-                <UserVans  />
+                <UserVans />
             </Row>
 
-            <Row>
-                <OwnerBookings {...userDetails} />
-            </Row>
+            {(role === "OWNER" || role === "ADMIN") && (
+                <Row>
+                    <OwnerBookings {...userDetails} />
+                </Row>
+            )}
         </Container>
     );
 };

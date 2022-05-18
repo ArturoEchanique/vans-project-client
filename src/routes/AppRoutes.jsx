@@ -73,13 +73,13 @@ const AppRoutes = () => {
             <Route path="/paydetails" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
-            <Route path="/profile" element={<PrivateRoutes requiredRoles={["USER"]} />}>
+            <Route path="/profile" element={<PrivateRoutes requiredRoles={["USER","OWNER"]} />}>
                 <Route path="" element={<ProfilePage />} />
             </Route>
-            <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER"]} />}>
+            <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER","OWNER"]} />}>
                 <Route path="" element={<MessagesPage />} />
             </Route>
-            <Route path="/newvan" element={<PrivateRoutes requiredRoles={["USER"]} />}>
+            <Route path="/newvan" element={<PrivateRoutes requiredRoles={["USER","OWNER"]} />}>
                 <Route path="" element={<NewVanPage />} />
             </Route>
             <Route path="/*" element={<ErrorPage />} />

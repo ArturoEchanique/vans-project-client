@@ -10,10 +10,12 @@ const UserVans = () => {
     const [userVans, setUserVans] = useState([]);
 
     const getUserVans = () => {
+        console.log(`Aqui hay user?}`, user._id);
         vanService
             .getUserVans(user._id)
             .then(({ data }) => {
-            
+                console.log(data);
+
                 setUserVans(data);
             })
             .catch((err) => console.log(err));
@@ -21,9 +23,9 @@ const UserVans = () => {
 
     useEffect(() => {
         getUserVans();
-    }, [user]);
+    }, []);
 
-    console.log(userVans);
+  
 
     const vansList = userVans.map((van) => {
         return <VanCard {...van} key={van._id} />;
