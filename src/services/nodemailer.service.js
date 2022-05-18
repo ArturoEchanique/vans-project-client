@@ -17,3 +17,7 @@ class NodemailerService {
         return this.api.get("/bookingmail", mailInfo)
     }
 }
+
+const nodemailerService = new NodemailerService()
+
+export default nodemailerService
