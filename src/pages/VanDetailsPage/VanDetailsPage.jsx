@@ -8,13 +8,15 @@ import { AuthContext } from "../../context/auth.context"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";
 import VanService from "../../services/van.service";
 import BookingsService from "../../services/bookings.service";
+import { MessageContext } from '../../context/message.context'
 
-const VanDetails = ({ setBookingInfo }) => {
+const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({});
     const [isFavorite, setIsFavorite] = useState(false);
     const [reservedDays, setReservedDays] = useState([]);
     const { van_id } = useParams();
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+    const { showMessage } = useContext(MessageContext)
 
     useEffect(() => {
         getVan();
@@ -42,9 +44,7 @@ const VanDetails = ({ setBookingInfo }) => {
         BookingsService.getVanBookings(van_id)
             .then(({ data }) => {
                 data.forEach(booking => {
-                    console.log("dates are", booking.startDate, booking.endDate)
                     for (let d = new Date(booking.startDate); d <= new Date(booking.endDate); d.setDate(d.getDate() + 1)) {
-                        console.log("adding day")
                         reservedDaysArr.push(new Date(d))
                     }
                 })
@@ -101,6 +101,21 @@ const VanDetails = ({ setBookingInfo }) => {
         setBookingInfo(bookingInfo);
     };
 
+    const reserveButtonClicked = (e) => {
+        if(!bookingInfo.startDate) {
+            showMessage("Error", "Insert an start date to reserve")
+            console.log("insert and start date!}")
+            e.preventDefault()
+        }
+        if (!bookingInfo.endDate) {
+            showMessage("Error", "Insert an end date to reserve")
+            console.log("insert and end date!}")
+            e.preventDefault()
+        }
+        
+       console.log("booking info is", bookingInfo)
+    }
+
     // const setDateAndPriceHard = (dates) => {
     //     let bookingInfo = { ...dates, price: 100,van_id:van_id };
     //     setBookingInfo(bookingInfo);
@@ -116,10 +131,10 @@ const VanDetails = ({ setBookingInfo }) => {
                     <h3>Aqui van nuestras reservas </h3>
                 </Col>
                 <Col>
-                    <DatePicker reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
                     {vanDetails.owner !== user?._id
                         ?
-                        <Link to={"/booking"}>
+                        <Link onClick={reserveButtonClicked} to={"/booking"}>
                             <Button variant="outline-dark" size="lg">
                                 Reserve
                             </Button>

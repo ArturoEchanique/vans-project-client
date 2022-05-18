@@ -128,9 +128,9 @@ const MessagesPage = ({ setBookingInfo }) => {
 
                 </Col>
                 <Col>
-                    <h3>{messages.map(message => {
+                    <h3>{messages.map((message,idx) => {
                         return (
-                            <p>{message.text}</p>
+                            <p key={idx}>{message.text}</p>
                         )
                     })}</h3>
                     <form onSubmit={handleMessageSubmit}>
