@@ -1,14 +1,12 @@
-import { Card, ListGroup, ListGroupItem, Container, Row, Col } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Container, Row, Col } from "react-bootstrap"
 
 const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, startDate, endDate, price }) => {
-    console.log("el id es", bookedVan)
 
     return (
         <>
             <Container>
                 <Row>
-                    <Col >
-                      
+                    <Col>
                         <Card>
                             <Card.Img variant="top" src={imageUrl} />
                             <Card.Body>
@@ -27,6 +25,6 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
                 </Row>
             </Container>
         </>
-    );
-};
-export default BookingConfirmCard;
+    )
+}
+export default BookingConfirmCard

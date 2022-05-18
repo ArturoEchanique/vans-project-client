@@ -1,7 +1,7 @@
-import UserBookingsCard from "../UserBookingsCard/UserBookingsCard";
+import UserBookingsCard from "../UserBookingsCard/UserBookingsCard"
 
-import { Container, Row, Col } from "react-bootstrap";
-import VanCard from "../VanCard/VanCard";
+import { Container, Row, Col } from "react-bootstrap"
+import VanCard from "../VanCard/VanCard"
 
 const FavoritesVans = ({ favoriteVans }) => {
     const vansList = favoriteVans?.map((van) => {
@@ -9,8 +9,8 @@ const FavoritesVans = ({ favoriteVans }) => {
             <Col key={van._id}>
                 <VanCard {...van} />
             </Col>
-        );
-    });
+        )
+    })
 
     return (
         <>
@@ -22,7 +22,7 @@ const FavoritesVans = ({ favoriteVans }) => {
                 </Row>
             </Container>
         </>
-    );
-};
+    )
+}
 
-export default FavoritesVans;
+export default FavoritesVans

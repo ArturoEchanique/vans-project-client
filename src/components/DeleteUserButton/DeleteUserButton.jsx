@@ -1,21 +1,19 @@
-import { Button } from "react-bootstrap";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
-import userService from "../../services/user.service";
-
-
+import { useContext } from "react"
+import { Button } from "react-bootstrap"
+import { AuthContext } from "../../context/auth.context"
+import userService from "../../services/user.service"
 
 const DeleteButton = () => {
-const { user } = useContext(AuthContext);
+    const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
 
-      const handleDelete = () => {
-          userService
-              .deleteUser(user._id)
-              .then(() => {})
-              .catch((err) => console.log(err));
-      };
-
-
+    const handleDelete = () => {
+        userService
+            .deleteUser(user._id)
+            .then(() => {
+                logOutUser()
+            })
+            .catch((err) => console.log(err))
+    }
 
     return (
         <>
@@ -23,7 +21,7 @@ const { user } = useContext(AuthContext);
                 Delete Profile
             </Button>
         </>
-    );
-};
+    )
+}
 
-export default DeleteButton;
+export default DeleteButton

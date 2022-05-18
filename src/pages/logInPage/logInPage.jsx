@@ -1,10 +1,7 @@
-import { Container, Button, Row, Col } from 'react-bootstrap'
-import Loginform from '../../components/LoginForm/LoginForm'
-
-
+import { Container, Row, Col } from "react-bootstrap"
+import Loginform from "../../components/LoginForm/LoginForm"
 
 const LoginPage = () => {
-
     return (
         <Container>
             <Row>
@@ -12,7 +9,6 @@ const LoginPage = () => {
                     <h1>Log In</h1>
                     <hr />
                     <Loginform />
-
                 </Col>
             </Row>
         </Container>

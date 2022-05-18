@@ -21,10 +21,7 @@ const MessagesPage = ({ setBookingInfo }) => {
     const [messageText, setMessageText] = useState("");
     const [bookingDetails, setBookingDetails] = useState([]);
     const [userDetails, setUserDetails] = useState({});
-    // const [vanDetails, setVanDetails] = useState({});
-    // const [isFavorite, setIsFavorite] = useState(false);
-    // const { van_id } = useParams();
-    // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
+  
 
 
     useEffect(() => {

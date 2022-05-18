@@ -1,37 +1,36 @@
-import { Container, Row, Col } from "react-bootstrap";
-import HostButton from "../../components/HostButton/HostButton";
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import UserVans from "../../components/UserVans/UserVans";
-import UserBookings from "../../components/UserBookings/UserBookings";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
-import userService from "../../services/user.service";
-import { useEffect, useState } from "react";
-import OwnerBookings from "../../components/OwnerBookings/OwnerBookings";
-import FavoritesVans from "../../components/FavoritesVans/FavoritesVans";
-import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton";
-
+import { useContext } from "react"
+import { useEffect, useState } from "react"
+import { Container, Row, Col } from "react-bootstrap"
+import userService from "../../services/user.service"
+import { AuthContext } from "../../context/auth.context"
+import UserVans from "../../components/UserVans/UserVans"
+import HostButton from "../../components/HostButton/HostButton"
+import ProfileCard from "../../components/ProfileCard/ProfileCard"
+import UserBookings from "../../components/UserBookings/UserBookings"
+import OwnerBookings from "../../components/OwnerBookings/OwnerBookings"
+import FavoritesVans from "../../components/FavoritesVans/FavoritesVans"
+import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
 
 const ProfilePage = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext)
 
-    const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState({})
 
     const getUser = () => {
         userService
             .getOneUser(user._id)
 
             .then(({ data }) => {
-                setUserDetails(data);
+                setUserDetails(data)
             })
-            .catch((err) => console.log(err));
-    };
+            .catch((err) => console.log(err))
+    }
 
     useEffect(() => {
-        getUser();
-    }, [user]);
+        getUser()
+    }, [user])
 
-    const { role } = userDetails;
+    const { role } = userDetails
 
     return (
         <Container>
@@ -47,9 +46,6 @@ const ProfilePage = () => {
                 <Col>
                     <DeleteButton />
                 </Col>
-                {/* <Col>
-                    <EditButton />
-                </Col> */}
             </Row>
             <Row>
                 <FavoritesVans {...userDetails} />
@@ -68,7 +64,7 @@ const ProfilePage = () => {
                 </Row>
             )}
         </Container>
-    );
-};
+    )
+}
 
-export default ProfilePage;
+export default ProfilePage

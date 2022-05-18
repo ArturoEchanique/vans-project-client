@@ -1,9 +1,8 @@
 import { useContext } from "react"
+import Loader from "../components/Loader/Loader"
+import { Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { MessageContext } from "../context/message.context"
-import { Navigate, Outlet } from 'react-router-dom'
-import Loader from "../components/Loader/Loader"
-
 
 const PrivateRoutes = () => {
     const { isLoggedIn, isLoading } = useContext(AuthContext)
@@ -14,12 +13,11 @@ const PrivateRoutes = () => {
     }
 
     if (!isLoggedIn) {
-        showMessage('Unauthorized', 'Please Log in ')
+        showMessage("Unauthorized", "Please Log in ")
         return <Navigate to="/login" />
     }
 
     return <Outlet />
 }
-
 
 export default PrivateRoutes

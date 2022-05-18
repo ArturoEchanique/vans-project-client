@@ -1,6 +1,5 @@
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom"
+import { Button } from "react-bootstrap"
 
 const HostButton = () => {
     return (
@@ -9,8 +8,7 @@ const HostButton = () => {
                 <Link to="/become-host">became a host</Link>
             </Button>
         </>
-    );
-  
-};
+    )
+}
 
-export default HostButton;
+export default HostButton
