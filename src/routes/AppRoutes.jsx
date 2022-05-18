@@ -26,7 +26,7 @@ const AppRoutes = () => {
         skip: 0,
         mapXBounds: [40, 41],
         mapYBounds: [-4, -3],
-        address: "barcelona",
+        address: "Valencia",
         mapInitLocationX: 40.39103445694156,
         mapInitLocationY: -3.7007285931754588,
         priceStart: 0,
@@ -37,6 +37,9 @@ const AppRoutes = () => {
         solarPower: false,
         shower: false,
         bathroom: false,
+        kitchen: false,
+        sunRoof: false,
+        heatedSeats: false,
     })
 
     const [bookingData, setBookingData] = useState({
