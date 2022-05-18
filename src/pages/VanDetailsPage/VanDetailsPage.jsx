@@ -33,6 +33,7 @@ const VanDetails = ({ setBookingInfo }) => {
         VanService.getOneVan(van_id)
             .then(({ data }) => {
                 setVanDetails(data);
+                console.log(data)
             })
             .catch((err) => console.log(err));
     };

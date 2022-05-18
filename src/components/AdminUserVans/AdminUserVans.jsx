@@ -43,7 +43,7 @@ const AdminUserVans = ({ _id }) => {
         return (
             <Col key={_id}>
                 <h4>{name}</h4>
-                <img src={imageUrl} alt="" />
+                <img src={imageUrl[0]} alt="" />
                 <Button variant="dark" onClick={handleDelete}>
                     delete
                 </Button>

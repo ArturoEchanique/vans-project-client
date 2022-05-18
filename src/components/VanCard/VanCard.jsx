@@ -34,7 +34,7 @@ const VanCard = ({
 
     return (
         <Card style={{ width: "25rem" }}>
-            <Card.Img variant="top" src={imageUrl} />
+            <Card.Img variant="top" src={imageUrl[0]} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
 
