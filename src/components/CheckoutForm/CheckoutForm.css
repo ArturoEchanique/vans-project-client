@@ -1,0 +1,13 @@
+.paymentTitle {
+    text-align: center;
+    margin-bottom: 8%;
+}
+
+.paymentPrice {
+    margin-bottom: 4%;
+    font-size: larger;
+}
+
+.payment {
+    border-radius: 10px;
+}

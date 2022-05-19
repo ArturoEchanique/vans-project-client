@@ -1,29 +1,61 @@
-import { Card, ListGroup, ListGroupItem, Container, Row, Col } from "react-bootstrap"
+import { Card, ListGroup, ListGroupItem, Container, Row, Col, Button } from "react-bootstrap"
+import './BookingConfimCard.css'
 
 const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, startDate, endDate, price }) => {
 
     return (
         <>
             <Container>
-                <Row>
+
+
+                <img className="vanCardImage" src={imageUrl}></img>
+                <h3 className="filterRow">{name}</h3>
+                <div className="form-control">{description}</div>
+
+                <h4>Booking details</h4>
+                <Row className="justify-content-center filterRowSmall">
+                    <h5 id="rowTitle">Price </h5>
+                    <hr />
                     <Col>
-                        <Card>
-                            <Card.Img variant="top" src={imageUrl} />
-                            <Card.Body>
-                                <Card.Title>{name}</Card.Title>
-                                <Card.Text>{description}</Card.Text>
-                            </Card.Body>
-                            <ListGroup className="list-group-flush">
-                                <ListGroupItem>Price Details</ListGroupItem>
-                                <ListGroupItem>{dayPrice}</ListGroupItem>
-                                <ListGroupItem>{startDate.toLocaleString()}</ListGroupItem>
-                                <ListGroupItem>{endDate.toLocaleString()}</ListGroupItem>
-                                <ListGroupItem>{price}</ListGroupItem>
-                            </ListGroup>
-                        </Card>
+                        <Button className="filterButton" variant="light" disabled>Price: {dayPrice}$</Button>
                     </Col>
+                    <Col>
+                        <Button className="filterButton" variant="light" disabled>Total: {price}$</Button>
+                    </Col>
+
+                </Row>
+                <Row className="justify-content-center filterRowSmall">
+                    <h5 id="rowTitle">Booking Dates</h5>
+                    <hr />
+
+                    <Col>
+                        <Button className="filterButton" variant="light" disabled>Starts at: <strong>{startDate.toLocaleString()}</strong></Button>
+                    </Col>
+                    <Col>
+                        <Button className="filterButton" variant="light" disabled>Ends at: <strong>{endDate.toLocaleString()}</strong></Button>
+                    </Col>
+
                 </Row>
             </Container>
+
+            {/* <Col lg={{ span: 6 }}>
+
+                <Card.Img variant="top" src={imageUrl} />
+            </Col>
+            <Col lg={{ span: 6 }}>
+                <Card.Body>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Text>{description}</Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>Price Details</ListGroupItem>
+                    <ListGroupItem>{dayPrice}</ListGroupItem>
+                    <ListGroupItem>{startDate.toLocaleString()}</ListGroupItem>
+                    <ListGroupItem>{endDate.toLocaleString()}</ListGroupItem>
+                    <ListGroupItem>{price}</ListGroupItem>
+                </ListGroup>
+            </Col> */}
+
         </>
     )
 }

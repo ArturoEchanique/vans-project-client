@@ -162,7 +162,7 @@ const NewVanForm = () => {
                             <Form.Label>Maximun Passengers</Form.Label>
                             <Form.Control type="number" min={0} onChange={handleInputChange} name="maxPassengers" value={maxPassengers} />
                         </Form.Group>
-                        {/* // */}
+
                         <Form.Group className="mb-3" controlId="solarPower">
                             <input type="checkbox" onChange={handleInputChange} name="solarPower" checked={solarPower} />
                             <Form.Label>Solar Power</Form.Label>

@@ -12,41 +12,45 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
     const [vanDetails, setVanDetails] = useState({})
 
     const getDetails = () => {
-         VanService.getOneVan(van_id)
-             .then(({ data }) => {
-                 setVanDetails(data)
-             })
-             .catch((err) => console.log(err))
-        
+        VanService.getOneVan(van_id)
+            .then(({ data }) => {
+                setVanDetails(data)
+            })
+            .catch((err) => console.log(err))
+
     }
 
     useEffect(() => {
         getDetails()
-       
+
     }, [])
 
     return (
         <>
-            <Container>
-                <Row>
-                    <Col>
-                        <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
-                    </Col>
-                    <Col>
-                        <section>
-                            <Elements stripe={stripePromise}>
-                                <div>
+            <section className="section1">
+                <Container>
+                    <Row>
+                        <Col lg={{ span: 8 }}>
+                            <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
+                        </Col>
+
+
+                        <Col lg={{ span: 4 }}>
+                            <section>
+                                <Elements stripe={stripePromise}>
                                     <div>
                                         <div>
-                                            <CheckoutForm bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
+                                            <div>
+                                                <CheckoutForm bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Elements>
-                        </section>
-                    </Col>
-                </Row>
-            </Container>
+                                </Elements>
+                            </section>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
         </>
     )
 }
