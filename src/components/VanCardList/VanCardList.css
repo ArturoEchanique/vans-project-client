@@ -3,3 +3,9 @@
     height: 100vh;
     overflow-y: scroll;
 }
+
+.spinnerContainer{
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px 200px 0px;
+}

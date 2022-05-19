@@ -24,10 +24,14 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
     // }
     const ref = useRef();
     // const inViewport = InViewportComponent(ref, '0px'); // Trigger as soon as the element becomes visible
-    const inViewport = InViewportComponent(ref, "100% 0%"); // Trigger if 200px is visible from the element
-
+    const inViewport = InViewportComponent(ref, "1% 0%"); // Trigger if 200px is visible from the element
+    if (inViewport && !isFetchingData && hasMoreVans) fetchMoreData()
+    if (inViewport && !isFetchingData && !hasMoreVans) console.log("no more results")
     if (inViewport) {
         console.log('in viewport:', ref.current);
+    }
+    else {
+        console.log("not in viewport")
     }
 
 
@@ -50,15 +54,21 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                     <Footer ref={ref} />
                 </React.Fragment> */}
                 <Container >
-                    <Row ref={ref}>
+                    <Row >
                         {vans.map((van, idx) => {
                             return (
                                 <>
-
-                                    <VanCard   key={idx} {...van} isFavorite={false} />
+                                    <VanCard key={idx} {...van} isFavorite={false} />
                                 </>)
                         })}
-                        <InViewportComponent noResults={noResults} hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent>
+                        <div ref={ref} className="spinnerContainer">
+                            {hasMoreVans ? <Spinner className="mySpinner" animation="border" size="xl" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner> : (noResults ? "There is no results" : "No more results")
+                            }
+                        </div>
+
+                        {/* <InViewportComponent noResults={noResults} hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent> */}
                     </Row>
                 </Container>
             </div>
