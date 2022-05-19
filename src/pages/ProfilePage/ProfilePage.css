@@ -4,6 +4,8 @@
 }
 .background-profile-detalis{
     border-radius: 10px;
-    background-color: #c1dbd039;
+   border: 6px solid #c1dbd039;
+   
     padding: 4rem 4rem 8rem 4rem ;
 }
+

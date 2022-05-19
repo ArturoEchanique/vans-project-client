@@ -17,6 +17,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
     const [hasMoreVans, setHasMoreVans] = useState(true)
+    const [noResults, setNoResults] = useState(true)
+    const [isFetchingData, setIsFetchingData] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
 
@@ -36,14 +38,28 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
             .getVans(query)
             .then(({ data }) => {
-                if (query.skip === 0) setVans(data)
+                setIsFetchingData(false)
+                if (query.skip === 0) {
+                    if (data.length === 0) {
+                        setHasMoreVans(false)
+                        setNoResults(true)
+                    }
+                    else{
+                        setNoResults(false)
+                    }
+                    setVans(data)
+                }
                 else {
+                    setNoResults(false)
                     setVans([...vans, ...data])
                     if (data.length === 0) setHasMoreVans(false)
                     else setHasMoreVans(true)
                 }
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                setIsFetchingData(false)
+                console.log(err)
+            })
     }
 
     const getFavoriteVans = () => {
@@ -113,9 +129,15 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const fetchMoreData = () => {
-        setTimeout(() => {
+        if(!isFetchingData){
+            setIsFetchingData(true)
+            console.log("fetching more data")
             loadVans({ ...filterData, skip: vans.length })
-        }, 1000)
+        }
+        
+        // setTimeout(() => {
+        //     loadVans({ ...filterData, skip: vans.length })
+        // }, 1000)
     }
 
     // const testClick = () => {
@@ -124,11 +146,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
 
     return (
+
         <div className="resultsPage">
             <Container fluid>
                 <Row >
-                    <Col >
-                        <VanCardList vans={vans}> </VanCardList>
+                    <Col>
+                        <VanCardList fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
 
 
                     </Col>

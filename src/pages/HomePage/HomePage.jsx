@@ -59,7 +59,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                 <Container className="">
                     {/* d-flex flex-column justify-content-center */}
                     <Row className="mb-3">
-                        <Col className="">
+                        <Col className="title-h1">
                             <h1 className="title">VAN ME UP!</h1>
                         </Col>
                     </Row>
@@ -81,43 +81,13 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                                 <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
                             </>
                             <>
-                                <Button variant="dark">
-                                    <Link to="/results">Search Vans</Link>
-                                </Button>
+                                <Link to="/results">
+                                    <Button className="search-button" variant="dark">Search Vans</Button>
+                                </Link>
                             </>
                         </Col>
                     </Row>
-                    {!user ? (
-                        <Row className="d-flex d-flex justify-content-center row-cards">
-                            <Card className="card-style" style={{ width: "8rem", height: "auto" }}>
-                                <Card.Img variant="top" src="./../images/signin.png" />
-                                <Card.Body className="d-flex justify-content-center">
-                                    <Link to="/singup" className="nav-link logo-img">
-                                        <Card.Title>Signup</Card.Title>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                            <Card className="card-style" style={{ width: "8rem", height: "auto" }}>
-                                <Card.Img variant="top" src="./../images/login.png" />
-                                <Card.Body className="d-flex justify-content-center">
-                                    <Link to="/login" className="nav-link  logo-img">
-                                        <Card.Title>Login</Card.Title>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Row>
-                    ) : (
-                        <Row className="d-flex d-flex justify-content-center row-cards">
-                            <Card className="card-style" style={{ width: "8rem", height: "auto" }}>
-                                <Card.Img variant="top" src="./../images/logout.png" />
-                                <Card.Body className="d-flex justify-content-center">
-                                    <Button variant="light" onClick={logOutUser}>
-                                        <Card.Title>logout</Card.Title>
-                                    </Button>
-                                </Card.Body>
-                            </Card>
-                        </Row>
-                    )}
+              
                 </Container>
             </section>
         </>

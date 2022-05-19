@@ -15,8 +15,6 @@ import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
 
 import "./ProfilePage.css"
 
-
-
 const ProfilePage = () => {
     const { user } = useContext(AuthContext)
 
@@ -51,25 +49,28 @@ const ProfilePage = () => {
                             </ButtonGroup>
                         </div>
                     </Col>
-
+                    
                     <Col className="background-profile-detalis">
-                        <FavoritesVans {...userDetails} />
-                        <UserBookings {...userDetails} />
-                        {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
-                            <>
-                                <Row>
-                                    <p>vans</p>
-                                    <UserVans />
-                                </Row>
-                                <Row>
-                                    <OwnerBookings {...userDetails} />
-                                </Row>
-                                <Row>
-                                    <BarChart {...userDetails} />
-                                </Row>
-                            </>
-                        )}
-                    </Col>
+                        <div className="Profile-details">
+                            <FavoritesVans {...userDetails} />
+                            <UserBookings {...userDetails} />
+                            {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
+                                <>
+                                    <Row>
+                                        <p>vans</p>
+                                        <UserVans />
+                                    </Row>
+                                    <Row>
+                                        <OwnerBookings {...userDetails} />
+                                    </Row>
+                                    <Row>
+                                        <BarChart {...userDetails} />
+                                    </Row>
+                                </>
+                            )}
+                            </div>
+                        </Col>
+                   
                 </Row>
             </Container>
         </section>

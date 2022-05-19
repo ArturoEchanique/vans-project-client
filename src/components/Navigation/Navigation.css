@@ -6,7 +6,6 @@
 .beach-5-hex { color: #FF9C82; } */
 #logo {
     padding: 0;
-    max-width: 200px;
 }
 
 .background-navbar {
@@ -43,6 +42,7 @@
 }
 
 .offcanvas-end {
+    margin-right: 15px;
     display: flex;
     width: 180px;
     height: 600px;
@@ -60,4 +60,19 @@
 
 #logo1 {
     background-color: rgb(255, 255, 255);
+}
+
+.navbar-toggler {
+    margin-right: 40px;
+    font-size: 1rem;
+}
+
+.logo-nav {
+
+    margin-left: 50px;
+}
+
+.logo-nav {
+    width: auto;
+
 }
