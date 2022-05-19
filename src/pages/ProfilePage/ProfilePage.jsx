@@ -31,7 +31,7 @@ const ProfilePage = () => {
         getUser()
     }, [user])
 
-    const { role } = userDetails
+    // const { role } = userDetails
 
     return (
         <Container>
@@ -39,7 +39,7 @@ const ProfilePage = () => {
                 <Col>
                     <ProfileCard {...userDetails} />
                 </Col>
-                {role === "USER" && (
+                {userDetails?.role === "USER" && (
                     <Col>
                         <HostButton />
                     </Col>
@@ -54,15 +54,13 @@ const ProfilePage = () => {
             <Row>
                 <UserBookings {...userDetails} />
             </Row>
-            <Row>
-                <p>vans</p>
-                <UserVans />
-            </Row>
 
-
-
-            {(role === "OWNER" || role === "ADMIN") && (
+            {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
                 <>
+                    <Row>
+                        <p>vans</p>
+                        <UserVans />
+                    </Row>
                     <Row>
                         <OwnerBookings {...userDetails} />
                     </Row>
@@ -71,7 +69,7 @@ const ProfilePage = () => {
                     </Row>
                 </>
             )}
-        </Container >
+        </Container>
     )
 }
 
