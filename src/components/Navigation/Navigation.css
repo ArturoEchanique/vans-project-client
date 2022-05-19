@@ -1,4 +1,51 @@
+/* 
+.beach-1-hex { color: #8EA39C; }
+.beach-2-hex { color: #C1DBD0; }
+.beach-3-hex { color: #F3EDDE; }
+.beach-4-hex { color: #FFCFA5; }
+.beach-5-hex { color: #FF9C82; } */
 #logo {
     padding: 0;
     max-width: 200px;
+}
+.background-navbar {
+    background-color: #f3edde;
+}
+
+.offcanvas {
+    background-color: #f3edde;
+}
+.nav-link {
+     padding: 0;
+   
+    color: #8ea39c;
+}
+.nav-link img{
+   height: 40px;
+}
+.nav-link:hover {
+    text-decoration: none;
+    color: #55605c;
+}
+.logo-img img {
+    margin: 20px 0;
+}
+
+.logo-img img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+.offcanvas-end {
+    display: flex;
+    width: 180px;
+    height: 600px;
+    align-items: center;
+    border-radius: 15px;
+}
+.canvas-tittle {
+    color: #8ea39c;
+}
+.navbar-toggler{
+    font-size: 1rem;
 }
