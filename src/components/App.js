@@ -3,6 +3,8 @@ import "./App.css"
 import AppRoutes from "../routes/AppRoutes"
 import Navigation from "./Navigation/Navigation"
 import UserMessage from "./UserMessage/UserMessage"
+import Footer from "./Footer/Footer"
+
 
 const App = () => {
     return (
@@ -10,7 +12,7 @@ const App = () => {
             <Navigation />
             <AppRoutes />
             <UserMessage />
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

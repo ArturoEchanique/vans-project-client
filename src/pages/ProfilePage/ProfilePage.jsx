@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { useEffect, useState } from "react"
 
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, ButtonGroup } from "react-bootstrap"
 import BarChart from "../../components/Charts/Charts"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
@@ -14,6 +14,7 @@ import FavoritesVans from "../../components/FavoritesVans/FavoritesVans"
 import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
 
 import "./ProfilePage.css"
+
 
 
 const ProfilePage = () => {
@@ -39,17 +40,19 @@ const ProfilePage = () => {
 
     return (
         <section className="top-margin">
-            <Container >
+            <Container>
                 <Row className="d-flex justify-content-start">
                     <Col sm={4}>
-                        <div>
+                        <div className="background-profile-detalis">
                             <ProfileCard {...userDetails} />
-                            <HostButton />
-                            <DeleteButton />
+                            <ButtonGroup variant="outline-dark">
+                                <HostButton />
+                                <DeleteButton />
+                            </ButtonGroup>
                         </div>
                     </Col>
 
-                    <Col>
+                    <Col className="background-profile-detalis">
                         <FavoritesVans {...userDetails} />
                         <UserBookings {...userDetails} />
                         {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (

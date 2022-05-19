@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import capitalized from "../utils/capitalized"
-
-
+import "./ProfileCard.css"
 
 
 
@@ -14,7 +13,7 @@ const ProfileCard = ({ username, imageUrl }) => {
     // }, [])
     return (
         <div>
-            <h1>{username}</h1>
+            <h1 className="profile-name">Welcome {username}</h1>
             <img src={imageUrl} />
             <hr />
         </div>
