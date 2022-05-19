@@ -61,7 +61,6 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
     return (
         <div className="datePicker">
             <DateRangePicker
-            className="datePicker"
                 startDate={dates.startDate}
                 startDateId="your_unique_start_date_id"
                 endDate={dates.endDate}

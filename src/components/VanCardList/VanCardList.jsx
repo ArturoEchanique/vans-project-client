@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom"
-import { useEffect, useRef, useMemo } from "react"
+import React, { useEffect, useRef, useMemo } from "react"
 import { Button, Image, Card, Col, Row, Form, ToggleButton, Container, Spinner } from "react-bootstrap"
 import vanService from "../../services/van.service"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import VanCard from "../../components/VanCard/VanCard"
-<<<<<<< HEAD
-=======
 import InViewportComponent from "../InViewportComponent/InViewportComponent"
->>>>>>> a64d245bdb40b46088370d8aec974aa039a26c52
 import "./VanCardList.css"
 import InfiniteScroll from "react-infinite-scroll-component"
 import handleViewport from "react-in-viewport";
@@ -25,29 +22,40 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
     //     //     loadVans({ ...filterData, skip: vans.length })
     //     // }, 1000)
     // }
+    const ref = useRef();
+    // const inViewport = InViewportComponent(ref, '0px'); // Trigger as soon as the element becomes visible
+    const inViewport = InViewportComponent(ref, "100% 0%"); // Trigger if 200px is visible from the element
+
+    if (inViewport) {
+        console.log('in viewport:', ref.current);
+    }
 
 
 
     return (
-        
+
 
         <InfiniteScroll
             dataLength={10}
             hasMore={hasMoreVans}
             loader={<h4>Loading...</h4>}
         >
-            
-            
+
+
             <div className="scroll">
-               
-               
+
+                {/* <React.Fragment>
+                    <Header />
+                    <Content />
+                    <Footer ref={ref} />
+                </React.Fragment> */}
                 <Container >
-                    <Row >
+                    <Row ref={ref}>
                         {vans.map((van, idx) => {
                             return (
                                 <>
 
-                                    <VanCard key={idx} {...van} isFavorite={false} />
+                                    <VanCard   key={idx} {...van} isFavorite={false} />
                                 </>)
                         })}
                         <InViewportComponent noResults={noResults} hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent>

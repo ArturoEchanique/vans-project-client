@@ -16,7 +16,7 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
     const [center, setCenter] = useState({ lat: initLocationX, lng: initLocationY });
 
     useEffect(() => {
-        if(map) {
+        if (map) {
             goToUserLocation()
             console.log("locating user")
         }
@@ -84,9 +84,11 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
     // }
 
     const mapBoundsChange = (map) => {
+
         const bounds = map.getBounds()
+        console.log("bounds are", bounds)
         const margin = 150 / 2 ** map.getZoom()
-        handleMapBoundsChange({ mapYBounds: [bounds.Ab.h - margin * 2, bounds.Ab.j + margin], mapXBounds: [bounds.Va.h - margin, bounds.Va.j + margin] })
+        handleMapBoundsChange({ mapYBounds: [bounds.yb.h - margin * 2, bounds.yb.j + margin], mapXBounds: [bounds.Ta.h - margin, bounds.Ta.j + margin] })
     }
 
 

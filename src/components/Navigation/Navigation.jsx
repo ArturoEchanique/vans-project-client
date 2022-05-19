@@ -44,11 +44,11 @@ const Navigation = () => {
 
 
     }
-    const fireFinalAction = () => {
-        console.log("firing final actions")
-        closeModals()
+    // const fireFinalAction = () => {
+    //     console.log("firing final actions")
+    //     closeModals()
 
-    }
+    // }
 
     return (
         <>
@@ -80,7 +80,7 @@ const Navigation = () => {
                                 <img className="logo-nav"id="logo" src="./../images/1.png" alt="vanmeup"  />
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Toggle clasName="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                        <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>
