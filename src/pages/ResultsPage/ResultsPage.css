@@ -1,6 +1,61 @@
-.filterButton{
+.filterButton {
+    display: flex;
+    width: 95%;
+    height: 50px;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.filterButtonWide {
     display: flex;
     width: 100%;
+    height: 55px;
     justify-content: center;
-    margin:0 auto;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.resultsPage {
+    padding-top: 100px;
+}
+
+.filterRowSmall {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filterRow {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.btn-dark {
+
+    background-color: #111111;
+    ;
+    border-color: #111111;
+    opacity: 0.9;
+}
+
+.btn-dark a {
+    text-decoration: none;
+    color: #F3EDDE;
+
+}
+
+.btn-dark:hover {
+    color: #F3EDDE;
+    background-color: #111111;
+    border-color: #111111;
+    opacity: 1;
+
+}
+
+.textInput{
+    height: 60px;
+}
+
+.textInputSmall {
+    height: 50px;
 }

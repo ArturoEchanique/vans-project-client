@@ -1,19 +1,26 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Row } from "react-bootstrap"
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import MapMarker from "../MapMarker/MapMarker";
 
 const containerStyle = {
-    width: '1200px',
-    height: '800px'
+    width: '900px',
+    height: '100%'
 };
 
-function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
+function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
     const [zoom, setZoom] = useState(14)
     const [center, setCenter] = useState({ lat: initLocationX, lng: initLocationY });
+
+    useEffect(() => {
+        if(map) {
+            goToUserLocation()
+            console.log("locating user")
+        }
+    }, [locationSwitcher])
 
     const setVisibleMarkerFn = (idx) => {
         setVisibleMarker(idx)
@@ -86,9 +93,6 @@ function ReactMap({ initLocationX, initLocationY, vans, favoriteVans, addFavorit
 
     return isLoaded ? (
         <>
-            <Button onClick={goToUserLocation} size="lg">
-                Search near vans
-            </Button>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
