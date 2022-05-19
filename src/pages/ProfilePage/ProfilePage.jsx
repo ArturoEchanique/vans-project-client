@@ -1,7 +1,8 @@
 import { useContext } from "react"
 import { useEffect, useState } from "react"
+
 import { Container, Row, Col } from "react-bootstrap"
-import BarChart from "../../components/Charts/Charts";
+import BarChart from "../../components/Charts/Charts"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import UserVans from "../../components/UserVans/UserVans"
@@ -11,6 +12,9 @@ import UserBookings from "../../components/UserBookings/UserBookings"
 import OwnerBookings from "../../components/OwnerBookings/OwnerBookings"
 import FavoritesVans from "../../components/FavoritesVans/FavoritesVans"
 import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
+
+import "./ProfilePage.css"
+
 
 const ProfilePage = () => {
     const { user } = useContext(AuthContext)
@@ -31,47 +35,41 @@ const ProfilePage = () => {
         getUser()
     }, [user])
 
-    const { role } = userDetails
+    // const { role } = userDetails
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <ProfileCard {...userDetails} />
-                </Col>
-                {role === "USER" && (
-                    <Col>
-                        <HostButton />
+        <section className="top-margin">
+            <Container >
+                <Row className="d-flex justify-content-start">
+                    <Col sm={4}>
+                        <div>
+                            <ProfileCard {...userDetails} />
+                            <HostButton />
+                            <DeleteButton />
+                        </div>
                     </Col>
-                )}
-                <Col>
-                    <DeleteButton />
-                </Col>
-            </Row>
-            <Row>
-                <FavoritesVans {...userDetails} />
-            </Row>
-            <Row>
-                <UserBookings {...userDetails} />
-            </Row>
-            <Row>
-                <p>vans</p>
-                <UserVans />
-            </Row>
 
-
-
-            {(role === "OWNER" || role === "ADMIN") && (
-                <>
-                    <Row>
-                        <OwnerBookings {...userDetails} />
-                    </Row>
-                    <Row>
-                        <BarChart {...userDetails} />
-                    </Row>
-                </>
-            )}
-        </Container >
+                    <Col>
+                        <FavoritesVans {...userDetails} />
+                        <UserBookings {...userDetails} />
+                        {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
+                            <>
+                                <Row>
+                                    <p>vans</p>
+                                    <UserVans />
+                                </Row>
+                                <Row>
+                                    <OwnerBookings {...userDetails} />
+                                </Row>
+                                <Row>
+                                    <BarChart {...userDetails} />
+                                </Row>
+                            </>
+                        )}
+                    </Col>
+                </Row>
+            </Container>
+        </section>
     )
 }
 

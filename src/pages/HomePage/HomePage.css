@@ -4,34 +4,65 @@
 .beach-3-hex { color: #F3EDDE; }
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
-
-.home-background{
-   height: 100vh;
-    background-image: url(./../../../public/images/fondo-home.png);
-   background-size: 100%;    
+h1 {
+    font-family: "Josefin Sans", sans-serif;
+    color: #f3edde;
+    text-shadow: 0.1em -0.06em 0.03em #647f76;
 }
 
+.home-background {
+    height: 100vh;
+    background-image: url(./../../../public/images/fondo-home.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 
 .btn-dark {
-   
-    background-color: #FF9C82; ;
-        border-color: #FFCFA5; 
-        opacity: 0.9;
+    background-color: #ff9c82;
+    border-color: #ffcfa5;
+    opacity: 0.9;
 }
-   
-.btn-dark a{
+
+.btn-dark a {
     text-decoration: none;
-    color: #F3EDDE;
-    
+    color: #ffffff;
 }
 .btn-dark:hover {
-    color: #F3EDDE;
-    background-color:  #da7359;
+    color: #ffffff;
+    background-color: #da7359;
     border-color: #efac71;
-    opacity: 1   ;
-
+    opacity: 1;
 }
-/* {
-    height: 80px;
-    width: 80px;
-} */
+
+.background-col {
+    padding: 20px 0;
+    background-color: #ffffff;
+    opacity: 0.5;
+}
+.background-row {
+    border-color: #8ea39c;
+    border-radius: 10px;
+    border: 30px;
+    padding: 20px 0;
+    background-color: #fefdfaed;
+
+    margin-right: 200px;
+    margin-left: 200px;
+}
+
+
+
+.title {
+    text-align: center;
+    height: auto;
+}
+.card-style {
+    margin: 0 20px;
+    background-color: #fefdfaed;
+}
+.row-cards {
+    margin-top: 25px;
+}
+.imput-location {
+    height: 48px;
+}

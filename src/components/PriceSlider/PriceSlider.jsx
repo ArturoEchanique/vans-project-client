@@ -8,6 +8,7 @@ const PriceSlider = ({ handlePriceChange }) => {
             <div className="row">
                 <div className="col">
                     <RangeSlider
+                        color="red"
                         dataField="ratings_count"
                         componentId="BookSensor"
                         range={{
@@ -15,8 +16,8 @@ const PriceSlider = ({ handlePriceChange }) => {
                             end: 400,
                         }}
                         rangeLabels={{
-                            start: "10",
-                            end: "400",
+                            start: "10€",
+                            end: "400€",
                         }}
                         onValueChange={function (value) {
                             handlePriceChange({ priceStart: value[0], priceEnd: value[1] })
