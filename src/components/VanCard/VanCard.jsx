@@ -39,8 +39,10 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     borderColor: 'red',
                 }}
             /> */}
+            <Link to={`/${_id}/details`} style={{ textDecoration: 'none', padding: "0px", margin: "0px" }}>
             <img className="vanCardImage" src={imageUrl[0]}></img>
-            <h3 className="filterRow">{name}</h3>
+            </Link>
+            <h3 className="vanCardTitle">{name}</h3>
             <Row className="justify-content-center filterRowSmall">
                 <Col>
                     <Button className="filterButton" variant="light" disabled>Solar power</Button>
@@ -50,17 +52,16 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                 </Col>
                 <Col>
                     <Button className="filterButton" variant="light" disabled>Solar power</Button>
+                </Col>
+                <Col>
+                    <Button onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                        favorite
+                    </Button>
                 </Col>
             </Row>
             <p className="filterRow">{description}</p>
             <Row className="justify-content-center filterRowSmall">
-                <Col>
-                    <Link to={`/${_id}/details`}>
-                        <Button variant="outline-dark" size="lg">
-                            see details
-                        </Button>
-                    </Link>
-                </Col>
+
                 {/* <Col>
                     <Button onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                         favorite

@@ -159,13 +159,13 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Col>
                     <Col >
                         <Container>
-                            <h3 className="filterRow">Name</h3>
+                            <h3 className="filterTitle">Name</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <Form.Control className="textInput" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Features</h3>
+                            <h3 className="filterTitle">Features</h3>
                             <Row className="justify-content-center filterRowSmall">
                                 <Col>
                                     <ToggleButton
@@ -244,7 +244,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     </ToggleButton>
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Price range</h3>
+                            <h3 className="filterTitle">Price range</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <PriceSlider handlePriceChange={handleFilterPriceChange} />
@@ -258,7 +258,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     <Form.Control className="textInputSmall" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Select dates</h3>
+                            <h3 className="filterTitle">Select dates</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />

@@ -25,6 +25,7 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
     const ref = useRef();
     // const inViewport = InViewportComponent(ref, '0px'); // Trigger as soon as the element becomes visible
     const inViewport = InViewportComponent(ref, "1% 0%"); // Trigger if 200px is visible from the element
+    // console.log("has more vans", hasMoreVans)
     if (inViewport && !isFetchingData && hasMoreVans) fetchMoreData()
     if (inViewport && !isFetchingData && !hasMoreVans) console.log("no more results")
     if (inViewport) {
@@ -58,7 +59,11 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                         {vans.map((van, idx) => {
                             return (
                                 <>
-                                    <VanCard key={idx} {...van} isFavorite={false} />
+                                    
+                                        <VanCard key={idx} {...van} isFavorite={false} />
+                                    
+                                   
+                                    
                                 </>)
                         })}
                         <div ref={ref} className="spinnerContainer">

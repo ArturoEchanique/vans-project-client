@@ -1,7 +1,8 @@
 .filterButton {
     display: flex;
     width: 95%;
-    height: 70px;
+    height: 40px;
+    border-radius: 8px;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
@@ -15,25 +16,32 @@
 .filterButtonWide {
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 50px;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
-    border-radius: 50px;
+    border-radius: 10px;
 }
 
 .resultsPage {
-    padding-top: 100px;
+    padding-top: 80px;
+}
+.resultsPage h3{
+    font-size: 1.5em;
 }
 
 .filterRowSmall {
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 20px;
 }
 
 .filterRow {
-    margin-top: 40px;
+    margin-top: 0px;
     margin-bottom: 40px;
+}
+.filterTitle {
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .btn-dark {
@@ -41,7 +49,6 @@
     background-color: #111111;
     ;
     border-color: #111111;
-    opacity: 0.9;
 }
 
 .btn-dark a {
@@ -59,9 +66,9 @@
 }
 
 .textInput {
-    height: 60px;
+    height: 40px;
 }
 
 .textInputSmall {
-    height: 50px;
+    height: 30px;
 }
