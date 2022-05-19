@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import authService from "../../services/auth.service"
 import uploadService from "../../services/upload.service"
 
-const SignupForm = () => {
+const SignupForm = ({ closeModal }) => {
     const [signupData, setSignupData] = useState({
         username: "",
         password: "",
@@ -22,6 +22,7 @@ const SignupForm = () => {
         authService
             .signup(signupData)
             .then((res) => {
+                closeModal()
                 navigate("/login")
             })
             .catch((err) => console.log(err))

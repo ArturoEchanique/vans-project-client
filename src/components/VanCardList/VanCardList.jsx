@@ -4,7 +4,7 @@ import vanService from "../../services/van.service"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import VanCard from "../../components/VanCard/VanCard"
-import "./vanCardList.css"
+import "./VanCardList.css"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 const VanCardList = ({ vans }) => {

@@ -3,8 +3,11 @@ import { useEffect, useState } from "react"
 import { NavLink, Link } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import { Navbar, Container, Nav, Offcanvas, Button, NavDropdown, Form, FormControl } from "react-bootstrap"
+import { Navbar, Container, Nav, Offcanvas, Button, NavDropdown, Form, FormControl, Modal } from "react-bootstrap"
 import "./Navigation.css"
+import SignupForm from "../SignupForm/SingupForm"
+import Loginform from "../LoginForm/LoginForm"
+
 
 const Navigation = () => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
@@ -25,11 +28,53 @@ const Navigation = () => {
         if (user) getUser()
     }, [user])
 
+    const [showModal, setShowModal] = useState(false)
+
+    const [showModals, setShowModals] = useState(false)
+
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const openModals = () => setShowModals(true)
+    const closeLoginModal = () => setShowModals(false)
+
+    const fireFinalActions = () => {
+        closeModal()
+
+
+    }
+    const fireFinalAction = () => {
+        console.log("firing final actions")
+        closeModals()
+
+    }
+
     return (
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className=" background-navbar fixed-top">
                     <Container fluid>
+                        <Modal show={showModal} onHide={closeModal}>
+                            <div className="modal1">
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Register</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <SignupForm closeModal={closeModal} />
+                                </Modal.Body>
+                            </div>
+                        </Modal>
+                        <Modal show={showModals} onHide={closeModal}>
+                            <div className="modal1">
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Log in</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Loginform closeModal={closeLoginModal} />
+                                </Modal.Body>
+                            </div>
+                        </Modal>
                         <Navbar.Brand>
                             <Link to="/" className="nav-link">
                                 <img id="logo" src="./../images/1.png" alt="" srcSet="" />
@@ -57,14 +102,17 @@ const Navigation = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <NavLink to="/singup" className="nav-link logo-img">
+
+                                            <button id="logo1" onClick={openModal} className="  logo-img" >
                                                 <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
                                                 Sing up
-                                            </NavLink>
-                                            <NavLink to="/login" className="nav-link  logo-img">
+                                            </button>
+
+                                            <button id="logo1" onClick={openModals} className="  logo-img" >
                                                 <img id="logo" src="./../images/login.png" alt="" srcSet="" />
-                                                Login
-                                            </NavLink>
+                                                Log in
+                                            </button>
+
                                         </>
                                     )}
                                     {user && (

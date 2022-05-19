@@ -1,9 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap"
 import Loginform from "../../components/LoginForm/LoginForm"
-
+import './loginPage.css'
 const LoginPage = () => {
     return (
-        <Container>
+        <Container id="fomrL">
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <h1>Log In</h1>

@@ -5,7 +5,7 @@ import authService from "../../services/auth.service"
 import { AuthContext } from "./../../context/auth.context"
 import { MessageContext } from "../../context/message.context"
 
-const Loginform = () => {
+const Loginform = ({ closeModal }) => {
     const [loginData, setLoginData] = useState({
         password: "",
         email: "",
@@ -26,6 +26,7 @@ const Loginform = () => {
                 showMessage("Bienvenid@", "Sesión iniciada correctamente")
                 authenticateUser()
                 navigate("/")
+                closeModal()
             })
             .catch((err) => console.log(err))
     }
@@ -38,7 +39,8 @@ const Loginform = () => {
     const { password, email } = loginData
 
     return (
-        <Form onSubmit={handleSubmit}>
+
+        <Form id="fomLogin" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" onChange={handleInputChange} name="email" value={email} />
