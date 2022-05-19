@@ -7,25 +7,25 @@ const BecomeHostPage = () => {
         <>
             <Container id="section1">
 
-                {/* <Row   >
-                        <Col lg={{ span: 12 }}  >
-                            <Card className="bg-dark text-white">
-                                <Card.Img src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905931/vans_project/photo-1557854457-8476b8551eed_gm999g.jpg" alt="Card image" />
-                                <Card.ImgOverlay>
-                                    <Card.Title>
-                                        <h1>BECOME A HOST </h1>
-                                    </Card.Title>
-                                    <Card.Text>
-                                        This is a wider card with supporting text below as a natural lead-in to
-                                        additional content. This content is a little bit longer.
-                                    </Card.Text>
-                                    <Button variant="dark">
-                                        <Link to="/newvan">Add a van</Link>
-                                    </Button>
-                                </Card.ImgOverlay>
-                            </Card>
-                        </Col>
-                    </Row> */}
+                <Row   >
+                    <Col lg={{ span: 12 }}  >
+                        <Card className="bg-dark text-white">
+                            <Card.Img src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905931/vans_project/photo-1557854457-8476b8551eed_gm999g.jpg" alt="Card image" />
+                            <Card.ImgOverlay>
+                                <Card.Title>
+                                    <h1>BECOME A HOST </h1>
+                                </Card.Title>
+                                <Card.Text>
+                                    This is a wider card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.
+                                </Card.Text>
+                                <Button variant="dark">
+                                    <Link to="/newvan">Add a van</Link>
+                                </Button>
+                            </Card.ImgOverlay>
+                        </Card>
+                    </Col>
+                </Row>
                 <section className="section ">
                     <h3>why you shoud be a host </h3>
                     <p>
