@@ -44,11 +44,11 @@ const Navigation = () => {
 
 
     }
-    const fireFinalAction = () => {
-        console.log("firing final actions")
-        closeModals()
+    // const fireFinalAction = () => {
+    //     console.log("firing final actions")
+    //     closeModals()
 
-    }
+    // }
 
     return (
         <>

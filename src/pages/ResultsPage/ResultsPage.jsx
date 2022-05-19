@@ -38,6 +38,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
             .getVans(query)
             .then(({ data }) => {
+                console.log("DATA IS", data)
                 setIsFetchingData(false)
                 if (query.skip === 0) {
                     if (data.length === 0) {
@@ -101,6 +102,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         }
     }
     const handleMapBoundsChange = (bounds) => {
+        console.log("i am truying to change bounds")
         setHasMoreVans(true)
         setFilterInfo(bounds)
         loadVans({ ...filterData, ...bounds })

@@ -2,55 +2,21 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { Spinner } from "react-bootstrap"
 import "./InViewportComponent.css"
 
-export default function App({fetchMoreData, isFetchingData, hasMoreVans, noResults}) {
-    const ref1 = useRef(null);
-    const ref2 = useRef(null);
-
-    const isInViewport1 = useIsInViewport(ref1);
-    if(isInViewport1 && !isFetchingData && hasMoreVans) fetchMoreData()
-    if (isInViewport1 && !isFetchingData && !hasMoreVans) console.log("no more results")
-    // console.log('isInViewport1: ', isInViewport1);
-
-    const isInViewport2 = useIsInViewport(ref2);
-    // console.log('isInViewport2: ', isInViewport2);
-
-    return (
-        <div>
-            <div ref={ref1}></div>
-            <div className="spinnerContainer">
-                {hasMoreVans ? <Spinner className="mySpinner" animation="border" size="xl" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner> : (noResults ? "There is no results" : "No more results")
-                }
-                
-            </div>
-           
-
-            <div style={{ height: '10rem' }} />
-
-            <div ref={ref2}></div>
-        </div>
-    );
-}
-
-function useIsInViewport(ref) {
-    const [isIntersecting, setIsIntersecting] = useState(false);
-
-    const observer = useMemo(
-        () =>
-            new IntersectionObserver(([entry]) =>
-                setIsIntersecting(entry.isIntersecting),
-            ),
-        [],
-    );
+const InViewportComponent = (element, rootMargin) => {
+    const [isVisible, setState] = useState(false);
 
     useEffect(() => {
-        observer.observe(ref.current);
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setState(entry.isIntersecting);
+            }, { rootMargin:"5px" }
+        );
 
-        return () => {
-            observer.disconnect();
-        };
-    }, [ref, observer]);
+        element.current && observer.observe(element.current);
 
-    return isIntersecting;
-}
+        return () => observer.unobserve(element.current);
+    }, []);
+
+    return isVisible
+};
+export default InViewportComponent
