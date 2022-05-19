@@ -5,17 +5,14 @@ import VanCard from "../VanCard/VanCard"
 
 const FavoritesVans = ({ favoriteVans }) => {
     const vansList = favoriteVans?.map((van) => {
-        return (
-            <Col key={van._id}>
-                <VanCard {...van} />
-            </Col>
-        )
+        const size = 10
+        return <VanCard {...van} key={van._id} size={'10rem'} />
     })
 
     return (
         <>
             <Container>
-                <Row>
+                <Row >
                     <h3>faorite vans</h3>
 
                     {vansList}
