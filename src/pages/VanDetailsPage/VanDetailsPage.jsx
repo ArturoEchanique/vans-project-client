@@ -1,3 +1,4 @@
+import "./VanDetailsPage.css"
 import { Link, useParams } from "react-router-dom"
 import VanService from "../../services/van.service"
 import { useEffect, useState, useContext } from "react"
@@ -147,22 +148,22 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                     </Button>
                 </Col>
             </Row>
+            <div id="modal">
+                <Modal show={showModal} onHide={closeModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Review</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <ReviewForm fireFinalActions={fireFinalActions} />
+                    </Modal.Body>
+                </Modal>
+                <Row>
+                    {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
+                </Row>
+                <hr />
 
-            <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Review</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <ReviewForm fireFinalActions={fireFinalActions} />
-                </Modal.Body>
-            </Modal>
-            <Row>
-                {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
-            </Row>
-            <hr />
-
-            {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
-
+                {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+            </div >
         </Container >
     )
 

@@ -1,4 +1,11 @@
 import { useState } from "react"
+<<<<<<< HEAD
+import Geocode from "react-geocode";
+import { Link } from "react-router-dom";
+import { Container, Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import DatePicker from "../../components/DatePicker/DatePicker";
+=======
 import { useContext } from "react"
 import Geocode from "react-geocode"
 import { Link } from "react-router-dom"
@@ -6,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import DatePicker from "../../components/DatePicker/DatePicker"
 import { Container, Button, Row, Col, Card } from "react-bootstrap"
+>>>>>>> f890d5da16e1706d9c4d2a1ac755352f9bf93b74
 import "./HomePage.css"
 
 const HomePage = ({ setFilterInfo, filterData }) => {
@@ -49,11 +57,68 @@ const HomePage = ({ setFilterInfo, filterData }) => {
         setFilterInfo({ ...filterData, address: value })
         // const geoForn = { ...geoData, address: value }
         setGeoData({ ...geoData, address: value })
+<<<<<<< HEAD
+
+=======
+>>>>>>> f890d5da16e1706d9c4d2a1ac755352f9bf93b74
     }
 
     const { address, mapInitLocationX, mapInitLocationY } = filterData
 
     return (
+<<<<<<< HEAD
+        <section className="home-background d-flex  align-items-center">
+            <Container>
+                <Row className="mb-3">
+                    <Col className="d-flex justify-content-center">
+                        <h1>VAN ME UP!</h1>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col className="d-flex justify-content-center">
+                        <h3>Choose your Dates</h3>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="d-flex justify-content-center">
+                        <>
+                            <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+                        </>
+                        <>
+                            <Button variant="dark">
+                                <Link to="/results">Search Vans</Link>
+                            </Button>
+                        </>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="d-flex justify-content-center ">
+                        <Link to="/singup" className="nav-link logo-img">
+                            <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
+                            <h3>Sing up</h3>
+                        </Link>
+                    </Col>
+                    <Col className="d-flex justify-content-center">
+                        <Link to="/login" className="nav-link  logo-img">
+                            <img id="logo" src="./../images/login.png" alt="" srcSet="" />
+                            Login
+                        </Link>
+                    </Col>
+
+                </Row>
+                <Row>
+                    <form>
+                        <label>
+                            Search address
+                            <input type="text" value={address} name="country" onChange={handleStreetChange} />
+                        </label>
+                        {/* <input type="submit" value="Submit" /> */}
+                    </form>
+                </Row>
+            </Container>
+        </section>
+
+=======
         <>
             <section className="home-background nav-margin">
                 <Container className="">
@@ -121,6 +186,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                 </Container>
             </section>
         </>
+>>>>>>> f890d5da16e1706d9c4d2a1ac755352f9bf93b74
     )
 }
 
