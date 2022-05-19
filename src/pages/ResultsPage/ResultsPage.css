@@ -1,3 +1,6 @@
-.resultsPage{
- margin-bottom: 0px;
+.filterButton{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin:0 auto;
 }
