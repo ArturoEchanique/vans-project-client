@@ -8,6 +8,7 @@ import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 import vanService from "../../services/van.service"
 import nodemailerService from "../../services/nodemailer.service"
+import userService from "../../services/user.service"
 
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const stripe = useStripe()
@@ -38,11 +39,12 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
         const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
         const newChat = { owners: [user_id, owner_Id], booking: booking.data._id }
+        const ownerEmail = await userService.getOneUser(owner_Id)
         const chat = await chatService.createChat(newChat)
-        let name = "vanmeup"
-        let subject = "new Booking"
-        let message = "you have a new booking on day 12/03"
-        let email = "pablo.andreu.martin@gmail.com"
+        let name = user.username
+        let subject = "You Have a New Booking"
+        let message = `you have a new booking on day ${startDate.toLocaleString()}`
+        let email = ownerEmail.data.email
         const sendMail = await nodemailerService.sendMail({
             email, subject, message, name
         })

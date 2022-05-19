@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Geocode from "react-geocode";
 import { Link } from "react-router-dom";
-import { Container, Button, Row, Col} from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import "./HomePage.css"
@@ -51,13 +51,12 @@ const HomePage = ({ setFilterInfo, filterData }) => {
         setFilterInfo({ ...filterData, address: value })
         // const geoForn = { ...geoData, address: value }
         setGeoData({ ...geoData, address: value })
-    
+
     }
 
     const { address, mapInitLocationX, mapInitLocationY } = filterData;
 
     return (
-<<<<<<< HEAD
         <section className="home-background d-flex  align-items-center">
             <Container>
                 <Row className="mb-3">
@@ -95,25 +94,20 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                             Login
                         </Link>
                     </Col>
+
+                </Row>
+                <Row>
+                    <form>
+                        <label>
+                            Search address
+                            <input type="text" value={address} name="country" onChange={handleStreetChange} />
+                        </label>
+                        {/* <input type="submit" value="Submit" /> */}
+                    </form>
                 </Row>
             </Container>
         </section>
-=======
-        <Container>
-            <hr />
-            <form>
-                <label>
-                    Search address
-                    <input type="text" value={address} name="country" onChange={handleStreetChange} />
-                </label>
-                {/* <input type="submit" value="Submit" /> */}
-            </form>
-            <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
-            <Button variant="dark">
-                <Link onClick={searchVansClicked} to="/results">Search Vans</Link>
-            </Button>
-        </Container>
->>>>>>> 01ced53ee69993b89c45d5d530f568d2f57fdb69
+
     )
 }
 
