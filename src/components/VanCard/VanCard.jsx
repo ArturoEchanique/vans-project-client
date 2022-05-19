@@ -53,6 +53,39 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                 </Col>
             </Row>
             <p className="filterRow">{description}</p>
+            <Row className="justify-content-center filterRowSmall">
+                <Col>
+                    <Link to={`/${_id}/details`}>
+                        <Button variant="outline-dark" size="lg">
+                            see details
+                        </Button>
+                    </Link>
+                </Col>
+                {/* <Col>
+                    <Button onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                        favorite
+                    </Button>
+                </Col>
+
+
+                {!hideDeleteButton && (user?.role == "ADMIN" || owner == user?._id) && (
+                    <Col>
+                        <Button variant="dark" onClick={handleDelete}>
+                            delete
+                        </Button>
+                    </Col>
+
+                )}
+                {!hideDeleteButton && (user?.role == "ADMIN" || owner == user?._id) && (
+                    <Col>
+                        <Button variant="dark">
+                            <Link to="/:van_id/edit">edit van</Link>
+                        </Button>
+                    </Col>
+
+                )} */}
+            </Row>
+
         </Container>
 
 

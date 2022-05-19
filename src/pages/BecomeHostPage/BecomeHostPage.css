@@ -1,14 +1,54 @@
-/* body {
-    padding: 0;
-    margin: 0;
-    background-color: #ffffff;
-    background-repeat: no-repeat;
-} */
-
 #section1 {
-    margin-top: 20px;
+    margin-top: 60px;
+}
+
+#sectiontext {
+    font-size: larger;
+    color: black;
+    margin-top: 12%;
+    margin-left: 10%;
+
+}
+
+#sectiont1 img {
+    max-height: 500px;
+}
+
+#sectiontext button {
+    margin-top: 1%;
+}
+
+#section2 {
+    margin-top: 4%;
+}
+
+#section2 h3 {
+    margin: 3%;
+    text-align: center;
+}
+
+#card1 {
+    margin: 4%;
+}
+
+#card2 {
+    margin: 4%;
+}
+
+#card3 {
+    margin-top: 10%;
+}
+
+#card4 {
+    margin-top: 10%;
+}
+
+#section3 {
+    margin-top: 3%;
 }
 
 
-
-.card-img-overlay {}
+.modal-content {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.948);
+}
