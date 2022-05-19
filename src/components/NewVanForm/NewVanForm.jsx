@@ -40,16 +40,17 @@ const NewVanForm = () => {
 
         Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
 
-        Geocode.fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`).then(
-            (response) => {
-                const { lat, lng } = response.results[0].geometry.location
+        Geocode
+            .fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`)
+            .then((response) => {
+                const { lat, lng } = response.results[0].geometry.location;
 
                 setFormData({ ...formData, latitude: lat, longitude: lng })
             },
-            (error) => {
-                console.error(error)
-            }
-        )
+                (error) => {
+                    console.error(error)
+                }
+            )
     }
 
     const navigate = useNavigate()

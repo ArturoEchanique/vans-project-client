@@ -9,27 +9,36 @@ class VanService {
             if (token) {
                 config.headers = { Authorization: `Bearer ${token}` }
             }
-
             return config
         })
     }
-
     createVan = (van) => {
         return this.api.post("/create", van)
     }
+
+    createVan = (van) => {
+        return this.api.post("/create", van);
+    };
+
+    addReview = (van_id, review_id) => {
+        return this.api.post("/addreview", { van_id, review_id });
+    };
 
     getVans = (filterData) => {
         if (filterData.startDate && typeof filterData.startDate === "object") filterData.startDate = filterData.startDate.getTime()
         if (filterData.endDate && typeof filterData.endDate === "object") filterData.endDate = filterData.endDate.getTime()
         let query = ""
         for (const [key, value] of Object.entries(filterData)) {
-            if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&"
+            if (key == "mapInitLocationX" || key == "mapInitLocationY") continue
+            else {
+                if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&";
+            }
         }
         return this.api.get(`/?${query}`)
     }
 
     getUserVans = (_id) => {
-        return this.api.get(`/get-vans?owner=${_id}`)
+        return this.api.get(`/get-vans?owner=${_id}`);
     }
 
     getOneVan = (id) => {

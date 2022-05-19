@@ -1,5 +1,5 @@
 import "./ResultsPage.css"
-import { Row } from "react-bootstrap"
+import { Button, Row } from "react-bootstrap"
 import { Container } from "react-bootstrap"
 import vanService from "./../../services/van.service"
 import VanCard from "../../components/VanCard/VanCard"
@@ -106,7 +106,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         }, 1000)
     }
 
-    const { name, solarPower, shower, bathroom, startDate, endDate } = filterData
+    const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY } = filterData;
 
     return (
         <div className="resultsPage">
@@ -131,10 +131,27 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     BathRoom
                     <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
                 </label>
+                <label>
+                    Kitchen
+                    <input type="checkbox" checked={kitchen} name="kitchen" onChange={handleFilterChange} />
+                </label>
+                <label>
+                    Sun roof
+                    <input type="checkbox" checked={sunRoof} name="sunRoof" onChange={handleFilterChange} />
+                </label>
+                <label>
+                    Heated seats
+                    <input type="checkbox" checked={heatedSeats} name="heatedSeats" onChange={handleFilterChange} />
+                </label>
                 <PriceSlider handlePriceChange={handleFilterPriceChange} />
             </form>
-            <ReactMap favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 19)} />
-            <InfiniteScroll dataLength={vans.length / 4} next={fetchMoreData} hasMore={hasMoreVans} loader={<h4>Loading...</h4>}>
+            <ReactMap initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 30)} />
+            <InfiniteScroll
+                dataLength={vans.length / 4}
+                next={fetchMoreData}
+                hasMore={hasMoreVans}
+                loader={<h4>Loading...</h4>}
+            >
                 <Container>
                     <Row>
                         {vans.map((van, idx) => {

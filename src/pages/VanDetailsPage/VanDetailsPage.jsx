@@ -3,10 +3,11 @@ import VanService from "../../services/van.service"
 import { useEffect, useState, useContext } from "react"
 import userService from "./../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import { Button, Row, Col, Container } from "react-bootstrap"
+import { Button, Row, Col, Container, Modal } from "react-bootstrap"
 import BookingsService from "../../services/bookings.service"
 import { MessageContext } from "../../context/message.context"
 import DatePicker from "../../components/DatePicker/DatePicker"
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
 
@@ -92,6 +93,17 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         setBookingInfo(bookingInfo)
     }
 
+
+    const [showModal, setShowModal] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const fireFinalActions = () => {
+        closeModal()
+        getVan()
+    }
+
     const reserveButtonClicked = (e) => {
         if (!bookingInfo.startDate) {
             showMessage("Error", "Insert an start date to reserve")
@@ -135,9 +147,25 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                     </Button>
                 </Col>
             </Row>
-            <Row>{<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}</Row>
-        </Container>
+
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Review</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <ReviewForm fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal>
+            <Row>
+                {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
+            </Row>
+            <hr />
+
+            {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+
+        </Container >
     )
+
 }
 
 export default VanDetails

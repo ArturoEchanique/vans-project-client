@@ -1,14 +1,16 @@
-.firstSection{
-    
-    background-image: url("../../../public/images/fondoBecome.jpg");
-   
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905952/vans_project/photo-1576793048000-494aaa93d160_nedgvh.jpg");
+    background-color: #FFCFA5;
+    background-repeat: no-repeat;
+    background-size: 1800px 800px;
 }
-.section{
-    height: 500px;
 
+#section1 {
+    margin-top: 20px;
 }
-.alignCenter{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+
+
+.card-img-overlay {}

@@ -27,6 +27,9 @@ const AppRoutes = () => {
         skip: 0,
         mapXBounds: [40, 41],
         mapYBounds: [-4, -3],
+        address: "Valencia",
+        mapInitLocationX: 40.39103445694156,
+        mapInitLocationY: -3.7007285931754588,
         priceStart: 0,
         priceEnd: 400,
         startDate: today,
@@ -35,6 +38,9 @@ const AppRoutes = () => {
         solarPower: false,
         shower: false,
         bathroom: false,
+        kitchen: false,
+        sunRoof: false,
+        heatedSeats: false,
     })
 
     const [bookingData, setBookingData] = useState({
@@ -54,6 +60,7 @@ const AppRoutes = () => {
 
     return (
         <Routes>
+
             <Route path="/map" element={<Map />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -61,7 +68,6 @@ const AppRoutes = () => {
             <Route path="/:van_id/edit" element={<EditVanPage />} />
             <Route path="/become-host" element={<BecomeHostPage />} />
             <Route path="/privacyterms" element={<PrivacyTermsPage />} />
-            <Route path="/" element={<HomePage setFilterInfo={setFilterInfo} />} />
             <Route path="/admin" element={<PrivateRoutes requiredRoles={["ADMIN"]} />}>
                 <Route path="" element={<AdminPage />} />
                 <Route path="/admin/edit-user/:_id" element={<AdminEditUserPage />} />
@@ -79,10 +85,10 @@ const AppRoutes = () => {
             <Route path="/paydetails" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<PaymentDetailsPage {...bookingData} />} />
             </Route>
-
             <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<MessagesPage />} />
             </Route>
+            <Route path="/" element={<HomePage filterData={filterData} setFilterInfo={setFilterInfo} />} />
             <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} bookingInfo={bookingData} />} />
         </Routes>
