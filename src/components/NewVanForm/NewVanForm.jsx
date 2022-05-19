@@ -1,3 +1,4 @@
+import "./newVanForm.css"
 import React from "react"
 import Geocode from "react-geocode"
 import { useContext, useState } from "react"
@@ -25,7 +26,11 @@ const NewVanForm = () => {
         shower: false,
         bathroom: false,
         maxPassengers: 0,
+        kitchen: false,
+        heatedSeats: false,
+        sunRoof: false
     })
+
 
     const [geoData, setGeoData] = useState({
         street: "",
@@ -99,15 +104,14 @@ const NewVanForm = () => {
         }
     }
     const { street, country, city } = geoData
-    const { owner, name, description, dayPrice, longitude, latitude, solarPower, shower, bathroom, maxPassengers } = formData
+    const { owner, name, description, dayPrice, longitude, latitude, solarPower, shower, bathroom, maxPassengers,
+        kitchen, heatedSeats, sunRoof } = formData
 
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <h1>Add a new Vehicle</h1>
-                    <hr />
-                    <Form onSubmit={handleSubmit}>
+                    <Form id="modal" onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="owner">
                             <Form.Control type="hidden" onChange={handleInputChange} name="owner" value={owner} />
                         </Form.Group>
@@ -158,7 +162,7 @@ const NewVanForm = () => {
                             <Form.Label>Maximun Passengers</Form.Label>
                             <Form.Control type="number" min={0} onChange={handleInputChange} name="maxPassengers" value={maxPassengers} />
                         </Form.Group>
-
+                        {/* // */}
                         <Form.Group className="mb-3" controlId="solarPower">
                             <input type="checkbox" onChange={handleInputChange} name="solarPower" checked={solarPower} />
                             <Form.Label>Solar Power</Form.Label>
@@ -172,6 +176,21 @@ const NewVanForm = () => {
                         <Form.Group className="mb-3" controlId="bathroom">
                             <input type="checkbox" onChange={handleInputChange} name="bathroom" checked={bathroom} />
                             <Form.Label>Bathroom</Form.Label>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="kitchen">
+                            <input type="checkbox" onChange={handleInputChange} name="kitchen" checked={kitchen} />
+                            <Form.Label>Kitchen</Form.Label>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="heatedSeats">
+                            <input type="checkbox" onChange={handleInputChange} name="heatedSeats" checked={heatedSeats} />
+                            <Form.Label>Heated seats</Form.Label>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="sunRoof">
+                            <input type="checkbox" onChange={handleInputChange} name="sunRoof" checked={sunRoof} />
+                            <Form.Label>Sunroof</Form.Label>
                         </Form.Group>
 
                         <Button variant="dark" type="submit" disabled={loadingImage}>
