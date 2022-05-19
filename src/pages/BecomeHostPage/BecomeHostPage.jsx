@@ -72,8 +72,8 @@ const BecomeHostPage = () => {
                 <Container fluid >
                     <Row  >
                         <Col lg={{ span: 12 }}  >
-                            <Card className="bg-dark text-white">
-                                <Card.Img src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905872/vans_project/photo-1629906771435-d0f397a1c910_gu6qby.jpg" alt="Card image" />
+                            <div >
+                                <img src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905872/vans_project/photo-1629906771435-d0f397a1c910_gu6qby.jpg" alt="Card image" />
                                 <Card.ImgOverlay id="sectiontext">
                                     <Card.Title>
                                         <h1>BECOME A HOST </h1>
@@ -87,14 +87,16 @@ const BecomeHostPage = () => {
                                     </Button>
 
                                 </Card.ImgOverlay>
-                            </Card>
+                            </div>
                             <Modal show={showModal} onHide={closeModal}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Add a New Van</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <NewVanForm fireFinalActions={fireFinalActions} />
-                                </Modal.Body>
+                                <div className="modal1">
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Add a New Van</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <NewVanForm fireFinalActions={fireFinalActions} />
+                                    </Modal.Body>
+                                </div>
                             </Modal>
                         </Col>
                         {/* <Col lg={{ span: 12 }}  >
