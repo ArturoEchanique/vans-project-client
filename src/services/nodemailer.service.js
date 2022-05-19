@@ -14,7 +14,7 @@ class NodemailerService {
         })
     }
     sendMail = (mailInfo) => {
-        return this.api.get("/bookingmail", mailInfo)
+        return this.api.post("/bookingmail", mailInfo)
     }
 }
 
