@@ -1,10 +1,10 @@
 import { useState } from "react"
 import Geocode from "react-geocode";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container, Button, Row, Col} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
+import "./HomePage.css"
 
 const HomePage = ({ setFilterInfo, filterData }) => {
 
@@ -57,6 +57,48 @@ const HomePage = ({ setFilterInfo, filterData }) => {
     const { address, mapInitLocationX, mapInitLocationY } = filterData;
 
     return (
+<<<<<<< HEAD
+        <section className="home-background d-flex  align-items-center">
+            <Container>
+                <Row className="mb-3">
+                    <Col className="d-flex justify-content-center">
+                        <h1>VAN ME UP!</h1>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col className="d-flex justify-content-center">
+                        <h3>Choose your Dates</h3>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="d-flex justify-content-center">
+                        <>
+                            <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+                        </>
+                        <>
+                            <Button variant="dark">
+                                <Link to="/results">Search Vans</Link>
+                            </Button>
+                        </>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="d-flex justify-content-center ">
+                        <Link to="/singup" className="nav-link logo-img">
+                            <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
+                            <h3>Sing up</h3>
+                        </Link>
+                    </Col>
+                    <Col className="d-flex justify-content-center">
+                        <Link to="/login" className="nav-link  logo-img">
+                            <img id="logo" src="./../images/login.png" alt="" srcSet="" />
+                            Login
+                        </Link>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+=======
         <Container>
             <hr />
             <form>
@@ -71,6 +113,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                 <Link onClick={searchVansClicked} to="/results">Search Vans</Link>
             </Button>
         </Container>
+>>>>>>> 01ced53ee69993b89c45d5d530f568d2f57fdb69
     )
 }
 

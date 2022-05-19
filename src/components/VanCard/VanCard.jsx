@@ -42,6 +42,11 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                         delete
                     </Button>
                 )}
+                {!hideDeleteButton && (user?.role == "ADMIN" || owner == user?._id) && (
+                    <Button variant="dark">
+                        <Link to="/:van_id/edit">edit vant</Link>
+                    </Button>
+                )}
             </Card.Body>
         </Card>
     )

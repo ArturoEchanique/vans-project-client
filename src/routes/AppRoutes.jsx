@@ -19,6 +19,7 @@ import AdminEditUserPage from "../pages/AdminEditUserPage/AdminEditUserPage"
 import BookingConfirmPage from "../pages/BookingConfirmPage/BookingConfirmPage"
 import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage"
 
+
 const today = new Date()
 
 const AppRoutes = () => {

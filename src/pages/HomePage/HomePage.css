@@ -1,0 +1,37 @@
+/* 
+.beach-1-hex { color: #8EA39C; }
+.beach-2-hex { color: #C1DBD0; }
+.beach-3-hex { color: #F3EDDE; }
+.beach-4-hex { color: #FFCFA5; }
+.beach-5-hex { color: #FF9C82; } */
+
+.home-background{
+   height: 100vh;
+    background-image: url(./../../../public/images/fondo-home.png);
+   background-size: 100%;    
+}
+
+
+.btn-dark {
+   
+    background-color: #FF9C82; ;
+        border-color: #FFCFA5; 
+        opacity: 0.9;
+}
+   
+.btn-dark a{
+    text-decoration: none;
+    color: #F3EDDE;
+    
+}
+.btn-dark:hover {
+    color: #F3EDDE;
+    background-color:  #da7359;
+    border-color: #efac71;
+    opacity: 1   ;
+
+}
+/* {
+    height: 80px;
+    width: 80px;
+} */
