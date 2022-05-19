@@ -12,7 +12,7 @@ import handleViewport from "react-in-viewport";
 
 
 
-const VanCardList = ({ vans, fetchMoreData, hasMoreVans, isFetchingData, }) => {
+const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingData, }) => {
     // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     // const [deleteState, setDeleteState] = useState(false)
     // const [hasMoreVans, setHasMoreVans] = useState(true)
@@ -47,7 +47,7 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, isFetchingData, }) => {
                                     <VanCard key={idx} {...van} isFavorite={false} />
                                 </>)
                         })}
-                        <InViewportComponent hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent>
+                        <InViewportComponent noResults={noResults} hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent>
                     </Row>
                 </Container>
             </div>

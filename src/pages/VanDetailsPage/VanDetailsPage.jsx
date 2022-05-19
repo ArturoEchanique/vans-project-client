@@ -8,9 +8,10 @@ import { Button, Row, Col, Container, Modal } from "react-bootstrap"
 import BookingsService from "../../services/bookings.service"
 import { MessageContext } from "../../context/message.context"
 import DatePicker from "../../components/DatePicker/DatePicker"
-import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import ReviewForm from "../../components/ReviewForm/ReviewForm"
 import ReviewsSection from "../../components/ReviewsSection/ReviewsSection"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
+import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -36,6 +37,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         VanService.getOneVan(van_id)
             .then(({ data }) => {
                 setVanDetails(data)
+                console.log("van details are", data.location.coordinates)
             })
             .catch((err) => console.log(err))
     }
@@ -119,52 +121,68 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     }
 
     return (
-        <Container>
-            <Row>
-                <VanDetailsCard {...vanDetails} />
-            </Row>
-            <Row>
-                <Col>
-                    <h3>Aqui van nuestras reservas </h3>
-                </Col>
-                <Col>
-                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
-                    {vanDetails.owner !== user?._id ? (
-                        <Link onClick={reserveButtonClicked} to={"/booking"}>
-                            <Button variant="outline-dark" size="lg">
-                                Reserve
-                            </Button>
-                        </Link>
-                    ) : (
-                        <Link to={`/${vanDetails._id}/edit`}>
-                            <Button variant="outline-dark" size="lg">
-                                Edit my van
-                            </Button>
-                        </Link>
-                    )}
+        <div className="detailsPage">
+         <Container fluid>
+                <Row >
+                    <Col style={{ paddingLeft: "0", paddingRight: "0", flex: "1", height: "100vh", overflowY: "scroll" }}>
+                        <img className="vanImage" src={vanDetails.imageUrl}></img>
+                        <Container fluid>
+                            
+                            <Row>
+                                <VanDetailsCard {...vanDetails} />
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <h3>Aqui van nuestras reservas </h3>
+                                </Col>
+                                <Col>
+                                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                                    {vanDetails.owner !== user?._id ? (
+                                        <Link onClick={reserveButtonClicked} to={"/booking"}>
+                                            <Button variant="outline-dark" size="lg">
+                                                Reserve
+                                            </Button>
+                                        </Link>
+                                    ) : (
+                                        <Link to={`/${vanDetails._id}/edit`}>
+                                            <Button variant="outline-dark" size="lg">
+                                                Edit my van
+                                            </Button>
+                                        </Link>
+                                    )}
 
-                    <Button onClick={isFavorite ? () => removeFavoriteVan() : () => addFavoriteVan()} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
-                        favorite
-                    </Button>
-                </Col>
-            </Row>
-            <div id="modal">
-                <Modal show={showModal} onHide={closeModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Review</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <ReviewForm fireFinalActions={fireFinalActions} />
-                    </Modal.Body>
-                </Modal>
-                <Row>
-                    {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
+                                    <Button onClick={isFavorite ? () => removeFavoriteVan() : () => addFavoriteVan()} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
+                                        favorite
+                                    </Button>
+                                </Col>
+                            </Row>
+                            <div id="modal">
+                                <Modal show={showModal} onHide={closeModal}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Add Review</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <ReviewForm fireFinalActions={fireFinalActions} />
+                                    </Modal.Body>
+                                </Modal>
+                                <Row>
+                                    {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
+                                </Row>
+                                <hr />
+
+                                {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+                            </div >
+                        </Container >
+
+                    </Col>
+                    <Col xs={4} style={{ paddingLeft: "0", paddingRight: "0" }}>
+                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3}  />
+}
+                    </Col>
+                    
                 </Row>
-                <hr />
-
-                {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
-            </div >
-        </Container >
+            </Container>
+        </div>
     )
 
 }
