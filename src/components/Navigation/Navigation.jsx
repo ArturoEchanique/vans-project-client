@@ -32,10 +32,10 @@ const Navigation = () => {
                     <Container fluid>
                         <Navbar.Brand>
                             <Link to="/" className="nav-link">
-                                <img id="logo" src="./../images/1.png" alt="" srcSet="" />
+                                <img className="logo-nav"id="logo" src="./../images/1.png" alt="vanmeup"  />
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                        <Navbar.Toggle clasName="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>

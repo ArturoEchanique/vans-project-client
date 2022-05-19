@@ -1,0 +1,15 @@
+.footer-image img {
+    height: 5rem;
+    width: auto;
+}
+.page-footer {
+    padding: 0px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color:#c1dbd02d ;
+    /* border: 6px solid #c1dbd039; */
+}
+.footer-h6{
+    font-size: 0.6em;
+
+}
