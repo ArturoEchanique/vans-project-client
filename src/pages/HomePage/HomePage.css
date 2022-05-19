@@ -12,7 +12,7 @@
 
 .home-background {
     height: 100vh;
-    background-image: url(./../../../public/images/fondo-home2.jpg);
+    background-image: url(./../../../public/images/fondo-gif.gif);
     background-size: cover;
     background-repeat: no-repeat;
 }
