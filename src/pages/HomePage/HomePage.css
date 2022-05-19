@@ -4,7 +4,7 @@
 .beach-3-hex { color: #F3EDDE; }
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
-h1 {
+.title-h1 h1 {
     font-family: "Josefin Sans", sans-serif;
     color: #f3edde;
     text-shadow: 0.1em -0.06em 0.03em #647f76;
@@ -12,8 +12,8 @@ h1 {
 
 .home-background {
     height: 100vh;
-    background-image: url(./../../../public/images/fondo-home.png);
-    background-size: 100%;
+    background-image: url(./../../../public/images/fondo-home2.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -69,3 +69,7 @@ h1 {
 .imput-location {
     height: 48px;
 }
+.search-button{
+    height: 48px;
+}
+
