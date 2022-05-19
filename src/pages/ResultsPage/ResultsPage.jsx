@@ -17,6 +17,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
     const [hasMoreVans, setHasMoreVans] = useState(true)
+    const [isFetchingData, setIsFetchingData] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
 
@@ -36,6 +37,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
             .getVans(query)
             .then(({ data }) => {
+                setIsFetchingData(false)
                 if (query.skip === 0) setVans(data)
                 else {
                     setVans([...vans, ...data])
@@ -43,7 +45,10 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     else setHasMoreVans(true)
                 }
             })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                setIsFetchingData(false)
+                console.log(err)
+            })
     }
 
     const getFavoriteVans = () => {
@@ -113,9 +118,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const fetchMoreData = () => {
-        setTimeout(() => {
-            loadVans({ ...filterData, skip: vans.length })
-        }, 1000)
+        setIsFetchingData(true)
+        console.log("fetching more data")
+        loadVans({ ...filterData, skip: vans.length })
+        // setTimeout(() => {
+        //     loadVans({ ...filterData, skip: vans.length })
+        // }, 1000)
     }
 
     // const testClick = () => {
@@ -124,11 +132,27 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
 
     return (
+
         <div className="resultsPage">
+            {/* <InfiniteScroll
+                dataLength={10}
+                next={fetchMoreData}
+                hasMore={hasMoreVans}
+                loader={<h4>Loading...</h4>}
+            >
+                          <Container >
+                        <Row >
+                            {vans.map((van, idx) => {
+                                return <VanCard key={idx} {...van} isFavorite={false} />
+                            })}
+                        </Row>
+                    </Container>
+
+            </InfiniteScroll> */}
             <Container fluid>
                 <Row >
                     <Col >
-                        <VanCardList vans={vans}> </VanCardList>
+                        <VanCardList fetchMoreData={fetchMoreData} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
 
 
                     </Col>

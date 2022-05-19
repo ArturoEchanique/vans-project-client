@@ -1,0 +1,10 @@
+.mySpinner{
+    /* width: 100px;
+    height: 100px; */
+    /* border: 1em; */
+}
+
+.spinnerContainer{
+    display: flex;
+    justify-content: center;
+}
