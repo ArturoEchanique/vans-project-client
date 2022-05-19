@@ -38,7 +38,7 @@ const HomePage = ({ setFilterInfo }) => {
                     <Col className="d-flex justify-content-center ">
                         <Link to="/singup" className="nav-link logo-img">
                             <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
-                            Sing up
+                            <h3>Sing up</h3>
                         </Link>
                     </Col>
                     <Col className="d-flex justify-content-center">
