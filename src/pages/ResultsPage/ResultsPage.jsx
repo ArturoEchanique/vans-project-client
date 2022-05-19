@@ -128,21 +128,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             <Container fluid>
                 <Row >
                     <Col >
-                        <InfiniteScroll
-                            dataLength={vans.length / 4}
-                            next={fetchMoreData}
-                            hasMore={hasMoreVans}
-                            loader={<h4>Loading...</h4>}
-                        >
-                            <VanCardList vans={vans}> </VanCardList>
-                            {/* <Container>
-                                <Row>
-                                    {vans.map((van, idx) => {
-                                        return <VanCard key={idx} {...van} isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} />
-                                    })}
-                                </Row>
-                            </Container> */}
-                        </InfiniteScroll>
+                        <VanCardList vans={vans}> </VanCardList>
 
 
                     </Col>
@@ -268,46 +254,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Col>
                 </Row>
             </Container>
-            <div className="resultsPage">
-                {/* <form onSubmit={handleSubmit}>
-                    <label>
-                        Search
-                        <input type="text" value={name} name="name" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        Solar Power
-                        <input type="checkbox" checked={solarPower} name="solarPower" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        Shower
-                        <input type="checkbox" checked={shower} name="shower" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        BathRoom
-                        <input type="checkbox" checked={bathroom} name="bathroom" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        Kitchen
-                        <input type="checkbox" checked={kitchen} name="kitchen" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        Sun roof
-                        <input type="checkbox" checked={sunRoof} name="sunRoof" onChange={handleFilterChange} />
-                    </label>
-                    <label>
-                        Heated seats
-                        <input type="checkbox" checked={heatedSeats} name="heatedSeats" onChange={handleFilterChange} />
-                    </label>
-
-                </form> */}
-                {/* <ButtonGroup>
-
-                        <Button key={idx} onClick={() => setSelectedChat(idx)}
-                            active={selectedChat === idx} >
-                            {getChatPartner(chat).username}
-                        </Button>
-            </ButtonGroup> */}
-            </div>
         </div>
     )
 }

@@ -6,7 +6,7 @@ import MapMarker from "../MapMarker/MapMarker";
 
 const containerStyle = {
     width: '900px',
-    height: '100%'
+    height: '100vh'
 };
 
 function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
