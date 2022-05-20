@@ -38,7 +38,7 @@ const ReviewsSection = ({ vanReview, profileIndex }) => {
 
                     </div>
                     <div className="commentLower">
-                        {vanReview.text && <div>{"comment: " + vanReview.text}</div>}
+                        {vanReview.text && <div>{vanReview.text}</div>}
                     </div>
 
 
