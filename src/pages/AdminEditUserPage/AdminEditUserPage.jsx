@@ -30,24 +30,25 @@ const AdminEditUserPage = () => {
     return userDetails === undefined ? (
         <Loader />
     ) : (
-        <Container>
+        <Container className="top-margin">
             <Row>
-                <Col>
+                <Col sm={4} className="background-profile-detalis">
                     <ProfileCard {...userDetails} />
                 </Col>
-            </Row>
-
-            <Row>
-                <UserBookings {...userDetails} />
-            </Row>
-            <Row>
-                <h3>vans</h3>
-
-                <AdminUserVans {...userDetails} />
-            </Row>
-
-            <Row>
-                <OwnerBookings {...userDetails} />
+                <Col className="background-profile-detalis">
+                    <Row>
+                        <UserBookings {...userDetails} />
+                        <hr />
+                    </Row>
+                    <Row>
+                        <h3 className="mt-3 mb-5">User Vans</h3>
+                        <AdminUserVans {...userDetails} />
+                    </Row>
+                    <Row>
+                        <hr />
+                        <OwnerBookings {...userDetails} />
+                    </Row>
+                </Col>
             </Row>
         </Container>
     )

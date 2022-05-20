@@ -14,6 +14,7 @@ import FavoritesVans from "../../components/FavoritesVans/FavoritesVans"
 import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
 
 import "./ProfilePage.css"
+import { Link } from "react-router-dom"
 
 const ProfilePage = () => {
     const { user } = useContext(AuthContext)
@@ -47,16 +48,17 @@ const ProfilePage = () => {
                                 <HostButton />
                                 <DeleteButton />
                             </ButtonGroup>
+                          
                         </div>
                     </Col>
 
                     <Col className="background-profile-detalis">
                         <div className="Profile-details">
-                            <FavoritesVans {...userDetails} />
-                            <UserBookings {...userDetails} />
+                            <FavoritesVans id="favorites-vans" {...userDetails} />
+                            <UserBookings id="user-bookings" {...userDetails} />
                             {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
                                 <>
-                                    <Row>
+                                    <Row className="g-4 mt-5" xs={2}>
                                         <h3 className="favorite">Your Vans</h3>
                                         <hr />
                                         <UserVans />
@@ -64,7 +66,7 @@ const ProfilePage = () => {
                                     <Row>
                                         <OwnerBookings {...userDetails} />
                                     </Row>
-                                    <Row>
+                                    <Row className="mt-5">
                                         <BarChart {...userDetails} />
                                     </Row>
                                 </>
