@@ -8,7 +8,6 @@ import "./Navigation.css"
 import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
 
-
 const Navigation = () => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
 
@@ -28,21 +27,18 @@ const Navigation = () => {
         if (user) getUser()
     }, [user])
 
-    const [showModal, setShowModal] = useState(false)
+    const [showRegisterModal, setShowRegisterModal] = useState(false)
 
-    const [showModals, setShowModals] = useState(false)
+    const [showLoginModal, setShowLoginModal] = useState(false)
 
+    const openRegisterModal = () => setShowRegisterModal(true)
+    const closeRegisterModal = () => setShowRegisterModal(false)
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
-
-    const openModals = () => setShowModals(true)
-    const closeLoginModal = () => setShowModals(false)
+    const openLoginModal = () => setShowLoginModal(true)
+    const closeLoginModal = () => setShowLoginModal(false)
 
     const fireFinalActions = () => {
-        closeModal()
-
-
+        closeRegisterModal()
     }
     // const fireFinalAction = () => {
     //     console.log("firing final actions")
@@ -55,17 +51,17 @@ const Navigation = () => {
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className=" background-navbar fixed-top">
                     <Container fluid>
-                        <Modal show={showModal} onHide={closeModal}>
+                        <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
                                     <Modal.Title>Register</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    <SignupForm closeModal={closeModal} />
+                                    <SignupForm closeModal={closeRegisterModal} />
                                 </Modal.Body>
                             </div>
                         </Modal>
-                        <Modal show={showModals} onHide={closeModal}>
+                        <Modal show={showLoginModal} onHide={closeLoginModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
                                     <Modal.Title>Log in</Modal.Title>
@@ -77,7 +73,7 @@ const Navigation = () => {
                         </Modal>
                         <Navbar.Brand>
                             <Link to="/" className="nav-link">
-                                <img className="logo-nav"id="logo" src="./../images/1.png" alt="vanmeup"  />
+                                <img className="logo-nav" id="logo" src="./../images/1.png" alt="vanmeup" />
                             </Link>
                         </Navbar.Brand>
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -102,17 +98,15 @@ const Navigation = () => {
                                         </>
                                     ) : (
                                         <>
-
-                                            <button id="logo1" onClick={openModal} className="  logo-img" >
+                                            <button id="logo1" onClick={openRegisterModal} className="  logo-img">
                                                 <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
                                                 Sing up
                                             </button>
 
-                                            <button id="logo1" onClick={openModals} className="  logo-img" >
+                                            <button id="logo1" onClick={openLoginModal} className="  logo-img">
                                                 <img id="logo" src="./../images/login.png" alt="" srcSet="" />
                                                 Log in
                                             </button>
-
                                         </>
                                     )}
                                     {user && (
@@ -123,7 +117,7 @@ const Navigation = () => {
                                     )}
                                     <NavLink to="/results" className="nav-link  logo-img">
                                         <img id="logo" src="./../images/results.png" alt="" srcSet="" />
-                                        Results
+                                        Search
                                     </NavLink>
 
                                     {user?.role == "ADMIN" && (

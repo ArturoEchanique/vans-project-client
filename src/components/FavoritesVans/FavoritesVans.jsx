@@ -1,20 +1,22 @@
 import UserBookingsCard from "../UserBookingsCard/UserBookingsCard"
+import "./FavoritesVans.css"
 
 import { Container, Row, Col } from "react-bootstrap"
 import VanCard from "../VanCard/VanCard"
 
 const FavoritesVans = ({ favoriteVans }) => {
+    console.log(favoriteVans)
     const vansList = favoriteVans?.map((van) => {
-        const size = 10
-        return <VanCard {...van} key={van._id} size={'10rem'} />
+        
+        return <VanCard {...van} key={van._id}  />
     })
 
     return (
         <>
             <Container>
                 <Row >
-                    <h3>faorite vans</h3>
-
+                    <h3 className="favorite">Favorite Vans</h3>
+                    
                     {vansList}
                 </Row>
             </Container>

@@ -14,7 +14,8 @@ const UserBookings = ({ userBookings }) => {
         <>
             <Container>
                 <Row>
-                    <h3>your bookings</h3>
+                    <h3 className="favorite">Your Bookings</h3>
+                    <hr />
 
                     {bookingList}
                 </Row>
