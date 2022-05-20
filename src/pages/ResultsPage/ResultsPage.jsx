@@ -10,6 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import DatePicker from "../../components/DatePicker/DatePicker"
 import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
+import { useNavigate } from "react-router-dom"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -21,6 +22,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [isFetchingData, setIsFetchingData] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
+    const navigate = useNavigate()
 
     const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY, priceStart, priceEnd } = filterData;
 
@@ -66,18 +68,27 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         userService
             .getOneUser(user._id)
             .then(({ data }) => {
-                setFavoriteVans(data.favoriteVans)
+                setFavoriteVans(data.favoriteVans.map(favoriteVan => favoriteVan._id))
             })
             .catch((err) => console.log(err))
     }
 
     const addFavoriteVan = (vanId) => {
+        if (!user){
+            navigate("/login")
+        } 
+        console.log("try adding favorite")
         userService
             .addFavoriteVan(user._id, vanId)
-            .then(() => getFavoriteVans())
+            .then(() => {
+                getFavoriteVans()
+            })
             .catch((err) => console.log(err))
     }
     const removeFavoriteVan = (vanId) => {
+        if (!user) {
+            navigate("/login")
+        } 
         userService
             .removeFavoriteVan(user._id, vanId)
             .then(() => getFavoriteVans())
@@ -149,7 +160,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             <Container fluid>
                 <Row >
                     <Col>
-                        <VanCardList fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
+                        <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
 
 
                     </Col>

@@ -23,3 +23,50 @@
     margin: 0 auto;
     align-items: center;
 }
+
+.vanCardIcon {
+    width: 30px;
+    height:30px;
+    padding: 0px;
+    margin: 0px;
+    opacity: 0.85;
+    color: black;
+}
+
+.heartIcon {
+    width: 20px;
+    height: 13px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.vanIconsRow{
+    margin: 10px;
+}
+
+/* .vanCardIcon div{
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+} */
+
+/* .parent {
+    position: relative;
+    top: 0;
+    left: 0;
+} */
+
+/* .image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+} */
+
+/* .image2 {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+} */
