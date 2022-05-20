@@ -15,7 +15,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
                             <li className="list-details">{bookedVan.dayPrice}</li>
                             <li className="list-details">{startDate.toLocaleString()}</li>
                             <li className="list-details">{endDate.toLocaleString()}</li>
-                            <li className="list-details">{price}</li>
+                            <li className="list-details">{price}€</li>
                         </ul>
                     </Card.Text>
                 </Card.Body>
