@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import UserCard from "../UserCard/UserCard"
 import userService from "../../services/user.service"
+import "./UsersAdmin.css"
 
 const UsersAdmin = () => {
     const [users, setUsers] = useState([])
@@ -23,7 +24,7 @@ const UsersAdmin = () => {
 
     const usersList = users.map((user) => {
         return (
-            <Card style={{ width: "15rem" }} key={user._id}>
+            <Card className="m-1 user-card-border" style={{ width: "15rem" }} key={user._id}>
                 <UserCard setReload={setReload} {...user} />
             </Card>
         )
