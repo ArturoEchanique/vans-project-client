@@ -219,10 +219,10 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <Row>
                                     <div className="reviewSectionTitle"><h2>{"★ 4,95 - 60 reviews"}</h2></div>
 
-                                    {vanDetails.reviews && vanDetails.reviews.map(review => {
+                                    {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
                                         return (
                                             <Col xs={6}>
-                                                <ReviewComment vanReview={review}></ReviewComment>
+                                                <ReviewComment profileIndex={idx} vanReview={review}></ReviewComment>
                                             </Col>
                                         )
 

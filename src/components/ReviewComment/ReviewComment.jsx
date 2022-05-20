@@ -4,29 +4,29 @@ import "./ReviewComment.css"
 import ProfileImage from "../../services/profileImage.service"
 import { useEffect, useState, useContext } from "react"
 
-const ReviewsSection = ({ vanReview }) => {
+const ReviewsSection = ({ vanReview, profileIndex }) => {
 
-    const [profileImg, setProfileImg] = useState("")
+    // const [profileImg, setProfileImg] = useState("")
 
-    useEffect(() => {
-        getRandomImage()
-    }, [])
+    // useEffect(() => {
+    //     getRandomImage()
+    // }, [])
 
-    const getRandomImage = () => {
-        ProfileImage.getRandomImage()
-            .then(({ data }) => {
-                console.log("data is profile", data.results[0].picture.thumbnail)
-                setProfileImg(data.results[0].picture.thumbnail)
-            })
-            .catch((err) => console.log(err))
-    }
+    // const getRandomImage = () => {
+    //     ProfileImage.getRandomImage()
+    //         .then(({ data }) => {
+    //             console.log("data is profile", data.results[0].picture.thumbnail)
+    //             setProfileImg(data.results[0].picture.thumbnail)
+    //         })
+    //         .catch((err) => console.log(err))
+    // }
     return (
         <div className="reviewComment">
             {vanReview &&
                 <>
                     <div className="commentUpper">
                         <div className="upperLeft">
-                            <img className="profileImage" src={profileImg} />
+                            <img className="profileImage" src={`../../images/profileImages/${profileIndex % 10}.jpeg`} />
                         </div>
                         <div className="upperRight">
 
