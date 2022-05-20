@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { NavLink, Link } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import { Navbar, Container, Nav, Offcanvas, Button, NavDropdown, Form, FormControl, Modal } from "react-bootstrap"
+import { Navbar, Container, Nav, Offcanvas, Row, Button, NavDropdown, Form, FormControl, Modal } from "react-bootstrap"
 import "./Navigation.css"
 import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
@@ -84,49 +84,56 @@ const Navigation = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <NavLink to="/" className="nav-link  logo-img">
-                                        <img id="logo" src="./../images/home.png" alt="" srcSet="" />
-                                        Home
-                                    </NavLink>
-                                    {isLoggedIn ? (
-                                        <>
-                                            <div className="nav-link  logo-img" onClick={logOutUser}>
-                                                <img id="logo" src="./../images/logout.png" alt="" srcSet="" />
-                                                Log out
+                                <Row>
+                                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                                        <NavLink to="/" className="nav-link  logo-img">
+                                            <img id="logo" src="./../images/home.png" alt="" srcSet="" />
+                                            Home
+                                        </NavLink>
+                                        {isLoggedIn ? (
+                                            <>
+                                                <div className="nav-link  logo-img" onClick={logOutUser}>
+                                                    <img id="logo" src="./../images/logout.png" alt="" srcSet="" />
+                                                    Log out
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <div id="navi">
+                                                <button id="logo1" onClick={openRegisterModal} className=" nav-link  logo-img active">
+                                                    <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
+                                                    Sing up
+                                                </button>
+
+                                                <button id="logo1" onClick={openLoginModal} className="nav-link  logo-img active">
+                                                    <img id="logo" src="./../images/login.png" alt="" srcSet="" />
+                                                    Log in
+                                                </button>
                                             </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <button id="logo1" onClick={openRegisterModal} className="  logo-img">
-                                                <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
-                                                Sing up
-                                            </button>
 
-                                            <button id="logo1" onClick={openLoginModal} className="  logo-img">
-                                                <img id="logo" src="./../images/login.png" alt="" srcSet="" />
-                                                Log in
-                                            </button>
-                                        </>
-                                    )}
-                                    {user && (
-                                        <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
-                                            <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
-                                            Hello,{user.username}
+                                        )}
+                                        {user && (
+                                            <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
+                                                <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
+                                                Hello,{user.username}
+                                            </NavLink>
+                                        )}
+                                        <NavLink to="/results" className="nav-link  logo-img">
+                                            <img id="logo" src="./../images/results.png" alt="" srcSet="" />
+                                            Search
                                         </NavLink>
-                                    )}
-                                    <NavLink to="/results" className="nav-link  logo-img">
-                                        <img id="logo" src="./../images/results.png" alt="" srcSet="" />
-                                        Search
-                                    </NavLink>
+                                        <NavLink to="/become-host" className="nav-link  logo-img">
+                                            <img id="logo" src="./../images/host.png" alt="" srcSet="" />
+                                            Become Host
+                                        </NavLink>
 
-                                    {user?.role == "ADMIN" && (
-                                        <NavLink to="/admin" className="nav-link  logo-img">
-                                            <img id="logo" src="./../images/admin.png" alt="" srcSet="" />
-                                            Admin
-                                        </NavLink>
-                                    )}
-                                </Nav>
+                                        {user?.role == "ADMIN" && (
+                                            <NavLink to="/admin" className="nav-link  logo-img">
+                                                <img id="logo" src="./../images/admin.png" alt="" srcSet="" />
+                                                Admin
+                                            </NavLink>
+                                        )}
+                                    </Nav>
+                                </Row>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>
