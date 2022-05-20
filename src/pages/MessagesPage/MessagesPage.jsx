@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from "react";
 import { Button, ButtonGroup, Row, Col, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import DatePicker from "../../components/DatePicker/DatePicker";
-import ReviewsSection from "../../components/ReviewsSection/ReviewsSection";
 import userService from "./../../services/user.service";
 import { AuthContext } from "../../context/auth.context"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard";

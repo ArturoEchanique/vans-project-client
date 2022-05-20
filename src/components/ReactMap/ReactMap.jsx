@@ -3,11 +3,42 @@ import { useState, useEffect } from "react";
 import { Button, Row } from "react-bootstrap"
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import MapMarker from "../MapMarker/MapMarker";
+import "./ReactMap.css"
 
 const containerStyle = {
     width: '900px',
     height: '100vh'
 };
+
+// const exampleMapStyles = [
+//     {
+//         featureType: "poi",
+//         elementType: "geometry",
+//         stylers: [
+//             {
+//                 color: "#eeeeee",
+//             },
+//         ],
+//     },
+//     {
+//         featureType: "poi",
+//         elementType: "labels.text",
+//         stylers: [
+//             {
+//                 visibility: "off",
+//             },
+//         ],
+//     },
+//     {
+//         featureType: "water",
+//         elementType: "labels.text.fill",
+//         stylers: [
+//             {
+//                 color: "#9e9e9e",
+//             },
+//         ],
+//     },
+// ];
 
 function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
@@ -97,7 +128,9 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
                 mapContainerStyle={containerStyle}
                 center={center}
                 zoom={zoom}
-
+                // options={{
+                //     styles: exampleMapStyles,
+                // }}
                 onLoad={onLoad}
                 onZoomChanged={map && (() => mapBoundsChange(map))}
                 onDragEnd={map && (() => mapBoundsChange(map))}

@@ -11,7 +11,6 @@ const VanDetailsCard = ({ imageUrl, dayPrice, name, description }) => {
     return (
         <>
             <h1>Van name: {name}</h1>
-            <hr />
             <section>{imageList}</section>
             <section>
                 <p>day price:{dayPrice}€</p>
