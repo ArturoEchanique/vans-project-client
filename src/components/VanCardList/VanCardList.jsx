@@ -5,10 +5,7 @@ import vanService from "../../services/van.service"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import VanCard from "../../components/VanCard/VanCard"
-<<<<<<< HEAD
-=======
 import InViewportComponent from "../InViewportComponent/InViewportComponent"
->>>>>>> a64d245bdb40b46088370d8aec974aa039a26c52
 import "./VanCardList.css"
 import InfiniteScroll from "react-infinite-scroll-component"
 import handleViewport from "react-in-viewport";
@@ -29,18 +26,18 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
 
 
     return (
-        
+
 
         <InfiniteScroll
             dataLength={10}
             hasMore={hasMoreVans}
             loader={<h4>Loading...</h4>}
         >
-            
-            
+
+
             <div className="scroll">
-               
-               
+
+
                 <Container >
                     <Row >
                         {vans.map((van, idx) => {
