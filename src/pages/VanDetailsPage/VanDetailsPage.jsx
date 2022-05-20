@@ -217,7 +217,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                     </Modal.Body>
                                 </Modal>
                                 <Row>
-                                    <div className="reviewSectionTitle"><h2>{"★ 4,95 - 60 reviews"}</h2></div>
+                                    {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
+                                   
 
                                     {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
                                         return (
