@@ -109,6 +109,7 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])
+    console.log("vans are", vans)
 
     // const mapLoaded = () => {
     // }

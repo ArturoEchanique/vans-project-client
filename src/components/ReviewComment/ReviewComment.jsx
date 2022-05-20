@@ -26,7 +26,7 @@ const ReviewsSection = ({ vanReview, profileIndex }) => {
                 <>
                     <div className="commentUpper">
                         <div className="upperLeft">
-                            <img className="profileImage" src={`../../images/profileImages/${profileIndex % 10}.jpeg`} />
+                            <img className="profileImage" src={`../../images/profileImages/${1 +(profileIndex % 18)}.jpeg`} />
                         </div>
                         <div className="upperRight">
 
