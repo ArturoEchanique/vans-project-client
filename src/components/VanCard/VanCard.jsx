@@ -39,22 +39,33 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                 <img className="vanCardImage" src={imageUrl[0]}>
                 </img>
             </Link>
-            <div className="heartIcon">
-                <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
-            </div>
-            <h3 className="vanCardTitle">{name}</h3>
-            <Row fluid className="justify-content-center vanIconsRow">
+
+            
+            <Row className="justify-content-center vanIconsRow">
+                <Col xs={11} className="justify-content-center">
+                    <h3 className="vanCardTitle">{name.length > 26 ? (name.slice(0,26)+"...") : name}</h3>
+                </Col>
+                <Col xs={1} className="justify-content-center">
+                    <div className="heartIcon">
+                        <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
+                    </div>
+                </Col>
+                
+               
+            </Row>
+            <p className="filterRow vanCardDescription">{description.length > 120 ? (description.slice(0, 120) + "...") : description}</p>
+            <Row className="justify-content-left vanIconsRow">
                 {solarPower &&
                     <Col className="justify-content-center">
                         <img className="vanCardIcon" src="./../../images/sunIcon.png"></img>
                     </Col>
                 }
-                {shower&&
+                {shower &&
                     <Col className="justify-content-center">
                         <img className="vanCardIcon" src="./../../images/showerIcon.png"></img>
                     </Col>
                 }
-                {solarRoof&&
+                {solarRoof &&
                     <Col className="justify-content-center" >
                         <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img>
                     </Col>
@@ -64,7 +75,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                         <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img>
                     </Col>
                 }
-                {bathroom&&
+                {bathroom &&
                     <Col className="justify-content-center" >
                         <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img>
                     </Col>
@@ -75,18 +86,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     </Col>
                 }
             </Row>
-            {/* <Row className="justify-content-center filterRowSmall">
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
-                </Col>
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
-                </Col>
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
-                </Col>
-            </Row> */}
-            <p className="filterRow">{description}</p>
+       
             <Row className="justify-content-center filterRowSmall">
 
                 {/* <Col>

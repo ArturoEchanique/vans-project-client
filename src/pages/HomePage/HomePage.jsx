@@ -82,7 +82,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                             </>
                             <>
                                 <Link to="/results">
-                                    <Button className="search-button" variant="dark">Search Vans</Button>
+                                    <Button className="search-button" variant="dark" onClick={searchVansClicked}>Search Vans</Button>
                                 </Link>
                             </>
                         </Col>
