@@ -49,7 +49,7 @@ const ProfilePage = () => {
                             </ButtonGroup>
                         </div>
                     </Col>
-                    
+
                     <Col className="background-profile-detalis">
                         <div className="Profile-details">
                             <FavoritesVans {...userDetails} />
@@ -57,7 +57,8 @@ const ProfilePage = () => {
                             {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
                                 <>
                                     <Row>
-                                        <p>vans</p>
+                                        <h3 className="favorite">Your Vans</h3>
+                                        <hr />
                                         <UserVans />
                                     </Row>
                                     <Row>
@@ -68,9 +69,8 @@ const ProfilePage = () => {
                                     </Row>
                                 </>
                             )}
-                            </div>
-                        </Col>
-                   
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         </section>
