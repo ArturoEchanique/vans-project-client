@@ -5,14 +5,16 @@
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
 .title-h1 h1 {
+    font-size: 5em;
     font-family: "Josefin Sans", sans-serif;
     color: #f3edde;
     text-shadow: 0.1em -0.06em 0.03em #647f76;
+    margin-bottom: 3rem;
 }
 
 .home-background {
     height: 100vh;
-    background-image: url(./../../../public/images/fondo-home2.jpg);
+    background-image: url(./../../../public/images/fondo-gif-min.gif);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -27,6 +29,7 @@
     text-decoration: none;
     color: #ffffff;
 }
+
 .btn-dark:hover {
     color: #ffffff;
     background-color: #da7359;
@@ -39,6 +42,7 @@
     background-color: #ffffff;
     opacity: 0.5;
 }
+
 .background-row {
     border-color: #8ea39c;
     border-radius: 10px;
@@ -59,17 +63,24 @@
     text-align: center;
     height: auto;
 }
+
 .card-style {
     margin: 0 20px;
     background-color: #fefdfaed;
 }
+
 .row-cards {
     margin-top: 25px;
 }
+
 .imput-location {
     height: 48px;
-}
-.search-button{
-    height: 48px;
+    border-color: #dadada;
+    border-style: double;
+    border-width: 1px;
+    padding-left: 20px;
 }
 
+.search-button {
+    height: 48px;
+}

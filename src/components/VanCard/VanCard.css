@@ -1,7 +1,10 @@
-.vanCardImage{
-    border-radius: 20px;
+.vanCardImage {
+    border-radius: 10px;
     width: 100%;
+    height: 220px;
+    object-fit: cover;
     padding: 0px;
+    margin-top: 30px;
 }
 
 .vanCardFeature {
@@ -12,3 +15,75 @@
     margin: 0 auto;
     align-items: center;
 }
+
+.vanCardTitle {
+    display: flex;
+    width: 95%;
+    font-size: 0.1em;
+    height: 70px;
+    justify-content: left;
+    text-align: left;
+    margin-top: 8px;
+    /* margin: 0 auto; */
+    /* align-items: left; */
+}
+
+
+.vanCardIcon {
+    width: 27px;
+    height: 27px;
+    padding: 0px;
+    margin: 0px;
+    opacity: 0.75;
+    color: black;
+}
+
+.vanCardDescription {
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 8px;
+
+}
+
+.heartIcon {
+    height: 45px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: -20px;
+    right: 70px
+}
+
+.vanIconsRow {
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+
+}
+
+/* .vanCardIcon div{
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+} */
+
+/* .parent {
+    position: relative;
+    top: 0;
+    left: 0;
+} */
+
+/* .image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+} */
+
+/* .image2 {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+} */

@@ -4,8 +4,12 @@ import vanService from "../../services/van.service"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import "./VanCard.css"
+import React from "react";
+import Heart from "react-animated-heart";
 
-const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton }) => {
+
+
+const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const [deleteState, setDeleteState] = useState(false)
 
@@ -20,47 +24,71 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
         console.log("holi")
     }
 
-    const kitchen = false
-    const sunRoof = false
-    const heatedSeats = false
-    const priceStart = 0
-    const priceEnd = 0
-
 
     return (
 
         <Container>
-            {/* <Image
-                source={imageUrl[0]}
-                style={{
-                    borderRadius: '50%',
-                    overflow: 'hidden',
-                    borderWidth: 3,
-                    borderColor: 'red',
-                }}
-            /> */}
-            <img className="vanCardImage" src={imageUrl[0]}></img>
-            <h3 className="filterRow">{name}</h3>
-            <Row className="justify-content-center filterRowSmall">
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
+            {/* <div class="parent">
+                <img className="image1" src={imageUrl[0]}>
+                </img>
+                <div className="image2">
+                    <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
+                    </div>
+            </div> */}
+            <Link to={`/${_id}/details`} style={{ textDecoration: 'none', padding: "0px", margin: "0px" }}>
+                <img className="vanCardImage" src={imageUrl[0]}>
+                </img>
+            </Link>
+
+            
+            <Row className="justify-content-center vanIconsRow">
+                <Col xs={11} className="justify-content-center">
+                    <h3 className="vanCardTitle">{name.length > 26 ? (name.slice(0,26)+"...") : name}</h3>
                 </Col>
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
+                <Col xs={1} className="justify-content-center">
+                    <div className="heartIcon">
+                        <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
+                    </div>
                 </Col>
-                <Col>
-                    <Button className="filterButton" variant="light" disabled>Solar power</Button>
-                </Col>
+                
+               
             </Row>
-            <p className="filterRow">{description}</p>
+            <p className="filterRow vanCardDescription">{description.length > 120 ? (description.slice(0, 120) + "...") : description}</p>
+            <Row className="justify-content-left vanIconsRow">
+                {solarPower &&
+                    <Col className="justify-content-center">
+                        <img className="vanCardIcon" src="./../../images/sunIcon.png"></img>
+                    </Col>
+                }
+                {shower &&
+                    <Col className="justify-content-center">
+                        <img className="vanCardIcon" src="./../../images/showerIcon.png"></img>
+                    </Col>
+                }
+                {solarRoof &&
+                    <Col className="justify-content-center" >
+                        <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img>
+                    </Col>
+                }
+                {kitchen &&
+                    <Col className="justify-content-center" >
+                        <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img>
+                    </Col>
+                }
+                {bathroom &&
+                    <Col className="justify-content-center" >
+                        <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img>
+                    </Col>
+                }
+                {heatedSeats &&
+                    <Col className="justify-content-center" >
+                        <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img>
+                    </Col>
+                }
+            </Row>
+       
             <Row className="justify-content-center filterRowSmall">
-                <Col>
-                    <Link to={`/${_id}/details`}>
-                        <Button variant="outline-dark" size="lg">
-                            see details
-                        </Button>
-                    </Link>
-                </Col>
+
                 {/* <Col>
                     <Button onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
                         favorite

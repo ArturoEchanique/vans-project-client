@@ -4,9 +4,10 @@ import UsersAdmin from "../../components/UsersAdmin/UsersAdmin"
 
 const AdminPage = () => {
     return (
-        <Container>
-            <h1>holii</h1>
-            <Row>
+        <Container className="top-margin ">
+            <h3 className="mb-3">All Users</h3>
+            <hr />
+            <Row className="background-profile-detalis">
                 <UsersAdmin />
             </Row>
         </Container>

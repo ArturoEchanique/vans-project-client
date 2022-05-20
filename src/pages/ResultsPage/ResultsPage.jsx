@@ -10,6 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import DatePicker from "../../components/DatePicker/DatePicker"
 import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
+import { useNavigate } from "react-router-dom"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -21,6 +22,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [isFetchingData, setIsFetchingData] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
+    const navigate = useNavigate()
 
     const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY, priceStart, priceEnd } = filterData;
 
@@ -66,18 +68,27 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         userService
             .getOneUser(user._id)
             .then(({ data }) => {
-                setFavoriteVans(data.favoriteVans)
+                setFavoriteVans(data.favoriteVans.map(favoriteVan => favoriteVan._id))
             })
             .catch((err) => console.log(err))
     }
 
     const addFavoriteVan = (vanId) => {
+        if (!user){
+            navigate("/login")
+        } 
+        console.log("try adding favorite")
         userService
             .addFavoriteVan(user._id, vanId)
-            .then(() => getFavoriteVans())
+            .then(() => {
+                getFavoriteVans()
+            })
             .catch((err) => console.log(err))
     }
     const removeFavoriteVan = (vanId) => {
+        if (!user) {
+            navigate("/login")
+        } 
         userService
             .removeFavoriteVan(user._id, vanId)
             .then(() => getFavoriteVans())
@@ -85,9 +96,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const handleFilterChange = (e) => {
-        console.log("changing filter")
         const { name } = e.currentTarget
-        console.log("name is", name)
         if (e.currentTarget.hasOwnProperty("checked")) {
             const { checked } = e.currentTarget
             const formFilterData = { ...filterData, [name]: checked }
@@ -151,7 +160,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             <Container fluid>
                 <Row >
                     <Col>
-                        <VanCardList fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
+                        <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
 
 
                     </Col>
@@ -161,13 +170,13 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Col>
                     <Col >
                         <Container>
-                            <h3 className="filterRow">Name</h3>
+                            <h3 className="filterTitle">Name</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <Form.Control className="textInput" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Features</h3>
+                            <h3 className="filterTitle">Features</h3>
                             <Row className="justify-content-center filterRowSmall">
                                 <Col>
                                     <ToggleButton
@@ -246,7 +255,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     </ToggleButton>
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Price range</h3>
+                            <h3 className="filterTitle">Price range</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <PriceSlider handlePriceChange={handleFilterPriceChange} />
@@ -260,7 +269,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     <Form.Control className="textInputSmall" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                 </Col>
                             </Row>
-                            <h3 className="filterRow">Select dates</h3>
+                            <h3 className="filterTitle">Select dates</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
                                     <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />

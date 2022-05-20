@@ -2,9 +2,84 @@
     overflow: hidden;
     height: 100vh;
 }
+.detailsLeftBlock{
+    padding: 50px 50px;
+}
 
-.vanImage{
+.detailsPage a {
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* .detailsPage .row {
+    text-align: right;
+    display: flex;
+    justify-content: right;
+} */
+
+.detailsRow{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.vanImage {
     width: 100%;
     padding: 0%;
-    height: 400px;
+    height: 550px;
+    object-fit: cover;
+
+}
+
+.detailsPageTitle {
+    padding: 30px;
+}
+
+.detailsButtonWide {
+    display: flex;
+    justify-content: center;
+    width: 285px;
+    height: 45px;
+    align-items: center;
+}
+
+.vanDetailsIconsRow {
+    margin: 30px 0px 70px 0px;
+    text-align: center;
+
+}
+
+.detailsHeartIcon {
+    height: 45px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: 5px;
+    right: 50px
+}
+
+.detailsPage .datePicker {
+    display: flex;
+    justify-content: right;
+}
+
+.reviewSectionTitle{
+    padding: 35px 80px;
+}
+
+.reviewButton{
+    display: flex;
+    justify-content: left;
+    padding-top: 60px;
+    padding-left: 75px;
+    padding-bottom: 70px;
+    margin-bottom: 50px;
+}
+
+.addReviewButton{
+    width: 200px;
 }

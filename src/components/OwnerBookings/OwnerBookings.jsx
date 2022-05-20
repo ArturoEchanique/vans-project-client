@@ -4,7 +4,7 @@ import UserBookingsCard from "../UserBookingsCard/UserBookingsCard"
 const OwnerBookings = ({ ownerBookings }) => {
     const bookingList = ownerBookings?.map((booking) => {
         return (
-            <Col key={booking._id}>
+            <Col key={booking._id} className="mb-2">
                 <UserBookingsCard {...booking} />
             </Col>
         )
@@ -13,8 +13,9 @@ const OwnerBookings = ({ ownerBookings }) => {
     return (
         <>
             <Container>
-                <Row>
-                    <h3> Booked from you </h3>
+                <Row >
+                    <h3 className="favorite"> Booked from You </h3>
+                    <hr />
 
                     {bookingList}
                 </Row>

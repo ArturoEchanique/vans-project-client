@@ -1,0 +1,19 @@
+.gm-style .gm-style-iw-c {
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    margin: 0px;
+    max-width: 500px !important;
+    max-height: 500px !important;
+    min-width: 0px !important;
+    position: absolute;
+    box-sizing: border-box;
+
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    transform: scale(70%, 70%) translate(-70%, -120%);
+    
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+}

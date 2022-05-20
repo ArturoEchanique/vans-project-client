@@ -76,3 +76,7 @@
     width: auto;
 
 }
+.modal-content{
+     border: 6px solid #88b09fd0;
+    background-color: #fffcf3e6;
+}

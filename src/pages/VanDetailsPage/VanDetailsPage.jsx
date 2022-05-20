@@ -9,9 +9,11 @@ import BookingsService from "../../services/bookings.service"
 import { MessageContext } from "../../context/message.context"
 import DatePicker from "../../components/DatePicker/DatePicker"
 import ReviewForm from "../../components/ReviewForm/ReviewForm"
-import ReviewsSection from "../../components/ReviewsSection/ReviewsSection"
+import ReviewComment from "../../components/ReviewComment/ReviewComment"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
 import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
+import Heart from "react-animated-heart";
+import { useNavigate } from "react-router-dom"
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -20,6 +22,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const { van_id } = useParams()
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getVan()
@@ -60,15 +63,22 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         userService
             .getOneUser(user._id)
             .then(({ data }) => {
-                setIsFavorite(data.favoriteVans.includes(van_id))
+                console.log("getting is favorite data is", data)
+                const favoriteVansIds = data.favoriteVans.map(van => van._id)
+                setIsFavorite(favoriteVansIds.includes(van_id))
             })
             .catch((err) => console.log(err))
     }
 
     const addFavoriteVan = () => {
+        if (!user) {
+            navigate("/login")
+        }
         userService
             .addFavoriteVan(user._id, van_id)
-            .then(() => getIsFavorite())
+            .then((response) => {
+                getIsFavorite()
+            })
             .catch((err) => console.log(err))
     }
     const removeFavoriteVan = () => {
@@ -120,40 +130,81 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         }
     }
 
+    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
+
     return (
         <div className="detailsPage">
-         <Container fluid>
+            <Container fluid>
                 <Row >
                     <Col style={{ paddingLeft: "0", paddingRight: "0", flex: "1", height: "100vh", overflowY: "scroll" }}>
                         <img className="vanImage" src={vanDetails.imageUrl}></img>
-                        <Container fluid>
-                            
-                            <Row>
-                                <VanDetailsCard {...vanDetails} />
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <h3>Aqui van nuestras reservas </h3>
+                        <Container fluid className="detailsLeftBlock">
+                            <Row className="justify-content-left">
+                                <Col xs={11} className="justify-content-center">
+                                    <div className="detailsPageTitle">
+                                        <h2>{name}</h2>
+                                    </div>
                                 </Col>
-                                <Col>
+
+                                <Col xs={1} className="justify-content-center">
+                                    <div className="detailsHeartIcon">
+                                        <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
+                                    </div>
+                                </Col>
+                            </Row>
+
+                            <Row className="justify-content-left vanDetailsIconsRow">
+                                {solarPower &&
+                                    <Col xs={1} className="justify-content-center">
+                                        <img className="vanCardIcon" src="./../../images/sunIcon.png"></img>
+                                    </Col>
+                                }
+                                {shower &&
+                                    <Col xs={1} className="justify-content-center">
+                                        <img className="vanCardIcon" src="./../../images/showerIcon.png"></img>
+                                    </Col>
+                                }
+                                {solarRoof &&
+                                    <Col xs={1} className="justify-content-center" >
+                                        <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img>
+                                    </Col>
+                                }
+                                {kitchen &&
+                                    <Col xs={1} className="justify-content-center" >
+                                        <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img>
+                                    </Col>
+                                }
+                                {bathroom &&
+                                    <Col xs={1} className="justify-content-center" >
+                                        <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img>
+                                    </Col>
+                                }
+                                {heatedSeats &&
+                                    <Col xs={1} className="justify-content-center" >
+                                        <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img>
+                                    </Col>
+                                }
+
+                                <Col d-flex justify-content-center>
                                     <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                                </Col>
+
+                                <Col>
                                     {vanDetails.owner !== user?._id ? (
                                         <Link onClick={reserveButtonClicked} to={"/booking"}>
-                                            <Button variant="outline-dark" size="lg">
-                                                Reserve
+
+                                            <Button variant="dark detailsButtonWide">
+                                                Book Van
                                             </Button>
+
                                         </Link>
                                     ) : (
                                         <Link to={`/${vanDetails._id}/edit`}>
-                                            <Button variant="outline-dark" size="lg">
+                                            <Button className="search-button" variant="dark detailsButtonWide" size="lg">
                                                 Edit my van
                                             </Button>
                                         </Link>
                                     )}
-
-                                    <Button onClick={isFavorite ? () => removeFavoriteVan() : () => addFavoriteVan()} variant={isFavorite ? "danger" : "outline-danger"} size="lg">
-                                        favorite
-                                    </Button>
                                 </Col>
                             </Row>
                             <div id="modal">
@@ -166,20 +217,32 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                     </Modal.Body>
                                 </Modal>
                                 <Row>
-                                    {<ReviewsSection vanReviews={vanDetails.reviews}></ReviewsSection>}
-                                </Row>
-                                <hr />
+                                    <div className="reviewSectionTitle"><h2>{"★ 4,95 - 60 reviews"}</h2></div>
 
-                                {isLoggedIn && <Button onClick={openModal}>Add Review</Button>}
+                                    {vanDetails.reviews && vanDetails.reviews.map(review => {
+                                        return (
+                                            <Col xs={6}>
+                                                <ReviewComment vanReview={review}></ReviewComment>
+                                            </Col>
+                                        )
+
+                                    })}
+                                    {/* Comment vanReviews={vanDetails.reviews}></ReviewsSection> */}
+
+                                </Row>
+                                <div className="reviewButton">
+                                    {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Add Review</Button>}
+                                </div>
+
                             </div >
                         </Container >
 
                     </Col>
-                    <Col xs={4} style={{ paddingLeft: "0", paddingRight: "0" }}>
-                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3}  />
-}
+                    <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
+                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
+                        }
                     </Col>
-                    
+
                 </Row>
             </Container>
         </div>
