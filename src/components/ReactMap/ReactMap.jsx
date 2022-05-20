@@ -139,7 +139,7 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
 
                 <>
 
-                    {(vans.length >0) && vans.map((van, idx) => {
+                    {vans.map((van, idx) => {
                         return (
                             <MapMarker isFavorite={favoriteVans.includes(van._id)} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} showInfo={visibleMarker === van._id} setVisibleMarker={setVisibleMarkerFn} van={van} key={van._id} markerIdx={idx} />
                         )

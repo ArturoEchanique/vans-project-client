@@ -17,6 +17,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
+    const [mapVans, setmapVans] = useState([])
     const [hasMoreVans, setHasMoreVans] = useState(true)
     const [noResults, setNoResults] = useState(true)
     const [isFetchingData, setIsFetchingData] = useState(false)
@@ -40,26 +41,47 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
             .getVans(query)
             .then(({ data }) => {
-                setIsFetchingData(false)
                 if (query.skip === 0) {
                     if (data.length === 0) {
                         setHasMoreVans(false)
                         setNoResults(true)
                     }
-                    else{
+                    else {
                         setNoResults(false)
                     }
                     setVans(data)
+                    console.log("data is", data)
+                    let vansCopy = []
+                    for (let i = 0; i < 19; i++) {
+                        if (data.length >= i+1) {
+                            if (!vansCopy.includes(data[i])) vansCopy.push(data[i])
+                        }
+                    }
+                    console.log("vanscopy is", vansCopy)
+                    setmapVans(vansCopy)
                 }
                 else {
                     setNoResults(false)
                     setVans([...vans, ...data])
+                    let vansCopy2 = []
+                    for (let i = 0; i < 19; i++) {
+                        if (vans.length >= i+1) {
+                            if (!vansCopy2.includes(vans[i])) vansCopy2.push(vans[i])
+                        }
+                    }
+                    setmapVans(vansCopy2)
                     if (data.length === 0) setHasMoreVans(false)
                     else setHasMoreVans(true)
                 }
+                setTimeout(() => {
+                    setIsFetchingData(false)
+                }, 1000)
+
             })
             .catch((err) => {
-                setIsFetchingData(false)
+                setTimeout(() => {
+                    setIsFetchingData(false)
+                }, 1000)
                 console.log(err)
             })
     }
@@ -74,9 +96,9 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const addFavoriteVan = (vanId) => {
-        if (!user){
+        if (!user) {
             navigate("/login")
-        } 
+        }
         console.log("try adding favorite")
         userService
             .addFavoriteVan(user._id, vanId)
@@ -88,7 +110,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const removeFavoriteVan = (vanId) => {
         if (!user) {
             navigate("/login")
-        } 
+        }
         userService
             .removeFavoriteVan(user._id, vanId)
             .then(() => getFavoriteVans())
@@ -138,12 +160,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const fetchMoreData = () => {
-        if(!isFetchingData){
+        if (!isFetchingData) {
             setIsFetchingData(true)
             console.log("fetching more data")
             loadVans({ ...filterData, skip: vans.length })
         }
-        
+
         // setTimeout(() => {
         //     loadVans({ ...filterData, skip: vans.length })
         // }, 1000)
@@ -165,7 +187,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
                     </Col>
                     <Col >
-                        <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={vans.slice(0, 30)} />
+                        <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
 
                     </Col>
                     <Col >
