@@ -14,7 +14,7 @@
 
 .home-background {
     height: 100vh;
-    background-image: url(./../../../public/images/fondo-gif-min.gif);
+    background-image: url("https://res.cloudinary.com/dzzkeb6xp/image/upload/v1653034766/fondo-home2_ws3zyo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
