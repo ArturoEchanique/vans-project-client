@@ -31,7 +31,7 @@ const ReviewsSection = ({ vanReview, profileIndex }) => {
                         <div className="upperRight">
 
                             {/* {vanReview.rating && <div>{"stars: " + vanReview.rating}</div>} */}
-                        {vanReview.owner && <div><strong>{vanReview.owner.username}</strong></div>}
+                            {vanReview.owner && <div><strong>{vanReview.owner.username}</strong></div>}
                             <p>April 2022</p>
                         </div>
 

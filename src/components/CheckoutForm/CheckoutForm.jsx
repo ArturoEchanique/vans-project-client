@@ -42,9 +42,12 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
             const { id } = paymentMethod
             const { data } = await stripeService.checkout({ id, amount: price * 100 }) // amount in cents
         }
+        if (error) console.log(error)
         const owner = await vanService.getOneVan(bookedVan)
+        console.log("el owner", owner)
 
         const user_id = user._id
+        console.log("yo", user_id)
 
         const owner_Id = owner.data.owner
 
@@ -76,7 +79,7 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         <Modal.Title>Booked Successfull</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <PaymentDetailsCard fireFinalActions={fireFinalActions} />
+                        <PaymentDetailsCard closeModal={closeModal} />
                     </Modal.Body>
                 </div>
             </Modal>
@@ -92,7 +95,7 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         </Card.Text>
                         <CardElement />
                         <hr />
-                        <Button variant="dark" disabled={!stripe}>
+                        <Button onClick={handleSubmit} variant="dark" disabled={!stripe}>
                             {loading ? "Loading..." : "Book"}
                         </Button>
                     </Card.Body>

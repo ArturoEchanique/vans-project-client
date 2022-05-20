@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 import "./PaymentDetailsCard.css"
 
-const PaymentDetailsCard = ({ dayPrice, name, description, startDate, endDate, price }) => {
+const PaymentDetailsCard = ({ closeModal, dayPrice, name, description, startDate, endDate, price }) => {
     return (
         <Container>
             <Row>
@@ -13,7 +13,7 @@ const PaymentDetailsCard = ({ dayPrice, name, description, startDate, endDate, p
                         <Card.Img id="imgcard" className="img-fluid" variant="top" src="https://a.mailmunch.co/user_data/landing_pages/1501739679705-animated-check.gif" />
                         <Card.Body>
                             <Card.Title>Payment Accepted Successfully</Card.Title>
-                            <Button variant="dark">
+                            <Button onClick={closeModal} variant="dark">
                                 <Link to={'/'}>Home Page</Link>
                             </Button>
                         </Card.Body>
