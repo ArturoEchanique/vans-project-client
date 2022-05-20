@@ -12,6 +12,7 @@ import nodemailerService from "../../services/nodemailer.service"
 import userService from "../../services/user.service"
 import { Button, Card, Modal } from "react-bootstrap"
 import PaymentDetailsCard from "../PaymentDetailsCard/PaymentDetailsCard"
+
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const stripe = useStripe()
     const elements = useElements()

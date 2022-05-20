@@ -12,7 +12,7 @@ import handleViewport from "react-in-viewport";
 
 
 
-const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingData, addFavoriteVan, removeFavoriteVan, favoriteVans,  }) => {
+const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingData, addFavoriteVan, removeFavoriteVan, favoriteVans, }) => {
     // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     // const [deleteState, setDeleteState] = useState(false)
     // const [hasMoreVans, setHasMoreVans] = useState(true)
@@ -59,11 +59,11 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                         {vans.map((van, idx) => {
                             return (
                                 <>
-                                    
+
                                     <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
-                                    
-                                   
-                                    
+
+
+
                                 </>)
                         })}
                         <div ref={ref} className="spinnerContainer">
