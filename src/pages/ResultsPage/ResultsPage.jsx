@@ -20,6 +20,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [filtersCollapsed, setFiltersCollapsed] = useState(false)
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
+    const [vansFound, setVansFound] = useState(0)
     const [mapVans, setmapVans] = useState([])
     const [hasMoreVans, setHasMoreVans] = useState(true)
     const [noResults, setNoResults] = useState(true)
@@ -45,6 +46,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             .getVans(query)
             .then(({ data }) => {
                 if (query.skip === 0) {
+                    setVansFound(data.length)
                     if (data.length === 0) {
                         setHasMoreVans(false)
                         setNoResults(true)
@@ -64,6 +66,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     setmapVans(vansCopy)
                 }
                 else {
+                    setVansFound(query.skip + data.length)
                     setNoResults(false)
                     setVans([...vans, ...data])
                     let vansCopy2 = []
@@ -181,56 +184,63 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     return (
 
+
         <div className="resultsPageMain">
             <div className="resultsTopBar">
                 <Container fluid>
-                <Row className="justify-content-center">
-                    <div className="cityAndDate">
-                        <Col xs={3}></Col>
-                        <Col xs={6} className="d-flex justify-content-center">
-                            <>
-                                <form>
-                                    <label>
-                                        <input className="cityAndDateElem" value={"Valencia"} />
-                                    </label>
-                                </form>
-                            </>
-                            <>
-                                <DatePicker handleDatesChange={setFilterInfo} />
-                            </>
+                    <Row className="">
+                        <Col xs={3}>
+                            <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" />
                         </Col>
-                    </div>
-                    <Col xs={3} className="d-flex justify-content-end">
-                        <ToggleButton
-                            className="filterButton"
-                            id="bathroom"
-                            type="checkbox"
-                            variant={bathroom ? "dark" : "light"}
-                            checked={bathroom}
-                            name="bathroom"
-                            onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
-                            Filters
-                        </ToggleButton>
-                    </Col>
-                </Row>
+                        <Col xs={6} className="d-flex justify-content-center">
+                            <div className="cityAndDate">
+                                <>
+                                    <form>
+                                        <label>
+                                            <input className="cityAndDateElem" value={"Valencia"} />
+                                        </label>
+                                    </form>
+                                </>
+                                <>
+                                    <DatePicker handleDatesChange={setFilterInfo} />
+                                </>
+                            </div>
+                        </Col>
+
+                        <Col className="d-flex justify-content-end">
+
+                            <ToggleButton
+                                className="showFiltersButton"
+                                id="bathroom"
+                                type="checkbox"
+                                variant={bathroom ? "dark" : "light"}
+                                checked={bathroom}
+                                name="bathroom"
+                                onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
+                                <img className="filterButtonIcon" src="./../../images/filterIcon.png"></img>
+                                Filters
+                            </ToggleButton>
+
+                        </Col>
+                    </Row>
                 </Container>
             </div>
-            
 
 
-           
-            <Container fluid className="">
+
+
+            <Container fluid className="resultsPageContainerMain">
                 <Row >
-                    <Col xs={5}>
+                    <Col xs={5} style={{ paddingRight: 0 }}>
                         <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
                     </Col>
-                    <Col >
+                    <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
                         <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
 
-                    </Col>
-                    <Col xs={false ? 3 : "auto"} className="d-flex justify-content-end">
+                    </Col >
+                    <Col style={{ paddingLeft: 0, paddingRight: 0 }} xs={false ? 3 : "auto"} className="d-flex justify-content-end">
                         <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"350px"} collapsedWidth={"0px"}>
-                            
+
                             {/* <Menu iconShape="square">
                                 <MenuItem>Dashboard</MenuItem>
                                 <SubMenu title="Components">
@@ -338,12 +348,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                     </Col>
                                 </Row>
-                                <h3 className="filterTitle">Select dates</h3>
+                                {/* <h3 className="filterTitle">Select dates</h3>
                                 <Row className="justify-content-center filterRow">
                                     <Col>
                                         <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />
                                     </Col>
-                                </Row>
+                                </Row> */}
                                 <Row className="justify-content-center filterRow">
                                     <Col>
                                         <Button variant="dark filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
@@ -353,7 +363,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Row>
                             </Container>                        </ProSidebar>
                     </Col>
-                    
+
                     {/* <Col xs={3}>
                         <Container className="filterMain filterScroll">
                             <h3 className="filterTitle">Name</h3>
@@ -470,7 +480,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             </Row>
                         </Container>
                     </Col> */}
-                    
+
                 </Row>
             </Container>
         </div>

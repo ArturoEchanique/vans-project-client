@@ -1,7 +1,8 @@
 .resultsPageMain {
     overflow: hidden;
     height: 100vh;
-    padding-top: 80px;
+    padding-top: 85px;
+    background-color: var(--main-color-5);
     /* font-size: 0.8em; */
 }
 
@@ -13,6 +14,7 @@
     padding-bottom: 20px;
     padding-top: 5px;
     box-shadow: 3px 3px 5px var(--main-color-5);
+    background-color: var(--main-color-5);
 }
 
 .filterMain {
@@ -110,7 +112,7 @@
     font-size: 13px;
 }
 
-.testDiv{
+.testDiv {
     background-color: red;
 }
 
@@ -204,12 +206,13 @@
 }
 
 .cityAndDate {
-    background-color: var(--main-color-5);
+    background-color: white;
     border-radius: 30px;
     display: flex;
     align-items: center;
     width: auto;
     box-shadow: 1px 2px 5px var(--main-color-4);
+    z-index: 2000;
 }
 
 .cityAndDateElem {
@@ -223,10 +226,47 @@
     padding-left: 20px;
 }
 
-.resultsPageMain .pro-sidebar-inner{
+.resultsPageMain .pro-sidebar {
+    color: rgb(91, 91, 91) !important
+}
+
+.resultsPageMain .pro-sidebar-inner {
     background: white !important
 }
 
 .resultsPageMain .pro-sidebar-layout {
     flex-direction: row !important
+}
+
+.showFiltersButton {
+    display: flex;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 50px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.filterButtonIcon {
+    padding: 0px;
+    margin-right: 5px;
+    width: 15px;
+    height: 20px;
+}
+
+.vansFoundBox{
+    margin-left: 50px;
+    width: 170px;
+    height: 40px;
+    font-size: 1em;
+    border-radius: 50px;
+    text-align: center;
+    background-color: white;
+}
+
+.resultsPageContainerMain{
+    padding: 0px;
 }
