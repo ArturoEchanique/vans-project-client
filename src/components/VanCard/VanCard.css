@@ -19,7 +19,7 @@
 .vanCardTitle {
     display: flex;
     width: 95%;
-    font-size: 0.1em;
+    font-size: 1em;
     height: 70px;
     justify-content: left;
     text-align: left;

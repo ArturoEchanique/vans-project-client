@@ -66,7 +66,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                     <Row className="background-row">
                         <Row className="mb-3 ">
                             <Col className="d-flex justify-content-center">
-                                <h3>Choose where and when</h3>
+                                <h3>Where are you going?</h3>
                             </Col>
                         </Row>
                         <Col className="d-flex justify-content-center">
