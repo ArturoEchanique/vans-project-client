@@ -4,6 +4,11 @@
 .beach-3-hex { color: #F3EDDE; }
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
+
+.navBarMain{
+    box-shadow: 2px 2px 5px var(--main-color-5);
+}
+
 #logo {
     padding: 0;
 }

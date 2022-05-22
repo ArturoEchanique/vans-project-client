@@ -54,7 +54,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     console.log("data is", data)
                     let vansCopy = []
                     for (let i = 0; i < 19; i++) {
-                        if (data.length >= i+1) {
+                        if (data.length >= i + 1) {
                             if (!vansCopy.includes(data[i])) vansCopy.push(data[i])
                         }
                     }
@@ -66,7 +66,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     setVans([...vans, ...data])
                     let vansCopy2 = []
                     for (let i = 0; i < 19; i++) {
-                        if (vans.length >= i+1) {
+                        if (vans.length >= i + 1) {
                             if (!vansCopy2.includes(vans[i])) vansCopy2.push(vans[i])
                         }
                     }
@@ -180,7 +180,26 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     return (
 
         <div className="resultsPageMain">
-            <Container fluid>
+
+            <div className="resultsTopBar">
+                <Row className="justify-content-center">
+                    <div className="cityAndDate">
+                        <Col xs={12} className="d-flex justify-content-center">
+                            <>
+                                <form>
+                                    <label>
+                                        <input className="cityAndDateElem" value={"Valencia"} />
+                                    </label>
+                                </form>
+                            </>
+                            <>
+                                <DatePicker handleDatesChange={setFilterInfo} />
+                            </>
+                        </Col>
+                    </div>
+                </Row>
+            </div>
+            <Container fluid className="">
                 <Row >
                     <Col xs={3}>
                         <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
@@ -196,7 +215,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             <h3 className="filterTitle">Name</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
-                                    <Form.Control className="textInput" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
+                                    <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
                                 </Col>
                             </Row>
                             <h3 className="filterTitle">Features</h3>
@@ -285,11 +304,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Col>
                             </Row>
                             <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <Form.Control className="textInputSmall" value={priceStart + "€"} name="name" placeholder="Price start" />
+                                <Col className="filterButtonCol">
+                                    <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
                                 </Col>
-                                <Col>
-                                    <Form.Control className="textInputSmall" value={priceEnd + "€"} name="name" placeholder="Price start" />
+                                <Col className="filterButtonCol">
+                                    <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                 </Col>
                             </Row>
                             <h3 className="filterTitle">Select dates</h3>

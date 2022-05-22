@@ -49,7 +49,7 @@ const Navigation = () => {
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className=" background-navbar fixed-top">
+                <Navbar key={expand} expand={expand} className=" background-navbar fixed-top navBarMain">
                     <Container fluid>
                         <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
