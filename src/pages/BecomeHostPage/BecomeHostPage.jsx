@@ -36,7 +36,7 @@ export const data1 = {
         },
         {
             label: 'Olivia',
-            data: [800, 1500, 1300, 600, 1300, 400, 3000, 1500, 1350, 800, 1200, 1400],
+            data: [800, 1500, 1300, 600, 1300, 1400, 3000, 1500, 1350, 1800, 1200, 1400],
 
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
         },
@@ -143,14 +143,11 @@ const BecomeHostPage = () => {
                             <Image id="im" src="https://img.freepik.com/foto-gratis/pareja-sonriente-mujeres-caucasicas-sentadas-dentro-casa-rodante-camper-van-relajandose-te-hierbas_465191-3902.jpg" />
 
                         </Col>
-                        <Col lg={{ span: 6 }}>
+                        <Col id="sect3text" lg={{ span: 6 }}>
                             <h3>After two years renting  our van we decided to quit our jobs and start our own business of campervan renting, it's been a long journey but are happy and free now</h3>
                             <p>/Petter an jule</p>
 
                         </Col>
-
-
-
                     </Row>
                 </section >
 
