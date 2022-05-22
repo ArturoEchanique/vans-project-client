@@ -250,11 +250,33 @@
     background-color: white;
 }
 
+.searchButton {
+    display: flex;
+    width: auto;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 50px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px;
+    padding-right: 30px;
+    margin: 0px;
+}
+
 .filterButtonIcon {
     padding: 0px;
     margin-right: 5px;
     width: 15px;
     height: 20px;
+}
+
+.searchIcon {
+    padding: 0px;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
 }
 
 .vansFoundBox{

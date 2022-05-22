@@ -204,6 +204,17 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <>
                                     <DatePicker handleDatesChange={setFilterInfo} />
                                 </>
+                                <Button
+                                    className="searchButton"
+                                    id="search"
+                                    type="checkbox"
+                                    variant={bathroom ? "dark" : "light"}
+                                    checked={bathroom}
+                                    name="bathroom"
+                                    onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
+                                    <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                                    Search
+                                </Button>
                             </div>
                         </Col>
 
@@ -211,7 +222,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
                             <ToggleButton
                                 className="showFiltersButton"
-                                id="bathroom"
+                                id="showFilters"
                                 type="checkbox"
                                 variant={bathroom ? "dark" : "light"}
                                 checked={bathroom}
