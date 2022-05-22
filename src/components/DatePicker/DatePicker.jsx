@@ -69,6 +69,9 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
                 focusedInput={focusedInput}
                 onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
                 isDayBlocked={isDayBlocked}
+                // noBorder={true}
+                block={true}
+                // orientation={"VERTICAL_ORIENTATION"}
             />
         </div>
     )

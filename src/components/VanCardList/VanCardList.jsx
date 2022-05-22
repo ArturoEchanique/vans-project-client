@@ -43,9 +43,9 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                     <Row >
                         {vans.map((van, idx) => {
                             return (
-                                <>
+                                <Col xs={6}>
                                     <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
-                                </>)
+                                </Col>)
                         })}
                         <div ref={ref} className="spinnerContainer">
                             {hasMoreVans ? <Spinner className="mySpinner" animation="border" size="xl" role="status">

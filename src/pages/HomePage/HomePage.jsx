@@ -73,7 +73,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                             <>
                                 <form>
                                     <label>
-                                        <input className="imput-location" type="text" value={address} name="country" onChange={handleStreetChange} />
+                                        <input className="input-location" type="text" value={address} name="country" onChange={handleStreetChange} />
                                     </label>
                                 </form>
                             </>

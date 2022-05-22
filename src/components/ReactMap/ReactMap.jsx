@@ -39,7 +39,6 @@ const containerStyle = {
 //         ],
 //     },
 // ];
-
 function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)

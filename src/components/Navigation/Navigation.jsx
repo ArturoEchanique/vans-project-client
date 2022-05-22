@@ -49,7 +49,7 @@ const Navigation = () => {
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className=" background-navbar fixed-top">
+                <Navbar key={expand} expand={expand} className=" background-navbar fixed-top navBarMain">
                     <Container fluid>
                         <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
@@ -76,6 +76,9 @@ const Navigation = () => {
                                 <img className="logo-nav" id="logo" src="./../images/1.png" alt="vanmeup" />
                             </Link>
                         </Navbar.Brand>
+
+
+                        
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>

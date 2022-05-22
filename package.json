@@ -24,6 +24,7 @@
     "react-geocode": "^0.2.3",
     "react-in-viewport": "^1.0.0-alpha.28",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "rsuite": "^5.11.0",

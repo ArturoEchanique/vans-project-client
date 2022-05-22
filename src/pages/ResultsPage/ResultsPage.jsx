@@ -12,10 +12,12 @@ import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
 import { useNavigate } from "react-router-dom"
 import "./ResultsPage.css"
+import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
-
+    const [filtersCollapsed, setFiltersCollapsed] = useState(false)
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
     const [mapVans, setmapVans] = useState([])
@@ -54,7 +56,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     console.log("data is", data)
                     let vansCopy = []
                     for (let i = 0; i < 19; i++) {
-                        if (data.length >= i+1) {
+                        if (data.length >= i + 1) {
                             if (!vansCopy.includes(data[i])) vansCopy.push(data[i])
                         }
                     }
@@ -66,7 +68,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     setVans([...vans, ...data])
                     let vansCopy2 = []
                     for (let i = 0; i < 19; i++) {
-                        if (vans.length >= i+1) {
+                        if (vans.length >= i + 1) {
                             if (!vansCopy2.includes(vans[i])) vansCopy2.push(vans[i])
                         }
                     }
@@ -180,23 +182,184 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     return (
 
         <div className="resultsPageMain">
-            <Container fluid>
-                <Row >
-                    <Col xs={3}>
-                        <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
-
-
+            <div className="resultsTopBar">
+                <Container fluid>
+                <Row className="justify-content-center">
+                    <div className="cityAndDate">
+                        <Col xs={3}></Col>
+                        <Col xs={6} className="d-flex justify-content-center">
+                            <>
+                                <form>
+                                    <label>
+                                        <input className="cityAndDateElem" value={"Valencia"} />
+                                    </label>
+                                </form>
+                            </>
+                            <>
+                                <DatePicker handleDatesChange={setFilterInfo} />
+                            </>
+                        </Col>
+                    </div>
+                    <Col xs={3} className="d-flex justify-content-end">
+                        <ToggleButton
+                            className="filterButton"
+                            id="bathroom"
+                            type="checkbox"
+                            variant={bathroom ? "dark" : "light"}
+                            checked={bathroom}
+                            name="bathroom"
+                            onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
+                            Filters
+                        </ToggleButton>
                     </Col>
-                    <Col xs={6}>
+                </Row>
+                </Container>
+            </div>
+            
+
+
+           
+            <Container fluid className="">
+                <Row >
+                    <Col xs={5}>
+                        <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
+                    </Col>
+                    <Col >
                         <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
 
                     </Col>
-                    <Col xs={3}>
+                    <Col xs={false ? 3 : "auto"} className="d-flex justify-content-end">
+                        <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"350px"} collapsedWidth={"0px"}>
+                            
+                            {/* <Menu iconShape="square">
+                                <MenuItem>Dashboard</MenuItem>
+                                <SubMenu title="Components">
+                                    <MenuItem>Component 1</MenuItem>
+                                    <MenuItem>Component 2</MenuItem>
+                                </SubMenu>
+                            </Menu> */}
+                            <Container className="filterMain filterScroll">
+                                <h3 className="filterTitle">Name</h3>
+                                <Row className="justify-content-center filterRow">
+                                    <Col>
+                                        <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
+                                    </Col>
+                                </Row>
+                                <h3 className="filterTitle">Features</h3>
+                                <Row className="justify-content-center filterRowSmall">
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="solarPower"
+                                            type="checkbox"
+                                            variant={solarPower ? "dark" : "light"}
+                                            checked={solarPower}
+                                            name="solarPower"
+                                            onChange={handleFilterChange}>
+                                            Solar power
+                                        </ToggleButton>
+                                    </Col>
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="shower"
+                                            type="checkbox"
+                                            variant={shower ? "dark" : "light"}
+                                            checked={shower}
+                                            name="shower"
+                                            onChange={handleFilterChange}>
+                                            Shower
+                                        </ToggleButton>
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center filterRowSmall">
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="bathroom"
+                                            type="checkbox"
+                                            variant={bathroom ? "dark" : "light"}
+                                            checked={bathroom}
+                                            name="bathroom"
+                                            onChange={handleFilterChange}>
+                                            Bathroom
+                                        </ToggleButton>
+                                    </Col>
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="kitchen"
+                                            type="checkbox"
+                                            variant={kitchen ? "dark" : "light"}
+                                            checked={kitchen}
+                                            name="kitchen"
+                                            onChange={handleFilterChange}>
+                                            Kitchen
+                                        </ToggleButton>
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center filterRowSmall">
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="sunRoof"
+                                            type="checkbox"
+                                            variant={sunRoof ? "dark" : "light"}
+                                            checked={sunRoof}
+                                            name="sunRoof"
+                                            onChange={handleFilterChange}>
+                                            Sun roof
+                                        </ToggleButton>
+                                    </Col>
+                                    <Col className="filterButtonCol">
+                                        <ToggleButton
+                                            className="filterButton"
+                                            id="heatedSeats"
+                                            type="checkbox"
+                                            variant={heatedSeats ? "dark" : "light"}
+                                            checked={heatedSeats}
+                                            name="heatedSeats"
+                                            onChange={handleFilterChange}>
+                                            Heated seats
+                                        </ToggleButton>
+                                    </Col>
+                                </Row>
+                                <h3 className="filterTitle">Price range</h3>
+                                <Row className="justify-content-center filterRow">
+                                    <Col>
+                                        <PriceSlider handlePriceChange={handleFilterPriceChange} />
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center filterRow">
+                                    <Col className="filterButtonCol">
+                                        <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
+                                    </Col>
+                                    <Col className="filterButtonCol">
+                                        <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
+                                    </Col>
+                                </Row>
+                                <h3 className="filterTitle">Select dates</h3>
+                                <Row className="justify-content-center filterRow">
+                                    <Col>
+                                        <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center filterRow">
+                                    <Col>
+                                        <Button variant="dark filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                            Search near vans
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Container>                        </ProSidebar>
+                    </Col>
+                    
+                    {/* <Col xs={3}>
                         <Container className="filterMain filterScroll">
                             <h3 className="filterTitle">Name</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
-                                    <Form.Control className="textInput" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
+                                    <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
                                 </Col>
                             </Row>
                             <h3 className="filterTitle">Features</h3>
@@ -285,11 +448,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Col>
                             </Row>
                             <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <Form.Control className="textInputSmall" value={priceStart + "€"} name="name" placeholder="Price start" />
+                                <Col className="filterButtonCol">
+                                    <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
                                 </Col>
-                                <Col>
-                                    <Form.Control className="textInputSmall" value={priceEnd + "€"} name="name" placeholder="Price start" />
+                                <Col className="filterButtonCol">
+                                    <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                 </Col>
                             </Row>
                             <h3 className="filterTitle">Select dates</h3>
@@ -306,7 +469,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Col>
                             </Row>
                         </Container>
-                    </Col>
+                    </Col> */}
+                    
                 </Row>
             </Container>
         </div>
