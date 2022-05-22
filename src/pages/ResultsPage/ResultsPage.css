@@ -33,9 +33,9 @@
 }
 
 .filterScroll {
-    flex: 1;
-    height: 100vh;
-    overflow-y: scroll;
+    flex: 1 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
 }
 
 
@@ -98,7 +98,6 @@
 .textInputClean {
     background-color: #f8f9fa;
     border: 0px;
-
 }
 
 .textInputBig {
@@ -109,6 +108,10 @@
 .textInputSmall {
     height: 40px;
     font-size: 13px;
+}
+
+.testDiv{
+    background-color: red;
 }
 
 
@@ -218,4 +221,12 @@
     border-style: double;
     border: 0px;
     padding-left: 20px;
+}
+
+.resultsPageMain .pro-sidebar-inner{
+    background: white !important
+}
+
+.resultsPageMain .pro-sidebar-layout {
+    flex-direction: row !important
 }
