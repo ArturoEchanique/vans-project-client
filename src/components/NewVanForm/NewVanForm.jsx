@@ -9,7 +9,7 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap"
 import vanService from "../../services/van.service"
 import { useNavigate } from "react-router-dom"
 
-const NewVanForm = () => {
+const NewVanForm = ({ fireFinalActions }) => {
     const { user } = useContext(AuthContext)
 
     const [loadingImage, setLoadingImage] = useState(false)
@@ -70,6 +70,7 @@ const NewVanForm = () => {
                 userService.editUser(user._id, { role: "OWNER" })
             })
             .then((res) => {
+                fireFinalActions()
                 navigate("/")
             })
             .catch((err) => console.log(err))

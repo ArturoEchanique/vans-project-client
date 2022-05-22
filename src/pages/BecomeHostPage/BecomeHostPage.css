@@ -1,8 +1,8 @@
-#section1 {
+/* #section1 {
     margin-top: 60px;
-}
+} */
 
-#sectiontext {
+/* #sectiontext {
     font-size: larger;
     color: black;
     margin-top: 12%;
@@ -16,13 +16,13 @@
 
 #sectiontext button {
     margin-top: 1%;
-}
+} */
 
 #section2 {
     margin-top: 4%;
 }
 
-#section2 h3 {
+#section2 h2 {
     margin: 3%;
     text-align: center;
 }
@@ -47,8 +47,80 @@
     margin-top: 3%;
 }
 
-
 .modal-content {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.948);
+}
+
+#ib {
+    background-image: url("https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905872/vans_project/photo-1629906771435-d0f397a1c910_gu6qby.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#title {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    text-align: center;
+
+}
+
+#title h1 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#btn {
+    font-size: 1.4em;
+}
+
+#im {
+    max-width: 800px;
+}
+
+#section2 {
+    align-items: center;
+}
+
+#section2 h3 {
+    text-align: center;
+    margin-top: 15%;
+}
+
+#section2 p {
+    text-align: center;
+}
+
+#im2 {
+    max-height: 600px;
+}
+
+#section4 {
+    margin-top: 10%;
+    background-image: url("https://images.pexels.com/photos/210010/pexels-photo-210010.jpeg?cs=srgb&dl=pexels-pixabay-210010.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+#section4 h2 {
+    text-align: center;
+}
+
+#section3 h2 {
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+#btn2 {
+    margin-top: 5%;
+}
+
+#div4 {
+    text-align: center;
+}
+
+#sect3text {
+    margin-bottom: 5%;
 }
