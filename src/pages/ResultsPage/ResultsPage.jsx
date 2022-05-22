@@ -1,4 +1,4 @@
-import "./ResultsPage.css"
+
 import { Button, Col, Row, Form, ToggleButton, Container } from "react-bootstrap"
 import vanService from "./../../services/van.service"
 import VanCard from "../../components/VanCard/VanCard"
@@ -11,6 +11,7 @@ import DatePicker from "../../components/DatePicker/DatePicker"
 import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
 import { useNavigate } from "react-router-dom"
+import "./ResultsPage.css"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -178,20 +179,20 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     return (
 
-        <div className="resultsPage">
+        <div className="resultsPageMain">
             <Container fluid>
                 <Row >
-                    <Col>
+                    <Col xs={3}>
                         <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
 
 
                     </Col>
-                    <Col >
+                    <Col xs={6}>
                         <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
 
                     </Col>
-                    <Col >
-                        <Container>
+                    <Col xs={3}>
+                        <Container className="filterMain filterScroll">
                             <h3 className="filterTitle">Name</h3>
                             <Row className="justify-content-center filterRow">
                                 <Col>
@@ -200,7 +201,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             </Row>
                             <h3 className="filterTitle">Features</h3>
                             <Row className="justify-content-center filterRowSmall">
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="solarPower"
@@ -212,7 +213,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         Solar power
                                     </ToggleButton>
                                 </Col>
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="shower"
@@ -226,7 +227,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Col>
                             </Row>
                             <Row className="justify-content-center filterRowSmall">
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="bathroom"
@@ -238,7 +239,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         Bathroom
                                     </ToggleButton>
                                 </Col>
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="kitchen"
@@ -252,7 +253,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </Col>
                             </Row>
                             <Row className="justify-content-center filterRowSmall">
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="sunRoof"
@@ -264,7 +265,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         Sun roof
                                     </ToggleButton>
                                 </Col>
-                                <Col>
+                                <Col className="filterButtonCol">
                                     <ToggleButton
                                         className="filterButton"
                                         id="heatedSeats"

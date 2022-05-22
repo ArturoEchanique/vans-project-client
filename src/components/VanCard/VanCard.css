@@ -1,7 +1,11 @@
+.vanCardMain{
+    padding: 1%;
+}
+
 .vanCardImage {
     border-radius: 10px;
     width: 100%;
-    height: 220px;
+    height: 170px;
     object-fit: cover;
     padding: 0px;
     margin-top: 30px;
@@ -19,23 +23,23 @@
 .vanCardTitle {
     display: flex;
     width: 95%;
-    font-size: 1em;
+    font-size: 13px;
     height: 70px;
     justify-content: left;
     text-align: left;
-    margin-top: 8px;
+    align-items: center;
+    white-space: nowrap;
     /* margin: 0 auto; */
     /* align-items: left; */
 }
 
 
 .vanCardIcon {
-    width: 27px;
-    height: 27px;
+    width: 22px;
+    height: 22px;
     padding: 0px;
     margin: 0px;
-    opacity: 0.75;
-    color: black;
+    opacity: 0.65;
 }
 
 .vanCardDescription {
@@ -43,20 +47,48 @@
     margin-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 8px;
+    font-size: 12px;
 
 }
 
-.heartIcon {
+/* .heartContainer {
     height: 45px;
     padding: 0px;
     margin: 0px;
     position: relative;
     top: -20px;
-    right: 70px
+    right: 70px;
+    background-color: red;
+} */
+
+.heartButton {
+    background: none;
+    padding: 5px;
+    margin: 0px;
+    /* color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit; */
+}
+
+.heartIcon {
+    padding: 0px;
+    margin-left: 15px;
+    width: 22px;
+    height: 22px;
+
+}
+
+.redHeart {}
+
+.greyHeart {
+    filter: saturate(0%) brightness(200%)
 }
 
 .vanIconsRow {
-    margin: 10px 0px 0px 0px;
+    margin: 5px 0px 0px 0px;
     text-align: center;
 
 }

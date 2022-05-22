@@ -1,4 +1,4 @@
-.scroll {
+.vanInfiniteScroll {
     flex: 1;
     height: 100vh;
     overflow-y: scroll;

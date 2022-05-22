@@ -1,17 +1,32 @@
+.resultsPageMain {
+    overflow: hidden;
+    height: 100vh;
+    /* font-size: 0.8em; */
+}
+
+.filterMain{
+    margin-top: 20px;
+}
+
 .filterButton {
     display: flex;
     width: 95%;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 5px;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
+    font-size: 13px;
 }
 
-.resultsPage {
-    overflow: hidden;
+.filterScroll {
+    flex: 1;
     height: 100vh;
+    overflow-y: scroll;
+    font-size: 0.5em;
 }
+
+
 
 .filterButtonWide {
     display: flex;
@@ -20,44 +35,48 @@
     justify-content: center;
     margin: 0 auto;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
-.resultsPage {
-    padding-top: 80px;
-}
-.resultsPage h3{
+/* .resultsPage h3 {
     font-size: 1.5em;
-}
+} */
 
 .filterRowSmall {
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+}
+
+.filterButtonCol{
+    padding: 5px;
+    margin: 0px;
 }
 
 .filterRow {
     margin-top: 0px;
-    margin-bottom: 40px;
-}
-.filterTitle {
-    margin-top: 5px;
     margin-bottom: 20px;
 }
 
-.btn-dark {
+.filterTitle {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.filterMain .btn-dark {
 
     background-color: #111111;
     ;
     border-color: #111111;
 }
 
-.btn-dark a {
+.filterMain .btn-dark a {
     text-decoration: none;
     color: #F3EDDE;
 
 }
 
-.btn-dark:hover {
+.filterMain .btn-dark:hover {
     color: #F3EDDE;
     background-color: #111111;
     border-color: #111111;

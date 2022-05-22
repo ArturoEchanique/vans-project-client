@@ -27,28 +27,24 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
 
     return (
 
-        <Container>
-            {/* <div class="parent">
-                <img className="image1" src={imageUrl[0]}>
-                </img>
-                <div className="image2">
-                    <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
-                    </div>
-            </div> */}
+        <Container className="vanCardMain">
             <Link to={`/${_id}/details`} style={{ textDecoration: 'none', padding: "0px", margin: "0px" }}>
                 <img className="vanCardImage" src={imageUrl[0]}>
                 </img>
             </Link>
 
             
-            <Row className="justify-content-center vanIconsRow">
-                <Col xs={11} className="justify-content-center">
-                    <h3 className="vanCardTitle">{name.length > 26 ? (name.slice(0,26)+"...") : name}</h3>
+            <Row className="justify-content-left align-items-center">
+                <Col xs={9} className="justify-content-center">
+                    <h3 className="vanCardTitle">{name.length > 30 ? (name.slice(0,30)+" ...") : name}</h3>
                 </Col>
-                <Col xs={1} className="justify-content-center">
-                    <div className="heartIcon">
-                        <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
-                    </div>
+                <Col xs={2} className="justify-content-center">
+                    <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                        <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>
+                    </button>
+                    {/* <div className="heartContainer">
+                        <Heart className="heartComponent" isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
+                    </div> */}
                 </Col>
                 
                

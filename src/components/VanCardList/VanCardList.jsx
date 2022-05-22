@@ -38,32 +38,13 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
 
 
     return (
-
-
-        <InfiniteScroll
-            dataLength={10}
-            hasMore={hasMoreVans}
-            loader={<h4>Loading...</h4>}
-        >
-
-
-            <div className="scroll">
-
-                {/* <React.Fragment>
-                    <Header />
-                    <Content />
-                    <Footer ref={ref} />
-                </React.Fragment> */}
+            <div className="vanInfiniteScroll">
                 <Container >
                     <Row >
                         {vans.map((van, idx) => {
                             return (
                                 <>
-
                                     <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
-
-
-
                                 </>)
                         })}
                         <div ref={ref} className="spinnerContainer">
@@ -77,7 +58,6 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                     </Row>
                 </Container>
             </div>
-        </InfiniteScroll>
 
 
 

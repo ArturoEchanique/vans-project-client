@@ -6,7 +6,7 @@ import MapMarker from "../MapMarker/MapMarker";
 import "./ReactMap.css"
 
 const containerStyle = {
-    width: '900px',
+    width: '100%',
     height: '100vh'
 };
 
