@@ -11,3 +11,7 @@
 .payment {
     border-radius: 10px;
 }
+
+#paybtn {
+    text-align: center;
+}
