@@ -36,7 +36,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
             
             <Row className="justify-content-left align-items-center">
                 <Col xs={9} className="justify-content-center">
-                    <h3 className="vanCardTitle">{name.length > 30 ? (name.slice(0,30)+" ...") : name}</h3>
+                    <h3 className="vanCardTitle">{name.length > 28 ? (name.slice(0,28)+" ...") : name}</h3>
                 </Col>
                 <Col xs={2} className="justify-content-center">
                     <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
@@ -44,7 +44,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     </button>
                 </Col>
             </Row>
-            <p className="filterRow vanCardDescription">{description.length > 120 ? (description.slice(0, 120) + "...") : description}</p>
+            <p className="filterRow vanCardDescription">{description.length > 70 ? (description.slice(0, 70) + "...") : description}</p>
             <Row className="justify-content-left vanIconsRow">
                 {solarPower &&
                     <Col className="justify-content-center">

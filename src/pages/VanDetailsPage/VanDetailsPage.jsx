@@ -160,51 +160,53 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                 <Row>
                     <Col xs={8} >
                         <div className="vanInfoMain">
-                            <Row className="justify-content-left align-items-center">
+                            <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs={10} className="justify-content-center">
-                                    <h3 className="detailsPageTitle">{name?.length > 30 ? (name.slice(0, 30) + " ...") : name}</h3>
+                                    <h3 className="detailsPageTitle">{name?.length > 36 ? (name.slice(0, 36) + " ...") : name}</h3>
                                 </Col>
                                 <Col xs="auto" className="d-flex align-items-center">
                                     <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
                                 </Col>
 
                             </Row>
-
-                            <Row className="justify-content-left vanDetailsIconsRow">
+                            <p>{vanDetails.description}</p>
+                            <hr></hr>
+                            <br></br>
+                            <h4 className="detailsPageTitle">{"Features"}</h4>
+                            <Row className="d-flex justify-content-start vanDetailsIconsRow">
                                 {solarPower &&
 
-                                    <>  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> Solar power</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
 
-                                    <><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> Shower</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; &nbsp; Shower&nbsp; &nbsp; </Col>
 
                                 }
                                 {solarRoof &&
 
-                                    <>  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> Solar roof</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; &nbsp; Solar roof</Col>
 
                                 }
                                 {kitchen &&
 
-                                    <>  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> Kitchen</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; &nbsp; Kitchen&nbsp; &nbsp; </Col>
                                 }
                                 {bathroom &&
 
-                                    <> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> Bathroom</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; &nbsp; Bathroom&nbsp; &nbsp; </Col>
 
                                 }
                                 {heatedSeats &&
 
-                                    <> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> Heated seats</>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; &nbsp; Heated seats&nbsp; &nbsp; </Col>
 
                                 }
 
 
                             </Row>
-                            <hr></hr>
-                            <p>{vanDetails.description}</p>
+                            
                         </div>
                     </Col>
                     <Col xs={4}>

@@ -45,13 +45,12 @@
 
 .detailsPageTitle {
     padding: 0px;
-
+    font-size: 24px;
 }
 
-.detailsPageTitle h2 {
-
+/* .detailsPageTitle h2 {
     font-size: 28px;
-}
+} */
 
 .detailsButtonWide {
     display: flex;
@@ -86,7 +85,7 @@
 }
 
 .reviewSectionTitle h2 {
-    font-size: 28px;
+    font-size: 25px;
 }
 
 
