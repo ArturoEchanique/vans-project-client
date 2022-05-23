@@ -4,13 +4,14 @@
 .beach-3-hex { color: #F3EDDE; }
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
-.navbar-light .navbar-toggler{
-border: 0px;
+.navbar-light .navbar-toggler {
+    border: 0px;
 }
 
-.navBarMain{
-    box-shadow: 2px 2px 5px var(--main-color-4);
-    
+.navBarMain {
+    height: 80px;
+    /* box-shadow: 2px 2px 5px var(--main-color-4); */
+
 }
 
 #logo {
@@ -85,7 +86,8 @@ border: 0px;
     width: auto;
 
 }
-.modal-content{
-     border: 6px solid #88b09fd0;
+
+.modal-content {
+    border: 6px solid #88b09fd0;
     background-color: #fffcf3e6;
 }

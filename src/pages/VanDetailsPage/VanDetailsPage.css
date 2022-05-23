@@ -105,13 +105,16 @@
 
 .vanInfoMain {
     /* background-color: red; */
-    margin-right: 50px;
+    margin-right: 20px;
 }
 
 .bookingInfoMain {
-    width: 100%;
+    
+    /* margin-left: 50px; */
+    width: 90%;
     height: 400px;
     border-radius: 13px;
+    padding: 25px;
     /* background-color: red; */
     box-shadow: 3px 3px 10px var(--main-color-3);
 }
@@ -126,4 +129,15 @@
     padding: 0px;
     border-radius: 30px;
     margin: 0px;
+}
+
+.dateContainer{
+    display: flex;
+    justify-content: center;
+    border: 1px;
+    border-color: rgb(219, 219, 219);
+    border-style: solid;
+    border-radius: 6px;
+    /* background-color: red; */
+    padding: 4px;
 }

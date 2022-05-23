@@ -158,11 +158,11 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                 <img className="vanImage" src={vanDetails?.imageUrl}></img>
                 <Row>
-                    <Col xs={8} >
+                    <Col xs={7} >
                         <div className="vanInfoMain">
                             <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs={10} className="justify-content-center">
-                                    <h3 className="detailsPageTitle">{name?.length > 36 ? (name.slice(0, 36) + " ...") : name}</h3>
+                                    <h3 className="detailsPageTitle">{name?.length > 33 ? (name.slice(0, 33) + " ...") : name}</h3>
                                 </Col>
                                 <Col xs="auto" className="d-flex align-items-center">
                                     <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
@@ -170,37 +170,39 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                             </Row>
                             <p>{vanDetails.description}</p>
-                            <hr></hr>
+             
+                            <br></br>
+                            <br></br>
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
                                 {solarPower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; &nbsp; Shower&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; &nbsp; Shower&nbsp; &nbsp; </Col>
 
                                 }
                                 {solarRoof &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; &nbsp; Solar roof</Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; &nbsp; Solar roof</Col>
 
                                 }
                                 {kitchen &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; &nbsp; Kitchen&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; &nbsp; Kitchen&nbsp; &nbsp; </Col>
                                 }
                                 {bathroom &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; &nbsp; Bathroom&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; &nbsp; Bathroom&nbsp; &nbsp; </Col>
 
                                 }
                                 {heatedSeats &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; &nbsp; Heated seats&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; &nbsp; Heated seats&nbsp; &nbsp; </Col>
 
                                 }
 
@@ -209,7 +211,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             
                         </div>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={5} className="d-flex justify-content-end">
                         <div className="bookingInfoMain">
                             <Row>
                                 <Col>
@@ -223,10 +225,10 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <Row>
 
                             </Row>
-                            <Col className="d-flex justify-content-left">
-                                <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
-                            </Col>
-                            <Col>
+                            <div className="dateContainer">
+                                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                            </div>
+                                
                                 {vanDetails.owner !== user?._id ? (
                                     <Link onClick={reserveButtonClicked} to={"/booking"}>
 
@@ -242,13 +244,12 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                         </Button>
                                     </Link>
                                 )}
-                            </Col>
                         </div>
                     </Col>
                     <div id="modal">
                         <Modal show={showModal} onHide={closeModal}>
                             <Modal.Header closeButton>
-                                <Modal.Title>Add Review</Modal.Title>
+                                <Modal.Title>Write review</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <ReviewForm fireFinalActions={fireFinalActions} />
@@ -270,7 +271,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                         </Row>
                         <div className="reviewButton">
-                            {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Add Review</Button>}
+                            {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Write review</Button>}
                         </div>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
                         }

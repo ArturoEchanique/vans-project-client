@@ -54,8 +54,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
     const { address, mapInitLocationX, mapInitLocationY } = filterData
 
     return (
-        <>
-            <section className="home-background nav-margin">
+            <section className="homeMain nav-margin">
                 <Container className="">
                     {/* d-flex flex-column justify-content-center */}
                     <Row className="mb-3">
@@ -90,7 +89,6 @@ const HomePage = ({ setFilterInfo, filterData }) => {
               
                 </Container>
             </section>
-        </>
     )
 }
 

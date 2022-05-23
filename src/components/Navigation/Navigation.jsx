@@ -7,6 +7,7 @@ import { Navbar, Container, Nav, Offcanvas, Row, Button, NavDropdown, Form, Form
 import "./Navigation.css"
 import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
+import CityAndDate from "../CityAndDate/CityAndDate"
 
 const Navigation = () => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
@@ -78,7 +79,7 @@ const Navigation = () => {
                         </Navbar.Brand>
 
 
-                        
+                        <CityAndDate></CityAndDate>
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>

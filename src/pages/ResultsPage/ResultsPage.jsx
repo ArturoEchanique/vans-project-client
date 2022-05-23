@@ -195,16 +195,19 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                         <Col xs={6} className="d-flex justify-content-center">
                             <div className="cityAndDate">
                                 <>
+                                    <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                                    
                                     <form>
                                         <label>
-                                            <input className="cityAndDateElem" value={"Valencia"} />
+                                            <Form.Control className=" cityAndDateElem textInputClean textInputBig" type="email" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
+
                                         </label>
                                     </form>
                                 </>
                                 <>
-                                    <DatePicker handleDatesChange={setFilterInfo} />
+                                    {/* <DatePicker handleDatesChange={setFilterInfo} /> */}
                                 </>
-                                <Button
+                                {/* <Button
                                     className="searchButton"
                                     id="search"
                                     type="checkbox"
@@ -214,7 +217,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
                                     <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                                     Search
-                                </Button>
+                                </Button> */}
                             </div>
                         </Col>
 
