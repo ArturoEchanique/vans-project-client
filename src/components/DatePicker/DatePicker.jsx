@@ -5,6 +5,7 @@ import "react-dates/initialize"
 import "react-dates/lib/css/_datepicker.css"
 import { DateRangePicker } from "react-dates"
 import "rsuite/dist/rsuite.css"
+import "./DatePicker.css"
 
 const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => {
     const today = new Date()
@@ -16,6 +17,7 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
         startDate: moment(startDate),
         endDate: endDateMoment,
     })
+    const [focus, setFocus] = useState('startDate')
 
     const [focusedInput, setFocusedInput] = useState()
 

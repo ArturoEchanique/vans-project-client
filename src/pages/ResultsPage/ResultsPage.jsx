@@ -17,7 +17,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
-    const [filtersCollapsed, setFiltersCollapsed] = useState(false)
+    const [filtersCollapsed, setFiltersCollapsed] = useState(true)
     // const [fetching, setFetching] = useState(false);
     const [vans, setVans] = useState([])
     const [vansFound, setVansFound] = useState(0)

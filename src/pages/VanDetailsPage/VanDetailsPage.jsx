@@ -45,6 +45,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
             .catch((err) => console.log(err))
     }
 
+
     const getReservedDays = () => {
         const reservedDaysArr = []
         BookingsService.getVanBookings(van_id)
@@ -131,121 +132,156 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     }
 
     const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
-
+    console.log("vanDetails are", vanDetails)
     return (
         <div className="detailsPage">
-            <Container fluid>
-                <Row >
-                    <Col style={{ paddingLeft: "0", paddingRight: "0", flex: "1", height: "100vh", overflowY: "scroll" }}>
-                        <img className="vanImage" src={vanDetails.imageUrl}></img>
-                        <Container fluid className="detailsLeftBlock">
-                            <Row className="justify-content-left">
-                                <Col xs={11} className="justify-content-center">
-                                    <div className="detailsPageTitle">
-                                        <h2>{name}</h2>
-                                    </div>
+            <div className="detailsPageSub">
+                <div className="vanImageTopInfo">
+                    <Row className="mb-3">
+                        <Col xs="auto" className="d-flex justify-content-start">
+                            <h3>Owner: Pablo Perez</h3>
+                        </Col>
+                        <Col className="d-flex align-items-center">
+                            {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                        </Col>
+                        <Col xs={2} className="d-flex align-items-center justify-content-end">
+                            <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                                <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>&nbsp; Save van
+                            </button>
+                        </Col>
+
+                    </Row>
+
+                </div>
+                <div className="vanImageTopInfo">
+                </div>
+
+                <img className="vanImage" src={vanDetails?.imageUrl}></img>
+                <Row>
+                    <Col xs={8} >
+                        <div className="vanInfoMain">
+                            <Row className="justify-content-left align-items-center">
+                                <Col xs={10} className="justify-content-center">
+                                    <h3 className="detailsPageTitle">{name?.length > 30 ? (name.slice(0, 30) + " ...") : name}</h3>
+                                </Col>
+                                <Col xs="auto" className="d-flex align-items-center">
+                                    <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
                                 </Col>
 
-                                <Col xs={1} className="justify-content-center">
-                                    <div className="detailsHeartIcon">
-                                        <Heart isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
-                                    </div>
-                                </Col>
                             </Row>
 
                             <Row className="justify-content-left vanDetailsIconsRow">
                                 {solarPower &&
-                                    <Col xs={1} className="justify-content-center">
-                                        <img className="vanCardIcon" src="./../../images/sunIcon.png"></img>
-                                    </Col>
+
+                                    <>  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> Solar power</>
+
                                 }
                                 {shower &&
-                                    <Col xs={1} className="justify-content-center">
-                                        <img className="vanCardIcon" src="./../../images/showerIcon.png"></img>
-                                    </Col>
+
+                                    <><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> Shower</>
+
                                 }
                                 {solarRoof &&
-                                    <Col xs={1} className="justify-content-center" >
-                                        <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img>
-                                    </Col>
+
+                                    <>  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> Solar roof</>
+
                                 }
                                 {kitchen &&
-                                    <Col xs={1} className="justify-content-center" >
-                                        <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img>
-                                    </Col>
+
+                                    <>  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> Kitchen</>
                                 }
                                 {bathroom &&
-                                    <Col xs={1} className="justify-content-center" >
-                                        <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img>
-                                    </Col>
+
+                                    <> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> Bathroom</>
+
                                 }
                                 {heatedSeats &&
-                                    <Col xs={1} className="justify-content-center" >
-                                        <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img>
-                                    </Col>
+
+                                    <> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> Heated seats</>
+
                                 }
 
-                                <Col d-flex justify-content-center>
-                                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
-                                </Col>
 
-                                <Col>
-                                    {vanDetails.owner !== user?._id ? (
-                                        <Link onClick={reserveButtonClicked} to={"/booking"}>
-
-                                            <Button variant="dark detailsButtonWide">
-                                                Book Van
-                                            </Button>
-
-                                        </Link>
-                                    ) : (
-                                        <Link to={`/${vanDetails._id}/edit`}>
-                                            <Button className="search-button" variant="dark detailsButtonWide" size="lg">
-                                                Edit my van
-                                            </Button>
-                                        </Link>
-                                    )}
-                                </Col>
                             </Row>
-                            <div id="modal">
-                                <Modal show={showModal} onHide={closeModal}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Add Review</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <ReviewForm fireFinalActions={fireFinalActions} />
-                                    </Modal.Body>
-                                </Modal>
-                                <Row>
-                                    {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
-                                   
-
-                                    {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
-                                        return (
-                                            <Col xs={6}>
-                                                <ReviewComment profileIndex={idx} vanReview={review}></ReviewComment>
-                                            </Col>
-                                        )
-
-                                    })}
-                                    {/* Comment vanReviews={vanDetails.reviews}></ReviewsSection> */}
-
-                                </Row>
-                                <div className="reviewButton">
-                                    {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Add Review</Button>}
-                                </div>
-
-                            </div >
-                        </Container >
-
+                            <hr></hr>
+                            <p>{vanDetails.description}</p>
+                        </div>
                     </Col>
-                    <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
+                    <Col xs={4}>
+                        <div className="bookingInfoMain">
+                            <Row>
+                                <Col>
+                                    <strong>638 €</strong> /day
+                                </Col>
+                                <Col>
+                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                                </Col>
+
+                            </Row>
+                            <Row>
+
+                            </Row>
+                            <Col className="d-flex justify-content-left">
+                                <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                            </Col>
+                            <Col>
+                                {vanDetails.owner !== user?._id ? (
+                                    <Link onClick={reserveButtonClicked} to={"/booking"}>
+
+                                        <Button variant="dark detailsButtonWide">
+                                            Book Van
+                                        </Button>
+
+                                    </Link>
+                                ) : (
+                                    <Link to={`/${vanDetails._id}/edit`}>
+                                        <Button className="search-button" variant="dark detailsButtonWide" size="lg">
+                                            Edit my van
+                                        </Button>
+                                    </Link>
+                                )}
+                            </Col>
+                        </div>
+                    </Col>
+                    <div id="modal">
+                        <Modal show={showModal} onHide={closeModal}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Add Review</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <ReviewForm fireFinalActions={fireFinalActions} />
+                            </Modal.Body>
+                        </Modal>
+                        <Row>
+                            {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
+
+
+                            {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
+                                return (
+                                    <Col xs={6}>
+                                        <ReviewComment profileIndex={idx} vanReview={review}></ReviewComment>
+                                    </Col>
+                                )
+
+                            })}
+                            {/* Comment vanReviews={vanDetails.reviews}></ReviewsSection> */}
+
+                        </Row>
+                        <div className="reviewButton">
+                            {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Add Review</Button>}
+                        </div>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
                         }
-                    </Col>
+                    </div >
+                    {/* <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
+                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
+                        }
+                    </Col> */}
 
                 </Row>
-            </Container>
+            </div>
+
+
         </div>
     )
 

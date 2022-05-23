@@ -42,12 +42,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                         <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>
                     </button>
-                    {/* <div className="heartContainer">
-                        <Heart className="heartComponent" isClick={isFavorite} onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)} />
-                    </div> */}
                 </Col>
-                
-               
             </Row>
             <p className="filterRow vanCardDescription">{description.length > 120 ? (description.slice(0, 120) + "...") : description}</p>
             <Row className="justify-content-left vanIconsRow">

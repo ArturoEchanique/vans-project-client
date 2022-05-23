@@ -1,3 +1,89 @@
-.DatePicker {
+/* .DatePicker {
     width: 100% !important;
+} */
+
+.rheostat-progress {
+    background-color: black !important;
+}
+
+.css-qjht2a-Label-right {
+    font-size: 13px;
+}
+
+.css-nb97e2-Label-left {
+    font-size: 13px;
+}
+
+.CalendarDay__selected_span {
+    background: var(--main-color-5);
+    color: var(--main-color-1);
+    border: 1px solid var(--main-color-5);
+    border-color: var(--main-color5);
+
+    border: 0px;
+}
+
+.CalendarDay__selected {
+    background: var(--main-color-1);
+    color: white;
+    border: 0px;
+    border-color: var(--main-color-3);
+    border-radius: 20px;
+}
+
+.CalendarDay__selected:hover {
+    background: var(--main-color-3);
+    color: white;
+    border: 0px;
+    border-color: var(--main-color-3);
+    border-radius: 20px;
+}
+
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+    background: var(--main-color-5);
+    border: 0px;
+    color: var(--main-color-1);
+}
+
+.CalendarDay__default {
+    border: 0px;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+    border-color: white;
+}
+
+.DayPickerNavigation_rightButton__horizontalDefault {
+    border: 0px;
+}
+
+.DayPickerNavigation_leftButton__horizontalDefault {
+    border: 0px;
+}
+
+.DateInput_input__focused {
+    border-color: white;
+    font-size: 15px;
+}
+
+.DateInput_input {
+    font-size: 15px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.DateInput_1 {
+    font-size: 15px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.DateRangePickerInput__withBorder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 0px;
 }
