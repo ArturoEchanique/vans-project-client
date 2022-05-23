@@ -1,7 +1,7 @@
 import './CheckoutForm.css'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import stripeService from "../../services/stripe.service"
 import bookingsService from "../../services/bookings.service"
 import chatService from "../../services/chat.service"
@@ -67,22 +67,30 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
         elements.getElement(CardElement).clear()
         openModal()
-        // navigate("/paydetails")
         setLoading(false)
     }
 
     return (
         <>
-            <Modal show={showModal} onHide={closeModal}>
+            <Modal backdrop="static" show={showModal} onHide={closeModal}>
                 <div className="modal1">
                     <Modal.Header closeButton>
                         <Modal.Title>Booked Successfull</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <PaymentDetailsCard closeModal={closeModal} />
+                    <Modal.Body id='paybtn'>
+                        <PaymentDetailsCard />
+                        <hr />
+                        <Button onClick={closeModal} variant="dark">
+                            <Link to={'/'}>Home Page</Link>
+                        </Button>
                     </Modal.Body>
+
+
                 </div>
             </Modal>
+
+
+
             <form onSubmit={handleSubmit}>
                 <Card className="payment" style={{ width: '28rem' }}>
                     <Card.Img variant="top" src="https://careeracademy.co.nz/wp-content/uploads/2020/11/Secure-Payment-Icon.png" />
@@ -90,7 +98,6 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         <Card.Title className="paymentTitle">Checkout</Card.Title>
                         <Card.Text className="paymentPrice">
                             Price: {price}$
-
 
                         </Card.Text>
                         <CardElement />
@@ -102,18 +109,6 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                 </Card>
             </form>
 
-            {/* 
-            <form onSubmit={handleSubmit}>
-                <img src="https://careeracademy.co.nz/wp-content/uploads/2020/11/Secure-Payment-Icon.png" className="img-fluid" />
-                <h3 className="text-center my-2">Price: {price}$</h3>
-                <div className="form-group">
-                    <CardElement />
-                </div>
-                <hr />
-                <button disabled={!stripe} className="btn btn-success">
-                    {loading ? "Loading..." : "Book"}
-                </button>
-            </form> */}
         </>
     )
 }

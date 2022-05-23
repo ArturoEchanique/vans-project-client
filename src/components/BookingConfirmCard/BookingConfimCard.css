@@ -1,3 +1,13 @@
 #rowTitle {
     margin-bottom: 4%;
 }
+
+#vanImg {
+    height: 400px;
+}
+
+.details {
+    margin-top: 5%;
+    text-align: center;
+    color: #FF9C82;
+}

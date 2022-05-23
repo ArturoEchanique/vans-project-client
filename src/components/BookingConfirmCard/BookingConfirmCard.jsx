@@ -6,18 +6,18 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
     return (
         <>
             <Container>
+                <Row>
+                    <img id="vanImg" className="vanCardImage" src={imageUrl}></img>
+                    <h3 className="filterRow">{name}</h3>
+                    {/* <div className="form-control">{description}</div> */}
+                </Row>
+                <h3 className="details">Booking details</h3>
 
-
-                <img className="vanCardImage" src={imageUrl}></img>
-                <h3 className="filterRow">{name}</h3>
-                <div className="form-control">{description}</div>
-
-                <h4>Booking details</h4>
                 <Row className="justify-content-center filterRowSmall">
-                    <h5 id="rowTitle">Price </h5>
+                    <h4 id="rowTitle">Price </h4>
                     <hr />
                     <Col>
-                        <Button className="filterButton" variant="light" disabled>Price: {dayPrice}$</Button>
+                        <Button className="filterButton" variant="light" disabled>Price per day: {dayPrice}$</Button>
                     </Col>
                     <Col>
                         <Button className="filterButton" variant="light" disabled>Total: {price}$</Button>
@@ -25,14 +25,14 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
 
                 </Row>
                 <Row className="justify-content-center filterRowSmall">
-                    <h5 id="rowTitle">Booking Dates</h5>
+                    <h4 id="rowTitle">Booking Dates</h4>
                     <hr />
 
                     <Col>
-                        <Button className="filterButton" variant="light" disabled>Starts at: <strong>{startDate.toLocaleString()}</strong></Button>
+                        <Button className="filterButton" variant="light" disabled>Starts at: {startDate.toLocaleString()}</Button>
                     </Col>
                     <Col>
-                        <Button className="filterButton" variant="light" disabled>Ends at: <strong>{endDate.toLocaleString()}</strong></Button>
+                        <Button className="filterButton" variant="light" disabled>Ends at: {endDate.toLocaleString()}</Button>
                     </Col>
 
                 </Row>
