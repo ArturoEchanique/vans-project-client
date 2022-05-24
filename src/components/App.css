@@ -82,3 +82,7 @@ INSTEAD OF
 .btn {
     box-shadow: none !important
 }
+
+a{
+    text-decoration: none !important;
+}

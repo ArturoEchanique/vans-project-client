@@ -190,7 +190,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                 <Container fluid>
                     <Row className="">
                         <Col xs={3}>
-                            <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" />
+                            {/* <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" /> */}
                         </Col>
                         <Col xs={6} className="d-flex justify-content-center">
                             <div className="nameSearchBar">
