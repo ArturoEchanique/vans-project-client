@@ -8,38 +8,38 @@ import DatePicker from "../../components/DatePicker/DatePicker"
 import 'react-pro-sidebar/dist/css/styles.css';
 import { Link } from "react-router-dom"
 
-const CityAndDate = ({ startDate, endDate, handleDatesChange, reservedDays }) => {
+const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDatesChange, reservedDays }) => {
 
 
-    // const [geoData, setGeoData] = useState({
-    //     address: filterData.address,
-    // })
-    // const navigate = useNavigate()
-    // const today = new Date()
-    // let tomorrow = new Date(today)
-    // tomorrow = tomorrow.setDate(today.getDate() + 1)
+    const [geoData, setGeoData] = useState({
+        address: filterData.address,
+    })
+    const navigate = useNavigate()
+    const today = new Date()
+    let tomorrow = new Date(today)
+    tomorrow = tomorrow.setDate(today.getDate() + 1)
 
 
-    // const searchVansClicked = (e) => {
-    //     e.preventDefault()
-    //     Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
+    const searchVansClicked = (e) => {
+        e.preventDefault()
+        Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
 
-    //     console.log("geodata is...", geoData)
-    //     Geocode.fromAddress(`${geoData.street}, ${geoData.address},${geoData.country}`).then(
-    //         (response) => {
-    //             const { lat, lng } = response.results[0].geometry.location
-    //             console.log("geocode results are:", "lat", lat, "lng,", lng)
+        console.log("geodata is...", geoData)
+        Geocode.fromAddress(`${geoData.street}, ${geoData.address},${geoData.country}`).then(
+            (response) => {
+                const { lat, lng } = response.results[0].geometry.location
+                console.log("geocode results are:", "lat", lat, "lng,", lng)
 
-    //             setFilterInfo({ ...filterData, address: geoData.address, mapInitLocationX: lat, mapInitLocationY: lng })
-    //             navigate("/results")
-    //         },
-    //         (error) => {
-    //             console.error(error)
-    //             navigate("/results")
-    //             // navigate('/results')
-    //         }
-    //     )
-    // }
+                setFilterInfo({ ...filterData, address: geoData.address, mapInitLocationX: lat, mapInitLocationY: lng })
+                navigate("/results")
+            },
+            (error) => {
+                console.error(error)
+                navigate("/results")
+                // navigate('/results')
+            }
+        )
+    }
 
     return (
         <div className="cityAndDate">
@@ -48,18 +48,27 @@ const CityAndDate = ({ startDate, endDate, handleDatesChange, reservedDays }) =>
                         <input className="cityAndDateElem" value={"Valencia"} />
                     </label>
                 </form>
-                <DatePicker />
-            {/* <Link to="/results">
-                <Button className="search-button" variant="dark" onClick={searchVansClicked}>Search Vans</Button>
-            </Link> */}
+                {/* <DatePicker /> */}
+            <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+            <Link  className="cityAndDateSearchButtonLink"to="/results">
+                <button
+                    className="cityAndDateSearchButton"
+                    variant={"light"}
+                    onClick={searchVansClicked}
+                    id="search">
+                    <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                    &nbsp;<p>Search</p>
+                </button>
+            </Link>
 
-            <button
+            {/* <button
                 className="cityAndDateSearchButton"
                 variant={"light"}
+                onClick={searchVansClicked}
                 id="search">
                 <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                 &nbsp;<p>Search</p>
-            </button>
+            </button> */}
         </div>
     )
 }
