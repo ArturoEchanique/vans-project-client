@@ -9,6 +9,11 @@ import VanService from "../../services/van.service";
 import messagesService from "./../../services/messages.service";
 import bookingsService from "./../../services/bookings.service";
 import chatService from "./../../services/chat.service";
+import "./MessagesPage.css"
+import ChatButton from "../../components/ChatButton/ChatButton";
+import ChatMessage from "../../components/ChatMessage/ChatMessage";
+import MessagesBookingDetails from "../../components/MessagesBookingDetails/MessagesBookingDetails";
+
 
 
 const MessagesPage = ({ setBookingInfo }) => {
@@ -18,9 +23,9 @@ const MessagesPage = ({ setBookingInfo }) => {
     const [selectedChat, setSelectedChat] = useState(0);
     const [messages, setMessages] = useState([]);
     const [messageText, setMessageText] = useState("");
-    const [bookingDetails, setBookingDetails] = useState([]);
+    // const [bookingDetails, setBookingDetails] = useState([]);
     const [userDetails, setUserDetails] = useState({});
-  
+
 
 
     useEffect(() => {
@@ -92,9 +97,8 @@ const MessagesPage = ({ setBookingInfo }) => {
                 loadChatMessages()
                 setMessageText("")
             })
-            
-            .catch((err) => console.log(err));
 
+            .catch((err) => console.log(err));
     }
 
     const handleInputChange = (e) => {
@@ -105,48 +109,54 @@ const MessagesPage = ({ setBookingInfo }) => {
 
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <ButtonGroup>
+        <div className="messagesPageMain">
+            <Row style={{ padding: 0 }} className="messagesPageSubMain">
+                <Col xs={3} className="messagesCol">
+                    <h3>Messages</h3>
+                    <div className="chatsContainer">
                         {chats.map((chat, idx) => {
                             return (
-                                <Button key={idx} onClick={() => setSelectedChat(idx)}
+                                <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                     active={selectedChat === idx} >
-                                    {getChatPartner(chat).username}
-                                </Button>
+
+                                    <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+
+                                </button>
+                            )
+                        })}
+                    </div>
+                </Col>
+                <Col xs={6} >
+                    <h3>Sandra</h3>
+                    <div className="messagesInfiniteScroll">
+                        {messages.map((message, idx) => {
+                            return (
+                                <>
+                                    <ChatMessage key={idx} message={message}></ChatMessage>
+                                    <ChatMessage key={idx} message={message}></ChatMessage>
+                                    {/* <p key={idx}>{message.text}</p> */}
+                                </>
 
                             )
                         })}
-                    </ButtonGroup>
-
-
-
-                </Col>
-                <Col>
-                    <h3>{messages.map((message,idx) => {
-                        return (
-                            <p key={idx}>{message.text}</p>
-                        )
-                    })}</h3>
-                    <form onSubmit={handleMessageSubmit}>
-                        <label>
-                            new messate
-                            <textarea value={messageText} onChange={handleInputChange} />
-                        </label>
-                        <input type="submit" value="Submit" />
-                    </form>
+                    </div>
+                    <div className="messagesSendSection">
+                        <form className="sendMessageArea" onSubmit={handleMessageSubmit}>
+                           
+                                <input className="writeMessageInput textInputClean textInputBig" type="text" value={messageText} placeholder="Write a message" onChange={handleInputChange} />
+                            
+                            <input className="sendMessageIcon" type="image" src="./../../images/sendMessageIcon.png" />
+                        </form>
+                    </div>
 
                 </Col>
-                <Col>
-                    <h3>Reservation info
-                        van owner:
-                        {chats.length > 0 && chats[selectedChat].booking.bookedVan.owner.username}
-                    </h3>
+                <Col xs={3}>
+                    <h3>Details</h3>
+                    <MessagesBookingDetails/>
 
                 </Col>
             </Row>
-        </Container>
+        </div >
     );
 };
 

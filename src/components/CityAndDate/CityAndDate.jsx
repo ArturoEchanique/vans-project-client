@@ -41,11 +41,20 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
         )
     }
 
+    const handleStreetChange = (e) => {
+        const { name, value } = e.currentTarget
+        setFilterInfo({ ...filterData, address: value })
+        // const geoForn = { ...geoData, address: value }
+        setGeoData({ ...geoData, address: value })
+    }
+    
+    const { address, mapInitLocationX, mapInitLocationY } = filterData
+
     return (
         <div className="cityAndDate">
                 <form>
                     <label>
-                        <input className="cityAndDateElem" value={"Valencia"} />
+                    <input className="cityAndDateElem" type="text" value={address} name="address" onChange={handleStreetChange}/>
                     </label>
                 </form>
                 {/* <DatePicker /> */}

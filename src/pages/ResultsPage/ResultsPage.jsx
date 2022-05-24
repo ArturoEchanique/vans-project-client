@@ -193,33 +193,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             {/* <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" /> */}
                         </Col>
                         <Col xs={6} className="d-flex justify-content-center">
-                            <div className="nameSearchBar">
-                                    
-                                    <form>
-                                        <label>
-                                            <input className=" nameSearchBarInput textInputClean textInputBig" type="email" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
-                                        </label>
+                            <div className="nameSearchBar">    
+                                    <form onSubmit={handleSubmit}>
+                                            <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
                                     </form>
-                                {/* <form>
-                                    <label>
-                                        <input className="cityAndDateElem" value={"Valencia"} />
-                                    </label>
-                                </form> */}
                                 <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                                <>
-                                    {/* <DatePicker handleDatesChange={setFilterInfo} /> */}
-                                </>
-                                {/* <Button
-                                    className="searchButton"
-                                    id="search"
-                                    type="checkbox"
-                                    variant={bathroom ? "dark" : "light"}
-                                    checked={bathroom}
-                                    name="bathroom"
-                                    onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
-                                    <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                                    Search
-                                </Button> */}
                             </div>
                         </Col>
 

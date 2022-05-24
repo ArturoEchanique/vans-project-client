@@ -7,8 +7,6 @@ import { AuthContext } from "../../context/auth.context"
 import VanCard from "../../components/VanCard/VanCard"
 import InViewportComponent from "../InViewportComponent/InViewportComponent"
 import "./VanCardList.css"
-import InfiniteScroll from "react-infinite-scroll-component"
-import handleViewport from "react-in-viewport";
 
 
 

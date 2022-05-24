@@ -145,7 +145,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
                         </Col>
                         <Col xs={2} className="d-flex align-items-center justify-content-end">
-                            <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                            <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                                 <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>&nbsp; Save van
                             </button>
                         </Col>
@@ -274,20 +274,22 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         </Modal>
                         <Row>
                             {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
-
+                        </Row>
+                        <Row className="d-flex justify-content-between">
 
                             {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
                                 return (
-                                    <Col xs={6}>
+                                    <Col xs={5}>
                                         <ReviewComment profileIndex={idx} vanReview={review}></ReviewComment>
                                     </Col>
                                 )
 
                             })}
                             {/* Comment vanReviews={vanDetails.reviews}></ReviewsSection> */}
-
                         </Row>
-                        <div className="reviewButton">
+
+                        
+                        <div className="reviewButtonContainer">
                             {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Write review</Button>}
                         </div>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />

@@ -1,0 +1,97 @@
+.messagesPageMain {
+    padding-top: 100px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.messagesPageSubMain {
+    height: 100vh;
+    margin: 0px;
+
+}
+
+/* .chatButtonContainer{
+    background-color: rgb(179, 0, 255);
+    width: 100%;
+    height: 100px;
+} */
+
+.chatsContainer {
+    /* background-color: rgb(179, 0, 255); */
+    padding: 0px;
+    margin: 0px;
+}
+
+.messagesCol {
+    /* flex: 1 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important; */
+    /* background-color: red; */
+    padding: 0px 10px 0px 20px;
+    margin: 0px;
+    height: 100%;
+}
+
+.writeMessageInput {
+    border: none;
+    outline: none;
+    height: 48px;
+    border-color: #dadada;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: double;
+    border: 0px;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.chatButton {
+    border-radius: 10px;
+    width: 90%;
+    margin: 2% 5%;
+}
+
+.chatButton.selected {
+    background-color: var(--main-color-4);
+}
+
+.chatButton.unselected {
+    background-color: var(--main-color-5);
+}
+
+.messagesSendSection {
+    position: sticky;
+    bottom: 0;
+    /* background-color: red; */
+    padding: 30px 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sendMessageIcon {
+    padding: 0px;
+    margin-right: 20px;
+    width: 16px;
+    height: 16px;
+    filter: saturate(300%) brightness(100%) hue-rotate(10deg)
+}
+
+.sendMessageArea {
+    bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 1px 2px 5px var(--main-color-4);
+}
+
+.messagesInfiniteScroll {
+    flex: 1;
+    height: 72vh;
+    padding: 0px 80px;
+    overflow-y: scroll;
+    /* padding-bottom: 150px; */
+}

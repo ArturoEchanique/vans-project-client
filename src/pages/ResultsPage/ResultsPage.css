@@ -105,6 +105,7 @@
 .textInputBig {
     height: 40px;
     font-size: 13px;
+    width: 100%;
 }
 
 .textInputSmall {
@@ -174,7 +175,7 @@
 }
 
 .showFiltersButton.checked {
-    color: var(--vanmeup-3);
+    color: var(--vanmeup-2);
 }
 
 .filterButtonIcon {

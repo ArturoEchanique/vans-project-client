@@ -39,7 +39,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     <h3 className="vanCardTitle">{name.length > 28 ? (name.slice(0,28)+" ...") : name}</h3>
                 </Col>
                 <Col xs={2} className="justify-content-center">
-                    <button class="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                    <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                         <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>
                     </button>
                 </Col>

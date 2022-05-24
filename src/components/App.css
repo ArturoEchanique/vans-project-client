@@ -86,3 +86,6 @@ INSTEAD OF
 a{
     text-decoration: none !important;
 }
+/* p {
+    word-wrap: break-word;
+} */

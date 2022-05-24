@@ -1,19 +1,21 @@
-.reviewComment{
-    padding: 30px 0px;
+.chatButtonMain {
+    width: 100%;
+    height: 100px;
+    margin: 0px;
 }
-
+/* 
 .reviewComment h2 {
     padding-bottom: 70px;
 }
 
-.profileImage{
+.profileImage {
     width: 50px;
     border-radius: 50px;
     margin: 0px 15px 15px 0px;
     padding: 0px;
 }
 
-.reviewComment{
+.reviewComment {
     display: flex;
     flex-direction: column;
 }
@@ -27,4 +29,4 @@
 .commentUpper {
     display: flex;
     flex-direction: row;
-}
+} */

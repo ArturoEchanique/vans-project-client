@@ -98,7 +98,9 @@
 }
 
 .reviewSectionTitle {
-    padding: 35px 50px;
+    margin-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .reviewSectionTitle h2 {
@@ -107,11 +109,11 @@
 
 
 
-.reviewButton {
+.reviewButtonContainer {
     display: flex;
     justify-content: left;
     padding-top: 60px;
-    padding-left: 75px;
+    padding-left: 0px;
     padding-bottom: 70px;
     margin-bottom: 50px;
 }
