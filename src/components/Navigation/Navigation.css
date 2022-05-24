@@ -80,6 +80,7 @@
 .logo-nav {
 
     margin-left: 50px;
+    filter: sepia(0%) saturate(2000%) brightness(80%) hue-rotate(330deg);
 }
 
 .logo-nav {
