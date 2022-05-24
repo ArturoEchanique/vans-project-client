@@ -5,10 +5,10 @@
 .beach-4-hex { color: #FFCFA5; }
 .beach-5-hex { color: #FF9C82; } */
 .title-h1 h1 {
-    font-size: 5em;
+    font-size: 2.5em;
     font-family: "Josefin Sans", sans-serif;
-    color: #f3edde;
-    text-shadow: 0.1em -0.06em 0.03em #647f76;
+    color: #ffffff;
+    /* text-shadow: 0.1em -0.06em 0.03em #7c7c7c; */
     margin-bottom: 3rem;
 }
 
