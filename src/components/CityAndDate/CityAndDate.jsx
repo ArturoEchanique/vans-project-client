@@ -1,42 +1,65 @@
 import "rsuite/dist/rsuite.css"
+import { useState, useContext } from "react"
 import "./CityAndDate.css"
 import { Button, Col, Row, Form, ToggleButton, Container } from "react-bootstrap"
-import vanService from "./../../services/van.service"
-import VanCard from "../../components/VanCard/VanCard"
-import { useEffect, useState, useContext } from "react"
-import userService from "./../../services/user.service"
-import { AuthContext } from "../../context/auth.context"
-import ReactMap from "../../components/ReactMap/ReactMap"
-import InfiniteScroll from "react-infinite-scroll-component"
-import DatePicker from "../../components/DatePicker/DatePicker"
-import PriceSlider from "../../components/PriceSlider/PriceSlider"
-import VanCardList from "../../components/VanCardList/VanCardList"
+import Geocode from "react-geocode"
 import { useNavigate } from "react-router-dom"
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import DatePicker from "../../components/DatePicker/DatePicker"
 import 'react-pro-sidebar/dist/css/styles.css';
+import { Link } from "react-router-dom"
 
 const CityAndDate = ({ startDate, endDate, handleDatesChange, reservedDays }) => {
 
 
+    // const [geoData, setGeoData] = useState({
+    //     address: filterData.address,
+    // })
+    // const navigate = useNavigate()
+    // const today = new Date()
+    // let tomorrow = new Date(today)
+    // tomorrow = tomorrow.setDate(today.getDate() + 1)
+
+
+    // const searchVansClicked = (e) => {
+    //     e.preventDefault()
+    //     Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
+
+    //     console.log("geodata is...", geoData)
+    //     Geocode.fromAddress(`${geoData.street}, ${geoData.address},${geoData.country}`).then(
+    //         (response) => {
+    //             const { lat, lng } = response.results[0].geometry.location
+    //             console.log("geocode results are:", "lat", lat, "lng,", lng)
+
+    //             setFilterInfo({ ...filterData, address: geoData.address, mapInitLocationX: lat, mapInitLocationY: lng })
+    //             navigate("/results")
+    //         },
+    //         (error) => {
+    //             console.error(error)
+    //             navigate("/results")
+    //             // navigate('/results')
+    //         }
+    //     )
+    // }
+
     return (
         <div className="cityAndDate">
-            <>
                 <form>
                     <label>
                         <input className="cityAndDateElem" value={"Valencia"} />
                     </label>
                 </form>
-            </>
-            <>
                 <DatePicker />
-            </>
-            <Button
-                className="searchButton"
+            {/* <Link to="/results">
+                <Button className="search-button" variant="dark" onClick={searchVansClicked}>Search Vans</Button>
+            </Link> */}
+
+            <button
+                className="cityAndDateSearchButton"
                 variant={"light"}
                 id="search">
-                <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                Search
-            </Button>
+                <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                &nbsp;<p>Search</p>
+            </button>
         </div>
     )
 }

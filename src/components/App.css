@@ -51,8 +51,34 @@ img {
     --main-color-5: #f8f9fa;
 }
 
+/* ESTA ES NUESTRA PALETA DE COLORES, UTILIZAR EN TODA LA WEB Y CAMBIAR AQUI PARA CAMBIAR EL TEMA DE LA WEB */
+:root {
+    --vanmeup-1: rgb(255, 0, 0);
+    --vanmeup-2: rgb(255, 145, 0);
+    --vanmeup-3: rgb(138, 0, 69);
+    --vanmeup-4: rgb(36, 26, 110);
+    --vanmeup-5: #bb3800;
+}
+
 /* You can use theese colors this way: */
 
 /* #foo {
-    color: var(--main-color-1);
+    color: var(--vanmeup-3);
+
+INSTEAD OF
+
+/* #foo {
+    color: red;
 } */
+
+
+
+/* THIS REMOVES SOME STILYNG WHEN CLICK ON BOOSTRAP BUTTONS */
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn {
+    box-shadow: none !important
+}

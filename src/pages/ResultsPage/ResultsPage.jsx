@@ -193,17 +193,19 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" />
                         </Col>
                         <Col xs={6} className="d-flex justify-content-center">
-                            <div className="cityAndDate">
-                                <>
-                                    <img className="searchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                            <div className="nameSearchBar">
                                     
                                     <form>
                                         <label>
-                                            <Form.Control className=" cityAndDateElem textInputClean textInputBig" type="email" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
-
+                                            <input className=" nameSearchBarInput textInputClean textInputBig" type="email" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
                                         </label>
                                     </form>
-                                </>
+                                {/* <form>
+                                    <label>
+                                        <input className="cityAndDateElem" value={"Valencia"} />
+                                    </label>
+                                </form> */}
+                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                                 <>
                                     {/* <DatePicker handleDatesChange={setFilterInfo} /> */}
                                 </>
@@ -223,17 +225,17 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
                         <Col className="d-flex justify-content-end">
 
-                            <ToggleButton
-                                className="showFiltersButton"
+                            <button
+                                className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
                                 id="showFilters"
                                 type="checkbox"
-                                variant={bathroom ? "dark" : "light"}
-                                checked={bathroom}
-                                name="bathroom"
+                                variant={"light"}
+                                checked={filtersCollapsed}
+                                name="showFilters"
                                 onClick={() => setFiltersCollapsed(!filtersCollapsed)}>
                                 <img className="filterButtonIcon" src="./../../images/filterIcon.png"></img>
                                 Filters
-                            </ToggleButton>
+                            </button>
 
                         </Col>
                     </Row>
@@ -263,12 +265,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </SubMenu>
                             </Menu> */}
                             <Container className="filterMain filterScroll">
-                                <h3 className="filterTitle">Name</h3>
+                                {/* <h3 className="filterTitle">Name</h3>
                                 <Row className="justify-content-center filterRow">
                                     <Col>
                                         <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
                                     </Col>
-                                </Row>
+                                </Row> */}
                                 <h3 className="filterTitle">Features</h3>
                                 <Row className="justify-content-center filterRowSmall">
                                     <Col className="filterButtonCol">
