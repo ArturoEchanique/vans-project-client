@@ -73,7 +73,7 @@ const Navigation = ({setFilterInfo, filterData}) => {
                         </Modal>
                         <Navbar.Brand>
                             <Link to="/" className="nav-link">
-                                <img className="logo-nav" id="logo" src="./../images/2.png" alt="vanmeup" />
+                                <img className="logo-nav" id="logo" src="./../images/VANMEUP.png" alt="vanmeup" />
                             </Link>
                         </Navbar.Brand>
 
@@ -116,7 +116,7 @@ const Navigation = ({setFilterInfo, filterData}) => {
                                         )}
                                         {user && (
                                             <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
-                                                <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
+                                                <img id="logo" src="./../images/profile.png" alt="" srcSet="" />
                                                 Hello,{user.username}
                                             </NavLink>
                                         )}
@@ -125,7 +125,7 @@ const Navigation = ({setFilterInfo, filterData}) => {
                                             Search
                                         </NavLink>
                                         <NavLink to="/become-host" className="nav-link  logo-img">
-                                            <img id="logo" src="./../images/host.png" alt="" srcSet="" />
+                                            <img id="logo" src="./../images/becomehost.png" alt="" srcSet="" />
                                             Become Host
                                         </NavLink>
 
