@@ -157,7 +157,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                 </div>
 
                 <img className="vanImage" src={vanDetails?.imageUrl}></img>
-                <Row>
+                <Row className="mt-3">
                     <Col xs={7} >
                         <div className="vanInfoMain">
                             <Row className="justify-content-left align-items-center mb-4">
@@ -170,7 +170,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                             </Row>
                             <p>{vanDetails.description}</p>
-             
+
                             <br></br>
                             <br></br>
                             <br></br>
@@ -178,7 +178,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
                                 {solarPower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0"}} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
@@ -208,42 +208,59 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
 
                             </Row>
-                            
+
                         </div>
                     </Col>
                     <Col xs={5} className="d-flex justify-content-end">
                         <div className="bookingInfoMain">
-                            <Row>
-                                <Col>
-                                    <strong>638 €</strong> /day
+                            <Row className="d-flex justify-content-space-between align-items-center mb-4">
+                                <Col className="">
+                                    <strong className="mainPrice">638 €</strong>&nbsp; /day
                                 </Col>
-                                <Col>
+                                <Col >
                                     {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
                                 </Col>
 
                             </Row>
-                            <Row>
-
-                            </Row>
-                            <div className="dateContainer">
-                                    <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
+                            <div className="dateContainer mb-4">
+                                <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
                             </div>
-                                
-                                {vanDetails.owner !== user?._id ? (
-                                    <Link onClick={reserveButtonClicked} to={"/booking"}>
 
-                                        <Button variant="dark detailsButtonWide">
-                                            Book Van
-                                        </Button>
+                            {vanDetails.owner !== user?._id ? (
+                                <Link onClick={reserveButtonClicked} to={"/booking"}>
 
-                                    </Link>
-                                ) : (
-                                    <Link to={`/${vanDetails._id}/edit`}>
-                                        <Button className="search-button" variant="dark detailsButtonWide" size="lg">
-                                            Edit my van
-                                        </Button>
-                                    </Link>
-                                )}
+                                    <button className="bookVanButton mb-4" variant="light">
+                                        <strong>Book Van</strong>
+                                    </button>
+                                </Link>
+                            ) : (
+                                <Link to={`/${vanDetails._id}/edit`}>
+                                        <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
+                                        Edit my van
+                                    </button>
+                                </Link>
+                            )}
+                            <div className="mb-4">
+                                <p style={{textAlign:"center"}}>You will not be charged anything yet</p>
+                                <p style={{textAlign:"center"}}>The total price of the trip includes VAT and all applicable taxes.</p>
+                            </div>
+                            <div className="bookingInfoPriceRow">
+                                <p>7800€ x 5 days</p>
+                                <p>39000€</p>
+                            </div>
+                            <div className="bookingInfoPriceRow">
+                                <p>7800€ x 5 days</p>
+                                <p>39000€</p>
+                            </div>
+                            <div className="bookingInfoPriceRow">
+                                <p>7800€ x 5 days</p>
+                                <p>39000€</p>
+                            </div>
+                                <hr></hr>
+                            <div className="bookingInfoPriceRow">
+                                <strong><p>Total</p></strong>
+                                <strong><p>39000€</p></strong>
+                            </div>
                         </div>
                     </Col>
                     <div id="modal">

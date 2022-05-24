@@ -1,5 +1,4 @@
-import { useContext } from "react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { NavLink, Link } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
@@ -9,7 +8,7 @@ import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
 import CityAndDate from "../CityAndDate/CityAndDate"
 
-const Navigation = () => {
+const Navigation = ({setFilterInfo, filterData}) => {
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
 
     const [userDetails, setUserDetails] = useState({})
@@ -74,12 +73,12 @@ const Navigation = () => {
                         </Modal>
                         <Navbar.Brand>
                             <Link to="/" className="nav-link">
-                                <img className="logo-nav" id="logo" src="./../images/1.png" alt="vanmeup" />
+                                <img className="logo-nav" id="logo" src="./../images/2.png" alt="vanmeup" />
                             </Link>
                         </Navbar.Brand>
 
 
-                        <CityAndDate></CityAndDate>
+                        <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
