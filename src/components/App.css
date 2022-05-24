@@ -53,11 +53,11 @@ img {
 
 /* ESTA ES NUESTRA PALETA DE COLORES, UTILIZAR EN TODA LA WEB Y CAMBIAR AQUI PARA CAMBIAR EL TEMA DE LA WEB */
 :root {
-    --vanmeup-1: rgb(255, 0, 0);
-    --vanmeup-2: rgb(255, 145, 0);
-    --vanmeup-3: rgb(138, 0, 69);
-    --vanmeup-4: rgb(36, 26, 110);
-    --vanmeup-5: #bb3800;
+    --vanmeup-1: #FF7F4D;;
+    --vanmeup-2: #FF5C5C;
+    --vanmeup-3: #FF9C40;
+    --vanmeup-4: #FFCDCD;
+    --vanmeup-5: #F2F2F0;
 }
 
 /* You can use theese colors this way: */

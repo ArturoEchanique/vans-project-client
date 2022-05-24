@@ -117,8 +117,11 @@
     margin-bottom: 50px;
 }
 
-.addReviewButton {
+.writeReviewButton {
     width: 200px;
+    background-color: var(--vanmeup-4);
+    color: white;
+    border-radius: 7px;
 }
 
 .vanInfoMain {

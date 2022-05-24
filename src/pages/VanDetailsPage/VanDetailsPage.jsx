@@ -286,7 +286,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                         
                         <div className="reviewButtonContainer">
-                            {isLoggedIn && <Button variant="dark addReviewButton" onClick={openModal}>Write review</Button>}
+                            {isLoggedIn && <Button variant="light writeReviewButton" onClick={openModal}>Write review</Button>}
                         </div>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
                         }
