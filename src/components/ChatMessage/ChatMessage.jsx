@@ -21,7 +21,7 @@ const ChatMessage = ({ message, profileIndex }) => {
     //         .catch((err) => console.log(err))
     // }
     return (
-        <div className="reviewComment">
+        <div className="chatMessageMain">
             {message &&
                 <>
                     <div className="commentUpper">
@@ -33,7 +33,7 @@ const ChatMessage = ({ message, profileIndex }) => {
                             {/* {message.rating && <div>{"stars: " + message.rating}</div>} */}
                             {message.owner && <div><strong>{message.owner.username}</strong></div>}
                         <p>{message.messageDate && <div>{message.messageDate}</div>}</p>
-                        {message.text && <p style={{wordWarp:"break-word"}}>{message.text}</p>}
+                        {message.text && <p>{message.text}</p>}
                         </div>
 
 

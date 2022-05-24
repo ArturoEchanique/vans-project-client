@@ -126,13 +126,12 @@ const MessagesPage = ({ setBookingInfo }) => {
                         })}
                     </div>
                 </Col>
-                <Col xs={6} >
+                <Col xs={5} style={{padding:"0px"}}>
                     <h3>Sandra</h3>
                     <div className="messagesInfiniteScroll">
                         {messages.map((message, idx) => {
                             return (
                                 <>
-                                    <ChatMessage key={idx} message={message}></ChatMessage>
                                     <ChatMessage key={idx} message={message}></ChatMessage>
                                     {/* <p key={idx}>{message.text}</p> */}
                                 </>
@@ -150,7 +149,7 @@ const MessagesPage = ({ setBookingInfo }) => {
                     </div>
 
                 </Col>
-                <Col xs={3}>
+                <Col xs={4} style={{ padding: "0px" }}>
                     <h3>Details</h3>
                     {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} />}
                     {/* chats[selectedChat].booking.bookedVan.owner.username */}

@@ -249,11 +249,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <p>39000€</p>
                             </div>
                             <div className="bookingInfoPriceRow">
-                                <p>7800€ x 5 days</p>
-                                <p>39000€</p>
-                            </div>
-                            <div className="bookingInfoPriceRow">
-                                <p>7800€ x 5 days</p>
+                                <p>Service commission</p>
                                 <p>39000€</p>
                             </div>
                                 <hr></hr>

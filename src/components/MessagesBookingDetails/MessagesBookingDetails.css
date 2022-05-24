@@ -1,7 +1,37 @@
 .messagesBookingDetailsMain {
-    padding-top: 120px;
+    padding-top: 0px;
     padding-bottom: 120px;
     flex: 1 !important;
     height: 100vh !important;
     overflow-y: scroll !important;
+}
+
+.messagesBookingDetailsMain h3{
+    font-size: 18px;
+}
+
+.messagesBookingDetailsMain h4 {
+    font-size: 16px;
+}
+
+.messagesVanImage {
+
+    width: 100%;
+    border-radius: 0px;
+    padding: 0%;
+    margin-bottom: 30px;
+    height: 500px;
+    object-fit: cover;
+
+}
+
+.messagesDetailsPageSub {
+    display: flex;
+    padding: 0% 6%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.messagesBookingInfoMain {
+
 }

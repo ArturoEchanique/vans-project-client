@@ -1,6 +1,12 @@
-/* .reviewComment {
+.chatMessageMain {
     padding: 30px 0px;
 }
+
+.chatMessageMain p{
+    word-wrap: break-all;
+}
+
+/* 
 
 .reviewComment h2 {
     padding-bottom: 70px;
