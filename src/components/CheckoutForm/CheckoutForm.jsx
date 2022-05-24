@@ -92,21 +92,20 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
 
             <form onSubmit={handleSubmit}>
-                <Card className="payment" style={{ width: '28rem' }}>
-                    <Card.Img variant="top" src="https://careeracademy.co.nz/wp-content/uploads/2020/11/Secure-Payment-Icon.png" />
+                {/* <Card className="payment" style={{ width: '28rem' }}> */}
+                {/* <Card.Img variant="top" src="https://careeracademy.co.nz/wp-content/uploads/2020/11/Secure-Payment-Icon.png" />
                     <Card.Body>
                         <Card.Title className="paymentTitle">Checkout</Card.Title>
                         <Card.Text className="paymentPrice">
                             Price: {price}$
-
-                        </Card.Text>
-                        <CardElement />
-                        <hr />
-                        <Button onClick={handleSubmit} variant="dark" disabled={!stripe}>
-                            {loading ? "Loading..." : "Book"}
-                        </Button>
-                    </Card.Body>
-                </Card>
+                        </Card.Text> */}
+                <CardElement />
+                <hr />
+                <Button onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                    {loading ? "Loading..." : "Book"}
+                </Button>
+                {/* </Card.Body> */}
+                {/* </Card> */}
             </form>
 
         </>
