@@ -5,3 +5,29 @@
 .section1 {
     margin-top: 8%;
 }
+
+#rowPay {
+    margin-bottom: 4%;
+    /* margin-left: 4%; */
+}
+
+#cardTi {
+    margin-top: 5%;
+    padding-right: 5%;
+}
+
+#priceDetail {
+    margin-left: 5%;
+    border-radius: 15px
+}
+
+#impay {
+    border-radius: 20px;
+    max-width: 300px;
+    padding-left: 10%;
+}
+
+#sect1 {
+    margin-right: 4%;
+    margin-left: 4%;
+}

@@ -6,56 +6,51 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
     return (
         <>
             <Container>
-                <Row>
+                {/* <Row>
                     <img id="vanImg" className="vanCardImage" src={imageUrl}></img>
                     <h3 className="filterRow">{name}</h3>
                     {/* <div className="form-control">{description}</div> */}
-                </Row>
-                <h3 className="details">Booking details</h3>
+                {/* </Row> */}
+                <h3 className="details">Comfirm and pay</h3>
+
 
                 <Row className="justify-content-center filterRowSmall">
-                    <h4 id="rowTitle">Price </h4>
-                    <hr />
-                    <Col>
-                        <Button className="filterButton" variant="light" disabled>Price per day: {dayPrice}$</Button>
-                    </Col>
-                    <Col>
-                        <Button className="filterButton" variant="light" disabled>Total: {price}$</Button>
-                    </Col>
+                    <h4 id="rowTitle">Your Dates </h4>
 
+                    <Col >
+                        <h5>Starts </h5>
+                        <p> {startDate.toLocaleString()}</p>
+                    </Col>
                 </Row>
-                <Row className="justify-content-center filterRowSmall">
-                    <h4 id="rowTitle">Booking Dates</h4>
-                    <hr />
-
+                <Row>
                     <Col>
-                        <Button className="filterButton" variant="light" disabled>Starts at: {startDate.toLocaleString()}</Button>
+                        <h5>Ends </h5>
+                        <p> {endDate.toLocaleString()}</p>
                     </Col>
-                    <Col>
-                        <Button className="filterButton" variant="light" disabled>Ends at: {endDate.toLocaleString()}</Button>
-                    </Col>
-
                 </Row>
+                <hr />
+                <Row>
+                    <Col>
+                        <h5>Cancellation policy</h5>
+                        <h4>
+                            Free cancellation for 48 hours.
+                        </h4>
+
+                        <p>
+                            Cancel before <>{startDate.toLocaleString()}</> for a partial refund.
+                        </p>
+                        <p>
+                            Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
+                        </p>
+                    </Col>
+                    <hr />
+                </Row>
+
+
+
+
+
             </Container>
-
-            {/* <Col lg={{ span: 6 }}>
-
-                <Card.Img variant="top" src={imageUrl} />
-            </Col>
-            <Col lg={{ span: 6 }}>
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>{description}</Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                    <ListGroupItem>Price Details</ListGroupItem>
-                    <ListGroupItem>{dayPrice}</ListGroupItem>
-                    <ListGroupItem>{startDate.toLocaleString()}</ListGroupItem>
-                    <ListGroupItem>{endDate.toLocaleString()}</ListGroupItem>
-                    <ListGroupItem>{price}</ListGroupItem>
-                </ListGroup>
-            </Col> */}
-
         </>
     )
 }
