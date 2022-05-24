@@ -1,0 +1,7 @@
+.messagesBookingDetailsMain {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    flex: 1 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
+}

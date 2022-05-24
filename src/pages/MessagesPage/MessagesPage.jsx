@@ -152,7 +152,9 @@ const MessagesPage = ({ setBookingInfo }) => {
                 </Col>
                 <Col xs={3}>
                     <h3>Details</h3>
-                    <MessagesBookingDetails/>
+                    {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} />}
+                    {/* chats[selectedChat].booking.bookedVan.owner.username */}
+                    
 
                 </Col>
             </Row>

@@ -24,7 +24,7 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
     const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
     return (
-        <div className="detailsPage">
+        <div className="messagesBookingDetailsMain">
             <div className="detailsPageSub">
                 <div className="vanImageTopInfo">
                     <Row className="mb-3">
