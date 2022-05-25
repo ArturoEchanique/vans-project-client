@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import { NavLink, Link } from "react-router-dom"
+import { NavLink, Link, useLocation } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import { Navbar, Container, Nav, Offcanvas, Row, Col, Button, NavDropdown, Form, FormControl, Dropdown, Modal } from "react-bootstrap"
@@ -8,7 +8,11 @@ import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
 import CityAndDate from "../CityAndDate/CityAndDate"
 
-const Navigation = ({ setFilterInfo, filterData }) => {
+const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
+    const location = useLocation()
+
+    const { pathname } = location
+
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
 
     const [userDetails, setUserDetails] = useState({})
@@ -80,26 +84,21 @@ const Navigation = ({ setFilterInfo, filterData }) => {
                                     </Link>
                                 </Navbar.Brand>
                             </Col>
-                            <Col xs={6} className="d-flex align-items-center justify-content-center" style={{padding:"0px", margin:"0px"}}>
-                               
-                                    <CityAndDate isHidden={true} filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
-
+                            <Col xs={6} className="d-flex align-items-center justify-content-center" style={{ padding: "0px", margin: "0px" }}>
+                                {pathname !== "/" && pathname !== "/results" && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
                             </Col>
                             <Col xs={3} className="d-flex align-items-center justify-content-end">
-                                <NavDropdown align="end"  className="myDropDown" eventKey={1}
-                                    title={
-
-                                        <img className="dropdownIcon"
-                                            src={userDetails?.imageUrl ? userDetails.imageUrl : "./../images/VANMEUP.png"}
-                                            alt="user pic"
-                                        />
-
-                                    }
-                                    id="basic-nav-dropdown">
-
-                                    <Dropdown.Item ><NavLink to="/become-host" className="nav-link  logo-img">
-                                        Become Host
-                                    </NavLink>
+                                <NavDropdown
+                                    align="end"
+                                    className="myDropDown"
+                                    eventKey={1}
+                                    title={<img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "./../images/VANMEUP.png"} alt="user pic" />}
+                                    id="basic-nav-dropdown"
+                                >
+                                    <Dropdown.Item>
+                                        <NavLink to="/become-host" className="nav-link  logo-img">
+                                            Become Host
+                                        </NavLink>
                                     </Dropdown.Item>
 
                                     {isLoggedIn ? (
@@ -143,14 +142,9 @@ const Navigation = ({ setFilterInfo, filterData }) => {
                                             </NavLink>
                                         </Dropdown.Item>
                                     )}
-
                                 </NavDropdown>
                             </Col>
                         </Row>
-
-
-
-                        
 
                         {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -248,7 +242,7 @@ const Navigation = ({ setFilterInfo, filterData }) => {
                                         )}
                                         {user && (
                                             <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
-                                                <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
+                                                <img id="logo" src="./../images/mensaje.png" alt="" srcSet="" />
                                                 Messages
                                             </NavLink>
                                         )}

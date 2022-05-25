@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import Geocode from "react-geocode"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
@@ -8,7 +8,8 @@ import { Container, Button, Row, Col, Card } from "react-bootstrap"
 import "./HomePage.css"
 import CityAndDate from "../../components/CityAndDate/CityAndDate"
 
-const HomePage = ({ setFilterInfo, filterData }) => {
+
+const HomePage = ({ setFilterInfo, filterData,  }) => {
     const { user, logOutUser } = useContext(AuthContext)
 
     const [geoData, setGeoData] = useState({
@@ -51,27 +52,29 @@ const HomePage = ({ setFilterInfo, filterData }) => {
         setGeoData({ ...geoData, address: value })
     }
 
+  
+
     const { address, mapInitLocationX, mapInitLocationY } = filterData
 
     return (
-            <section className="homeMain nav-margin">
-                <Container className="">
-                    {/* d-flex flex-column justify-content-center */}
-                    <Row className="mb-3">
-                        <Col className="title-h1">
+        <section className="homeMain nav-margin">
+            <Container className="">
+                {/* d-flex flex-column justify-content-center */}
+                <Row className="mb-3">
+                    <Col className="title-h1">
                         <h1 className="title">Find a van in seconds, drive your home.</h1>
+                    </Col>
+                </Row>
+                <Row className="background-row">
+                    <Row className="mb-3 ">
+                        <Col className="d-flex justify-content-center">
+                            <h3>Where are you going?</h3>
                         </Col>
                     </Row>
-                    <Row className="background-row">
-                        <Row className="mb-3 ">
-                            <Col className="d-flex justify-content-center">
-                                <h3>Where are you going?</h3>
-                            </Col>
-                        </Row>
-                        <Col className="d-flex justify-content-center">
+                    <Col className="d-flex justify-content-center">
                         <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
 
-                            {/* <>
+                        {/* <>
                                 <form>
                                     <label>
                                         <input className="input-location" type="text" value={address} name="country" onChange={handleStreetChange} />
@@ -86,12 +89,10 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                                     <Button className="search-button" variant="dark" onClick={searchVansClicked}>Search Vans</Button>
                                 </Link>
                             </> */}
-
-                        </Col>
-                    </Row>
-              
-                </Container>
-            </section>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
     )
 }
 
