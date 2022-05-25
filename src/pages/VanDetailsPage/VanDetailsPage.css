@@ -42,6 +42,32 @@
     object-fit: cover;
 }
 
+.vanImageCollage {
+    width: 100%;
+    border-radius: 10px 0px 0px 10px;
+    padding: 0%;
+    margin-bottom: 50px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.vanImageHalf {
+    width: 100%;
+    border-radius: 0px;
+    padding: 0%;
+    margin-bottom: 7px;
+    height: 246.5px;
+    object-fit: cover;
+}
+
+.vanImageHalf.half2{
+   border-radius: 0px 10px 0px 0px;
+}
+
+.vanImageHalf.half4 {
+    border-radius: 0px 0px 10px 0px;
+}
+
 .detailsPageTitle {
     padding: 0px;
     font-size: 24px;
@@ -141,7 +167,13 @@
 }
 
 .vanDetailsOwner{
-    font-size: 21px;
+    font-size: 18px;
+}
+
+.heartButtonDetails {
+    background: none;
+    padding: 5px;
+    margin: 0px;
 }
 
 .bookingInfoPriceRow {

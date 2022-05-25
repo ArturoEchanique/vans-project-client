@@ -35,7 +35,7 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                 <hr></hr>
                 <Row className="mt-3 d-flex justify-content-between align-items-center">
                     <Col xs={9}>
-                        <h4>Owner: Pablo Perez</h4>
+                        <h4>Owner: {vanDetails?.owner?.username}</h4>
                     </Col>
                     <Col xs={3}>
                         <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
@@ -87,15 +87,15 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                         <div className="messagesBookingInfoMain">
                             <Row className="d-flex justify-content-space-between align-items-center mb-4">
                                 <Col className="">
-                                    <strong className="messagesMainPrice">638 €</strong>&nbsp; /day
+                                    <strong className="messagesMainPrice">{vanDetails.dayPrice} €</strong>&nbsp; /day
                                 </Col>
                                 <Col >
-                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                                    {/* {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>} */}
                                 </Col>
 
                             </Row>
                             <div className="mb-4">
-                                <p style={{ textAlign: "center" }}>The total price of the trip includes VAT and all applicable taxes.</p>
+                                <p style={{ textAlign: "center" }}>The total price of the van includes VAT and all applicable taxes.</p>
                             </div>
                             {/* <div className="messagesBookingInfoPriceRow">
                                 <p>7800€ x 5 days</p>
@@ -106,10 +106,10 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                                 <p>39000€</p>
                             </div> */}
                             {/* <hr></hr> */}
-                            <div className="messagesBookingInfoPriceRow">
+                            {/* <div className="messagesBookingInfoPriceRow">
                                 <strong><p>Total</p></strong>
                                 <strong><p className="messagesMainPrice">39000€</p></strong>
-                            </div>
+                            </div> */}
                         </div>
                     </Col>
                 </Row>

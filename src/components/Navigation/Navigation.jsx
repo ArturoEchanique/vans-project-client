@@ -92,7 +92,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                     align="end"
                                     className="myDropDown"
                                     eventKey={1}
-                                    title={<img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "./../images/VANMEUP.png"} alt="user pic" />}
+                                    title={<img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
                                     id="basic-nav-dropdown"
                                 >
                                     <Dropdown.Item>

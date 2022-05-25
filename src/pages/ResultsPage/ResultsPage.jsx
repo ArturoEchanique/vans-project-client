@@ -264,12 +264,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </SubMenu>
                             </Menu> */}
                             <Container className="filterMain filterScroll">
-                                {/* <h3 className="filterTitle">Name</h3>
-                                <Row className="justify-content-center filterRow">
-                                    <Col>
-                                        <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
-                                    </Col>
-                                </Row> */}
                                 <h3 className="filterTitle">Features</h3>
                                 <Row className="justify-content-center filterRowSmall">
                                     <Col className="filterButtonCol">

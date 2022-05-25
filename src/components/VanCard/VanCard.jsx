@@ -28,10 +28,16 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
     return (
 
         <Container className="vanCardMain">
-            <Link to={`/${_id}/details`} style={{ textDecoration: 'none', padding: "0px", margin: "0px" }}>
-                <img className="vanCardImage" src={imageUrl[0]}>
-                </img>
-            </Link>
+                <div className="imageParent">
+                <Link to={`/${_id}/details`} style={{ textDecoration: 'none', padding: "0px", margin: "0px" }}>
+                <img className="vanCardImage" src={imageUrl[0]}/>
+                 </Link>
+                    <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                        <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>
+                    </button>
+                </div>
+                
+           
 
             
             <Row className="justify-content-left align-items-center">
@@ -39,13 +45,14 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                     <h3 className="vanCardTitle">{name.length > 28 ? (name.slice(0,28)+" ...") : name}</h3>
                 </Col>
                 <Col xs={2} className="justify-content-center">
-                    <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                    {/* <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                         <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>
-                    </button>
+                    </button> */}
                 </Col>
             </Row>
             <p className="filterRow vanCardDescription">{description.length > 70 ? (description.slice(0, 70) + "...") : description}</p>
-            <Row className="d-flex justify-content-start vanIconsRow">
+            <strong>{dayPrice} € </strong>/day
+            {/* <Row className="d-flex justify-content-start vanIconsRow">
                 <Col className="justify-content-center">
                     <strong>{maxPassengers + " "}</strong> <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img>
                 </Col>
@@ -79,7 +86,7 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                         <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img>
                     </Col>
                 }
-            </Row>
+            </Row> */}
        
             <Row className="justify-content-center filterRowSmall">
 

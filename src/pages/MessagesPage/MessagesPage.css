@@ -10,17 +10,39 @@
 
 }
 
+.chatsCategoriesMain {
+    border: 5px;
+    border-color: black;
+    padding: 0px 29px 2px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px;
+}
+
+.chatCategoryButton {
+    border-radius: 4px;
+    width: 100%;
+    padding: 0px;
+    margin: 2% 2%;
+    height: 40px;
+}
+
+.chatCategoryButton.selected {
+    background-color: var(--main-color-4);
+}
+
+.chatCategoryButton.unselected {
+    background-color: var(--main-color-5);
+}
+
 .chatsMainContainer {
-    /* flex: 1 !important;
-    height: 100vh !important;
-    overflow-y: scroll !important; */
-    /* background-color: red; */
     flex: 1;
     height: 90vh;
     overflow-y: scroll;
     border: 5px;
     border-color: black;
-    padding: 0px 10px 100px 20px;
+    padding: 0px 10px 150px 20px;
     margin: 0px;
     border-right: 1px solid rgb(236, 236, 236);
 }
@@ -46,6 +68,8 @@
     padding-left: 20px;
     width: 100%;
 }
+
+
 
 .chatButton {
     border-radius: 8px;

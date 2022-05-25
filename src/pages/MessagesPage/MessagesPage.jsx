@@ -21,6 +21,7 @@ const MessagesPage = ({ setBookingInfo }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const [chats, setChats] = useState([]);
     const [selectedChat, setSelectedChat] = useState(0);
+    const [selectedCategory, setSelectedCategory] = useState("owned");
     const [messages, setMessages] = useState([]);
     const [messageText, setMessageText] = useState("");
     // const [bookingDetails, setBookingDetails] = useState([]);
@@ -39,8 +40,10 @@ const MessagesPage = ({ setBookingInfo }) => {
     }, [chats, selectedChat])
 
     const getChatPartner = (chat) => {
-        if (chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
-        return chat.owners[0]
+        console.log("chat owners are, ", chat)
+
+        if(chat) if (chat.owners && chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
+        return chat?.owners[0]
     }
 
     const loadUser = () => {
@@ -113,22 +116,49 @@ const MessagesPage = ({ setBookingInfo }) => {
             <Row style={{ padding: 0 }} className="messagesPageSubMain">
                 <Col xs={3} style={{ padding: "0px" }}>
                     <h3 className="messagesSectionTitle">Messages</h3>
+                    <div className="chatsCategoriesMain">
+                        <button className={"chatCategoryButton " + (selectedCategory === "owned" ? "selected" : "unselected")} onClick={() => setSelectedCategory("owned")}
+                            active={selectedCategory === "owned"}>
+                            Owned vans
+                        </button>
+                        <button className={"chatCategoryButton " + (selectedCategory === "booked" ? "selected" : "unselected")} onClick={() => setSelectedCategory("booked")}
+                            active={selectedCategory === "booked"}>
+                            Booked vans
+                        </button>
+                    </div>
                     <div className="chatsMainContainer">
-
                         {chats.map((chat, idx) => {
-                            return (
-                                <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
-                                    active={selectedChat === idx} >
-
-                                    <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
-
-                                </button>
-                            )
+                            if (selectedCategory === "owned"){
+                                if (chat.booking.bookedVan.owner._id === user._id) {
+                                    return (
+                                        <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
+                                            active={selectedChat === idx} >
+                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                        </button>
+                                    )
+                                }
+                            }
+                            else{
+                                if (chat.booking.bookedVan.owner._id !== user._id) {
+                                    return (
+                                        <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
+                                            active={selectedChat === idx} >
+                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                        </button>
+                                    )
+                                }
+                            }
+                            // return (
+                            //     <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
+                            //         active={selectedChat === idx} >
+                            //         <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                            //     </button>
+                            // )
                         })}
                     </div>
                 </Col>
                 <Col xs={6} style={{ padding: "0px" }}>
-                    <h3 className="messagesSectionTitle">Sandra</h3>
+                    <h3 className="messagesSectionTitle">{getChatPartner(chats[selectedChat])?.username}</h3>
                     <div className="messagesMainContainer">
                         {messages.map((message, idx) => {
                             return (

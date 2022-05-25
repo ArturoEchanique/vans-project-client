@@ -24,7 +24,7 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
         e.preventDefault()
         Geocode.setApiKey("AIzaSyAgl6fbZLuPOLVZf5xRxKGM6CcpkXf_FEc")
 
-        console.log("geodata is...", geoData)
+        console.log("geodata is...", `${geoData.address}`)
         Geocode.fromAddress(`${geoData.street}, ${geoData.address},${geoData.country}`).then(
             (response) => {
                 const { lat, lng } = response.results[0].geometry.location
@@ -34,7 +34,7 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
                 navigate("/results")
             },
             (error) => {
-                console.error(error)
+                console.log("geodata failed", error)
                 navigate("/results")
                 // navigate('/results')
             }

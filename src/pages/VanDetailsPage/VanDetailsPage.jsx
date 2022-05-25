@@ -108,7 +108,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         setBookingInfo(bookingInfo)
     }
 
-    const getBookingDays = () =>{
+    const getBookingDays = () => {
         let days = 0
         if (!(bookingInfo.startDate && bookingInfo.endDate)) return 0
 
@@ -140,12 +140,12 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
             e.preventDefault()
         }
     }
-    
+
     let totalDays = 0
     let daysPrice = 0
     let commision = 0
     let totalPrice = 0
-    if(vanDetails){
+    if (vanDetails) {
         totalDays = daysBetweenTwoDates(bookingInfo.startDate, bookingInfo.endDate)
         daysPrice = vanDetails.dayPrice * totalDays
         commision = daysPrice * 0.05
@@ -155,13 +155,13 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     let reviewsArr = []
     let reviewsSum = 0
     let reviewsAvg = 0
-    if(vanDetails && vanDetails.reviews){
+    if (vanDetails && vanDetails.reviews) {
         reviewsArr = vanDetails.reviews.map(review => review.rating)
         reviewsSum = reviewsArr.reduce((a, b) => a + b, 0);
         reviewsAvg = (reviewsSum / reviewsArr.length) || 0;
         reviewsAvg = Math.round(reviewsAvg * 100) / 100
     }
-    
+
 
     const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
@@ -177,7 +177,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}
                         </Col>
                         <Col xs={2} className="d-flex align-items-center justify-content-end">
-                            <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
+                            <button className="heartButtonDetails" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                                 <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>&nbsp; Save van
                             </button>
                         </Col>
@@ -187,18 +187,50 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                 </div>
                 <div className="vanImageTopInfo">
                 </div>
+                {vanDetails?.imageUrl?.length >= 5 ?
 
-                <img className="vanImage" src={vanDetails?.imageUrl}></img>
+                    <Row>
+                        <Col xs={6} style={{ padding: "0px 4px 0px 11px" }}>
+                            <img className="vanImageCollage" src={vanDetails?.imageUrl[0]}></img>
+                        </Col>
+                        <Col xs={6} style={{ padding: "0px 23px 0px 10px" }}>
+                            <Row>
+                                <Col xs={6} style={{ padding: "0px 5px" }}>
+                                    <img className="vanImageHalf half1" src={vanDetails?.imageUrl[1]}></img>
+                                </Col>
+                                <Col xs={6} style={{ padding: "0px 2.5px" }}>
+                                    <img className="vanImageHalf half2" src={vanDetails?.imageUrl[2]}></img>
+                                </Col>
+                                <Col xs={6} style={{ padding: "0px 5px" }}>
+                                    <img className="vanImageHalf half3" src={vanDetails?.imageUrl[3]}></img>
+                                </Col>
+                                <Col xs={6} style={{ padding: "0px 2.5px" }}>
+                                    <img className="vanImageHalf half4" src={vanDetails?.imageUrl[4]}></img>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                    :
+                    <img className="vanImage" src={vanDetails?.imageUrl}></img>
+                }
                 <Row className="mt-3">
                     <Col xs={7} >
                         <div className="vanInfoMain">
                             <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs={10} className="justify-content-center">
-                                    <h3 className="detailsPageTitle">{name?.length > 33 ? (name.slice(0, 33) + " ...") : name}</h3>
+                                    <h3 className="detailsPageTitle">{name?.length > 38 ? (name.slice(0, 38) + " ...") : name}</h3>
                                 </Col>
+
+
+                            </Row>
+                            <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs="auto" className="d-flex align-items-center">
                                     <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
                                 </Col>
+                                <Col xs="auto" className="d-flex align-items-center">
+                                    <h3 className="vanDetailsOwner">{vanDetails?.owner?.username}</h3>
+                                </Col>
+
 
                             </Row>
                             <p>{vanDetails.description}</p>
@@ -208,8 +240,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
-                                <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> 
-                                    <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "} 
+                                <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">
+                                    <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "}
                                 </Col>
                                 {solarPower &&
 
@@ -270,14 +302,14 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 </Link>
                             ) : (
                                 <Link to={`/${vanDetails._id}/edit`}>
-                                        <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
+                                    <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
                                         Edit my van
                                     </button>
                                 </Link>
                             )}
                             <div className="mb-4">
-                                <p style={{textAlign:"center"}}>You will not be charged anything yet</p>
-                                <p style={{textAlign:"center"}}>The total price of the trip includes VAT and all applicable taxes.</p>
+                                <p style={{ textAlign: "center" }}>You will not be charged anything yet</p>
+                                <p style={{ textAlign: "center" }}>The total price of the trip includes VAT and all applicable taxes.</p>
                             </div>
                             <div className="bookingInfoPriceRow">
                                 <p>{vanDetails.dayPrice} x {totalDays} days</p>
@@ -287,7 +319,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <p>Service commission</p>
                                 <p>{commision} €</p>
                             </div>
-                                <hr></hr>
+                            <hr></hr>
                             <div className="bookingInfoPriceRow">
                                 <strong><p>Total</p></strong>
                                 <strong><p>{totalPrice}€</p></strong>
@@ -321,17 +353,12 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             {/* Comment vanReviews={vanDetails.reviews}></ReviewsSection> */}
                         </Row>
 
-                        
-                        <div className="reviewButtonContainer">
-                            {isLoggedIn && <Button variant="light writeReviewButton" onClick={openModal}>Write review</Button>}
-                        </div>
-                        
-                    </div >
-                    {/* <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
-                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
-                        }
-                    </Col> */}
 
+                        {/* <div className="reviewButtonContainer">
+                            {isLoggedIn && <Button variant="light writeReviewButton" onClick={openModal}>Write review</Button>}
+                        </div> */}
+
+                    </div >
                 </Row>
             </div>
 
