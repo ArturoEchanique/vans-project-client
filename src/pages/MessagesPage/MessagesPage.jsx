@@ -111,9 +111,9 @@ const MessagesPage = ({ setBookingInfo }) => {
     return (
         <div className="messagesPageMain">
             <Row style={{ padding: 0 }} className="messagesPageSubMain">
-                <Col xs={3} className="messagesCol">
+                <Col xs={3} className="chatsCol">
                     <h3>Messages</h3>
-                    <div className="chatsContainer">
+ 
                         {chats.map((chat, idx) => {
                             return (
                                 <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
@@ -124,7 +124,7 @@ const MessagesPage = ({ setBookingInfo }) => {
                                 </button>
                             )
                         })}
-                    </div>
+                  
                 </Col>
                 <Col xs={5} style={{padding:"0px"}}>
                     <h3>Sandra</h3>

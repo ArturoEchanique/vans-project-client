@@ -3,6 +3,7 @@ import { Button, Row, Col, Container, Modal } from "react-bootstrap"
 import "./ChatButton.css"
 import ProfileImage from "../../services/profileImage.service"
 import { useEffect, useState, useContext } from "react"
+import {beautifulDate, beautifulHour} from "../../utils/dateUtils"
 
 const ChatButton = ({ interlocutor, bookingStartDate, vanReview, profileIndex }) => {
 
@@ -20,21 +21,20 @@ const ChatButton = ({ interlocutor, bookingStartDate, vanReview, profileIndex })
     //         })
     //         .catch((err) => console.log(err))
     // }
-    console.log("booking sd =", bookingStartDate)
+    console.log("booking sd type is =", typeof bookingStartDate)
     return (
         <div className="chatButtonMain">
-                <div className="commentUpper">
-                    <div className="upperLeft">
-                        <img className="profileImage" src={interlocutor.imageUrl} />
-                    </div>
-                    <div className="upperRight">
-                        <div><strong>{interlocutor.username}</strong></div>
-                        <p>April 2022</p>
-                    </div>
+            <div className="chatButtonLeft">
+                <img className="chatProfileImage" src={interlocutor.imageUrl} />
+            </div>
+            <div className="chatButtonRight">
+                <div className="upperRight">
+                    <div><strong>{interlocutor.username}</strong></div>
                 </div>
                 <div className="commentLower">
-                    {<div>viaje: {bookingStartDate}</div>}
+                    <div>viaje: {beautifulDate(bookingStartDate)}</div>
                 </div>
+            </div>
         </div>
     )
 }
