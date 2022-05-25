@@ -1,0 +1,35 @@
+.formInputField {
+
+    border: none;
+    outline: none;
+    height: 48px;
+    border-color: #dadada;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: double;
+    border: 0px;
+    padding-left: 20px;
+    width: 100%
+}
+
+/* .nameSearchBarInput {
+    border: none;
+    outline: none;
+    height: 48px;
+    border-color: #dadada;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: double;
+    border: 0px;
+    padding-left: 20px;
+    width: auto;
+} */
+
+
+.inputFieldContainer {
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    box-shadow: 1px 2px 5px var(--main-color-3);
+}

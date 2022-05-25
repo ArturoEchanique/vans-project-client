@@ -57,7 +57,7 @@
     
    width: 300px;
     align-items: center ;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 .canvas-tittle {
@@ -92,6 +92,12 @@
     padding: 0;
 }
 .modal-content {
-    border: 6px solid #FFCDCD;
-    background-color: #fffcf3e6;
+    /* border: 6px solid #FFCDCD; */
+    background-color: #ffffff;
+    padding: 15px;
+    
 }
+
+/* .modal1{
+    
+} */
