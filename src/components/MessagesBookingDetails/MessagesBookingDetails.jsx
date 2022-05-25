@@ -21,7 +21,7 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
 
 
-    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
+    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
     return (
         <div className="messagesBookingDetailsMain">
@@ -47,6 +47,9 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start messagesVanDetailsIconsRow">
+                                <Col xs={6} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-4">  
+                                    <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "}
+                                </Col>
                                 {solarPower &&
 
                                     <Col xs={6} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-4">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>

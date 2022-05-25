@@ -15,6 +15,7 @@ import "./ResultsPage.css"
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import CityAndDate from "../../components/CityAndDate/CityAndDate"
+import MaxPassengersSlider from "../../components/MaxPassengersSlider/MaxPassengersSlider"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -30,7 +31,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [favoriteVans, setFavoriteVans] = useState([])
     const navigate = useNavigate()
 
-    const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY, priceStart, priceEnd } = filterData;
+    const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY, priceStart, priceEnd, passengersStart, passengersEnd } = filterData;
 
 
     useEffect(() => {
@@ -154,6 +155,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         setHasMoreVans(true)
         setFilterInfo(priceRange)
         loadVans({ ...filterData, ...priceRange })
+    }
+
+    const handleFilterPassengersChange = (passengersRange) => {
+        setHasMoreVans(true)
+        setFilterInfo(passengersRange)
+        loadVans({ ...filterData, ...passengersRange })
     }
 
     // const solarPowerClicked = () => {
@@ -359,7 +366,15 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <h3 className="filterTitle">Max passengers</h3>
                                 <Row className="justify-content-center filterRow">
                                     <Col>
-                                        <PriceSlider handlePriceChange={handleFilterPriceChange} />
+                                        <MaxPassengersSlider handlePassengersChange={handleFilterPassengersChange} />
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center filterRow">
+                                    <Col className="filterButtonCol">
+                                        <Form.Control className="textInputSmall textInputClean" value={passengersStart + " passengers"} name="passengers" placeholder="Passengers start" />
+                                    </Col>
+                                    <Col className="filterButtonCol">
+                                        <Form.Control className="textInputSmall textInputClean" value={passengersEnd + " passengers"} name="passengers" placeholder="Passengers start" />
                                     </Col>
                                 </Row>
                             </Container>                       

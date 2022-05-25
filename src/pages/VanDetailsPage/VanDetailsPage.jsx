@@ -131,7 +131,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         }
     }
 
-    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
+    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
     return (
         <div className="detailsPage">
@@ -176,33 +176,36 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
+                                <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> 
+                                    <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "} 
+                                </Col>
                                 {solarPower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; &nbsp; Shower&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; Shower&nbsp; &nbsp; </Col>
 
                                 }
                                 {solarRoof &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; &nbsp; Solar roof</Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; Solar roof</Col>
 
                                 }
                                 {kitchen &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; &nbsp; Kitchen&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; Kitchen&nbsp; &nbsp; </Col>
                                 }
                                 {bathroom &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; &nbsp; Bathroom&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; Bathroom&nbsp; &nbsp; </Col>
 
                                 }
                                 {heatedSeats &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; &nbsp; Heated seats&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; Heated seats&nbsp; &nbsp; </Col>
 
                                 }
 

@@ -20,6 +20,8 @@ const App = () => {
         mapInitLocationY: -3.7007285931754588,
         priceStart: 0,
         priceEnd: 400,
+        passengersStart: 0,
+        passengersEnd: 12,
         startDate: today,
         endDate: null,
         name: "",
