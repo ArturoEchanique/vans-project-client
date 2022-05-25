@@ -59,7 +59,7 @@ const HomePage = ({ setFilterInfo, filterData }) => {
                     {/* d-flex flex-column justify-content-center */}
                     <Row className="mb-3">
                         <Col className="title-h1">
-                        <h1 className="title">Find a van in seconds, you choose the destination</h1>
+                        <h1 className="title">Find a van in seconds, drive your home.</h1>
                         </Col>
                     </Row>
                     <Row className="background-row">

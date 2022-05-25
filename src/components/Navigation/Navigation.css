@@ -29,7 +29,7 @@
 .nav-link {
     padding: 0;
 
-    color: #8ea39c;
+    color: #FF5C5C;
 }
 
 .nav-link img {
@@ -38,7 +38,7 @@
 
 .nav-link:hover {
     text-decoration: none;
-    color: #55605c;
+    color: #a82121;
 }
 
 .logo-img img {
@@ -52,16 +52,16 @@
 }
 
 .offcanvas-end {
-    margin-right: 15px;
+    margin-right: 10px;
     display: flex;
-    width: 180px;
-    height: 600px;
-    align-items: center;
-    border-radius: 15px;
+    
+   width: 300px;
+    align-items: center ;
+    border-radius: 10px;
 }
 
 .canvas-tittle {
-    color: #8ea39c;
+    color: #FF5C5C;
 }
 
 .navbar-toggler {
@@ -80,7 +80,7 @@
 .logo-nav {
 
     margin-left: 50px;
-    filter: sepia(0%) saturate(2000%) brightness(90%) hue-rotate(300deg);
+   
 }
 
 .logo-nav {
@@ -88,7 +88,10 @@
 
 }
 
+.navbar{
+    padding: 0;
+}
 .modal-content {
-    border: 6px solid #88b09fd0;
+    border: 6px solid #FFCDCD;
     background-color: #fffcf3e6;
 }
