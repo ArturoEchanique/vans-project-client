@@ -120,6 +120,12 @@ const Navigation = ({setFilterInfo, filterData}) => {
                                                 Hello,{user.username}
                                             </NavLink>
                                         )}
+                                        {user && (
+                                            <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
+                                                <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
+                                                Messages
+                                            </NavLink>
+                                        )}
                                         <NavLink to="/results" className="nav-link  logo-img">
                                             <img id="logo" src="./../images/results.png" alt="" srcSet="" />
                                             Search
