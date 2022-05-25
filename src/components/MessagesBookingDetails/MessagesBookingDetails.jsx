@@ -94,18 +94,18 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                             <div className="mb-4">
                                 <p style={{ textAlign: "center" }}>The total price of the trip includes VAT and all applicable taxes.</p>
                             </div>
-                            <div className="messagesBookingInfoPriceRow">
+                            {/* <div className="messagesBookingInfoPriceRow">
                                 <p>7800€ x 5 days</p>
                                 <p>39000€</p>
                             </div>
                             <div className="messagesBookingInfoPriceRow">
                                 <p>Service commission</p>
                                 <p>39000€</p>
-                            </div>
-                            <hr></hr>
+                            </div> */}
+                            {/* <hr></hr> */}
                             <div className="messagesBookingInfoPriceRow">
                                 <strong><p>Total</p></strong>
-                                <strong><p>39000€</p></strong>
+                                <strong><p className="messagesMainPrice">39000€</p></strong>
                             </div>
                         </div>
                     </Col>
