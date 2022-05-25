@@ -8,7 +8,7 @@ import DatePicker from "../../components/DatePicker/DatePicker"
 import 'react-pro-sidebar/dist/css/styles.css';
 import { Link } from "react-router-dom"
 
-const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDatesChange, reservedDays }) => {
+const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDatesChange, reservedDays, isHidden }) => {
 
 
     const [geoData, setGeoData] = useState({
@@ -51,26 +51,23 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
     const { address, mapInitLocationX, mapInitLocationY } = filterData
 
     return (
-        <div className="cityAndDate">
+        isHidden && (
+            <div className="cityAndDate">
                 <form>
                     <label>
-                    <input className="cityAndDateElem" type="text" value={address} name="address" onChange={handleStreetChange}/>
+                        <input className="cityAndDateElem" type="text" value={address} name="address" onChange={handleStreetChange} />
                     </label>
                 </form>
                 {/* <DatePicker /> */}
-            <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
-            <Link  className="cityAndDateSearchButtonLink"to="/results">
-                <button
-                    className="cityAndDateSearchButton"
-                    variant={"light"}
-                    onClick={searchVansClicked}
-                    id="search">
-                    <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                    &nbsp;<p>Search</p>
-                </button>
-            </Link>
+                <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+                <Link className="cityAndDateSearchButtonLink" to="/results">
+                    <button className="cityAndDateSearchButton" variant={"light"} onClick={searchVansClicked} id="search">
+                        <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                        &nbsp;<p>Search</p>
+                    </button>
+                </Link>
 
-            {/* <button
+                {/* <button
                 className="cityAndDateSearchButton"
                 variant={"light"}
                 onClick={searchVansClicked}
@@ -78,7 +75,8 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
                 <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                 &nbsp;<p>Search</p>
             </button> */}
-        </div>
+            </div>
+        )
     )
 }
 
