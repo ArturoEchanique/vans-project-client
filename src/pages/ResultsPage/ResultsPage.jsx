@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom"
 import "./ResultsPage.css"
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
+import CityAndDate from "../../components/CityAndDate/CityAndDate"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -189,20 +190,34 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             <div className="resultsTopBar">
                 <Container fluid>
                     <Row className="">
-                        <Col xs={3}>
-                            {/* <Form.Control className="vansFoundBox textInputClean" value={"Showing " + vansFound + " vans"} name="name" placeholder="Price start" /> */}
-                        </Col>
-                        <Col xs={6} className="d-flex justify-content-center">
-                            <div className="nameSearchBar">    
-                                    <form onSubmit={handleSubmit}>
-                                            <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
-                                    </form>
+                        <Col xs={3} className="d-flex justify-content-center">
+                            <div className="nameSearchBar">
+                                <form onSubmit={handleSubmit}>
+                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
+                                </form>
                                 <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                             </div>
                         </Col>
-
-                        <Col className="d-flex justify-content-end">
-
+                        <Col xs={5} className="d-flex justify-content-center">
+                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
+                        </Col>
+                        <Col xs={2} className="d-flex justify-content-center">
+                            <button
+                                className={"locationButton"}
+                                id="showFilters"
+                                type="checkbox"
+                                variant={"light"}
+                                checked={filtersCollapsed}
+                                name="showFilters"
+                                onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                <img className="locationButtonIcon" src="./../../images/locationIcon.png"></img>
+                                Show nearest vans
+                            </button>
+                            {/* <Button variant="light filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                Show nearest vans
+                            </Button> */}
+                        </Col>
+                        <Col xs={2} className="d-flex justify-content-end">
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
                                 id="showFilters"
@@ -214,7 +229,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <img className="filterButtonIcon" src="./../../images/filterIcon.png"></img>
                                 Filters
                             </button>
-
                         </Col>
                     </Row>
                 </Container>
@@ -342,138 +356,16 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
                                     </Col>
                                 </Row>
-                                {/* <h3 className="filterTitle">Select dates</h3>
+                                <h3 className="filterTitle">Max passengers</h3>
                                 <Row className="justify-content-center filterRow">
                                     <Col>
-                                        <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />
-                                    </Col>
-                                </Row> */}
-                                <Row className="justify-content-center filterRow">
-                                    <Col>
-                                        <Button variant="dark filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
-                                            Search near vans
-                                        </Button>
+                                        <PriceSlider handlePriceChange={handleFilterPriceChange} />
                                     </Col>
                                 </Row>
-                            </Container>                        </ProSidebar>
+                            </Container>                       
+                             </ProSidebar>
                     </Col>
 
-                    {/* <Col xs={3}>
-                        <Container className="filterMain filterScroll">
-                            <h3 className="filterTitle">Name</h3>
-                            <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <Form.Control className="textInputClean textInputBig" type="email" value={name} name="name" placeholder="Insert a van name" onChange={handleFilterChange} />
-                                </Col>
-                            </Row>
-                            <h3 className="filterTitle">Features</h3>
-                            <Row className="justify-content-center filterRowSmall">
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="solarPower"
-                                        type="checkbox"
-                                        variant={solarPower ? "dark" : "light"}
-                                        checked={solarPower}
-                                        name="solarPower"
-                                        onChange={handleFilterChange}>
-                                        Solar power
-                                    </ToggleButton>
-                                </Col>
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="shower"
-                                        type="checkbox"
-                                        variant={shower ? "dark" : "light"}
-                                        checked={shower}
-                                        name="shower"
-                                        onChange={handleFilterChange}>
-                                        Shower
-                                    </ToggleButton>
-                                </Col>
-                            </Row>
-                            <Row className="justify-content-center filterRowSmall">
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="bathroom"
-                                        type="checkbox"
-                                        variant={bathroom ? "dark" : "light"}
-                                        checked={bathroom}
-                                        name="bathroom"
-                                        onChange={handleFilterChange}>
-                                        Bathroom
-                                    </ToggleButton>
-                                </Col>
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="kitchen"
-                                        type="checkbox"
-                                        variant={kitchen ? "dark" : "light"}
-                                        checked={kitchen}
-                                        name="kitchen"
-                                        onChange={handleFilterChange}>
-                                        Kitchen
-                                    </ToggleButton>
-                                </Col>
-                            </Row>
-                            <Row className="justify-content-center filterRowSmall">
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="sunRoof"
-                                        type="checkbox"
-                                        variant={sunRoof ? "dark" : "light"}
-                                        checked={sunRoof}
-                                        name="sunRoof"
-                                        onChange={handleFilterChange}>
-                                        Sun roof
-                                    </ToggleButton>
-                                </Col>
-                                <Col className="filterButtonCol">
-                                    <ToggleButton
-                                        className="filterButton"
-                                        id="heatedSeats"
-                                        type="checkbox"
-                                        variant={heatedSeats ? "dark" : "light"}
-                                        checked={heatedSeats}
-                                        name="heatedSeats"
-                                        onChange={handleFilterChange}>
-                                        Heated seats
-                                    </ToggleButton>
-                                </Col>
-                            </Row>
-                            <h3 className="filterTitle">Price range</h3>
-                            <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <PriceSlider handlePriceChange={handleFilterPriceChange} />
-                                </Col>
-                            </Row>
-                            <Row className="justify-content-center filterRow">
-                                <Col className="filterButtonCol">
-                                    <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
-                                </Col>
-                                <Col className="filterButtonCol">
-                                    <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
-                                </Col>
-                            </Row>
-                            <h3 className="filterTitle">Select dates</h3>
-                            <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <DatePicker startDate={startDate} endDate={endDate} handleDatesChange={handleFilterDatesChange} />
-                                </Col>
-                            </Row>
-                            <Row className="justify-content-center filterRow">
-                                <Col>
-                                    <Button variant="dark filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
-                                        Search near vans
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Col> */}
 
                 </Row>
             </Container>

@@ -1,5 +1,5 @@
 .messagesPageMain {
-    padding-top: 100px;
+    padding-top: 85px;
     height: 100vh;
     overflow: hidden;
 }
@@ -20,7 +20,7 @@
     overflow-y: scroll;
     border: 5px;
     border-color: black;
-    padding: 0px 10px 85px 20px;
+    padding: 0px 10px 100px 20px;
     margin: 0px;
     border-right: 1px solid rgb(236, 236, 236);
 }

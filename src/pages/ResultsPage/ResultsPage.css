@@ -126,9 +126,8 @@
     border-radius: 6px;
     display: flex;
     align-items: center;
-    /* text-align: center; */
     justify-content: space-between;
-    width: 400px;
+    width: 250px;
     box-shadow: 1px 2px 5px var(--main-color-4);
 }
 
@@ -141,7 +140,7 @@
     border-style: double;
     border: 0px;
     padding-left: 20px;
-    width: 350px;
+    width: auto;
 }
 
 .resultsPageMain .pro-sidebar {
@@ -159,15 +158,38 @@
 .showFiltersButton {
     display: flex;
     width: 100px;
-    height: 40px;
+    height: 44px;
     border-radius: 6px;
-    margin-right: 50px;
+    margin-right: 35px;
     font-size: 13px;
     align-items: center;
     justify-content: center;
     /* color: black; */
     background-color: white !important;
     box-shadow: 1px 2px 5px var(--main-color-4);
+}
+
+.locationButton {
+    display: flex;
+    width: 180px;
+    padding: 0px 0px;
+    height: 44px;
+    border-radius: 6px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    /* color: black; */
+    background-color: white !important;
+    box-shadow: 1px 2px 5px var(--main-color-4);
+    color: black;
+}
+
+.locationButtonIcon {
+    padding: 0px;
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    
 }
 
 .showFiltersButton.unchecked {
@@ -184,6 +206,8 @@
     width: 15px;
     height: 20px;
 }
+
+
 
 
 .searchIcon {

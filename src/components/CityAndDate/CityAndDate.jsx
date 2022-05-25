@@ -51,11 +51,11 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
     const { address, mapInitLocationX, mapInitLocationY } = filterData
 
     return (
-        isHidden && (
+         (
             <div className="cityAndDate">
                 <form>
                     <label>
-                        <input className="cityAndDateElem" type="text" value={address} name="address" onChange={handleStreetChange} />
+                        <input className="cityElem" type="text" value={address} name="address" onChange={handleStreetChange} />
                     </label>
                 </form>
                 {/* <DatePicker /> */}
