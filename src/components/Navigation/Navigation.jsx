@@ -78,7 +78,7 @@ const Navigation = ({setFilterInfo, filterData}) => {
                         </Navbar.Brand>
 
 
-                        <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
+                        <CityAndDate isHidden={true} filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
