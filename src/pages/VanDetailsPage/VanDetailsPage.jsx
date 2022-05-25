@@ -171,7 +171,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                 <div className="vanImageTopInfo">
                     <Row className="mb-3">
                         <Col xs="auto" className="d-flex justify-content-start">
-                            <h3>Owner: Pablo Perez</h3>
+                            <h3 className="vanDetailsOwner">Owner: {vanDetails?.owner?.username}</h3>
                         </Col>
                         <Col className="d-flex align-items-center">
                             {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}

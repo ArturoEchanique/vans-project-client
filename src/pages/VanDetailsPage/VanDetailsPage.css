@@ -140,6 +140,10 @@
     box-shadow: 3px 3px 10px var(--main-color-3);
 }
 
+.vanDetailsOwner{
+    font-size: 21px;
+}
+
 .bookingInfoPriceRow {
     display: flex;
     justify-content: space-between;

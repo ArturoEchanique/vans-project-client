@@ -8,7 +8,7 @@ const monthNamesAb = ["jan", "feb", "mar", "apr", "may", "jun",
 function beautifulDate(date) {
 
     if (typeof date === "string") date = new Date(date)
-    const month = (date.getMonth() + 1);//months (0-11)
+    const month = (date.getMonth());//months (0-11)
     const day = (date.getDate());//day (1-31)
     const year = date.getFullYear();
 
