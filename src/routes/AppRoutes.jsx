@@ -22,8 +22,7 @@ import PaymentDetailsPage from "../pages/PaymentDetailsPage/PaymentDetailsPage"
 
 const today = new Date()
 
-const AppRoutes = ({filterData, setFilterInfo}) => {
-    
+const AppRoutes = ({ filterData, setFilterInfo, setHideFilter, hideFilter }) => {
     // const [filterData, setFilterData] = useState({
     //     skip: 0,
     //     mapXBounds: [40, 41],
@@ -61,7 +60,6 @@ const AppRoutes = ({filterData, setFilterInfo}) => {
 
     return (
         <Routes>
-
             <Route path="/map" element={<Map />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -89,7 +87,7 @@ const AppRoutes = ({filterData, setFilterInfo}) => {
             <Route path="/profile/messages" element={<PrivateRoutes requiredRoles={["USER", "OWNER"]} />}>
                 <Route path="" element={<MessagesPage />} />
             </Route>
-            <Route path="/" element={<HomePage filterData={filterData} setFilterInfo={setFilterInfo} />} />
+            <Route path="/" element={<HomePage  filterData={filterData} setFilterInfo={setFilterInfo} />} />
             <Route path="/results" element={<ResultsPage setFilterInfo={setFilterInfo} filterData={filterData} />} />
             <Route path="/:van_id/details" element={<VanDetails setBookingInfo={setBookingInfo} bookingInfo={bookingData} />} />
         </Routes>

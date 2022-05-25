@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import { NavLink, Link } from "react-router-dom"
+import { NavLink, Link, useLocation } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import { Navbar, Container, Nav, Offcanvas, Row, Button, NavDropdown, Form, FormControl, Modal } from "react-bootstrap"
@@ -8,7 +8,11 @@ import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
 import CityAndDate from "../CityAndDate/CityAndDate"
 
-const Navigation = ({setFilterInfo, filterData}) => {
+const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
+    const location = useLocation()
+
+    const { pathname } = location
+
     const { user, logOutUser, isLoggedIn } = useContext(AuthContext)
 
     const [userDetails, setUserDetails] = useState({})
@@ -77,8 +81,9 @@ const Navigation = ({setFilterInfo, filterData}) => {
                             </Link>
                         </Navbar.Brand>
 
+                        {(pathname !== "/" && pathname !== "/results") && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
+                        
 
-                        <CityAndDate isHidden={true} filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
                         <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
@@ -112,7 +117,6 @@ const Navigation = ({setFilterInfo, filterData}) => {
                                                     Log in
                                                 </button>
                                             </div>
-
                                         )}
                                         {user && (
                                             <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
@@ -122,7 +126,7 @@ const Navigation = ({setFilterInfo, filterData}) => {
                                         )}
                                         {user && (
                                             <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
-                                                <img id="logo" src="./../images/perfil.png" alt="" srcSet="" />
+                                                <img id="logo" src="./../images/mensaje.png" alt="" srcSet="" />
                                                 Messages
                                             </NavLink>
                                         )}

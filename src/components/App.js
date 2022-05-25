@@ -10,6 +10,8 @@ import Footer from "./Footer/Footer"
 const today = new Date()
 
 const App = () => {
+    const [hideFilter, setHideFilter] = useState(false)
+    console.log(hideFilter);
 
     const [filterData, setFilterData] = useState({
         skip: 0,
@@ -37,8 +39,8 @@ const App = () => {
 
     return (
         <>
-            <Navigation filterData={filterData} setFilterInfo={setFilterInfo}/>
-            <AppRoutes filterData={filterData} setFilterInfo={setFilterInfo}/>
+            <Navigation filterData={filterData} setFilterInfo={setFilterInfo} hideFilter={hideFilter} />
+            <AppRoutes filterData={filterData} setFilterInfo={setFilterInfo} setHideFilter={setHideFilter} hideFilter={hideFilter} />
             <UserMessage />
             {/* <Footer /> */}
         </>
