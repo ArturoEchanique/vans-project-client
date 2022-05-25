@@ -268,6 +268,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <ReviewForm fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
+                        < ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
+
                         <Row>
                             {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
                         </Row>
@@ -288,8 +290,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         <div className="reviewButtonContainer">
                             {isLoggedIn && <Button variant="light writeReviewButton" onClick={openModal}>Write review</Button>}
                         </div>
-                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
-                        }
+                        
                     </div >
                     {/* <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
