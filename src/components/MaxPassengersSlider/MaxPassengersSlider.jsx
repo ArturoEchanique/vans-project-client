@@ -12,11 +12,11 @@ const MaxPassengersSlider = ({ handlePassengersChange }) => {
                         dataField="ratings_count"
                         componentId="BookSensor"
                         range={{
-                            start: 0,
+                            start: 3,
                             end: 12,
                         }}
                         rangeLabels={{
-                            start: "0",
+                            start: "3",
                             end: "12",
                         }}
                         onValueChange={function (value) {
