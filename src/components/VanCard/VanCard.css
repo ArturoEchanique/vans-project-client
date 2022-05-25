@@ -86,7 +86,7 @@
 .redHeart {}
 
 .greyHeart {
-    filter: saturate(0%) brightness(200%)
+    filter: saturate(0%) brightness(120%)
 }
 
 .vanIconsRow {
