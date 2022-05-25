@@ -21,7 +21,8 @@ function beautifulHour(date) {
 
     if (typeof date === "string") date = new Date(date)
     const hour = (date.getHours() + 1);//months (0-11)
-    const minutes = (date.getMinutes());//day (1-31)
+    let minutes = (date.getMinutes());//day (1-31)
+    if (minutes < 10) minutes = "0" + minutes
 
     const formattedHour = hour + ":" + minutes
 

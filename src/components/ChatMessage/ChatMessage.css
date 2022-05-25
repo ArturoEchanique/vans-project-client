@@ -2,35 +2,51 @@
     padding: 30px 0px;
 }
 
-.chatMessageMain p{
+.chatMessageMain p {
     word-wrap: break-all;
 }
 
-/* 
-
-.reviewComment h2 {
-    padding-bottom: 70px;
+.chatMessageMain {
+    width: 100%;
+    height: 100px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+    padding: 20px;
 }
 
-.profileImage {
+.chatMessageLeft {
+    /* display: flex;
+    align-items: center; */
+    /* background-color: red; */
+    height: 50px;
+    /* height: auto; */
+}
+
+.chatMessageRight {
+    /* background-color: rgb(121, 134, 202); */
+    text-align: left;
+}
+
+.chatMessageUpperRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chatMessageHour{
+    margin-left: 10px;
+    font-size: 10px;
+    padding-top: 2px;
+}
+
+.chatMessageProfileImage {
     width: 50px;
     border-radius: 50px;
     margin: 0px 15px 15px 0px;
     padding: 0px;
+    height: auto;
 }
-
-.reviewComment {
-    display: flex;
-    flex-direction: column;
-}
-
-.commentUpper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.commentUpper {
-    display: flex;
-    flex-direction: row;
-} */

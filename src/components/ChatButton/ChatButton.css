@@ -29,31 +29,3 @@
     padding: 0px;
     height: auto;
 }
-
-/* 
-.reviewComment h2 {
-    padding-bottom: 70px;
-}
-
-.chatProfileImage {
-    width: 50px;
-    border-radius: 50px;
-    margin: 0px 15px 15px 0px;
-    padding: 0px;
-}
-
-.reviewComment {
-    display: flex;
-    flex-direction: column;
-}
-
-.commentUpper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.commentUpper {
-    display: flex;
-    flex-direction: row;
-} */

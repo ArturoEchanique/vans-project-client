@@ -111,7 +111,7 @@ const MessagesPage = ({ setBookingInfo }) => {
     return (
         <div className="messagesPageMain">
             <Row style={{ padding: 0 }} className="messagesPageSubMain">
-                <Col xs={3} className="chatsCol">
+                <Col xs={3} className="chatsContainer">
                     <h3>Messages</h3>
  
                         {chats.map((chat, idx) => {
@@ -128,7 +128,7 @@ const MessagesPage = ({ setBookingInfo }) => {
                 </Col>
                 <Col xs={5} style={{padding:"0px"}}>
                     <h3>Sandra</h3>
-                    <div className="messagesInfiniteScroll">
+                    <div className="messagesMainContainer">
                         {messages.map((message, idx) => {
                             return (
                                 <>
