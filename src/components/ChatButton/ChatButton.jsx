@@ -32,7 +32,7 @@ const ChatButton = ({ interlocutor, bookingStartDate, vanReview, profileIndex })
                     <div><strong>{interlocutor.username}</strong></div>
                 </div>
                 <div className="commentLower">
-                    <div>viaje: {beautifulDate(bookingStartDate)}</div>
+                    <div>Booking: {beautifulDate(bookingStartDate)}</div>
                 </div>
             </div>
         </div>

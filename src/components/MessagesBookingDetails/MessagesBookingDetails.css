@@ -1,12 +1,12 @@
 .messagesBookingDetailsMain {
     padding-top: 0px;
-    padding-bottom: 120px;
+    padding-bottom: 220px;
     flex: 1 !important;
     height: 100vh !important;
     overflow-y: scroll !important;
 }
 
-.messagesBookingDetailsMain h3{
+.messagesBookingDetailsMain h3 {
     font-size: 18px;
 }
 
@@ -27,11 +27,33 @@
 
 .messagesDetailsPageSub {
     display: flex;
-    padding: 0% 6%;
+    padding: 0% 5%;
     flex-direction: column;
     justify-content: center;
 }
 
-.messagesBookingInfoMain {
+.messagesBookingInfoMain {}
 
+.messagesVanInfoMain {
+    /* background-color: rgb(255, 79, 79); */
+    height: auto;
+}
+
+.messagesVanFeatureIcon {}
+
+.messagesVanDetailsIconsRow {
+
+    margin: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+.messagesBookingInfoPriceRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.messagesMainPrice{
+    font-size: 20px;
 }

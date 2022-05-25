@@ -111,9 +111,10 @@ const MessagesPage = ({ setBookingInfo }) => {
     return (
         <div className="messagesPageMain">
             <Row style={{ padding: 0 }} className="messagesPageSubMain">
-                <Col xs={3} className="chatsContainer">
-                    <h3>Messages</h3>
- 
+                <Col xs={3} style={{ padding: "0px" }}>
+                    <h3 className="messagesSectionTitle">Messages</h3>
+                    <div className="chatsMainContainer">
+
                         {chats.map((chat, idx) => {
                             return (
                                 <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
@@ -124,10 +125,10 @@ const MessagesPage = ({ setBookingInfo }) => {
                                 </button>
                             )
                         })}
-                  
+                    </div>
                 </Col>
-                <Col xs={5} style={{padding:"0px"}}>
-                    <h3>Sandra</h3>
+                <Col xs={6} style={{ padding: "0px" }}>
+                    <h3 className="messagesSectionTitle">Sandra</h3>
                     <div className="messagesMainContainer">
                         {messages.map((message, idx) => {
                             return (
@@ -141,19 +142,19 @@ const MessagesPage = ({ setBookingInfo }) => {
                     </div>
                     <div className="messagesSendSection">
                         <form className="sendMessageArea" onSubmit={handleMessageSubmit}>
-                           
-                                <input className="writeMessageInput textInputClean textInputBig" type="text" value={messageText} placeholder="Write a message" onChange={handleInputChange} />
-                            
+
+                            <input className="writeMessageInput textInputClean textInputBig" type="text" value={messageText} placeholder="Write a message" onChange={handleInputChange} />
+
                             <input className="sendMessageIcon" type="image" src="./../../images/sendMessageIcon.png" />
                         </form>
                     </div>
 
                 </Col>
-                <Col xs={4} style={{ padding: "0px" }}>
-                    <h3>Details</h3>
+                <Col xs={3} style={{ padding: "0px" }}>
+                    <h3 className="messagesSectionTitle">Details</h3>
                     {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} />}
                     {/* chats[selectedChat].booking.bookedVan.owner.username */}
-                    
+
 
                 </Col>
             </Row>

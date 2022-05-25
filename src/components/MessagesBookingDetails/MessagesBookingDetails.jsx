@@ -46,7 +46,7 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                         <div className="messagesVanInfoMain">
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
-                            <Row className="d-flex justify-content-start vanDetailsIconsRow">
+                            <Row className="d-flex justify-content-start messagesVanDetailsIconsRow">
                                 {solarPower &&
 
                                     <Col xs={6} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-4">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
@@ -84,7 +84,7 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                         <div className="messagesBookingInfoMain">
                             <Row className="d-flex justify-content-space-between align-items-center mb-4">
                                 <Col className="">
-                                    <strong className="mainPrice">638 €</strong>&nbsp; /day
+                                    <strong className="messagesMainPrice">638 €</strong>&nbsp; /day
                                 </Col>
                                 <Col >
                                     {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
@@ -94,16 +94,16 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                             <div className="mb-4">
                                 <p style={{ textAlign: "center" }}>The total price of the trip includes VAT and all applicable taxes.</p>
                             </div>
-                            <div className="bookingInfoPriceRow">
+                            <div className="messagesBookingInfoPriceRow">
                                 <p>7800€ x 5 days</p>
                                 <p>39000€</p>
                             </div>
-                            <div className="bookingInfoPriceRow">
+                            <div className="messagesBookingInfoPriceRow">
                                 <p>Service commission</p>
                                 <p>39000€</p>
                             </div>
                             <hr></hr>
-                            <div className="bookingInfoPriceRow">
+                            <div className="messagesBookingInfoPriceRow">
                                 <strong><p>Total</p></strong>
                                 <strong><p>39000€</p></strong>
                             </div>

@@ -10,23 +10,7 @@
 
 }
 
-/* .chatButtonContainer{
-    background-color: rgb(179, 0, 255);
-    width: 100%;
-    height: 100px;
-} */
-
-.chatsContainer {
-    /* background-color: rgb(179, 0, 255); */
-    flex: 1;
-    height: 80vh;
-    padding: 0px 80px;
-    overflow-y: scroll;
-    padding: 0px;
-    margin: 0px;
-}
-
-.chatsContainer {
+.chatsMainContainer {
     /* flex: 1 !important;
     height: 100vh !important;
     overflow-y: scroll !important; */
@@ -36,8 +20,19 @@
     overflow-y: scroll;
     border: 5px;
     border-color: black;
-    padding: 0px 10px 50px 20px;
+    padding: 0px 10px 85px 20px;
     margin: 0px;
+    border-right: 1px solid rgb(236, 236, 236);
+}
+
+.messagesSectionTitle {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-right: 1px solid rgb(236, 236, 236);
+    border-top: 1px solid rgb(236, 236, 236);
+    /* border: 1px solid rgb(236, 236, 236); */
 }
 
 .writeMessageInput {
@@ -71,7 +66,7 @@
     position: sticky;
     bottom: 0;
     /* background-color: red; */
-    padding: 30px 80px;
+    padding: 30px 70px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -100,8 +95,10 @@
 
 .messagesMainContainer {
     flex: 1;
-    height: 70vh;
+    height: 85vh;
     padding: 0px 50px;
+    padding-bottom: 120px;
     overflow-y: scroll;
+    border-right: 1px solid rgb(236, 236, 236);
     /* padding-bottom: 150px; */
 }
