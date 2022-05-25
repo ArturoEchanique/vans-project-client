@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button, Row } from "react-bootstrap"
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import MapMarker from "../MapMarker/MapMarker";
+import "./ReactMapVan.css"
 
 const containerStyle = {
     width: '100%',
@@ -60,7 +61,7 @@ function ReactMap({ initLocationX, initLocationY  }) {
 
 
     return isLoaded ? (
-        <>
+        <div className="reactMapVanMain">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={{ lat: initLocationX, lng: initLocationY }}
@@ -74,7 +75,7 @@ function ReactMap({ initLocationX, initLocationY  }) {
                 </>
                 <></>
             </GoogleMap>
-        </>
+        </div>
     ) : <></>
 
 }

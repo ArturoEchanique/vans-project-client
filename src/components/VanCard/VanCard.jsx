@@ -9,7 +9,7 @@ import Heart from "react-animated-heart";
 
 
 
-const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats }) => {
+const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const [deleteState, setDeleteState] = useState(false)
 
@@ -45,7 +45,10 @@ const VanCard = ({ setReload, isFavorite, addFavoriteVan, removeFavoriteVan, _id
                 </Col>
             </Row>
             <p className="filterRow vanCardDescription">{description.length > 70 ? (description.slice(0, 70) + "...") : description}</p>
-            <Row className="justify-content-left vanIconsRow">
+            <Row className="d-flex justify-content-start vanIconsRow">
+                <Col className="justify-content-center">
+                    <strong>{maxPassengers + " "}</strong> <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img>
+                </Col>
                 {solarPower &&
                     <Col className="justify-content-center">
                         <img className="vanCardIcon" src="./../../images/sunIcon.png"></img>

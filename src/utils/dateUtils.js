@@ -7,12 +7,12 @@ const monthNamesAb = ["jan", "feb", "mar", "apr", "may", "jun",
 
 function beautifulDate(date) {
 
-    if(typeof date === "string") date = new Date(date)
+    if (typeof date === "string") date = new Date(date)
     const month = (date.getMonth() + 1);//months (0-11)
     const day = (date.getDate());//day (1-31)
     const year = date.getFullYear();
 
-    const formattedDate = day + " " + monthNamesAb[month]  + " " + year;
+    const formattedDate = day + " " + monthNamesAb[month] + " " + year;
 
     return formattedDate
 }
@@ -29,4 +29,13 @@ function beautifulHour(date) {
     return formattedHour
 }
 
-module.exports = { beautifulDate, beautifulHour}
+function daysBetweenTwoDates(dateStart, dateEnd) {
+
+    let days = 0
+    if (!(dateStart && dateEnd)) return 0
+    let difference = dateEnd.getTime() - dateStart.getTime();
+    days = Math.ceil(difference / (1000 * 3600 * 24));
+    return days;
+}
+
+module.exports = { beautifulDate, beautifulHour, daysBetweenTwoDates }

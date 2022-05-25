@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react"
 import { NavLink, Link, useLocation } from "react-router-dom"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
-import { Navbar, Container, Nav, Offcanvas, Row, Button, NavDropdown, Form, FormControl, Modal } from "react-bootstrap"
+import { Navbar, Container, Nav, Offcanvas, Row, Col, Button, NavDropdown, Form, FormControl, Dropdown, Modal } from "react-bootstrap"
 import "./Navigation.css"
 import SignupForm from "../SignupForm/SingupForm"
 import Loginform from "../LoginForm/LoginForm"
@@ -49,12 +49,13 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
     //     closeModals()
 
     // }
+    console.log("user is", user)
 
     return (
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className=" background-navbar fixed-top navBarMain">
-                    <Container fluid>
+                    <div className="rowTest">
                         <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
@@ -75,16 +76,131 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                 </Modal.Body>
                             </div>
                         </Modal>
-                        <Navbar.Brand>
-                            <Link to="/" className="nav-link">
-                                <img className="logo-nav" id="logo" src="./../images/VANMEUP.png" alt="vanmeup" />
-                            </Link>
-                        </Navbar.Brand>
+                        <Row className="">
+                            <Col xs={3} className="d-flex align-items-center justify-content-start">
+                                <Navbar.Brand>
+                                    <Link to="/" className="nav-link">
+                                        <img className="logo-nav" id="logo" src="./../images/VANMEUP.png" alt="vanmeup" />
+                                    </Link>
+                                </Navbar.Brand>
+                            </Col>
+                            <Col xs={6} className="d-flex align-items-center justify-content-center" style={{ padding: "0px", margin: "0px" }}>
+                                {pathname !== "/" && pathname !== "/results" && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
+                            </Col>
+                            <Col xs={3} className="d-flex align-items-center justify-content-end">
+                                <NavDropdown
+                                    align="end"
+                                    className="myDropDown"
+                                    eventKey={1}
+                                    title={<img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "./../images/VANMEUP.png"} alt="user pic" />}
+                                    id="basic-nav-dropdown"
+                                >
+                                    <Dropdown.Item>
+                                        <NavLink to="/become-host" className="nav-link  logo-img">
+                                            Become Host
+                                        </NavLink>
+                                    </Dropdown.Item>
 
-                        {(pathname !== "/" && pathname !== "/results") && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
-                        
+                                    {isLoggedIn ? (
+                                        <Dropdown.Item>
+                                            <div className="nav-link  logo-img" onClick={logOutUser}>
+                                                Log out
+                                            </div>
+                                        </Dropdown.Item>
+                                    ) : (
+                                        <div id="navi">
+                                            <Dropdown.Item>
+                                                <button id="logo1" onClick={openRegisterModal} className=" nav-link  logo-img active">
+                                                    Sing up
+                                                </button>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item>
+                                                <button id="logo1" onClick={openLoginModal} className="nav-link  logo-img active">
+                                                    Log in
+                                                </button>
+                                            </Dropdown.Item>
+                                        </div>
+                                    )}
+                                    {user && (
+                                        <Dropdown.Item>
+                                            <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
+                                                My profile
+                                            </NavLink>
+                                        </Dropdown.Item>
+                                    )}
+                                    {user && (
+                                        <Dropdown.Item>
+                                            <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
+                                                Messages
+                                            </NavLink>
+                                        </Dropdown.Item>
+                                    )}
+                                    {user?.role == "ADMIN" && (
+                                        <Dropdown.Item>
+                                            <NavLink to="/admin" className="nav-link  logo-img">
+                                                Control panel
+                                            </NavLink>
+                                        </Dropdown.Item>
+                                    )}
+                                </NavDropdown>
+                            </Col>
+                        </Row>
 
-                        <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                        {/* <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                D
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item ><NavLink to="/become-host" className="nav-link  logo-img">
+                                    Become Host
+                                </NavLink>
+                                </Dropdown.Item>
+
+                                {isLoggedIn ? (
+                                    <Dropdown.Item>
+                                        <div className="nav-link  logo-img" onClick={logOutUser}>
+                                            Log out
+                                        </div>
+                                    </Dropdown.Item>
+                                ) : (
+                                    <div id="navi">
+                                        <Dropdown.Item>
+                                            <button id="logo1" onClick={openRegisterModal} className=" nav-link  logo-img active">
+                                                Sing up
+                                            </button>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <button id="logo1" onClick={openLoginModal} className="nav-link  logo-img active">
+                                                Log in
+                                            </button>
+                                        </Dropdown.Item>
+                                    </div>
+                                )}
+                                {user && (
+                                    <Dropdown.Item>
+                                        <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
+                                            My profile
+                                        </NavLink>
+                                    </Dropdown.Item>
+                                )}
+                                {user && (
+                                    <Dropdown.Item>
+                                        <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
+                                            Messages
+                                        </NavLink>
+                                    </Dropdown.Item>
+                                )}
+                                {user?.role == "ADMIN" && (
+                                    <Dropdown.Item>
+                                        <NavLink to="/admin" className="nav-link  logo-img">
+                                            Control panel
+                                        </NavLink>
+                                    </Dropdown.Item>
+                                )}
+                            </Dropdown.Menu>
+                        </Dropdown> */}
+                        {/* <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>
@@ -142,14 +258,14 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                         {user?.role == "ADMIN" && (
                                             <NavLink to="/admin" className="nav-link  logo-img">
                                                 <img id="logo" src="./../images/admin.png" alt="" srcSet="" />
-                                                Admin
+                                                Control panel
                                             </NavLink>
                                         )}
                                     </Nav>
                                 </Row>
                             </Offcanvas.Body>
-                        </Navbar.Offcanvas>
-                    </Container>
+                        </Navbar.Offcanvas> */}
+                    </div>
                 </Navbar>
             ))}
         </>

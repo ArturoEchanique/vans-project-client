@@ -31,7 +31,7 @@ class VanService {
         for (const [key, value] of Object.entries(filterData)) {
             if (key == "mapInitLocationX" || key == "mapInitLocationY") continue
             else {
-                if (value || key == "name" || key == "priceStart" || key == "priceEnd") query += key + "=" + value + "&";
+                if (value || key == "name" || key == "priceStart" || key == "priceEnd" || key == "passengersStart" || key == "passengersEnd") query += key + "=" + value + "&";
             }
         }
         return this.api.get(`/?${query}`)

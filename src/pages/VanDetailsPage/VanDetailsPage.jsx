@@ -14,6 +14,7 @@ import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
 import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
 import Heart from "react-animated-heart";
 import { useNavigate } from "react-router-dom"
+import { daysBetweenTwoDates } from "../../utils/dateUtils"
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -107,6 +108,15 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         setBookingInfo(bookingInfo)
     }
 
+    const getBookingDays = () =>{
+        let days = 0
+        if (!(bookingInfo.startDate && bookingInfo.endDate)) return 0
+
+        return days
+    }
+
+    console.log("dates are", bookingInfo.startDate, bookingInfo.endDate)
+
 
     const [showModal, setShowModal] = useState(false)
 
@@ -130,8 +140,30 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
             e.preventDefault()
         }
     }
+    
+    let totalDays = 0
+    let daysPrice = 0
+    let commision = 0
+    let totalPrice = 0
+    if(vanDetails){
+        totalDays = daysBetweenTwoDates(bookingInfo.startDate, bookingInfo.endDate)
+        daysPrice = vanDetails.dayPrice * totalDays
+        commision = daysPrice * 0.05
+        commision = Math.round(commision * 100) / 100
+        totalPrice = daysPrice + daysPrice * 0.05
+    }
+    let reviewsArr = []
+    let reviewsSum = 0
+    let reviewsAvg = 0
+    if(vanDetails && vanDetails.reviews){
+        reviewsArr = vanDetails.reviews.map(review => review.rating)
+        reviewsSum = reviewsArr.reduce((a, b) => a + b, 0);
+        reviewsAvg = (reviewsSum / reviewsArr.length) || 0;
+        reviewsAvg = Math.round(reviewsAvg * 100) / 100
+    }
+    
 
-    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
+    const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
     return (
         <div className="detailsPage">
@@ -142,7 +174,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <h3>Owner: Pablo Perez</h3>
                         </Col>
                         <Col className="d-flex align-items-center">
-                            {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                            {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}
                         </Col>
                         <Col xs={2} className="d-flex align-items-center justify-content-end">
                             <button className="heartButton" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
@@ -176,33 +208,36 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
+                                <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> 
+                                    <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "} 
+                                </Col>
                                 {solarPower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; &nbsp; Solar power&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; &nbsp; Shower&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; Shower&nbsp; &nbsp; </Col>
 
                                 }
                                 {solarRoof &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; &nbsp; Solar roof</Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; Solar roof</Col>
 
                                 }
                                 {kitchen &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; &nbsp; Kitchen&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; Kitchen&nbsp; &nbsp; </Col>
                                 }
                                 {bathroom &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; &nbsp; Bathroom&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; Bathroom&nbsp; &nbsp; </Col>
 
                                 }
                                 {heatedSeats &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; &nbsp; Heated seats&nbsp; &nbsp; </Col>
+                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; Heated seats&nbsp; &nbsp; </Col>
 
                                 }
 
@@ -215,10 +250,10 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         <div className="bookingInfoMain">
                             <Row className="d-flex justify-content-space-between align-items-center mb-4">
                                 <Col className="">
-                                    <strong className="mainPrice">638 €</strong>&nbsp; /day
+                                    <strong className="mainPrice">{vanDetails.dayPrice} €</strong>&nbsp; /day
                                 </Col>
                                 <Col >
-                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}
                                 </Col>
 
                             </Row>
@@ -245,17 +280,17 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <p style={{textAlign:"center"}}>The total price of the trip includes VAT and all applicable taxes.</p>
                             </div>
                             <div className="bookingInfoPriceRow">
-                                <p>7800€ x 5 days</p>
-                                <p>39000€</p>
+                                <p>{vanDetails.dayPrice} x {totalDays} days</p>
+                                <p>{daysPrice} €</p>
                             </div>
                             <div className="bookingInfoPriceRow">
                                 <p>Service commission</p>
-                                <p>39000€</p>
+                                <p>{commision} €</p>
                             </div>
                                 <hr></hr>
                             <div className="bookingInfoPriceRow">
                                 <strong><p>Total</p></strong>
-                                <strong><p>39000€</p></strong>
+                                <strong><p>{totalPrice}€</p></strong>
                             </div>
                         </div>
                     </Col>
@@ -268,8 +303,10 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <ReviewForm fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
+                        < ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
+
                         <Row>
-                            {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</h2></div>}
+                            {vanDetails.reviews && <div className="reviewSectionTitle"><h2>{`★ ${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</h2></div>}
                         </Row>
                         <Row className="d-flex justify-content-between">
 
@@ -288,8 +325,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         <div className="reviewButtonContainer">
                             {isLoggedIn && <Button variant="light writeReviewButton" onClick={openModal}>Write review</Button>}
                         </div>
-                        {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
-                        }
+                        
                     </div >
                     {/* <Col xs={3} style={{ paddingLeft: "0", paddingRight: "0" }}>
                         {< ReactMapVan initLocationX={vanDetails.location ? vanDetails.location.coordinates[0] : 40} initLocationY={vanDetails.location ? vanDetails.location.coordinates[1] : 3} />
