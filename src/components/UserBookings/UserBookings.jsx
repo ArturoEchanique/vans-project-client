@@ -3,11 +3,7 @@ import { Container, Row, Col } from "react-bootstrap"
 
 const UserBookings = ({ userBookings }) => {
     const bookingList = userBookings?.map((booking) => {
-        return (
-            <Col>
-                <UserBookingsCard {...booking} />
-            </Col>
-        )
+        return <UserBookingsCard {...booking} />
     })
 
     return (

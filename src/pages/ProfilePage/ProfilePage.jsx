@@ -48,7 +48,8 @@ const ProfilePage = () => {
                                 <HostButton />
                                 <DeleteButton />
                             </ButtonGroup>
-                          
+                            <hr />
+                            <button>favorites</button>
                         </div>
                     </Col>
 
@@ -59,8 +60,7 @@ const ProfilePage = () => {
                             {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
                                 <>
                                     <Row className="g-4 mt-5" xs={2}>
-                                        <h3 className="favorite">Your Vans</h3>
-                                        <hr />
+                                        
                                         <UserVans />
                                     </Row>
                                     <Row>

@@ -1,7 +1,7 @@
 import './CheckoutForm.css'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import stripeService from "../../services/stripe.service"
 import bookingsService from "../../services/bookings.service"
 import chatService from "../../services/chat.service"
@@ -29,7 +29,8 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const closeModal = () => setShowModal(false)
 
     const fireFinalActions = () => {
-        closeModal()
+        navigate("/")
+        // closeModal()
     }
 
     const navigate = useNavigate()
@@ -76,84 +77,115 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
 
         elements.getElement(CardElement).clear()
-        openModal()
+        // openModal()
+        error ? setError(true) : navigate("/paydetails")
+
         setLoading(false)
     }
 
     return (
-        <>
-            {!error &&
-            
-                // <Modal backdrop="static" show={showModal} onHide={closeModal}>
-                //     <div className="modal1">
-                //         <Modal.Header closeButton>
-                //             <Modal.Title>Invalid Credit Card</Modal.Title>
-                //         </Modal.Header>
-                //         <Modal.Body id='paybtn'>
-                //             <div>
-                //                 <h3>Please type a valid Credit card</h3>
-                //             </div>
-                //             <hr />
-                //             <button style={{ width: "150px" }} onClick={closeModal} className="vanmeupButton mb-4" variant="light">
-                //                 Try again
-                //             </button>
-                //             {/* <Button  id='payBtn' variant="dark">
-                //                 Try again
-                //             </Button> */}
-                //         </Modal.Body>
-                //     </div>
-                // </Modal>
-                
-                <Modal backdrop="static" show={showModal} onHide={closeModal}>
-                    <div className="modal1">
-                        <Modal.Header closeButton>
-                            <Modal.Title>Booked Successfull</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body id='paybtn'>
-                            <PaymentDetailsCard />
-                            <hr />
-                            <Button onClick={closeModal} id='payBtn' variant="dark">
-                                <Link id='linkpay' to={'/profile'}>See bookings</Link>
-                            </Button>
-                        </Modal.Body>
-                    </div>
-                </Modal>
-            }
+
+        // {
+        //     error &&
+        // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+        //     <div className="modal1">
+        //         <Modal.Header closeButton>
+        //             <Modal.Title>Invalid Credit Card</Modal.Title>
+        //         </Modal.Header>
+        //         <Modal.Body id='paybtn'>
+        //             <div>
+        //                 <h3>Please type a valid Credit card</h3>
+        //             </div>
+        //             <hr />
+        //             <Button onClick={closeModal} id='payBtn' variant="dark">
+        //                 Try again
+        // {!error &&
+
+        // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+        //     <div className="modal1">
+        //         <Modal.Header closeButton>
+        //             <Modal.Title>Invalid Credit Card</Modal.Title>
+        //         </Modal.Header>
+        //         <Modal.Body id='paybtn'>
+        //             <div>
+        //                 <h3>Please type a valid Credit card</h3>
+        //             </div>
+        //             <hr />
+        //             <button style={{ width: "150px" }} onClick={closeModal} className="vanmeupButton mb-4" variant="light">
+        //                 Try again
+        //             </button>
+        //             {/* <Button  id='payBtn' variant="dark">
+        //                 Try again
+        //             </Button> */}
+        //         </Modal.Body>
+        //     </div>
+        // </Modal>
+
+        // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+        //     <div className="modal1">
+        //         <Modal.Header closeButton>
+        //             <Modal.Title>Booked Successfull</Modal.Title>
+        //         </Modal.Header>
+        //         <Modal.Body id='paybtn'>
+        //             <PaymentDetailsCard />
+        //             <hr />
+        //             <Button onClick={closeModal} id='payBtn' variant="dark">
+        //                 <Link id='linkpay' to={'/profile'}>See bookings</Link>
+        //             </Button>
+        //         </Modal.Body>
+        //     </div>
+        // </Modal>
+        // :
+        // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+        //     <div className="modal1">
+        //         <Modal.Header >
+        //             <Modal.Title>Booked Successfull</Modal.Title>
+        //         </Modal.Header>
+        //         <Modal.Body id='paybtn'>
+        //             <PaymentDetailsCard />
+        //             <hr />
+        //             <Button onClick={closeModal} id='payBtn' variant="dark">
+        //                 <Link id='linkpay' to={'/profile'}>See bookings</Link>
+        //             </Button>
+        //         </Modal.Body>
+        //     </div>
+        // </Modal>
+        // }
 
 
-            <form onSubmit={handleSubmit}>
-                <CardElement />
-                <hr />
-                <Col id="cancelationPolici">
-                    <h5 id="cancelationTile">Cancellation policy</h5>
-                    <h6 id="cancelation">
-                        Free cancellation for 48 hours.
-                    </h6>
-                    <p>
-                        Cancel before <>{startDate.toLocaleString()}</> for a partial refund.
-                        Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
-                    </p>
-                </Col>
-                <hr />
-                <br></br>
+        <form onSubmit={handleSubmit}>
+            <CardElement />
+            <hr />
+            <Col id="cancelationPolici">
+                <h5 id="cancelationTile">Cancellation policy</h5>
+                <h6 id="cancelation">
+                    Free cancellation for 48 hours.
+                </h6>
                 <p>
-                    By selecting the button below, I agree to the Host's Vans Rules,
-                    vanmeup's Rebooking and Refund Policy, and that Vanmeup can charge my payment method if
-                    I'm responsible for damage. Payment Terms between you and Argablo S.A.
+                    Cancel before <>{startDate.toLocaleString()}</> for a partial refund.
+                    Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
                 </p>
-                <br></br>
-                <br />
-                <button style={{ width: "150px" }} onClick={handleSubmit} className="vanmeupButton mb-4" variant="light">
-                    {loading ? "Loading..." : "Book"}
-                </button>
-                {/* <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
+            </Col>
+            <hr />
+            <br></br>
+            <p>
+                By selecting the button below, I agree to the Host's Vans Rules,
+                vanmeup's Rebooking and Refund Policy, and that Vanmeup can charge my payment method if
+                I'm responsible for damage. Payment Terms between you and Argablo S.A.
+            </p>
+            <br></br>
+            <br />
+            <button style={{ width: "150px" }} onClick={handleSubmit} className="vanmeupButton mb-4" variant="light">
+                {loading ? "Loading..." : "Book"}
+            </button>
+            {/* <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
                     {loading ? "Loading..." : "Book"}
                 </Button> */}
-                {/* </Card.Body> */}
-                {/* </Card> */}
-            </form>
+            {/* </Card.Body> */}
+            {/* </Card> */}
+        </form>
 
-        </>
+
     )
 }
 

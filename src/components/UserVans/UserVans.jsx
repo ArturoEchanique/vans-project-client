@@ -26,6 +26,8 @@ const UserVans = () => {
     const vansList = userVans.map((van) => {
         return (
             <Col>
+                <h3 className="favorite">Your Vans</h3>
+                <hr />
                 <VanCard {...van} key={van._id} />
             </Col>
         )
