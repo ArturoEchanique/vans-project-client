@@ -17,7 +17,7 @@ const DeleteButton = () => {
 
     return (
         <>
-            <Button variant="dark" onClick={handleDelete}>
+            <Button variant="outline-dark" onClick={handleDelete}>
                 Delete Profile
             </Button>
         </>

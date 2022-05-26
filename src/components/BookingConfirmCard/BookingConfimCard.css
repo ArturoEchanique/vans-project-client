@@ -1,4 +1,4 @@
-.bookingConfirmCardMain {}
+
 
 .bookingConfirmCardMain h3,
 h4,
@@ -36,8 +36,8 @@ h5 {
     width: 100%;
     height: 490px;
     border-radius: 13px;
-    padding: 25px;
-    margin-left: 10%;
+    padding:  25px;
+    margin-right: 10%;
     /* background-color: red; */
     box-shadow: 3px 3px 10px var(--main-color-3);
 }

@@ -1,26 +1,82 @@
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap"
+import { Col, Row, Container } from "react-bootstrap"
+import { daysBetweenTwoDates } from "../../utils/dateUtils"
 import "./UserBookingsCard.css"
 const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
+    let totalDays = 0
+    let daysPrice = 0
+    let commision = 0
+    let totalPrice = 0
+    if (bookedVan) {
+        totalDays = daysBetweenTwoDates(startDate, endDate)
+        daysPrice = bookedVan.dayPrice * totalDays
+        commision = daysPrice * 0.05
+        commision = Math.round(commision * 100) / 100
+        totalPrice = daysPrice + daysPrice * 0.05
+    }
+    let reviewsArr = []
+    let reviewsSum = 0
+    let reviewsAvg = 0
+    if (bookedVan && bookedVan.reviews) {
+        reviewsArr = bookedVan.reviews.map((review) => review.rating)
+        reviewsSum = reviewsArr.reduce((a, b) => a + b, 0)
+        reviewsAvg = reviewsSum / reviewsArr.length || 0
+        reviewsAvg = Math.round(reviewsAvg * 100) / 100
+    }
     return (
-        <h3>
-            <Card style={{ width: "18rem", height:"35rem" }}>
-                <Card.Img variant="top" src={bookedVan.imageUrl} />
-                <Card.Body>
-                    <Card.Title>{bookedVan.name}</Card.Title>
-                    <hr />
-                    <Card.Text>
-                        <ul>
-                            <h5>Price Details</h5>
+        <>
+            <Col style={{ paddingLeft: "0px" }}>
+                <div className="confirmBookingInfoMain">
+                    <div className=" mb-4">
+                        <Row>
+                            <Col>
+                                <img className="confirmPageVanImage" src={bookedVan.imageUrl} />
+                                <hr />
+                                <h6  style={{ textAlign: "left" }}>
+                                    {bookedVan?.owner?.username}
+                                </h6>
+                                <h6 style={{ textAlign: "left" }}>
+                                    {bookedVan?.name}
+                                </h6>
+                            </Col>
+                        </Row>
+                    </div>
+                    <Row className="d-flex justify-content-space-between align-items-center mb-4">
+                        <Col className="">
+                            <strong className="mainPrice">{bookedVan.dayPrice} €</strong>&nbsp; /day
+                        </Col>
+                        <Col>
+                            {bookedVan.reviews && (
+                                <div className="bookingInfoRating">
+                                    <strong>{`★${reviewsAvg} - ${bookedVan.reviews.length} reviews`}</strong>
+                                </div>
+                            )}
+                        </Col>
+                    </Row>
 
-                            <li className="list-details">{bookedVan.dayPrice}</li>
-                            <li className="list-details">{startDate.toLocaleString()}</li>
-                            <li className="list-details">{endDate.toLocaleString()}</li>
-                            <li className="list-details">{price}€</li>
-                        </ul>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        </h3>
+                    <hr></hr>
+                    <div className="bookingInfoPriceRow">
+                        <p>
+                            {bookedVan.dayPrice} x {totalDays} days
+                        </p>
+                        <p>{daysPrice} €</p>
+                    </div>
+                    <div className="bookingInfoPriceRow">
+                        <p>Service commission</p>
+                        <p>{commision} €</p>
+                    </div>
+                    <hr></hr>
+                    <div className="bookingInfoPriceRow">
+                        <strong>
+                            <p>Total</p>
+                        </strong>
+                        <strong>
+                            <p>{price} €</p>
+                        </strong>
+                    </div>
+                </div>
+            </Col>
+            {/* </Container> */}
+        </>
     )
 }
 
