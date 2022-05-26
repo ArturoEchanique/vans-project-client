@@ -124,7 +124,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                     align="end"
                                     className="myDropDown"
                                     eventKey={1}
-                                    title={<img className="dropdownIcon" src={(userDetails?.imageUrl && user)? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
+                                    title={<img className="dropdownIcon" src={(userDetails?.imageUrl && user) ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
                                     id="basic-nav-dropdown"
                                 >
                                     {isLoggedIn ? (
@@ -147,12 +147,16 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                             </Dropdown.Item>
                                         </div>
                                     )}
+
+
                                     {user && (
-                                        <Dropdown.Item>
-                                            <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
-                                                My profile
-                                            </NavLink>
-                                        </Dropdown.Item>
+                                        <> <hr style={{margin: "8px"}}></hr>
+                                            <Dropdown.Item>
+                                                <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
+                                                    My profile
+                                                </NavLink>
+                                            </Dropdown.Item>
+                                        </>
                                     )}
                                     {user && (
                                         <Dropdown.Item>
