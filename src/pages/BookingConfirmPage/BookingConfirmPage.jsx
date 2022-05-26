@@ -27,14 +27,30 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
 
     return (
         <>
-            <section className="section1">
+            <section className="confirmPageSection1">
                 <Container>
                     <Row fluid>
                         <Col lg={{ span: 6 }}>
                             <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
 
                             <section id="sect1">
-                                <h4 id="rowPay">Pay with</h4>
+                                <Row className="d-flex justify-content-between">
+                                    <Col>
+                                        <h4 id="rowPay">Pay with</h4>
+
+                                    </Col>
+                                    <Col style={{padding:"0px", margin:"0px"}}>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_postepay.65045e70e65761f29de3881049c6e9f3.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_sofort.09a6b8666f72c0532ef1e01b516e1ac5.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609.svg"></img>
+                                        <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"></img>
+
+                                    </Col>
+                                </Row>
+                                
                                 <Elements stripe={stripePromise}>
                                     <div>
                                         <div>

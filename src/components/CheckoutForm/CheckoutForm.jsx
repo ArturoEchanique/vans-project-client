@@ -134,9 +134,12 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                     I'm responsible for damage. Payment Terms between you and Airbnb Payments Luxembourg S.A.
                 </p>
                 <hr />
-                <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                <button style={{ width: "150px" }} onClick={handleSubmit} className="vanmeupButton mb-4" variant="light">
                     {loading ? "Loading..." : "Book"}
-                </Button>
+                </button>
+                {/* <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                    {loading ? "Loading..." : "Book"}
+                </Button> */}
                 {/* </Card.Body> */}
                 {/* </Card> */}
             </form>

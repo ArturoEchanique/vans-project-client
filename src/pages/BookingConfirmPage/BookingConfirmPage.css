@@ -2,8 +2,9 @@
     width: 100%;
 }
 
-.section1 {
+.confirmPageSection1 {
     margin-top: 8%;
+    margin-bottom: 8%;
 }
 
 #rowPay {
@@ -30,4 +31,12 @@
 #sect1 {
     margin-right: 4%;
     margin-left: 4%;
+}
+
+.creditCardIcon{
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    margin-right:5px;
 }

@@ -50,7 +50,7 @@ export const options = {
         },
         title: {
             display: true,
-            text: 'Typical Earnings of our Hosts',
+            text: 'Typical Earnings of our hosts',
         },
     },
 };
@@ -88,11 +88,11 @@ const BecomeHostPage = () => {
 
 
 
-                                <button style={{ width: "250px" }} onClick={openModal} className="bookVanButton mb-4" variant="light">
+                                <button style={{ width: "250px" }} onClick={openModal} className="vanmeupButton mb-4" variant="light">
                                     <strong>Add your Van now</strong>
                                 </button>
                                 :
-                                <button style={{ width: "250px" }} onClick={showLoginModal} className="bookVanButton mb-4" variant="light">
+                                <button style={{ width: "250px" }} onClick={showLoginModal} className="vanmeupButton mb-4" variant="light">
                                     <strong>Add your Van now</strong>
                                 </button>
                             }
