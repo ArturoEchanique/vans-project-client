@@ -12,12 +12,14 @@ import nodemailerService from "../../services/nodemailer.service"
 import userService from "../../services/user.service"
 import { Button, Card, Col, Modal } from "react-bootstrap"
 import PaymentDetailsCard from "../PaymentDetailsCard/PaymentDetailsCard"
+import { MessageContext } from "../../context/message.context"
 
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const stripe = useStripe()
     const elements = useElements()
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
+    const { showMessage } = useContext(MessageContext)
 
     const [error, setError] = useState(false)
 
@@ -47,7 +49,7 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         }
         if (error) {
             setError(true)
-            console.log("el error es", error)
+            showMessage("mal", "muy mal")
         }
 
         const owner = await vanService.getOneVan(bookedVan)
@@ -80,24 +82,28 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
     return (
         <>
-            {error ?
-                <Modal backdrop="static" show={showModal} onHide={closeModal}>
-                    <div className="modal1">
-                        <Modal.Header closeButton>
-                            <Modal.Title>Invalid Credit Card</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body id='paybtn'>
-                            <div>
-                                <h3>Please type a valid Credit card</h3>
-                            </div>
-                            <hr />
-                            <Button onClick={closeModal} id='payBtn' variant="dark">
-                                Try again
-                            </Button>
-                        </Modal.Body>
-                    </div>
-                </Modal>
-                :
+            {!error &&
+            
+                // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+                //     <div className="modal1">
+                //         <Modal.Header closeButton>
+                //             <Modal.Title>Invalid Credit Card</Modal.Title>
+                //         </Modal.Header>
+                //         <Modal.Body id='paybtn'>
+                //             <div>
+                //                 <h3>Please type a valid Credit card</h3>
+                //             </div>
+                //             <hr />
+                //             <button style={{ width: "150px" }} onClick={closeModal} className="vanmeupButton mb-4" variant="light">
+                //                 Try again
+                //             </button>
+                //             {/* <Button  id='payBtn' variant="dark">
+                //                 Try again
+                //             </Button> */}
+                //         </Modal.Body>
+                //     </div>
+                // </Modal>
+                
                 <Modal backdrop="static" show={showModal} onHide={closeModal}>
                     <div className="modal1">
                         <Modal.Header closeButton>
