@@ -130,9 +130,10 @@
 }
 
 .dropdown-toggle::after {
+    display:none;
     margin-left: 0.705em;
     position: absolute;
-    top: 20px;
+    top: 0px;
     right: 47px;
 
 }
