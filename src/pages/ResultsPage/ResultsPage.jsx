@@ -1,5 +1,5 @@
 
-import { Button, Col, Row, Form, ToggleButton, Container } from "react-bootstrap"
+import { Button, Col, Row, Form, ToggleButton, Container, Modal } from "react-bootstrap"
 import vanService from "./../../services/van.service"
 import VanCard from "../../components/VanCard/VanCard"
 import { useEffect, useState, useContext } from "react"
@@ -16,6 +16,7 @@ import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import CityAndDate from "../../components/CityAndDate/CityAndDate"
 import MaxPassengersSlider from "../../components/MaxPassengersSlider/MaxPassengersSlider"
+import Loginform from "../../components/LoginForm/LoginForm"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -30,6 +31,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
     const navigate = useNavigate()
+    const [showModals, setShowModals] = useState(false)
+
+
+
+    const showLoginModal = () => setShowModals(true)
+    const closeLoginModal = () => setShowModals(false)
 
     const { name, solarPower, shower, bathroom, sunRoof, heatedSeats, kitchen, startDate, endDate, mapInitLocationX, mapInitLocationY, priceStart, priceEnd, passengersStart, passengersEnd } = filterData;
 
@@ -105,7 +112,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     const addFavoriteVan = (vanId) => {
         if (!user) {
-            navigate("/login")
+            setShowModals(true)
+
         }
         console.log("try adding favorite")
         userService
@@ -117,7 +125,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
     const removeFavoriteVan = (vanId) => {
         if (!user) {
-            navigate("/login")
+            setShowModals(true)
+
         }
         userService
             .removeFavoriteVan(user._id, vanId)
@@ -195,6 +204,18 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
         <div className="resultsPageMain">
             <div className="resultsTopBar">
+
+                <Modal show={showModals} onHide={closeLoginModal}>
+                    <div className="modal1">
+                        <Modal.Header closeButton>
+                            <Modal.Title>Please Log in </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Loginform closeModal={closeLoginModal} />
+                        </Modal.Body>
+                    </div>
+                </Modal>
+
                 <Container fluid>
                     <Row className="">
                         <Col xs={3} className="d-flex justify-content-center">
@@ -371,8 +392,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                         <Form.Control className="textInputSmall textInputClean" value={passengersEnd + " passengers"} name="passengers" placeholder="Passengers start" />
                                     </Col>
                                 </Row>
-                            </Container>                       
-                             </ProSidebar>
+                            </Container>
+                        </ProSidebar>
                     </Col>
 
 
