@@ -15,3 +15,17 @@
 #paybtn {
     text-align: center;
 }
+
+#payBtn {
+    font-size: 1.4em;
+    background-color: #FF5C5C;
+    padding-right: 7%;
+    padding-left: 7%;
+    margin-bottom: 5%;
+    border-color: white;
+
+}
+
+#linkpay {
+    color: white;
+}
