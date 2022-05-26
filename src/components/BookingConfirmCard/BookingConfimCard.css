@@ -9,6 +9,18 @@
 .details {
     margin-top: 5%;
     margin-bottom: 5%;
-    color: #FF9C82;
+    color: #FF5C5C;
 
+}
+
+#cancelation {
+    margin-bottom: 1%;
+}
+
+#cancelationTile {
+    margin-bottom: 1%;
+}
+
+#cancelationPolici {
+    margin-bottom: 5%;
 }

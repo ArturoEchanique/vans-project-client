@@ -6,6 +6,7 @@ import VanService from "../../services/van.service"
 import { Row, Col, Container, Card } from "react-bootstrap"
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm"
 import BookingConfirmCard from "../../components/BookingConfirmCard/BookingConfirmCard"
+import { daysBetweenTwoDates } from "../../utils/dateUtils"
 const stripePromise = loadStripe("pk_test_51KwTPNGY00AWRT2Z6hsVVc0UNqWQLfAo9BUJlrRy5Nhcu1LKT4CeeEaJbZ2KmsQDmJaVFVT7ElohXWqPxZ5NmOrX00cLoHIJ5W")
 
 const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
@@ -24,6 +25,8 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
         getDetails()
 
     }, [])
+    let totalDays
+    totalDays = daysBetweenTwoDates(startDate, endDate)
 
     return (
         <>
@@ -47,46 +50,48 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                             </section>
                         </Col>
                         <Col lg={{ span: 6 }} >
-                            <Card id="priceDetail">
-                                <Row>
-                                    <Col lg={{ span: 8 }}>
-                                        <Card.Img variant="top" id="impay" src={vanDetails.imageUrl} />
-                                    </Col>
-                                    <Col lg={{ span: 4 }} id="cardTi">
-                                        <Card.Title>{vanDetails.name}</Card.Title>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <Card.Body>
-                                            <Row>
-                                                <Col>
-                                                    <h5>Your van is protected by UpCover</h5>
-                                                    <hr />
-                                                </Col>
-                                                <h4 id="rowTitle">Price </h4>
-                                                <Col >
-                                                    <h5>Price per day</h5>
-                                                    <p> {vanDetails.dayPrice}$</p>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col>
-                                                    <h5>Service comision</h5>
-                                                    <p>{price}$</p>
-                                                </Col>
-                                            </Row>
-                                            <hr />
-                                            <Row>
-                                                <Col>
-                                                    <h5>Total</h5>
-                                                    <p>{price}$</p>
-                                                </Col>
-                                            </Row>
-                                        </Card.Body>
-                                    </Col>
-                                </Row>
-                            </Card>
+                            <Col id="priceDetail" className="d-flex justify-content-end">
+                                <div id="priceBooking" className="bookingInfoMain">
+
+                                    <Row className="d-flex justify-content-space-between align-items-center mb-4">
+
+                                        <Row>
+                                            <Col >
+                                                <img variant="top" id="impay" src={vanDetails.imageUrl} />
+                                            </Col>
+                                            <Col id="cardTi">
+                                                <h7>{vanDetails.name}</h7>
+                                                {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${vanDetails.reviews.length} reviews`}</strong></div>}
+                                            </Col>
+                                        </Row>
+                                    </Row>
+                                    <div className="mb-4">
+                                        <hr />
+                                        <p >The total price of the trip includes VAT and all applicable taxes.</p>
+                                        <hr />
+                                    </div>
+                                    <div className="mb-4">
+                                        <p id="save">
+                                            Your van is protected by <strong id="upCover">UpCover </strong>
+                                        </p>
+                                        <hr />
+                                    </div>
+                                    <div className="bookingInfoPriceRow">
+                                        <p>{vanDetails.dayPrice} x {totalDays} days</p>
+                                        <p>{vanDetails.dayPrice} €</p>
+                                    </div>
+                                    <div className="bookingInfoPriceRow">
+                                        <p>Service commission</p>
+                                        <p>{price * 0.05} €</p>
+                                    </div>
+                                    <hr></hr>
+                                    <div className="bookingInfoPriceRow">
+                                        <strong><p>Total</p></strong>
+                                        <strong ><p>{price}€</p></strong>
+                                    </div>
+                                </div>
+                            </Col>
+
                         </Col>
                     </Row>
                 </Container>

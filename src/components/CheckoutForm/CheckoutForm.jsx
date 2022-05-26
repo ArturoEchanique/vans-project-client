@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/auth.context"
 import vanService from "../../services/van.service"
 import nodemailerService from "../../services/nodemailer.service"
 import userService from "../../services/user.service"
-import { Button, Card, Modal } from "react-bootstrap"
+import { Button, Card, Col, Modal } from "react-bootstrap"
 import PaymentDetailsCard from "../PaymentDetailsCard/PaymentDetailsCard"
 
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
@@ -39,6 +39,7 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
             card: elements.getElement(CardElement),
         })
         setLoading(true)
+        setError(false)
 
         if (!error) {
             const { id } = paymentMethod
@@ -114,31 +115,29 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
             }
 
 
-
-
-
-
             <form onSubmit={handleSubmit}>
-                {/* <Card className="payment" style={{ width: '28rem' }}> */}
-                {/* <Card.Img variant="top" src="https://careeracademy.co.nz/wp-content/uploads/2020/11/Secure-Payment-Icon.png" />
-                    <Card.Body>
-                        <Card.Title className="paymentTitle">Checkout</Card.Title>
-                        <Card.Text className="paymentPrice">
-                            Price: {price}$
-                        </Card.Text> */}
                 <CardElement />
                 <hr />
+                <Col id="cancelationPolici">
+                    <h5 id="cancelationTile">Cancellation policy</h5>
+                    <h6 id="cancelation">
+                        Free cancellation for 48 hours.
+                    </h6>
+                    <p>
+                        Cancel before <>{startDate.toLocaleString()}</> for a partial refund.
+                        Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
+                    </p>
+                </Col>
+                <hr />
                 <p>
-                    By selecting the button below, I agree to the Host's House Rules,
-                    Airbnb's Rebooking and Refund Policy, and that Airbnb can charge my payment method if
-                    I'm responsible for damage. Payment Terms between you and Airbnb Payments Luxembourg S.A.
+                    By selecting the button below, I agree to the Host's Vans Rules,
+                    vanmeup's Rebooking and Refund Policy, and that Vanmeup can charge my payment method if
+                    I'm responsible for damage. Payment Terms between you and Argablo S.A.
                 </p>
                 <hr />
                 <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
                     {loading ? "Loading..." : "Book"}
                 </Button>
-                {/* </Card.Body> */}
-                {/* </Card> */}
             </form>
 
         </>

@@ -6,17 +6,9 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
     return (
         <>
             <Container>
-                {/* <Row>
-                    <img id="vanImg" className="vanCardImage" src={imageUrl}></img>
-                    <h3 className="filterRow">{name}</h3>
-                    {/* <div className="form-control">{description}</div> */}
-                {/* </Row> */}
                 <h3 className="details">Comfirm and pay</h3>
-
-
                 <Row className="justify-content-center filterRowSmall">
                     <h4 id="rowTitle">Your Dates </h4>
-
                     <Col >
                         <h5>Starts </h5>
                         <p> {startDate.toLocaleString()}</p>
@@ -29,28 +21,6 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
                     </Col>
                 </Row>
                 <hr />
-                <Row>
-                    <Col>
-                        <h5>Cancellation policy</h5>
-                        <h4>
-                            Free cancellation for 48 hours.
-                        </h4>
-
-                        <p>
-                            Cancel before <>{startDate.toLocaleString()}</> for a partial refund.
-                        </p>
-                        <p>
-                            Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
-                        </p>
-                        <hr />
-                    </Col>
-                    <hr />
-                </Row>
-
-
-
-
-
             </Container>
         </>
     )
