@@ -37,7 +37,7 @@
 
 .nav-link:hover {
     text-decoration: none;
-    color: #a82121;
+    color: #000000;
 }
 
 .logo-img img {
@@ -53,9 +53,9 @@
 .offcanvas-end {
     margin-right: 10px;
     display: flex;
-    
-   width: 300px;
-    align-items: center ;
+
+    width: 300px;
+    align-items: center;
     border-radius: 7px;
 }
 
@@ -79,7 +79,7 @@
 .logo-nav {
 
     margin-left: 50px;
-   
+
 }
 
 .logo-nav {
@@ -87,14 +87,16 @@
 
 }
 
-.navbar{
+.navbar {
     padding: 0;
 }
+
 .modal-content {
     background-color: #ffffff;
     padding: 15px;
-    
+
 }
+
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
@@ -110,7 +112,7 @@
     border-radius: 0px;
 }
 
-.dropdownIcon{
+.dropdownIcon {
     width: 40px;
     height: 40px;
     padding: 0px;
@@ -118,7 +120,7 @@
     border-radius: 30px;
 }
 
-.dropdown-menu.show{
+.dropdown-menu.show {
     background-color: white;
     border: 0px;
     border-radius: 8px;
@@ -133,20 +135,28 @@
 
 }
 
-.containerTest {
+/* .containerTest {
     background-color: red;
     width: 100%;
-}
+} */
 
-.rowTest{
-    /* background-color: red; */
+.navigationMainContainer {
     width: 100%;
 }
 
-.myDropDown{
+.myDropDown {
     margin-right: 70px;
 }
 
 .dropdown-menu.show {
     margin-top: 7px;
+}
+
+.dropdownHamIcon {
+    width: 26px;
+    height: 26px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 5px;
+    border-radius: 30px;
 }

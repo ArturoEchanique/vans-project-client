@@ -32,6 +32,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
     }, [user])
 
     const [showRegisterModal, setShowRegisterModal] = useState(false)
+    const [showOffCanvas, setShowOffCanvas] = useState(false)
 
     const [showLoginModal, setShowLoginModal] = useState(false)
 
@@ -49,13 +50,28 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
     //     closeModals()
 
     // }
+    const handleLogout = () => {
+        setShowOffCanvas(false)
+        logOutUser()
+    }
+    const handleSignup = () => {
+        setShowOffCanvas(false)
+        openRegisterModal()
+    }
+    const handleLogin = () => {
+        setShowOffCanvas(false)
+        openLoginModal()
+    }
+
+
     console.log("user is", user)
 
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className=" background-navbar fixed-top navBarMain">
-                    <div className="rowTest">
+                <Navbar collapseOnSelect
+                    as="nav" key={expand} expand={expand} className=" background-navbar fixed-top navBarMain">
+                    <div className="navigationMainContainer">
                         <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
@@ -87,7 +103,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                             <Col xs={6} className="d-flex align-items-center justify-content-center" style={{ padding: "0px", margin: "0px" }}>
                                 {pathname !== "/" && pathname !== "/results" && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
                             </Col>
-                            <Col xs={3} className="d-flex align-items-center justify-content-end">
+                            {/* <Col xs={3} className="d-flex align-items-center justify-content-end">
                                 <NavDropdown
                                     align="end"
                                     className="myDropDown"
@@ -143,10 +159,10 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                         </Dropdown.Item>
                                     )}
                                 </NavDropdown>
-                            </Col>
-                        </Row>
+                            </Col> */}
 
-                        {/* <Dropdown>
+
+                            {/* <Dropdown>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
                                 D
                             </Dropdown.Toggle>
@@ -200,71 +216,80 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                 )}
                             </Dropdown.Menu>
                         </Dropdown> */}
-                        {/* <Navbar.Toggle className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`} />
-                        <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
-                            <Offcanvas.Header closeButton>
-                                <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                    WELCOME
-                                </Offcanvas.Title>
-                            </Offcanvas.Header>
-                            <Offcanvas.Body>
-                                <Row>
-                                    <Nav className="justify-content-end flex-grow-1 pe-3">
-                                        <NavLink to="/" className="nav-link  logo-img">
-                                            <img id="logo" src="./../images/home.png" alt="" srcSet="" />
-                                            Home
-                                        </NavLink>
-                                        {isLoggedIn ? (
-                                            <>
-                                                <div className="nav-link  logo-img" onClick={logOutUser}>
-                                                    <img id="logo" src="./../images/logout.png" alt="" srcSet="" />
-                                                    Log out
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <div id="navi">
-                                                <button id="logo1" onClick={openRegisterModal} className=" nav-link  logo-img active">
-                                                    <img id="logo" src="./../images/signin.png" alt="" srcSet="" />
-                                                    Sing up
-                                                </button>
+                            <Col xs={3} className="d-flex align-items-center justify-content-end">
+                                <Navbar.Toggle onClick={() => setShowOffCanvas(true)} className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`}>
+                                    <img className="dropdownHamIcon" src={"data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e"} alt="user pic" />
+                                    <img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />
+                                </Navbar.Toggle>
+                                <Navbar.Offcanvas show={showOffCanvas} onHide={() => setShowOffCanvas(!showOffCanvas)} id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
+                                    <Offcanvas.Header closeButton>
+                                        <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>
+                                            {/* WELCOME */}
+                                        </Offcanvas.Title>
+                                    </Offcanvas.Header>
+                                    <Offcanvas.Body>
+                                        <Row>
+                                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/" className="nav-link  logo-img">
+                                                    {/* <img id="logo" src="./../images/home.png" alt="" srcSet="" /> */}
+                                                    Home
+                                                </NavLink>
+                                                {isLoggedIn ? (
+                                                    <>
+                                                        <div id="navi">
+                                                            <button id="logo1" className="nav-link  logo-img active" onClick={handleLogout}>
+                                                                {/* <img id="logo" src="./../images/logout.png" alt="" srcSet="" /> */}
+                                                                Log out
+                                                            </button>
+                                                        </div>
 
-                                                <button id="logo1" onClick={openLoginModal} className="nav-link  logo-img active">
-                                                    <img id="logo" src="./../images/login.png" alt="" srcSet="" />
-                                                    Log in
-                                                </button>
-                                            </div>
-                                        )}
-                                        {user && (
-                                            <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
-                                                <img id="logo" src="./../images/profile.png" alt="" srcSet="" />
-                                                Hello,{user.username}
-                                            </NavLink>
-                                        )}
-                                        {user && (
-                                            <NavLink to="/profile/messages" className="nav-link justify-content-end  logo-img">
-                                                <img id="logo" src="./../images/mensaje.png" alt="" srcSet="" />
-                                                Messages
-                                            </NavLink>
-                                        )}
-                                        <NavLink to="/results" className="nav-link  logo-img">
-                                            <img id="logo" src="./../images/results.png" alt="" srcSet="" />
-                                            Search
-                                        </NavLink>
-                                        <NavLink to="/become-host" className="nav-link  logo-img">
-                                            <img id="logo" src="./../images/becomehost.png" alt="" srcSet="" />
-                                            Become Host
-                                        </NavLink>
+                                                    </>
+                                                ) : (
+                                                    <div id="navi">
+                                                        <button id="logo1" onClick={handleSignup} className=" nav-link  logo-img active">
+                                                            {/* <img id="logo" src="./../images/signin.png" alt="" srcSet="" /> */}
+                                                            Sing up
+                                                        </button>
 
-                                        {user?.role == "ADMIN" && (
-                                            <NavLink to="/admin" className="nav-link  logo-img">
-                                                <img id="logo" src="./../images/admin.png" alt="" srcSet="" />
-                                                Control panel
-                                            </NavLink>
-                                        )}
-                                    </Nav>
-                                </Row>
-                            </Offcanvas.Body>
-                        </Navbar.Offcanvas> */}
+                                                        <button id="logo1" onClick={handleLogin} className="nav-link  logo-img active">
+                                                            {/* <img id="logo" src="./../images/login.png" alt="" srcSet="" /> */}
+                                                            Log in
+                                                        </button>
+                                                    </div>
+                                                )}
+                                                {user && (
+                                                    <NavLink onClick={() => setShowOffCanvas(false)} to="/profile" className="nav-link justify-content-end  logo-img">
+                                                        {/* <img id="logo" src="./../images/profile.png" alt="" srcSet="" /> */}
+                                                        Hello,{user.username}
+                                                    </NavLink>
+                                                )}
+                                                {user && (
+                                                    <NavLink onClick={() => setShowOffCanvas(false)} to="/profile/messages" className="nav-link justify-content-end  logo-img">
+                                                        {/* <img id="logo" src="./../images/mensaje.png" alt="" srcSet="" /> */}
+                                                        Messages
+                                                    </NavLink>
+                                                )}
+                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/results" className="nav-link  logo-img">
+                                                    {/* <img id="logo" src="./../images/results.png" alt="" srcSet="" /> */}
+                                                    Search
+                                                </NavLink>
+                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/become-host" className="nav-link  logo-img">
+                                                    {/* <img id="logo" src="./../images/becomehost.png" alt="" srcSet="" /> */}
+                                                    Become Host
+                                                </NavLink>
+
+                                                {user?.role == "ADMIN" && (
+                                                    <NavLink onClick={() => setShowOffCanvas(false)} to="/admin" className="nav-link  logo-img">
+                                                        {/* <img id="logo" src="./../images/admin.png" alt="" srcSet="" /> */}
+                                                        Control panel
+                                                    </NavLink>
+                                                )}
+                                            </Nav>
+                                        </Row>
+                                    </Offcanvas.Body>
+                                </Navbar.Offcanvas>
+                            </Col>
+                        </Row>
                     </div>
                 </Navbar>
             ))}
