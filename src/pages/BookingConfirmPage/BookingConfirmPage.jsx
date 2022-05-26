@@ -86,49 +86,6 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 </Elements>
                             </section>
                         </Col>
-                        {/* <Col lg={{ span: 6 }} >
-                            <Col id="priceDetail" className="d-flex justify-content-end">
-                                <div id="priceBooking" className="bookingInfoMain">
-
-                                    <Row className="d-flex justify-content-space-between align-items-center mb-4">
-
-                                        <Row>
-                                            <Col >
-                                                <img variant="top" id="impay" src={vanDetails.imageUrl} />
-                                            </Col>
-                                            <Col id="cardTi">
-                                                <h7>{vanDetails.name}</h7>
-                                                {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${vanDetails.reviews.length} reviews`}</strong></div>}
-                                            </Col>
-                                        </Row>
-                                    </Row>
-                                    <div className="mb-4">
-                                        <hr />
-                                        <p >The total price of the trip includes VAT and all applicable taxes.</p>
-                                        <hr />
-                                    </div>
-                                    <div className="mb-4">
-                                        <p id="save">
-                                            Your van is protected by <strong id="upCover">UpCover </strong>
-                                        </p>
-                                        <hr />
-                                    </div>
-                                    <div className="bookingInfoPriceRow">
-                                        <p>{vanDetails.dayPrice} x {totalDays} days</p>
-                                        <p>{vanDetails.dayPrice} €</p>
-                                    </div>
-                                    <div className="bookingInfoPriceRow">
-                                        <p>Service commission</p>
-                                        <p>{price * 0.05} €</p>
-                                    </div>
-                                    <hr></hr>
-                                    <div className="bookingInfoPriceRow">
-                                        <strong><p>Total</p></strong>
-                                        <strong ><p>{price}€</p></strong>
-                                    </div>
-                                </div>
-                            </Col> */}
-
                         <Col xs={{ span: 1 }}></Col>
                         <Col xs={{ span: 4, }} style={{ paddingLeft: "0px" }} className="confirmBookingCardDetails">
 
@@ -158,10 +115,6 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
 
                                 </div>
                                 <hr></hr>
-                                {/* <div className="mb-4">
-                                    <p style={{ textAlign: "center" }}>You will not be charged anything yet</p>
-                                    <p style={{ textAlign: "center" }}>The total price of the trip includes VAT and all applicable taxes.</p>
-                                </div> */}
                                 <div className="mb-4">
                                     <p id="save">
                                         Your van is protected by <strong id="upCover">UpCover </strong>
@@ -181,47 +134,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                     <strong><p>Total</p></strong>
                                     <strong><p>{totalPrice} €</p></strong>
                                 </div>
-                            </div>
-
-                            {/* <Card id="priceDetail">
-                                <Row>
-                                    <Col lg={{ span: 8 }}>
-                                        <img className="confirmPageVanImage" src={vanDetails.imageUrl} />                                    </Col>
-                                    <Col lg={{ span: 4 }} id="cardTi">
-                                        <Card.Title>{vanDetails.name}</Card.Title>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <Card.Body>
-                                            <Row>
-                                                <Col>
-                                                    <h5>Your van is protected by UpCover</h5>
-                                                    <hr />
-                                                </Col>
-                                                <h4 id="rowTitle">Price </h4>
-                                                <Col >
-                                                    <h5>Price per day</h5>
-                                                    <p> {vanDetails.dayPrice}$</p>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col>
-                                                    <h5>Service comision</h5>
-                                                    <p>{price}$</p>
-                                                </Col>
-                                            </Row>
-                                            <hr />
-                                            <Row>
-                                                <Col>
-                                                    <h5>Total</h5>
-                                                    <p>{price}$</p>
-                                                </Col>
-                                            </Row>
-                                        </Card.Body>
-                                    </Col>
-                                </Row>
-                            </Card> */}
+                            </div>    
                         </Col>
                     </Row>
                 </Container >

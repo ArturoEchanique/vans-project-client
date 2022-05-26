@@ -16,6 +16,6 @@ const PaymentDetailsPage = ({ startDate, endDate, price, van_id }) => {
         getDetails()
     }, [])
 
-    return <PaymentDetailsCard {...vanDetails} startDate={startDate} endDate={endDate} price={price} />
+    return <PaymentDetailsCard {...vanDetails} startDate={startDate} endDate={endDate} price={price} bookedVan={vanDetails} />
 }
 export default PaymentDetailsPage

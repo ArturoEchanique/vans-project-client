@@ -126,3 +126,20 @@
     border-right: 1px solid rgb(236, 236, 236);
     /* padding-bottom: 150px; */
 }
+
+.startAConversationContainer {
+    height: 95%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.startAConversation {
+    background-color: var(--main-color-5);
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: 10px;
+}

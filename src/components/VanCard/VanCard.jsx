@@ -5,7 +5,6 @@ import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import "./VanCard.css"
 import React from "react";
-import Heart from "react-animated-heart";
 
 
 

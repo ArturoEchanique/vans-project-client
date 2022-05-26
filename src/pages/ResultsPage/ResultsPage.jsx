@@ -1,13 +1,10 @@
 
 import { Button, Col, Row, Form, ToggleButton, Container, Modal } from "react-bootstrap"
 import vanService from "./../../services/van.service"
-import VanCard from "../../components/VanCard/VanCard"
 import { useEffect, useState, useContext } from "react"
 import userService from "./../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import ReactMap from "../../components/ReactMap/ReactMap"
-import InfiniteScroll from "react-infinite-scroll-component"
-import DatePicker from "../../components/DatePicker/DatePicker"
 import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
 import { useNavigate } from "react-router-dom"
@@ -218,17 +215,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
                 <Container fluid>
                     <Row className="">
-                        <Col xs={3} className="d-flex justify-content-center">
-                            <div className="nameSearchBar">
-                                <form onSubmit={handleSubmit}>
-                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
-                                </form>
-                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                            </div>
-                        </Col>
-                        <Col xs={5} className="d-flex justify-content-center">
-                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
-                        </Col>
                         <Col xs={2} className="d-flex justify-content-center">
                             <button
                                 className={"locationButton"}
@@ -245,6 +231,18 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 Show nearest vans
                             </Button> */}
                         </Col>
+                        <Col xs={5} className="d-flex justify-content-center">
+                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
+                        </Col>
+                        <Col xs={3} className="d-flex justify-content-center">
+                            <div className="nameSearchBar">
+                                <form onSubmit={handleSubmit}>
+                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
+                                </form>
+                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                            </div>
+                        </Col>
+                        
                         <Col xs={2} className="d-flex justify-content-end">
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
