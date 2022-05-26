@@ -127,6 +127,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                     title={<img className="dropdownIcon" src={(userDetails?.imageUrl && user) ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
                                     id="basic-nav-dropdown"
                                 >
+
                                     {isLoggedIn ? (
                                         <Dropdown.Item>
                                             <div className="nav-link  logo-img" onClick={logOutUser}>
@@ -147,10 +148,14 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                             </Dropdown.Item>
                                         </div>
                                     )}
-
-
+                                    <hr style={{ margin: "8px" }}></hr>
+                                    <Dropdown.Item>
+                                        <NavLink to="/" className="nav-link justify-content-end  logo-img">
+                                            Home
+                                        </NavLink>
+                                    </Dropdown.Item>
                                     {user && (
-                                        <> <hr style={{margin: "8px"}}></hr>
+                                        <>
                                             <Dropdown.Item>
                                                 <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
                                                     My profile
@@ -172,6 +177,12 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                             </NavLink>
                                         </Dropdown.Item>
                                     )}
+
+                                    <Dropdown.Item>
+                                        <NavLink to="/results" className="nav-link justify-content-end  logo-img">
+                                            Search
+                                        </NavLink>
+                                    </Dropdown.Item>
                                 </NavDropdown>
                             </Col>
 
