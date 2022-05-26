@@ -80,20 +80,21 @@ const BecomeHostPage = () => {
             <section id="section1">
                 <Container fluid >
                     <Row  >
-                        <Col id="title" lg={{ span: 6 }} md={{ span: 12 }}>
+                        <Col id="title" lg={{ span: 6 }} md={{ span: 12 }} style={{ padding: "0px 60px" }}>
                             <h1>
                                 This wouldn't be possible without you.
                             </h1>
                             {isLoggedIn ?
-                                <Button id="btn" variant="dark" onClick={openModal}
-                                >
-                                    Add a your Van Now
-                                </Button>
+
+
+
+                                <button style={{ width: "250px" }} onClick={openModal} className="bookVanButton mb-4" variant="light">
+                                    <strong>Add your Van now</strong>
+                                </button>
                                 :
-                                <Button id="btn" variant="dark" onClick={showLoginModal}
-                                >
-                                    Add a your Van Now
-                                </Button>
+                                <button style={{ width: "250px" }} onClick={showLoginModal} className="bookVanButton mb-4" variant="light">
+                                    <strong>Add your Van now</strong>
+                                </button>
                             }
 
                         </Col>
@@ -129,23 +130,23 @@ const BecomeHostPage = () => {
 
             <Container fluid >
                 <section id="section2">
-                    <h2>Host anything, host anywhere</h2>
+                    <h2>Book anything, book anywhere</h2>
                     <Row >
-                        <Col lg={{ span: 6 }}>
+                        <Col lg={{ span: 6 }} style={{padding:"0px"}}>
                             <Image id="im" src="https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652905911/vans_project/photo-1610851252127-85442ca5528e_qn0rcn.jpg" />
 
                         </Col>
-                        <Col lg={{ span: 6 }}>
+                        <Col lg={{ span: 6 }} style={{ padding: "0px" }}>
                             <Image id="im" src="https://img.freepik.com/free-photo/one-man-sitting-relaxing-inside-camper-van-motor-home-dinette-vanlife-lifestyle-travel-modern-people-holiday-vacation-with-van-alternative-tourist-explorers-beach-view_425263-5074.jpg?w=996" />
 
                         </Col>
-                        <Col lg={{ span: 6 }}>
+                        <Col lg={{ span: 6 }} style={{ padding: "0px" }}>
                             <Image id="im" src="https://img.freepik.com/foto-gratis/pareja-sonriente-mujeres-caucasicas-sentadas-dentro-casa-rodante-camper-van-relajandose-te-hierbas_465191-3902.jpg" />
 
                         </Col>
-                        <Col id="sect3text" lg={{ span: 6 }}>
+                        <Col id="sect3text" lg={{ span: 6 }} style={{ padding: "0px" }}>
                             <h3>After two years renting  our van we decided to quit our jobs and start our own business of campervan renting, it's been a long journey but are happy and free now</h3>
-                            <p>/Petter an jule</p>
+                            <p>Petter an jule</p>
 
                         </Col>
                     </Row>
@@ -168,8 +169,60 @@ const BecomeHostPage = () => {
                 </Container>
             </section>
 
+            <section id="section5">
+                <Container fluid >
+                    <Row  >
+                        <Col id="ib2" lg={{ span: 6 }} md={{ span: 12 }} >
 
-            <Container fluid >
+                        </Col>
+
+                        <Col id="title" lg={{ span: 6 }} md={{ span: 12 }} style={{padding:"0px 60px"}}>
+                            <h1>
+                                Not Sure yet? Please leave us any question
+                            </h1>
+                            {isLoggedIn ?
+
+
+
+                                <button style={{ width: "250px" }} className="bookVanButton mb-4" variant="light">
+                                    <strong>Leave us a Message</strong>
+                                </button>
+                                :
+                                <button style={{ width: "250px" }} className="bookVanButton mb-4" variant="light">
+                                    <strong>Leave us a Message</strong>
+                                </button>
+                            }
+
+                        </Col>
+
+                        
+
+                        <Modal show={showModal} onHide={closeModal}>
+                            <div className="modal1">
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Add a New Van</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <NewVanForm fireFinalActions={fireFinalActions} />
+                                </Modal.Body>
+                            </div>
+                        </Modal>
+
+                        <Modal show={showModals} onHide={closeLoginModal}>
+                            <div className="modal1">
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Please Log in </Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Loginform closeModal={closeLoginModal} />
+                                </Modal.Body>
+                            </div>
+                        </Modal>
+                    </Row>
+                </Container>
+            </section>
+
+            {/* <Container fluid >
                 <section id="section4">
                     <Row >
                         <Col lg={{ span: 6 }}>
@@ -180,7 +233,7 @@ const BecomeHostPage = () => {
                         </Col>
                     </Row>
                 </section >
-            </Container>
+            </Container> */}
         </>
 
     )

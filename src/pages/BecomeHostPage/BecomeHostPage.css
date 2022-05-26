@@ -1,6 +1,17 @@
-/* #section1 {
-    margin-top: 60px;
-} */
+#section1 {
+    background-color: black;
+}
+
+#section1 h1 {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.addVanButton {
+    background-color: red;
+    width: 100%;
+}
 
 /* #sectiontext {
     font-size: larger;
@@ -59,8 +70,8 @@
 }
 
 #title {
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 15%;
+    margin-bottom: 15%;
     text-align: center;
 
 }
@@ -76,15 +87,22 @@
 
 #im {
     max-width: 800px;
+    padding: 6px;
 }
 
 #section2 {
     align-items: center;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 #section2 h3 {
     text-align: center;
+    font-size: 25px;
     margin-top: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
+
 }
 
 #section2 p {
@@ -113,6 +131,10 @@
     margin-bottom: 2%;
 }
 
+#section3 {
+    margin-top: 4%;
+}
+
 #btn2 {
     margin-top: 5%;
 }
@@ -123,4 +145,27 @@
 
 #sect3text {
     margin-bottom: 5%;
+}
+
+#section5 {
+    margin-top: 100px;
+    background-color: black;
+    /* background-image: url("https://images.pexels.com/photos/210010/pexels-photo-210010.jpeg?cs=srgb&dl=pexels-pixabay-210010.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 20%;
+    padding-bottom: 20%; */
+}
+
+#ib2 {
+    background-image: url("https://images.pexels.com/photos/210010/pexels-photo-210010.jpeg?cs=srgb&dl=pexels-pixabay-210010.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right 0px;
+}
+
+#section5 h1 {
+    color: white;
+    display: flex;
+    justify-content: center;
 }
