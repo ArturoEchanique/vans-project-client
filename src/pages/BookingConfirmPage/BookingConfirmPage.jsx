@@ -27,6 +27,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
 
     }, [])
 
+
     let totalDays = 0
     let daysPrice = 0
     let commision = 0
@@ -53,7 +54,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
             <section className="confirmPageSection1">
                 <Container>
                     <Row fluid>
-                        
+
                         <Col xs={{ span: 6 }} style={{ paddingRight: "0px" }}>
                             <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
 
@@ -63,7 +64,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                         <h4 id="rowPay">Pay with</h4>
 
                                     </Col>
-                                    <Col style={{padding:"0px", margin:"0px"}}>
+                                    <Col style={{ padding: "0px", margin: "0px" }}>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"></img>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"></img>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"></img>
@@ -74,7 +75,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
 
                                     </Col>
                                 </Row>
-                                
+
                                 <Elements stripe={stripePromise}>
                                     <div>
                                         <div>
@@ -86,8 +87,51 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 </Elements>
                             </section>
                         </Col>
-                        <Col xs={{span:1}}></Col>
-                        <Col xs={{ span: 4, }} style={{ paddingLeft: "0px"}} className="confirmBookingCardDetails">
+                        {/* <Col lg={{ span: 6 }} >
+        <Col id="priceDetail" className="d-flex justify-content-end">
+            <div id="priceBooking" className="bookingInfoMain">
+
+                <Row className="d-flex justify-content-space-between align-items-center mb-4">
+
+                    <Row>
+                        <Col >
+                            <img variant="top" id="impay" src={vanDetails.imageUrl} />
+                        </Col>
+                        <Col id="cardTi">
+                            <h7>{vanDetails.name}</h7>
+                            {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${vanDetails.reviews.length} reviews`}</strong></div>}
+                        </Col>
+                    </Row>
+                </Row>
+                <div className="mb-4">
+                    <hr />
+                    <p >The total price of the trip includes VAT and all applicable taxes.</p>
+                    <hr />
+                </div>
+                <div className="mb-4">
+                    <p id="save">
+                        Your van is protected by <strong id="upCover">UpCover </strong>
+                    </p>
+                    <hr />
+                </div>
+                <div className="bookingInfoPriceRow">
+                    <p>{vanDetails.dayPrice} x {totalDays} days</p>
+                    <p>{vanDetails.dayPrice} €</p>
+                </div>
+                <div className="bookingInfoPriceRow">
+                    <p>Service commission</p>
+                    <p>{price * 0.05} €</p>
+                </div>
+                <hr></hr>
+                <div className="bookingInfoPriceRow">
+                    <strong><p>Total</p></strong>
+                    <strong ><p>{price}€</p></strong>
+                </div>
+            </div>
+        </Col> */}
+
+                        <Col xs={{ span: 1 }}></Col>
+                        <Col xs={{ span: 4, }} style={{ paddingLeft: "0px" }} className="confirmBookingCardDetails">
 
                             <div className="confirmBookingInfoMain">
                                 <Row className="d-flex justify-content-space-between align-items-center mb-4">
@@ -103,16 +147,16 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 <div className=" mb-4">
                                     <Row>
                                         <Col>
-                                            <img className="confirmPageVanImage" src={vanDetails.imageUrl} />        
+                                            <img className="confirmPageVanImage" src={vanDetails.imageUrl} />
 
                                         </Col>
-                                        <Col style={{padding:"0px"}}>
+                                        <Col style={{ padding: "0px" }}>
                                             <p className="confirmCardOwner" style={{ textAlign: "left" }}>{vanDetails?.owner?.username}</p>
                                             <p className="confirmCardVanName" style={{ textAlign: "left" }}>{vanDetails?.name}</p>
                                         </Col>
                                     </Row>
-                                    
-         
+
+
                                 </div>
                                 <hr></hr>
                                 <div className="mb-4">
@@ -175,8 +219,8 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                             </Card> */}
                         </Col>
                     </Row>
-                </Container>
-            </section>
+                </Container >
+            </section >
         </>
     )
 }

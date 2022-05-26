@@ -1,8 +1,8 @@
-.bookingConfirmCardMain{
+.bookingConfirmCardMain {}
 
-}
-
-.bookingConfirmCardMain h3, h4, h5{
+.bookingConfirmCardMain h3,
+h4,
+h5 {
     font-size: 1.3em;
 }
 
@@ -13,6 +13,12 @@
 
 #vanImg {
     height: 400px;
+}
+
+.details {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: #FF5C5C;
 }
 
 .confirmAndPayTitle {
@@ -34,4 +40,15 @@
     margin-left: 10%;
     /* background-color: red; */
     box-shadow: 3px 3px 10px var(--main-color-3);
+}
+#cancelation {
+    margin-bottom: 1%;
+}
+
+#cancelationTile {
+    margin-bottom: 1%;
+}
+
+#cancelationPolici {
+    margin-bottom: 5%;
 }

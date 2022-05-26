@@ -12,10 +12,10 @@
     /* margin-left: 4%; */
 }
 
-#cardTi {
+/* #cardTi {
     margin-top: 5%;
     padding-right: 5%;
-}
+} */
 
 #priceDetail {
     margin-left: 5%;
@@ -24,8 +24,7 @@
 
 #impay {
     border-radius: 20px;
-    max-width: 300px;
-    padding-left: 10%;
+    max-width: 500px;
 }
 
 #sect1 {
@@ -33,15 +32,33 @@
     margin-left: 4%;
 }
 
-.creditCardIcon{
+#priceDetail {
+    position: fixed;
+    margin-right: 5%;
+}
+
+#upCover {
+    color: #FF5C5C;
+}
+
+#save {
+    font-size: 1.4em;
+}
+
+#priceBooking {
+    /* margin-bottom: 15%; */
+    padding-bottom: 15%;
+}
+
+.creditCardIcon {
     width: 30px;
     height: 30px;
     padding: 0px;
     margin: 0px;
-    margin-right:5px;
+    margin-right: 5px;
 }
 
-.confirmPageVanImage{
+.confirmPageVanImage {
     border-radius: 8px;
     padding: 0px;
     margin: 0px;
@@ -50,11 +67,11 @@
     object-fit: cover;
 }
 
-.confirmBookingCardDetails{
+.confirmBookingCardDetails {
     margin-top: 90px;
 }
 
-.confirmCardOwner{
+.confirmCardOwner {
     font-size: 12px;
     font-weight: lighter;
 }

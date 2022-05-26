@@ -6,6 +6,10 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
 
     return (
         <>
+            {/* <Container>
+                <h3 className="details">Comfirm and pay</h3>
+                <Row className="justify-content-center filterRowSmall">
+                    <h4 id="rowTitle">Your Dates </h4> */}
             <Container className="bookingConfirmCardMain">
                 {/* <Row>
                     <img id="vanImg" className="vanCardImage" src={imageUrl}></img>
