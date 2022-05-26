@@ -1,3 +1,12 @@
+.bookingConfirmCardMain {}
+
+.bookingConfirmCardMain h3,
+h4,
+h5 {
+    font-size: 1.3em;
+}
+
+
 #rowTitle {
     margin-bottom: 4%;
 }
@@ -10,6 +19,14 @@
     margin-top: 5%;
     margin-bottom: 5%;
     color: #FF5C5C;
+}
+
+.confirmAndPayTitle {
+    color: black;
+    font-size: 28px !important;
+    margin-top: 1%;
+    margin-bottom: 8%;
+    /* color: #FF9C82; */
 
 }
 

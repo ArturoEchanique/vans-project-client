@@ -90,3 +90,12 @@ a{
 body {
     word-break: break-word;
 }
+
+.vanmeupButton {
+    color: white;
+    width: 100%;
+    height: 48px;
+    border-radius: 6px;
+    background-color: var(--vanmeup-2);
+    font-weight: bolder;
+}

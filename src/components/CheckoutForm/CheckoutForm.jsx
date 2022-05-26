@@ -129,15 +129,22 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                     </p>
                 </Col>
                 <hr />
+                <br></br>
                 <p>
                     By selecting the button below, I agree to the Host's Vans Rules,
                     vanmeup's Rebooking and Refund Policy, and that Vanmeup can charge my payment method if
                     I'm responsible for damage. Payment Terms between you and Argablo S.A.
                 </p>
-                <hr />
-                <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                <br></br>
+                <br />
+                <button style={{ width: "150px" }} onClick={handleSubmit} className="vanmeupButton mb-4" variant="light">
                     {loading ? "Loading..." : "Book"}
-                </Button>
+                </button>
+                {/* <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                    {loading ? "Loading..." : "Book"}
+                </Button> */}
+                {/* </Card.Body> */}
+                {/* </Card> */}
             </form>
 
         </>
