@@ -42,6 +42,7 @@ const BookingConfirmCard = ({ imageUrl, bookedVan, dayPrice, name, description, 
                         <p>
                             Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.
                         </p>
+                        <hr />
                     </Col>
                     <hr />
                 </Row>

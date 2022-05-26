@@ -19,6 +19,8 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
 
+    const [error, setError] = useState(false)
+
     const [showModal, setShowModal] = useState(false)
 
     const openModal = () => setShowModal(true)
@@ -42,14 +44,19 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
             const { id } = paymentMethod
             const { data } = await stripeService.checkout({ id, amount: price * 100 }) // amount in cents
         }
-        if (error) console.log(error)
+        if (error) {
+            setError(true)
+            console.log("el error es", error)
+        }
+
         const owner = await vanService.getOneVan(bookedVan)
-        console.log("el owner", owner)
+        console.log("la ven es", owner)
 
         const user_id = user._id
         console.log("yo", user_id)
 
-        const owner_Id = owner.data.owner
+        const owner_Id = owner.data.owner._id
+        console.log("el owner es", owner_Id)
 
         const booking = await bookingsService.saveBooking(user_id, owner_Id, { startDate, endDate, price, bookedVan })
         const newChat = { owners: [user_id, owner_Id], booking: booking.data._id }
@@ -72,22 +79,42 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
     return (
         <>
-            <Modal backdrop="static" show={showModal} onHide={closeModal}>
-                <div className="modal1">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Booked Successfull</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body id='paybtn'>
-                        <PaymentDetailsCard />
-                        <hr />
-                        <Button onClick={closeModal} variant="dark">
-                            <Link to={'/'}>Home Page</Link>
-                        </Button>
-                    </Modal.Body>
+            {error ?
+                <Modal backdrop="static" show={showModal} onHide={closeModal}>
+                    <div className="modal1">
+                        <Modal.Header closeButton>
+                            <Modal.Title>Invalid Credit Card</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body id='paybtn'>
+                            <div>
+                                <h3>Please type a valid Credit card</h3>
+                            </div>
+                            <hr />
+                            <Button onClick={closeModal} id='payBtn' variant="dark">
+                                Try again
+                            </Button>
+                        </Modal.Body>
+                    </div>
+                </Modal>
+                :
+                <Modal backdrop="static" show={showModal} onHide={closeModal}>
+                    <div className="modal1">
+                        <Modal.Header closeButton>
+                            <Modal.Title>Booked Successfull</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body id='paybtn'>
+                            <PaymentDetailsCard />
+                            <hr />
+                            <Button onClick={closeModal} id='payBtn' variant="dark">
+                                <Link id='linkpay' to={'/profile'}>See bookings</Link>
+                            </Button>
+                        </Modal.Body>
+                    </div>
+                </Modal>
+            }
 
 
-                </div>
-            </Modal>
+
 
 
 
@@ -101,7 +128,13 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         </Card.Text> */}
                 <CardElement />
                 <hr />
-                <Button onClick={handleSubmit} variant="dark" disabled={!stripe}>
+                <p>
+                    By selecting the button below, I agree to the Host's House Rules,
+                    Airbnb's Rebooking and Refund Policy, and that Airbnb can charge my payment method if
+                    I'm responsible for damage. Payment Terms between you and Airbnb Payments Luxembourg S.A.
+                </p>
+                <hr />
+                <Button id='payBtn' onClick={handleSubmit} variant="dark" disabled={!stripe}>
                     {loading ? "Loading..." : "Book"}
                 </Button>
                 {/* </Card.Body> */}
