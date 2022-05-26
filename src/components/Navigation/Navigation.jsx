@@ -124,9 +124,11 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                     align="end"
                                     className="myDropDown"
                                     eventKey={1}
-                                    title={<img className="dropdownIcon" src={(userDetails?.imageUrl && user) ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
+                                    title={<>                                    <img className="dropdownHamIcon" src={"data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e"} alt="user pic" />
+                                        <img className="dropdownIcon" src={(userDetails?.imageUrl && user) ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" /></>}
                                     id="basic-nav-dropdown"
                                 >
+
                                     {isLoggedIn ? (
                                         <Dropdown.Item>
                                             <div className="nav-link  logo-img" onClick={logOutUser}>
@@ -147,10 +149,14 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                             </Dropdown.Item>
                                         </div>
                                     )}
-
-
+                                    <hr style={{ margin: "8px" }}></hr>
+                                    <Dropdown.Item>
+                                        <NavLink to="/" className="nav-link justify-content-end  logo-img">
+                                            Home
+                                        </NavLink>
+                                    </Dropdown.Item>
                                     {user && (
-                                        <> <hr style={{margin: "8px"}}></hr>
+                                        <>
                                             <Dropdown.Item>
                                                 <NavLink to="/profile" className="nav-link justify-content-end  logo-img">
                                                     My profile
@@ -172,6 +178,12 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                             </NavLink>
                                         </Dropdown.Item>
                                     )}
+
+                                    <Dropdown.Item>
+                                        <NavLink to="/results" className="nav-link justify-content-end  logo-img">
+                                            Search
+                                        </NavLink>
+                                    </Dropdown.Item>
                                 </NavDropdown>
                             </Col>
 
