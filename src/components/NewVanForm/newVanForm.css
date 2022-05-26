@@ -1,0 +1,6 @@
+.form-control {
+    border: 0px;
+    box-shadow: 1px 2px 5px var(--main-color-3);
+    background-color: var(--main-color-5);
+    font-size: 0.95em;
+}

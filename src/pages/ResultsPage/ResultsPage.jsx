@@ -218,17 +218,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
                 <Container fluid>
                     <Row className="">
-                        <Col xs={3} className="d-flex justify-content-center">
-                            <div className="nameSearchBar">
-                                <form onSubmit={handleSubmit}>
-                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
-                                </form>
-                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                            </div>
-                        </Col>
-                        <Col xs={5} className="d-flex justify-content-center">
-                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
-                        </Col>
                         <Col xs={2} className="d-flex justify-content-center">
                             <button
                                 className={"locationButton"}
@@ -245,6 +234,18 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 Show nearest vans
                             </Button> */}
                         </Col>
+                        <Col xs={5} className="d-flex justify-content-center">
+                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
+                        </Col>
+                        <Col xs={3} className="d-flex justify-content-center">
+                            <div className="nameSearchBar">
+                                <form onSubmit={handleSubmit}>
+                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
+                                </form>
+                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                            </div>
+                        </Col>
+                        
                         <Col xs={2} className="d-flex justify-content-end">
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}

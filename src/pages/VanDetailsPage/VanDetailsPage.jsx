@@ -311,7 +311,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
                             </div>
 
-                            {vanDetails.owner !== user?._id ? (
+                            {vanDetails?.owner?._id !== user?._id ? (
                                 <Link onClick={reserveButtonClicked} to={"/booking"}>
 
                                     <button className="bookVanButton mb-4" variant="light">
@@ -319,11 +319,11 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                     </button>
                                 </Link>
                             ) : (
-                                <Link to={`/${vanDetails._id}/edit`}>
+                                // <Link to={`/${vanDetails._id}/edit`}>
                                     <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
-                                        Edit my van
+                                        This van is yours
                                     </button>
-                                </Link>
+                                // </Link>
                             )}
                             <div className="mb-4">
                                 <p style={{ textAlign: "center" }}>You will not be charged anything yet</p>

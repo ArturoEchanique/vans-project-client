@@ -8,11 +8,13 @@ import uploadService from "../../services/upload.service"
 import { Form, Button, Container, Row, Col } from "react-bootstrap"
 import vanService from "../../services/van.service"
 import { useNavigate } from "react-router-dom"
+import { MessageContext } from "../../context/message.context"
 
 const NewVanForm = ({ fireFinalActions }) => {
     const { user } = useContext(AuthContext)
 
     const [loadingImage, setLoadingImage] = useState(false)
+    const { showMessage } = useContext(MessageContext)
 
     const [formData, setFormData] = useState({
         owner: user._id,
@@ -39,6 +41,7 @@ const NewVanForm = ({ fireFinalActions }) => {
     })
 
     const handleLocation = (e) => {
+        
         const { name, value } = e.currentTarget
         const geoForn = { ...geoData, [name]: value }
         setGeoData({ ...geoData, [name]: value })
@@ -48,11 +51,14 @@ const NewVanForm = ({ fireFinalActions }) => {
         Geocode
             .fromAddress(`${geoForn.street}, ${geoForn.city},${geoForn.country}`)
             .then((response) => {
+                console.log("geocode success", response)
                 const { lat, lng } = response.results[0].geometry.location;
 
-                setFormData({ ...formData, latitude: lat, longitude: lng })
+                //lat and long is switched, the error is in the server side maybe, sorry.
+                setFormData({ ...formData, latitude: lng, longitude: lat })
             },
                 (error) => {
+                    console.log("geocode falied", error)
                     console.error(error)
                 }
             )
@@ -70,8 +76,9 @@ const NewVanForm = ({ fireFinalActions }) => {
                 userService.editUser(user._id, { role: "OWNER" })
             })
             .then((res) => {
+                showMessage("Completed", "Van successfully created")
                 fireFinalActions()
-                navigate("/")
+                navigate("/profile")
             })
             .catch((err) => console.log(err))
     }
@@ -111,30 +118,74 @@ const NewVanForm = ({ fireFinalActions }) => {
     return (
         <Container>
             <Row>
-                <Col md={{ span: 6, offset: 3 }}>
+                <Col md={{ span: 12, offset: 0 }}>
                     <Form id="modal" onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="owner">
-                            <Form.Control type="hidden" onChange={handleInputChange} name="owner" value={owner} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="name">
-                            <Form.Label>Model name</Form.Label>
-                            <Form.Control type="text" onChange={handleInputChange} name="name" value={name} />
-                        </Form.Group>
+                        <div className="inputFieldContainer mt-2">
+                      
+                                <input id="html" className="formInputField textInputClean textInputBig" type="hidden" name="owner" value={owner} placeholder="Write your email" onChange={handleInputChange} />
+                         
+                        </div>
+                        <br></br>
 
-                        <Form.Group className="mb-3" controlId="description">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" onChange={handleInputChange} name="description" value={description} />
-                        </Form.Group>
+                        <label for="name">Van title</label>
+                        <br></br>
+                        <div className="inputFieldContainer mt-2">
+ 
+
+                                <input id="html" className="formInputField textInputClean textInputBig" type="text" name="name" value={name} placeholder="" onChange={handleInputChange} />
+                   
+                        </div>
+                        <br></br>
+
+                        <label for="description">Van description</label>
+                        <br></br>
+                        <div className="inputFieldContainer mt-2">
+                     
+
+                                <input id="html" className="formInputField textInputClean textInputBig" type="text" name="description" value={description} placeholder="" onChange={handleInputChange} />
+                        
+                        </div>
+                        <br></br>
 
                         <Form.Group className="mb-3" controlId="imageUrl">
                             <Form.Label>Image (import)</Form.Label>
                             <Form.Control type="file" multiple onChange={handleImageUpload} />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="dayPrice">
+
+
+                        <label for="street">Address</label>
+                        <br></br>
+                        <div className="inputFieldContainer mt-2">
+                      
+
+                                <input id="html" className="formInputField textInputClean textInputBig" type="text" name="street" value={street} placeholder="" onChange={handleLocation} />
+                         
+                        </div>
+                        <br></br>
+
+                        {/* <Form.Group className="mb-3" controlId="owner">
+                            <Form.Control type="hidden" onChange={handleInputChange} name="owner" value={owner} />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="name">
+                            <Form.Label>Model name</Form.Label>
+                            <Form.Control type="text" onChange={handleInputChange} name="name" value={name} />
+                        </Form.Group> */}
+
+                        {/* <Form.Group className="mb-3" controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text" onChange={handleInputChange} name="description" value={description} />
+                        </Form.Group> */}
+
+                        {/* <Form.Group className="mb-3" controlId="imageUrl">
+                            <Form.Label>Image (import)</Form.Label>
+                            <Form.Control type="file" multiple onChange={handleImageUpload} />
+                        </Form.Group> */}
+
+                        {/* <Form.Group className="mb-3" controlId="dayPrice">
                             <Form.Label>Price per day</Form.Label>
                             <Form.Control type="number" onChange={handleInputChange} name="dayPrice" value={dayPrice} />
-                        </Form.Group>
+                        </Form.Group> */}
 
                         <Form.Group className="mb-3" controlId="longitude">
                             {/* <Form.Label>Longitude</Form.Label> */}
@@ -146,57 +197,116 @@ const NewVanForm = ({ fireFinalActions }) => {
                             <Form.Control type="hidden" onChange={handleInputChange} name="latitude" value={latitude} />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="street">
+                        {/* <Form.Group className="mb-3" controlId="street">
                             <Form.Label>Direction</Form.Label>
                             <Form.Control type="text" onChange={handleLocation} name="street" value={street} />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="city">
+                        </Form.Group> */}
+                        <Row>
+                            <Col>
+                                <label for="city">City</label>
+                                <br></br>
+                                <div className="inputFieldContainer mt-2">
+                              
+
+                                        <input id="html" className="formInputField textInputClean textInputBig" type="text" name="city" value={city} placeholder="" onChange={handleLocation} />
+                                 
+                                </div>
+                                <br></br>
+                            </Col>
+                            <Col>
+                                <label for="country">Country</label>
+                                <br></br>
+                                <div className="inputFieldContainer mt-2">
+                              
+
+                                        <input id="html" className="formInputField textInputClean textInputBig" type="text" name="country" value={country} placeholder="" onChange={handleLocation} />
+                                 
+                                </div>
+                                <br></br>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col>
+                                <label for="dayPrice">Price per day</label>
+                                <br></br>
+                                <div className="inputFieldContainer mt-2">
+                              
+
+                                        <input id="html" className="formInputField textInputClean textInputBig" type="number" name="dayPrice" value={dayPrice} placeholder="" onChange={handleInputChange} />
+                                 
+                                </div>
+                                <br></br>
+                            </Col>
+                            <Col>
+                                <label for="maxPassengers">Max passengers</label>
+                                <br></br>
+                                <div className="inputFieldContainer mt-2">
+                              
+
+                                        <input id="html" className="formInputField textInputClean textInputBig" type="number" name="maxPassengers" value={maxPassengers} placeholder="" onChange={handleInputChange} />
+                                 
+                                </div>
+                                <br></br>
+                            </Col>
+                        </Row>
+                        {/* <Form.Group className="mb-3" controlId="city">
                             <Form.Label>City</Form.Label>
                             <Form.Control type="text" onChange={handleLocation} name="city" value={city} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="country">
                             <Form.Label>Country</Form.Label>
                             <Form.Control type="text" onChange={handleLocation} name="country" value={country} />
-                        </Form.Group>
+                        </Form.Group> */}
 
-                        <Form.Group className="mb-3" controlId="maxPassengers">
+                        {/* <Form.Group className="mb-3" controlId="maxPassengers">
                             <Form.Label>Maximun Passengers</Form.Label>
                             <Form.Control type="number" min={0} onChange={handleInputChange} name="maxPassengers" value={maxPassengers} />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="solarPower">
-                            <input type="checkbox" onChange={handleInputChange} name="solarPower" checked={solarPower} />
-                            <Form.Label>Solar Power</Form.Label>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="shower">
-                            <input type="checkbox" onChange={handleInputChange} name="shower" checked={shower} />
-                            <Form.Label>Shower</Form.Label>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="bathroom">
-                            <input type="checkbox" onChange={handleInputChange} name="bathroom" checked={bathroom} />
-                            <Form.Label>Bathroom</Form.Label>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="kitchen">
-                            <input type="checkbox" onChange={handleInputChange} name="kitchen" checked={kitchen} />
-                            <Form.Label>Kitchen</Form.Label>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="heatedSeats">
-                            <input type="checkbox" onChange={handleInputChange} name="heatedSeats" checked={heatedSeats} />
-                            <Form.Label>Heated seats</Form.Label>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="sunRoof">
-                            <input type="checkbox" onChange={handleInputChange} name="sunRoof" checked={sunRoof} />
-                            <Form.Label>Sunroof</Form.Label>
-                        </Form.Group>
-
-                        <Button variant="dark" type="submit" disabled={loadingImage}>
+                        </Form.Group> */}
+                        <Row>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="solarPower">
+                                    <input type="checkbox" onChange={handleInputChange} name="solarPower" checked={solarPower} />
+                                    <Form.Label>&nbsp; Solar Power</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="shower">
+                                    <input type="checkbox" onChange={handleInputChange} name="shower" checked={shower} />
+                                    <Form.Label>&nbsp; Shower</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="bathroom">
+                                    <input type="checkbox" onChange={handleInputChange} name="bathroom" checked={bathroom} />
+                                    <Form.Label> &nbsp; Bathroom</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="kitchen">
+                                    <input type="checkbox" onChange={handleInputChange} name="kitchen" checked={kitchen} />
+                                    <Form.Label>&nbsp; Kitchen</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="heatedSeats">
+                                    <input type="checkbox" onChange={handleInputChange} name="heatedSeats" checked={heatedSeats} />
+                                    <Form.Label>&nbsp; Heated seats</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={4}>
+                                <Form.Group className="mb-3" controlId="sunRoof">
+                                    <input type="checkbox" onChange={handleInputChange} name="sunRoof" checked={sunRoof} />
+                                    <Form.Label>&nbsp; Sunroof</Form.Label>
+                                </Form.Group>
+                            </Col>
+                        </Row>          
+                        <button style={{ width: "100%" }} type="submit" disabled={loadingImage} className="vanmeupButton mb-4 mt-4" variant="light">
                             {loadingImage ? "Loading..." : "Add Van"}
-                        </Button>
+                        </button>
+                        {/* <Button variant="dark" type="submit" disabled={loadingImage}>
+                            {loadingImage ? "Loading..." : "Add Van"}
+                        </Button> */}
                     </Form>
                 </Col>
             </Row>

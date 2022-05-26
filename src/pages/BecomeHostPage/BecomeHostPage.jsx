@@ -103,10 +103,10 @@ const BecomeHostPage = () => {
 
                         </Col>
 
-                        <Modal show={showModal} onHide={closeModal}>
+                        {/* <Modal show={showModal} onHide={closeModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Add a New Van</Modal.Title>
+                                    <Modal.Title>Add a new van</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <NewVanForm fireFinalActions={fireFinalActions} />
@@ -123,7 +123,7 @@ const BecomeHostPage = () => {
                                     <Loginform closeModal={closeLoginModal} />
                                 </Modal.Body>
                             </div>
-                        </Modal>
+                        </Modal> */}
                     </Row>
                 </Container>
             </section>
@@ -200,7 +200,7 @@ const BecomeHostPage = () => {
                         <Modal show={showModal} onHide={closeModal}>
                             <div className="modal1">
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Add a New Van</Modal.Title>
+                                    <Modal.Title>Add a new van</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <NewVanForm fireFinalActions={fireFinalActions} />
