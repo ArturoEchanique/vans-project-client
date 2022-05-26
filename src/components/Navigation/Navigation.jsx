@@ -93,7 +93,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                             </div>
                         </Modal>
                         <Row className="">
-                            <Col xs={3} className="d-flex align-items-center justify-content-start">
+                            <Col xs={2} className="d-flex align-items-center justify-content-start">
                                 <Navbar.Brand>
                                     <Link to="/" className="nav-link">
                                         <img className="logo-nav" id="logo" src="./../images/VANMEUP.png" alt="vanmeup" />
@@ -103,20 +103,30 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                             <Col xs={6} className="d-flex align-items-center justify-content-center" style={{ padding: "0px", margin: "0px" }}>
                                 {pathname !== "/" && pathname !== "/results" && <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>}
                             </Col>
-                            {/* <Col xs={3} className="d-flex align-items-center justify-content-end">
+                            <Col xs="auto" className="d-flex align-items-center justify-content-end">
+                                <NavLink onClick={() => setShowOffCanvas(false)} to="/become-host" className="">
+                                    <button
+                                        className={"becomeOwnerButton"}
+                                        id="showFilters"
+                                        type="checkbox"
+                                        variant={"light"}
+
+                                        name="showFilters"
+                                    >
+                                        <img className="becomeOwnerIcon" src="./../../images/vanIcon3.png"></img>
+                                        Become an owner
+                                    </button>
+                                </NavLink>
+
+                            </Col>
+                            <Col xs={2} className="d-flex align-items-center justify-content-end">
                                 <NavDropdown
                                     align="end"
                                     className="myDropDown"
                                     eventKey={1}
-                                    title={<img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
+                                    title={<img className="dropdownIcon" src={(userDetails?.imageUrl && user)? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />}
                                     id="basic-nav-dropdown"
                                 >
-                                    <Dropdown.Item>
-                                        <NavLink to="/become-host" className="nav-link  logo-img">
-                                            Become Host
-                                        </NavLink>
-                                    </Dropdown.Item>
-
                                     {isLoggedIn ? (
                                         <Dropdown.Item>
                                             <div className="nav-link  logo-img" onClick={logOutUser}>
@@ -159,7 +169,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                         </Dropdown.Item>
                                     )}
                                 </NavDropdown>
-                            </Col> */}
+                            </Col>
 
 
                             {/* <Dropdown>
@@ -216,7 +226,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                 )}
                             </Dropdown.Menu>
                         </Dropdown> */}
-                            <Col xs={3} className="d-flex align-items-center justify-content-end">
+                            {/* <Col xs={2} className="d-flex align-items-center justify-content-end">
                                 <Navbar.Toggle onClick={() => setShowOffCanvas(true)} className="toggle-nav" aria-controls={`offcanvasNavbar-expand-${expand}`}>
                                     <img className="dropdownHamIcon" src={"data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e"} alt="user pic" />
                                     <img className="dropdownIcon" src={userDetails?.imageUrl ? userDetails.imageUrl : "https://i.stack.imgur.com/34AD2.jpg"} alt="user pic" />
@@ -224,21 +234,16 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                 <Navbar.Offcanvas show={showOffCanvas} onHide={() => setShowOffCanvas(!showOffCanvas)} id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
                                     <Offcanvas.Header closeButton>
                                         <Offcanvas.Title className="canvas-tittle" id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                            {/* WELCOME */}
+                                    
                                         </Offcanvas.Title>
                                     </Offcanvas.Header>
                                     <Offcanvas.Body>
                                         <Row>
                                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/" className="nav-link  logo-img">
-                                                    {/* <img id="logo" src="./../images/home.png" alt="" srcSet="" /> */}
-                                                    Home
-                                                </NavLink>
                                                 {isLoggedIn ? (
                                                     <>
                                                         <div id="navi">
                                                             <button id="logo1" className="nav-link  logo-img active" onClick={handleLogout}>
-                                                                {/* <img id="logo" src="./../images/logout.png" alt="" srcSet="" /> */}
                                                                 Log out
                                                             </button>
                                                         </div>
@@ -247,40 +252,27 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                                 ) : (
                                                     <div id="navi">
                                                         <button id="logo1" onClick={handleSignup} className=" nav-link  logo-img active">
-                                                            {/* <img id="logo" src="./../images/signin.png" alt="" srcSet="" /> */}
                                                             Sing up
                                                         </button>
 
                                                         <button id="logo1" onClick={handleLogin} className="nav-link  logo-img active">
-                                                            {/* <img id="logo" src="./../images/login.png" alt="" srcSet="" /> */}
                                                             Log in
                                                         </button>
                                                     </div>
                                                 )}
                                                 {user && (
                                                     <NavLink onClick={() => setShowOffCanvas(false)} to="/profile" className="nav-link justify-content-end  logo-img">
-                                                        {/* <img id="logo" src="./../images/profile.png" alt="" srcSet="" /> */}
-                                                        Hello,{user.username}
+                                                        My profile
                                                     </NavLink>
                                                 )}
                                                 {user && (
                                                     <NavLink onClick={() => setShowOffCanvas(false)} to="/profile/messages" className="nav-link justify-content-end  logo-img">
-                                                        {/* <img id="logo" src="./../images/mensaje.png" alt="" srcSet="" /> */}
                                                         Messages
                                                     </NavLink>
                                                 )}
-                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/results" className="nav-link  logo-img">
-                                                    {/* <img id="logo" src="./../images/results.png" alt="" srcSet="" /> */}
-                                                    Search
-                                                </NavLink>
-                                                <NavLink onClick={() => setShowOffCanvas(false)} to="/become-host" className="nav-link  logo-img">
-                                                    {/* <img id="logo" src="./../images/becomehost.png" alt="" srcSet="" /> */}
-                                                    Become Host
-                                                </NavLink>
 
                                                 {user?.role == "ADMIN" && (
                                                     <NavLink onClick={() => setShowOffCanvas(false)} to="/admin" className="nav-link  logo-img">
-                                                        {/* <img id="logo" src="./../images/admin.png" alt="" srcSet="" /> */}
                                                         Control panel
                                                     </NavLink>
                                                 )}
@@ -288,7 +280,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                         </Row>
                                     </Offcanvas.Body>
                                 </Navbar.Offcanvas>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </div>
                 </Navbar>

@@ -89,7 +89,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                         <Col xs={{span:1}}></Col>
                         <Col xs={{ span: 4, }} style={{ paddingLeft: "0px"}} className="confirmBookingCardDetails">
 
-                            <div className="bookingInfoMain">
+                            <div className="confirmBookingInfoMain">
                                 <Row className="d-flex justify-content-space-between align-items-center mb-4">
                                     <Col className="">
                                         <strong className="mainPrice">{vanDetails.dayPrice} €</strong>&nbsp; /day
