@@ -25,6 +25,14 @@
 
 }
 
+.messagesVanOwnerProfileImg {
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+    border-radius: 30px;
+    margin: 0px;
+}
+
 .messagesDetailsPageSub {
     display: flex;
     padding: 0% 5%;
@@ -56,4 +64,8 @@
 
 .messagesMainPrice{
     font-size: 20px;
+}
+
+.messagesTotalPrice {
+    font-size: 16px;
 }

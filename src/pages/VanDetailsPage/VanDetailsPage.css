@@ -37,7 +37,7 @@
     width: 100%;
     border-radius: 10px;
     padding: 0%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     height: 500px;
     object-fit: cover;
 }
@@ -70,7 +70,7 @@
 
 .detailsPageTitle {
     padding: 0px;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /* .detailsPageTitle h2 {

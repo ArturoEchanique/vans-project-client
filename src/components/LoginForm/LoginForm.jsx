@@ -24,7 +24,7 @@ const Loginform = ({ closeModal }) => {
             .login(loginData)
             .then(({ data }) => {
                 storeToken(data.authToken)
-                showMessage("Bienvenid@", "Sesión iniciada correctamente")
+                showMessage("Welcome", "Successfully logged in")
                 authenticateUser()
                 navigate("/")
                 closeModal()

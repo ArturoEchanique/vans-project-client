@@ -218,7 +218,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         <div className="vanInfoMain">
                             <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs={10} className="justify-content-center">
-                                    <h3 className="detailsPageTitle">{name?.length > 38 ? (name.slice(0, 38) + " ...") : name}</h3>
+                                    <h3 className="detailsPageTitle">{name?.length > 40 ? (name.slice(0, 40) + " ...") : name}</h3>
                                 </Col>
 
 

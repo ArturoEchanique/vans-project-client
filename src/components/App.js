@@ -17,7 +17,7 @@ const App = () => {
         skip: 0,
         mapXBounds: [40, 41],
         mapYBounds: [-4, -3],
-        address: "Valencia",
+        address: "Granada, Catedral",
         mapInitLocationX: 40.39103445694156,
         mapInitLocationY: -3.7007285931754588,
         priceStart: 0,
