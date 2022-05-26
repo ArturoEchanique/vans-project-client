@@ -1,7 +1,7 @@
 import './CheckoutForm.css'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import stripeService from "../../services/stripe.service"
 import bookingsService from "../../services/bookings.service"
 import chatService from "../../services/chat.service"
@@ -12,7 +12,6 @@ import nodemailerService from "../../services/nodemailer.service"
 import userService from "../../services/user.service"
 import { Button, Card, Col, Modal } from "react-bootstrap"
 import PaymentDetailsCard from "../PaymentDetailsCard/PaymentDetailsCard"
-
 const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const stripe = useStripe()
     const elements = useElements()
@@ -27,7 +26,8 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
     const closeModal = () => setShowModal(false)
 
     const fireFinalActions = () => {
-        closeModal()
+        navigate("/")
+        // closeModal()
     }
 
     const navigate = useNavigate()
@@ -74,13 +74,15 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
 
 
         elements.getElement(CardElement).clear()
-        openModal()
+        // openModal()
+        error ? setError(true) : navigate("/paydetails")
+
         setLoading(false)
     }
 
     return (
         <>
-            {error ?
+            {error &&
                 <Modal backdrop="static" show={showModal} onHide={closeModal}>
                     <div className="modal1">
                         <Modal.Header closeButton>
@@ -97,21 +99,21 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         </Modal.Body>
                     </div>
                 </Modal>
-                :
-                <Modal backdrop="static" show={showModal} onHide={closeModal}>
-                    <div className="modal1">
-                        <Modal.Header closeButton>
-                            <Modal.Title>Booked Successfull</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body id='paybtn'>
-                            <PaymentDetailsCard />
-                            <hr />
-                            <Button onClick={closeModal} id='payBtn' variant="dark">
-                                <Link id='linkpay' to={'/profile'}>See bookings</Link>
-                            </Button>
-                        </Modal.Body>
-                    </div>
-                </Modal>
+                // :
+                // <Modal backdrop="static" show={showModal} onHide={closeModal}>
+                //     <div className="modal1">
+                //         <Modal.Header >
+                //             <Modal.Title>Booked Successfull</Modal.Title>
+                //         </Modal.Header>
+                //         <Modal.Body id='paybtn'>
+                //             <PaymentDetailsCard />
+                //             <hr />
+                //             <Button onClick={closeModal} id='payBtn' variant="dark">
+                //                 <Link id='linkpay' to={'/profile'}>See bookings</Link>
+                //             </Button>
+                //         </Modal.Body>
+                //     </div>
+                // </Modal>
             }
 
 
