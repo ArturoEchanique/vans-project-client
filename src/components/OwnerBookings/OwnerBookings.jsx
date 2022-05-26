@@ -13,7 +13,7 @@ const OwnerBookings = ({ ownerBookings }) => {
     return (
         <>
             <Container>
-                <Row >
+                <Row className="g-4 " xs={2}>
                     <h3 className="favorite"> Booked from You </h3>
                     <hr />
 

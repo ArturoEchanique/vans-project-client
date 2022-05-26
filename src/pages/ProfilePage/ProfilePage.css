@@ -1,11 +1,33 @@
+hr {
+    color: #ff5c5c76;
+}
+
 .top-margin {
     padding-top: 7%;
-
 }
-.background-profile-detalis{
+.background-profile-detalis {
     border-radius: 10px;
-   border: 6px solid #ff5c5c31;
-   
-    padding: 4rem 4rem 8rem 4rem ;
+    border: 2px solid #ff5c5c31;
+
+    padding: 4rem 4rem 8rem 4rem;
+}
+.button-profile {
+    margin-top: 0.5em;
+    padding: 10px 0;
+
+    border-left: 0.5px solid #ff5c5c52;
+    border-right: 0.5px solid #ff5c5c52;
+
+    background-color: transparent;
+}
+.button-profile:hover {
+    background-color: #ff5c5c4f;
+    /* background-color: #ff5c5c; */
+    /* color: white; */
 }
 
+.button-profile.current {
+    background-color: #ff5c5c;
+    color: white;
+    /* font-weight: 600; */
+}
