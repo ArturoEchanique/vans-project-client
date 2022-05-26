@@ -40,7 +40,7 @@ const MessagesPage = ({ setBookingInfo }) => {
     }, [chats, selectedChat])
 
     const getChatPartner = (chat) => {
-        console.log("chat owners are, ", chat)
+        // console.log("chat owners are, ", chat)
 
         if (chat) if (chat.owners && chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
         return chat?.owners[0]
@@ -133,7 +133,9 @@ const MessagesPage = ({ setBookingInfo }) => {
                                     return (
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
-                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                            <ChatButton 
+                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id)[0]?.text.slice(0, 18) : ""}
+                                            interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
                                 }
@@ -143,7 +145,9 @@ const MessagesPage = ({ setBookingInfo }) => {
                                     return (
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
-                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                            <ChatButton 
+                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id )[0]?.text.slice(0,18) : ""} 
+                                            interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
                                 }
