@@ -12,7 +12,6 @@ import ReviewForm from "../../components/ReviewForm/ReviewForm"
 import ReviewComment from "../../components/ReviewComment/ReviewComment"
 import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
 import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
-import Heart from "react-animated-heart";
 import { useNavigate } from "react-router-dom"
 import { daysBetweenTwoDates } from "../../utils/dateUtils"
 import Loginform from "../../components/LoginForm/LoginForm"

@@ -70,16 +70,18 @@ const SignupForm = ({ closeModal }) => {
                 <Form.Label>Image (import)</Form.Label>
                 <Form.Control type="file" onChange={handleImageUpload} />
             </Form.Group>
-            <Form.Check>
+            <Form.Check className="mb-3 mt-4">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
-                <Link to={"/privacyterms"}>
-                    <Form.Label> Privacy policy terms</Form.Label>
+                <Link to={"/privacyterms"} target="_blank" rel="noopener noreferrer">
+                    <Form.Label > &nbsp; Privacy policy terms</Form.Label>
                 </Link>
             </Form.Check>
-
-            <Button variant="dark" type="submit" disabled={loadingImage}>
+            <button type="submit" disabled={loadingImage} style={{ width: "100%" }} className="vanmeupButton mb-4" variant="light">
+                {loadingImage ? "Loading..." : "Sign up"}
+            </button>
+            {/* <Button variant="dark" type="submit" disabled={loadingImage}>
                 {loadingImage ? "Loading..." : "send"}
-            </Button>
+            </Button> */}
         </Form>
     )
 }
