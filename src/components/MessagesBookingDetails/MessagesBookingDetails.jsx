@@ -1,19 +1,9 @@
 import "./MessagesBookingDetails.css"
 import { Link, useParams } from "react-router-dom"
-import VanService from "../../services/van.service"
 import { useEffect, useState, useContext } from "react"
-import userService from "./../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import { Button, Row, Col, Container, Modal } from "react-bootstrap"
-import BookingsService from "../../services/bookings.service"
-import { MessageContext } from "../../context/message.context"
-import DatePicker from "../../components/DatePicker/DatePicker"
-import ReviewForm from "../../components/ReviewForm/ReviewForm"
-import ReviewComment from "../../components/ReviewComment/ReviewComment"
-import VanDetailsCard from "../../components/VanDetailsCard/VanDetailsCard"
-import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
-import Heart from "react-animated-heart";
-import { useNavigate } from "react-router-dom"
+import { beautifulDate, beautifulHour, daysBetweenTwoDates } from "../../utils/dateUtils"
 
 const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => {
     // const [vanDetails, setVanDetails] = useState({})
@@ -23,6 +13,19 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
 
     const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
     console.log("vanDetails are", vanDetails)
+
+    let totalDays = 0
+    let daysPrice = 0
+    let commision = 0
+    let totalPrice = 0
+    if (bookingInfo) {
+        totalDays = daysBetweenTwoDates(bookingInfo.startDate, bookingInfo.endDate)
+        daysPrice = vanDetails.dayPrice * totalDays
+        commision = daysPrice * 0.05
+        commision = Math.round(commision * 100) / 100
+        totalPrice = daysPrice + daysPrice * 0.05
+    }
+
     return (
         <div className="messagesBookingDetailsMain">
             <img className="messagesVanImage" src={vanDetails?.imageUrl}></img>
@@ -34,11 +37,11 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                 {/* <p className="mb-4">{vanDetails.description}</p> */}
                 <hr></hr>
                 <Row className="mt-3 d-flex justify-content-between align-items-center">
-                    <Col xs={9}>
+                    <Col xs={8}>
                         <h4>Owner: {vanDetails?.owner?.username}</h4>
                     </Col>
-                    <Col xs={3}>
-                        <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
+                    <Col xs={4}>
+                        <img className="messagesVanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
                     </Col>
                 </Row>
                 <Row className="">
@@ -81,6 +84,18 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                                 }
                             </Row>
                             <hr></hr>
+                            <Row className="mt-3 d-flex justify-content-between align-items-center">
+                                <Col xs={6}>
+                                    
+                                    <h4>From</h4>
+                                    <p>{beautifulDate(bookingInfo?.startDate) + " 15:00 "}</p>
+                                </Col>
+                                <Col xs={6}>
+                                    <h4>To</h4>
+                                    <p>{beautifulDate(bookingInfo?.endDate) + " 12:00 "}</p>
+                                </Col>
+                            </Row>
+                            <hr></hr>
                         </div>
                     </Col>
                     <Col xs={12} className="d-flex justify-content-end">
@@ -89,7 +104,8 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
                                 <Col className="">
                                     <strong className="messagesMainPrice">{vanDetails.dayPrice} €</strong>&nbsp; /day
                                 </Col>
-                                <Col >
+                                <Col className="">
+                                    <strong className="messagesTotalPrice">Total: {totalPrice} €</strong>
                                     {/* {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ 4,95 - ${vanDetails.reviews.length} reviews`}</strong></div>} */}
                                 </Col>
 

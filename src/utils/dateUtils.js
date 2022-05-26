@@ -32,6 +32,8 @@ function beautifulHour(date) {
 function daysBetweenTwoDates(dateStart, dateEnd) {
 
     let days = 0
+    if (typeof dateStart === "string") dateStart = new Date(dateStart)
+    if (typeof dateEnd === "string") dateEnd = new Date(dateEnd)
     if (!(dateStart && dateEnd)) return 0
     let difference = dateEnd.getTime() - dateStart.getTime();
     days = Math.ceil(difference / (1000 * 3600 * 24));

@@ -181,8 +181,8 @@ const MessagesPage = ({ setBookingInfo }) => {
 
                 </Col>
                 <Col xs={3} style={{ padding: "0px" }}>
-                    <h3 className="messagesSectionTitle">Details</h3>
-                    {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} />}
+                    <h3 className="messagesSectionTitle">Booking details</h3>
+                    {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} bookingInfo={chats[selectedChat].booking}/>}
                     {/* chats[selectedChat].booking.bookedVan.owner.username */}
 
 

@@ -1,0 +1,16 @@
+.toastIcon{
+    width: 32px;
+    height: 20px;
+    padding: 0px;
+    margin: 0px;
+    filter: saturate(1000%) brightness(120%) hue-rotate(205deg)
+}
+
+.toast{
+    border-radius: 7px;
+    width: 280px;;
+}
+
+.toast-header{
+    border-radius: 7px 7px 0px 0px;
+}
