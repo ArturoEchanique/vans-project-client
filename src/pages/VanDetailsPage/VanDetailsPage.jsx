@@ -15,6 +15,7 @@ import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
 import Heart from "react-animated-heart";
 import { useNavigate } from "react-router-dom"
 import { daysBetweenTwoDates } from "../../utils/dateUtils"
+import Loginform from "../../components/LoginForm/LoginForm"
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -24,6 +25,16 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
     const { showMessage } = useContext(MessageContext)
     const navigate = useNavigate()
+    const [showModal, setShowModal] = useState(false)
+    const [showModals, setShowModals] = useState(false)
+
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+
+    const showLoginModal = () => setShowModals(true)
+    const closeLoginModal = () => setShowModals(false)
 
     useEffect(() => {
         getVan()
@@ -74,7 +85,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
     const addFavoriteVan = () => {
         if (!user) {
-            navigate("/login")
+            setShowModals(true)
         }
         userService
             .addFavoriteVan(user._id, van_id)
@@ -118,10 +129,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     console.log("dates are", bookingInfo.startDate, bookingInfo.endDate)
 
 
-    const [showModal, setShowModal] = useState(false)
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
 
     const fireFinalActions = () => {
         closeModal()
@@ -167,6 +175,16 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     console.log("vanDetails are", vanDetails)
     return (
         <div className="detailsPage">
+            <Modal show={showModals} onHide={closeLoginModal}>
+                <div className="modal1">
+                    <Modal.Header closeButton>
+                        <Modal.Title>Please Log in </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Loginform closeModal={closeLoginModal} />
+                    </Modal.Body>
+                </div>
+            </Modal>
             <div className="detailsPageSub">
                 <div className="vanImageTopInfo">
                     <Row className="mb-3">
