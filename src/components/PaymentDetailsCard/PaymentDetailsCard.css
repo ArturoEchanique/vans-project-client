@@ -10,3 +10,27 @@
     text-align: center;
     align-items: center;
 }
+
+
+.paymentDetailsMain .card {
+    border: 0px !important;
+}
+
+.paymentDetailsMain h3 {
+    color: black;
+}
+
+.paymentDetailsDates{
+}
+
+.paymentDetailsDateElem{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.seeMyBookingsButton{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
