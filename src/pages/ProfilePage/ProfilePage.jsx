@@ -18,8 +18,9 @@ import { Link } from "react-router-dom"
 
 const ProfilePage = () => {
     const { user } = useContext(AuthContext)
-
     const [userDetails, setUserDetails] = useState({})
+    const [selectedOption, setSelectedOption] = useState("favorites")
+    const [start, setStart] = useState(true)
 
     const getUser = () => {
         userService
@@ -33,7 +34,35 @@ const ProfilePage = () => {
 
     useEffect(() => {
         getUser()
+        setStart(false)
     }, [user])
+
+    const setView = (view) => {
+        return () => {
+            setSelectedOption(view)
+        }
+    }
+
+    const getProfileView = (view) => {
+        switch (view) {
+            case "favorites":
+                return <FavoritesVans id="favorites-vans" {...userDetails} />
+            case "userBookings":
+                return <UserBookings id="user-bookings" {...userDetails} />
+            case "vans":
+                return <UserVans />
+            case "ownerBookings":
+                return <OwnerBookings {...userDetails} />
+            case "barChart":
+                return <BarChart {...userDetails} />
+        }
+    }
+
+    const getButton = (view, title) => (
+        <button className={selectedOption === view ? "button-profile current" : "button-profile"} onClick={setView(view)}>
+            {title}
+        </button>
+    )
 
     // const { role } = userDetails
 
@@ -44,36 +73,40 @@ const ProfilePage = () => {
                     <Col sm={4}>
                         <div className="background-profile-detalis">
                             <ProfileCard {...userDetails} />
+                            <Row>{getButton("favorites", "Favorites")}</Row>
+                            <Row>{getButton("userBookings", "Your Bookings")}</Row>
+
+                            {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
+                                <>
+                                    <Row>{getButton("vans", "Your Vans")}</Row>
+                                    <Row>{getButton("ownerBookings", "Booked from you")}</Row>
+                                    <Row>{getButton("barChart", "Charts")}</Row>
+                                </>
+                            )}
+
+                            <hr />
                             <ButtonGroup variant="outline-dark">
                                 <HostButton />
-                                <DeleteButton />
                             </ButtonGroup>
-                            <hr />
-                            <button>favorites</button>
                         </div>
                     </Col>
 
                     <Col className="background-profile-detalis">
-                        <div className="Profile-details">
-                            <FavoritesVans id="favorites-vans" {...userDetails} />
+                        {getProfileView(selectedOption)}
+                        {/* <FavoritesVans id="favorites-vans" {...userDetails} />
                             <UserBookings id="user-bookings" {...userDetails} />
                             {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
                                 <>
-                                    <Row className="g-4 mt-5" xs={2}>
-                                        
-                                        <UserVans />
-                                    </Row>
-                                    <Row>
-                                        <OwnerBookings {...userDetails} />
-                                    </Row>
-                                    <Row className="mt-5">
-                                        <BarChart {...userDetails} />
-                                    </Row>
+                                    <UserVans />
+
+                                    <OwnerBookings {...userDetails} />
+
+                                    <BarChart {...userDetails} />
                                 </>
-                            )}
-                        </div>
+                            )} */}
                     </Col>
                 </Row>
+                <DeleteButton />
             </Container>
         </section>
     )

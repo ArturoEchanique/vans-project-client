@@ -11,9 +11,12 @@ const ProfileCard = ({ username, imageUrl }) => {
     //   setName( capitalized(username))
     // }, [])
     return (
-        <div>
-            <h1 className="profile-name">Welcome {username}</h1>
-            <img src={imageUrl} />
+        <div >
+            <h1 className="profile-name">{username}</h1>
+            <figure className="profile-entry ">
+                <img className="img-profile" src={imageUrl} />
+            </figure>
+
             <hr />
         </div>
     )

@@ -3,7 +3,7 @@ import VanCard from "../VanCard/VanCard"
 import { useEffect, useState } from "react"
 import vanService from "../../services/van.service"
 import { AuthContext } from "../../context/auth.context"
-import { Col } from "react-bootstrap"
+import { Col,Row } from "react-bootstrap"
 
 const UserVans = () => {
     const { user } = useContext(AuthContext)
@@ -22,18 +22,24 @@ const UserVans = () => {
     useEffect(() => {
         getUserVans()
     }, [])
+    
 
     const vansList = userVans.map((van) => {
         return (
-            <Col>
-                <h3 className="favorite">Your Vans</h3>
-                <hr />
-                <VanCard {...van} key={van._id} />
+            <Col key={van._id}>
+                
+                <VanCard {...van}  />
             </Col>
         )
     })
 
-    return <>{vansList}</>
+    return (
+        <Row className="g-4 " xs={2}>
+            <h3 className="favorite">Your Vans</h3>
+            <hr />
+            {vansList}
+        </Row>
+    )
 }
 
 export default UserVans
