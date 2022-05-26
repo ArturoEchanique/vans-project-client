@@ -128,12 +128,14 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
                         </Card.Text> */}
                 <CardElement />
                 <hr />
+                <br></br>
                 <p>
                     By selecting the button below, I agree to the Host's House Rules,
                     Airbnb's Rebooking and Refund Policy, and that Airbnb can charge my payment method if
                     I'm responsible for damage. Payment Terms between you and Airbnb Payments Luxembourg S.A.
                 </p>
-                <hr />
+                <br></br>
+                <br/>
                 <button style={{ width: "150px" }} onClick={handleSubmit} className="vanmeupButton mb-4" variant="light">
                     {loading ? "Loading..." : "Book"}
                 </button>
