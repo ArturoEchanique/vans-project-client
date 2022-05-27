@@ -55,7 +55,6 @@ const ProfilePage = () => {
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
-   
     const fireFinalActions = () => {
         closeModal()
     }
@@ -116,7 +115,6 @@ const ProfilePage = () => {
 
                             <hr />
                             <ButtonGroup variant="outline-dark">
-                                <HostButton />
                                 <DeleteButton />
                             </ButtonGroup>
                         </div>
@@ -146,7 +144,6 @@ const ProfilePage = () => {
                             </Modal.Body>
                         </div>
                     </Modal>
-
                 </Row>
             </Container>
         </section>
