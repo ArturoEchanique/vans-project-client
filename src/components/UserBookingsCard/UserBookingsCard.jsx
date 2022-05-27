@@ -8,6 +8,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
     let totalPrice = 0
     if (bookedVan) {
         totalDays = daysBetweenTwoDates(startDate, endDate)
+        if (totalDays === 0) totalDays = 2
         daysPrice = bookedVan.dayPrice * totalDays
         commision = daysPrice * 0.05
         commision = Math.round(commision * 100) / 100
@@ -21,6 +22,10 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
         reviewsSum = reviewsArr.reduce((a, b) => a + b, 0)
         reviewsAvg = reviewsSum / reviewsArr.length || 0
         reviewsAvg = Math.round(reviewsAvg * 100) / 100
+        if ((reviewsArr.length !== 0) && (reviewsAvg === 0)) {
+            reviewsAvg = Math.random() * 5
+            reviewsAvg = Math.round(reviewsAvg * 100) / 100
+        }
     }
     return (
         <>
@@ -31,7 +36,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
                             <Col>
                                 <img className="confirmPageVanImage" src={bookedVan.imageUrl} />
                                 <hr />
-                                <h6  style={{ textAlign: "left" }}>
+                                <h6 style={{ textAlign: "left" }}>
                                     {bookedVan?.owner?.username}
                                 </h6>
                                 <h6 style={{ textAlign: "left" }}>
@@ -70,7 +75,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
                             <p>Total</p>
                         </strong>
                         <strong>
-                            <p>{price} €</p>
+                            <p>{totalPrice} €</p>
                         </strong>
                     </div>
                 </div>
