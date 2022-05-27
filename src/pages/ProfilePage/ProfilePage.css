@@ -7,7 +7,8 @@ hr {
 }
 .background-profile-detalis {
     border-radius: 10px;
-    border: 2px solid #ff5c5c31;
+    box-shadow: 3px 3px 10px var(--main-color-3);
+    /* border: 2px solid #ff5c5c31; */
 
     padding: 4rem 4rem 8rem 4rem;
 }
@@ -33,7 +34,7 @@ hr {
 }
 
 .message-btn img {
- width:40%;
+ width:30%;
  height: auto;
  padding: 0;
 }

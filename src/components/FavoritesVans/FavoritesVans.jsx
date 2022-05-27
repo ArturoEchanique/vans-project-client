@@ -18,7 +18,7 @@ const FavoritesVans = ({ favoriteVans }) => {
     return (
         <>
             <Container>
-                <h3 className="favorite">Favorite Vans</h3>
+                <h4 className="favorite">Favorite Vans</h4>
                 <hr />
                 <Row className="g-4" xs={2}>
                     {vansList}
