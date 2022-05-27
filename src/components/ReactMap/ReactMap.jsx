@@ -117,11 +117,12 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
         
         const bounds = map.getBounds()
         console.log("map is ", bounds)
-        const margin = 75 / 2 ** map.getZoom()
+        // const margin = 100 / 2 ** map.getZoom()
+        const margin = 1*(100 / 2 ** map.getZoom())
         console.log("keys are", Object.keys(bounds)[0])
         const yCord = Object.values(bounds)[0]
         const xCord = Object.values(bounds)[1]
-        handleMapBoundsChange({ mapYBounds: [yCord.h - margin * 2, yCord.j + margin], mapXBounds: [xCord.h - margin, xCord.j + margin] })
+        handleMapBoundsChange({ mapYBounds: [yCord.h - margin, yCord.j + margin], mapXBounds: [xCord.h - margin, xCord.j + margin] })
     }
 
 
