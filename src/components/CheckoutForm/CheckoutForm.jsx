@@ -50,7 +50,7 @@ const CheckoutForm = ({ startDate, endDate, price, bookedVan }) => {
         }
         if (error) {
             setError(true)
-            showMessage("mal", "muy mal")
+            showMessage("Payment error", "Enter a valid credit card")
         }
 
         const owner = await vanService.getOneVan(bookedVan)
