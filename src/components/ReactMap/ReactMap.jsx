@@ -117,7 +117,7 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
         
         const bounds = map.getBounds()
         console.log("map is ", bounds)
-        const margin = 150 / 2 ** map.getZoom()
+        const margin = 75 / 2 ** map.getZoom()
         console.log("keys are", Object.keys(bounds)[0])
         const yCord = Object.values(bounds)[0]
         const xCord = Object.values(bounds)[1]
