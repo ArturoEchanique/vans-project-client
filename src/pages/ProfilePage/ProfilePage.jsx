@@ -55,7 +55,6 @@ const ProfilePage = () => {
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
-   
     const fireFinalActions = () => {
         closeModal()
     }
@@ -103,6 +102,8 @@ const ProfilePage = () => {
                                 )}
                             </div>
 
+                            <hr />
+
                             <Row>{getButton("favorites", "Favorites")}</Row>
                             <Row>{getButton("userBookings", "Your Bookings")}</Row>
 
@@ -114,11 +115,7 @@ const ProfilePage = () => {
                                 </>
                             )}
 
-                            <hr />
-                            <ButtonGroup variant="outline-dark">
-                                <HostButton />
-                                <DeleteButton />
-                            </ButtonGroup>
+                           
                         </div>
                     </Col>
 
@@ -146,7 +143,6 @@ const ProfilePage = () => {
                             </Modal.Body>
                         </div>
                     </Modal>
-
                 </Row>
             </Container>
         </section>
