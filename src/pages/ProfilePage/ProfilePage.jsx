@@ -114,8 +114,6 @@ const ProfilePage = () => {
                                     <Row>{getButton("barChart", "Charts")}</Row>
                                 </>
                             )}
-
-                           
                         </div>
                     </Col>
 
@@ -148,5 +146,4 @@ const ProfilePage = () => {
         </section>
     )
 }
-
 export default ProfilePage
