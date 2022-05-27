@@ -31,3 +31,20 @@ hr {
     color: white;
     /* font-weight: 600; */
 }
+
+.message-btn img {
+ width:40%;
+ height: auto;
+ padding: 0;
+}
+
+
+.message-btn {
+   background-color: transparent;
+    
+}
+.buttons-shortcuts{
+    margin: 1em;
+    display: flex
+    
+}

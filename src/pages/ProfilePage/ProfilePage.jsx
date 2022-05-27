@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { useEffect, useState } from "react"
 
-import { Container, Row, Col, ButtonGroup } from "react-bootstrap"
 import BarChart from "../../components/Charts/Charts"
 import userService from "../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
@@ -12,6 +11,13 @@ import UserBookings from "../../components/UserBookings/UserBookings"
 import OwnerBookings from "../../components/OwnerBookings/OwnerBookings"
 import FavoritesVans from "../../components/FavoritesVans/FavoritesVans"
 import DeleteButton from "../../components/DeleteUserButton/DeleteUserButton"
+
+import { Container, Row, Col, Button, ButtonGroup, Card, Modal } from "react-bootstrap"
+import NewVanForm from "../../components/NewVanForm/NewVanForm"
+import { Bar } from "react-chartjs-2"
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js"
+
+import Loginform from "../../components/LoginForm/LoginForm"
 
 import "./ProfilePage.css"
 import { Link } from "react-router-dom"
@@ -41,6 +47,17 @@ const ProfilePage = () => {
         return () => {
             setSelectedOption(view)
         }
+    }
+
+    const [showModal, setShowModal] = useState(false)
+    const [showModals, setShowModals] = useState(false)
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+   
+    const fireFinalActions = () => {
+        closeModal()
     }
 
     const getProfileView = (view) => {
@@ -73,6 +90,19 @@ const ProfilePage = () => {
                     <Col sm={4}>
                         <div className="background-profile-detalis">
                             <ProfileCard {...userDetails} />
+                            <div className="buttons-shortcuts">
+                                <button className="message-btn">
+                                    <Link to="/profile/messages">
+                                        <img src="./images/mensaje.png" alt="" />
+                                    </Link>
+                                </button>
+                                {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
+                                    <button onClick={openModal} className="message-btn">
+                                        <img src="./images/becomehost.png" alt="" />
+                                    </button>
+                                )}
+                            </div>
+
                             <Row>{getButton("favorites", "Favorites")}</Row>
                             <Row>{getButton("userBookings", "Your Bookings")}</Row>
 
@@ -87,6 +117,7 @@ const ProfilePage = () => {
                             <hr />
                             <ButtonGroup variant="outline-dark">
                                 <HostButton />
+                                <DeleteButton />
                             </ButtonGroup>
                         </div>
                     </Col>
@@ -105,8 +136,18 @@ const ProfilePage = () => {
                                 </>
                             )} */}
                     </Col>
+                    <Modal show={showModal} onHide={closeModal}>
+                        <div className="modal1">
+                            <Modal.Header closeButton>
+                                <Modal.Title>Add a new van</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <NewVanForm fireFinalActions={fireFinalActions} />
+                            </Modal.Body>
+                        </div>
+                    </Modal>
+
                 </Row>
-                <DeleteButton />
             </Container>
         </section>
     )

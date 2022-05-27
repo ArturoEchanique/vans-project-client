@@ -114,7 +114,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                         name="showFilters"
                                     >
                                         <img className="becomeOwnerIcon" src="./../../images/vanIcon3.png"></img>
-                                        Become an owner
+                                        Become a Host
                                     </button>
                                 </NavLink>
 
