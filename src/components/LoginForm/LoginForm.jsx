@@ -26,7 +26,7 @@ const Loginform = ({ closeModal }) => {
                 storeToken(data.authToken)
                 showMessage("Welcome", "Successfully logged in")
                 authenticateUser()
-                navigate("/")
+                // navigate("/")
                 closeModal()
             })
             .catch((err) => console.log(err))
@@ -45,8 +45,8 @@ const Loginform = ({ closeModal }) => {
             <label for="email">Email</label>
             <br></br>
             <div className="inputFieldContainer mt-2">
-                <form style={{width:"100%"}} onSubmit={handleSubmit}>
-                    <input id="html" className="formInputField textInputClean textInputBig" type="email" name="email" value={email} placeholder="Write your email" onChange={handleInputChange}/>
+                <form style={{ width: "100%" }} onSubmit={handleSubmit}>
+                    <input id="html" className="formInputField textInputClean textInputBig" type="email" name="email" value={email} placeholder="Write your email" onChange={handleInputChange} />
                 </form>
             </div>
             <br></br>
