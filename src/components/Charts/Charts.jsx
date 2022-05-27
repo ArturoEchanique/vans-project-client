@@ -55,7 +55,7 @@ const BarChart = ({ ownerBookings }) => {
 
     return (
         <Row>
-            <h3>Your Incomes </h3>
+            <h4>Your Incomes </h4>
             <hr />
             <Bar options={options} data={data} />
         </Row>

@@ -12,7 +12,7 @@ const ProfileCard = ({ username, imageUrl }) => {
     // }, [])
     return (
         <div >
-            <h1 className="profile-name">{username}</h1>
+            <h3 className="profile-name">{username}</h3>
             <figure className="profile-entry ">
                 <img className="img-profile" src={imageUrl} />
             </figure>

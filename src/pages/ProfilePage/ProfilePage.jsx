@@ -102,6 +102,8 @@ const ProfilePage = () => {
                                 )}
                             </div>
 
+                            <hr />
+
                             <Row>{getButton("favorites", "Favorites")}</Row>
                             <Row>{getButton("userBookings", "Your Bookings")}</Row>
 
@@ -113,10 +115,7 @@ const ProfilePage = () => {
                                 </>
                             )}
 
-                            <hr />
-                            <ButtonGroup variant="outline-dark">
-                                <DeleteButton />
-                            </ButtonGroup>
+                           
                         </div>
                     </Col>
 
