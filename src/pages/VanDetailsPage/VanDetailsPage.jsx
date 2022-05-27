@@ -237,9 +237,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <Col xs={10} className="justify-content-center">
                                     <h3 className="detailsPageTitle">{name?.length > 40 ? (name.slice(0, 40) + " ...") : name}</h3>
                                 </Col>
-
-
                             </Row>
+
                             <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs="auto" className="d-flex align-items-center">
                                     <img className="vanOwnerProfileImg" src={vanDetails.owner?.imageUrl}></img>
@@ -247,11 +246,8 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                 <Col xs="auto" className="d-flex align-items-center">
                                     <h3 className="vanDetailsOwner">{vanDetails?.owner?.username}</h3>
                                 </Col>
-
-
                             </Row>
                             <p>{vanDetails.description}</p>
-
                             <br></br>
                             <br></br>
                             <br></br>
@@ -309,19 +305,24 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <div className="dateContainer mb-4">
                                 <DatePicker startDate={bookingInfo.startDate} endDate={bookingInfo.endDate} reservedDays={reservedDays} handleDatesChange={setDateAndPrice} />
                             </div>
-
+                            {/* //vvvvv// */}
                             {vanDetails?.owner?._id !== user?._id ? (
-                                <Link onClick={reserveButtonClicked} to={"/booking"}>
+                                isLoggedIn ?
+                                    <Link onClick={reserveButtonClicked} to={"/booking"}>
 
-                                    <button className="bookVanButton mb-4" variant="light">
+                                        <button className="bookVanButton mb-4" variant="light">
+                                            <strong>Book Van</strong>
+                                        </button>
+                                    </Link>
+                                    :
+                                    <button onClick={showLoginModal} className="bookVanButton mb-4" variant="light">
                                         <strong>Book Van</strong>
                                     </button>
-                                </Link>
                             ) : (
                                 // <Link to={`/${vanDetails._id}/edit`}>
-                                    <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
-                                        This van is yours
-                                    </button>
+                                <button className="bookVanButton mb-4" variant="dark detailsButtonWide" size="lg">
+                                    This van is yours
+                                </button>
                                 // </Link>
                             )}
                             <div className="mb-4">

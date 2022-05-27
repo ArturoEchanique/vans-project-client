@@ -130,7 +130,7 @@
 }
 
 .dropdown-toggle::after {
-    display:none;
+    display: none;
     margin-left: 0.705em;
     position: absolute;
     top: 0px;
@@ -173,20 +173,20 @@
     filter: saturate(1000%) brightness(110%) hue-rotate(205deg)
 }
 
-.becomeOwnerButton{
+.becomeOwnerButton {
 
     display: flex;
-        width: 180px;
-        padding: 0px 0px;
-        height: 44px;
-        border-radius: 6px;
-        font-size: 13px;
-        align-items: center;
-        justify-content: center;
-        /* color: black; */
-        background-color: white !important;
-        box-shadow: 1px 2px 5px var(--main-color-3);
-        color: black;
+    width: 180px;
+    padding: 0px 0px;
+    height: 44px;
+    border-radius: 6px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    /* color: black; */
+    background-color: white !important;
+    box-shadow: 1px 2px 5px var(--main-color-3);
+    color: black;
 }
 
 .nav-link {
@@ -194,6 +194,10 @@
     margin-bottom: 5px;
 }
 
-.dropdown-item{
+.dropdown-item {
     background-color: white !important;
+}
+
+#hostBtn {
+    font-size: 1.2em;
 }
