@@ -40,9 +40,9 @@ const MessagesPage = ({ setBookingInfo }) => {
     }, [chats, selectedChat])
 
     const getChatPartner = (chat) => {
-        console.log("chat owners are, ", chat)
+        // console.log("chat owners are, ", chat)
 
-        if(chat) if (chat.owners && chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
+        if (chat) if (chat.owners && chat.owners[0]._id.toString() == user._id.toString()) return chat.owners[1]
         return chat?.owners[0]
     }
 
@@ -128,22 +128,26 @@ const MessagesPage = ({ setBookingInfo }) => {
                     </div>
                     <div className="chatsMainContainer">
                         {chats.map((chat, idx) => {
-                            if (selectedCategory === "owned"){
+                            if (selectedCategory === "owned") {
                                 if (chat.booking.bookedVan.owner._id === user._id) {
                                     return (
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
-                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                            <ChatButton 
+                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id)[0]?.text.slice(0, 18) : ""}
+                                            interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
                                 }
                             }
-                            else{
+                            else {
                                 if (chat.booking.bookedVan.owner._id !== user._id) {
                                     return (
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
-                                            <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
+                                            <ChatButton 
+                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id )[0]?.text.slice(0,18) : ""} 
+                                            interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
                                 }
@@ -160,15 +164,33 @@ const MessagesPage = ({ setBookingInfo }) => {
                 <Col xs={6} style={{ padding: "0px" }}>
                     <h3 className="messagesSectionTitle">{getChatPartner(chats[selectedChat])?.username}</h3>
                     <div className="messagesMainContainer">
-                        {messages.map((message, idx) => {
-                            return (
-                                <>
-                                    <ChatMessage key={idx} message={message}></ChatMessage>
-                                    {/* <p key={idx}>{message.text}</p> */}
-                                </>
+                        {messages.length > 0 ?
 
-                            )
-                        })}
+                            messages.map((message, idx) => {
+                                return (
+                                    <>
+                                        <ChatMessage key={idx} message={message}></ChatMessage>
+                                        {/* <p key={idx}>{message.text}</p> */}
+                                    </>
+
+                                )
+                            })
+                            :
+                            
+                            <div className="startAConversationContainer">
+                                <div className="startAConversation">
+                                    {chats.length > 0 ? 
+                                        <p>Start a conversation with {getChatPartner(chats[selectedChat])?.username} about your booking!</p>
+                                        :
+                                        <p>You don't have any booking yet!</p>
+
+                                    }
+                                    
+                                    
+                                </div>
+                            </div>
+                            
+                        }
                     </div>
                     <div className="messagesSendSection">
                         <form className="sendMessageArea" onSubmit={handleMessageSubmit}>
@@ -182,7 +204,7 @@ const MessagesPage = ({ setBookingInfo }) => {
                 </Col>
                 <Col xs={3} style={{ padding: "0px" }}>
                     <h3 className="messagesSectionTitle">Booking details</h3>
-                    {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} bookingInfo={chats[selectedChat].booking}/>}
+                    {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} bookingInfo={chats[selectedChat].booking} />}
                     {/* chats[selectedChat].booking.bookedVan.owner.username */}
 
 

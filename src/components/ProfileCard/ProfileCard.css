@@ -1,6 +1,21 @@
 .profile-name {
-   font-family: "Josefin Sans", sans-serif;
-    color: #FF5C5C;
-    text-shadow: 0.1em -0.06em 0.03em #FFCDCD;;
+    font-family: "Josefin Sans", sans-serif;
+    color: #ff5c5c;
+    text-shadow: 0.1em -0.06em 0.03em #ffcdcd;
 }
 
+.img-profile {
+    /* margin: 1em 0; */
+    padding: 0;
+    border-radius: 10px;
+}
+.profile-entry {
+    padding: 1em 0.5em;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    /* border: 0.5px solid #ff5c5c52;
+    border-radius: 10px; */
+}

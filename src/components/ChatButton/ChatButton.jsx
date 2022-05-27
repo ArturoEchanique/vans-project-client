@@ -5,7 +5,7 @@ import ProfileImage from "../../services/profileImage.service"
 import { useEffect, useState, useContext } from "react"
 import {beautifulDate, beautifulHour} from "../../utils/dateUtils"
 
-const ChatButton = ({ interlocutor, bookingStartDate, vanReview, profileIndex }) => {
+const ChatButton = ({ firstMessage, interlocutor, bookingStartDate, vanReview, profileIndex }) => {
 
     // const [profileImg, setProfileImg] = useState("")
 
@@ -31,6 +31,9 @@ const ChatButton = ({ interlocutor, bookingStartDate, vanReview, profileIndex })
                 <div className="upperRight">
                     <div><strong>{interlocutor.username}</strong></div>
                 </div>
+                {/* <div className="upperRight">
+                    <div>{firstMessage}</div>
+                </div> */}
                 <div className="commentLower">
                     <div>Booking: {beautifulDate(bookingStartDate)}</div>
                 </div>

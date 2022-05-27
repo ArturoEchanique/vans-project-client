@@ -1,13 +1,10 @@
 
 import { Button, Col, Row, Form, ToggleButton, Container, Modal } from "react-bootstrap"
 import vanService from "./../../services/van.service"
-import VanCard from "../../components/VanCard/VanCard"
 import { useEffect, useState, useContext } from "react"
 import userService from "./../../services/user.service"
 import { AuthContext } from "../../context/auth.context"
 import ReactMap from "../../components/ReactMap/ReactMap"
-import InfiniteScroll from "react-infinite-scroll-component"
-import DatePicker from "../../components/DatePicker/DatePicker"
 import PriceSlider from "../../components/PriceSlider/PriceSlider"
 import VanCardList from "../../components/VanCardList/VanCardList"
 import { useNavigate } from "react-router-dom"

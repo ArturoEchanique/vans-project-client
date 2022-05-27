@@ -9,7 +9,7 @@ const UserBookings = ({ userBookings }) => {
     return (
         <>
             <Container>
-                <Row className="g-4 mt-5" xs={2}>
+                <Row className="g-4 " xs={2}>
                     <h3 className="favorite"> Bookings</h3>
                     <hr />
 
