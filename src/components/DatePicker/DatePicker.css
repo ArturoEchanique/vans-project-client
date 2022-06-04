@@ -82,8 +82,8 @@
 .DateRangePickerInput__withBorder {
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center; */
+    /* text-align: center; */
     background-color: rgb(255, 255, 255);
     border: 0px;
     width: 100%;
@@ -104,63 +104,56 @@
     justify-content: center;
 }
 
-/* @media (max-width: 480px) {
-    .ant-calendar-range {
-        width: 320px;
-    }
-
-    .ant-calendar-range-part {
-        width: 100%;
-    }
-}
-@media(max-width: 576px) {
-    .ant-picker-panels {
-        flex-direction: column;
-    }
-} */
-
-/* .CalendarMonthGrid_month__horizontal {
-    display: flex;
-    flex-direction: column !important;
-} */
-
-/* .DayPicker_transitionContainer__horizontal {
-    display: flex;
-        flex-direction: column !important;
-} */
-
-/* .CalendarMonth{
-    background-color: red;
-    transform: scale(0.7)
+.DayPicker{
+    background-color: rgba(255, 0, 0, 0) !important;
 }
 
-.CalendarMonthGrid{
-transform: scale(0.7)
+/* to make it rounded */
+
+.DayPicker__withBorder {
+    border-radius: 12px;
 }
 
-.CalendarMonthGrid_month__horizontal {
-    transform: scale(0.7)
-} */
+.DayPicker_transitionContainer {
+border-radius: 12px;
+}
+
+.CalendarMonthGrid__horizontal {
+    border-radius: 12px;
+}
 
 .DateRangePicker_picker {
-    /* width: 100%; */
-    transform: scale(calc(1 * 1))
+   border-radius: 12px !important;
+}
+
+/* to make it rounded */
+
+@media screen and (min-width: 750px) {
+    .DateRangePicker_picker {
+        transform: scale(1.0) translate(0%, 17%);
+    }
 }
 
 @media screen and (max-width: 750px) {
     .DateRangePicker_picker {
-        transform: scale(0.8)
+        transform: scale(0.85) translate(0%, 10%);
     }
 }
 
 @media screen and (max-width: 550px) {
     .DateRangePicker_picker {
-        transform: scale(0.65)
+        transform: scale(0.7) translate(0%, -0%);
     }
 }
 
 @media screen and (max-width: 450px) {
     .DateRangePicker_picker {
-        transform: scale(0.5)
+        transform: scale(0.6) translate(0%, -9%);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .DateRangePicker_picker {
+        transform: scale(0.5) translate(0%, -20%);
     }
 }
