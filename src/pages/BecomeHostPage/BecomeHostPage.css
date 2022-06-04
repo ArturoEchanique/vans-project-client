@@ -1,9 +1,10 @@
 #section1 {
-    /* background-color: black; */
+    padding-top: 50px;
+    background-color: black;
 }
 
 #section1 h1 {
-    /* color: white; */
+    color: white;
     display: flex;
     justify-content: center;
 }
@@ -34,7 +35,7 @@
 }
 
 #section2 h2 {
-    margin: 3%;
+    margin: 6%;
     text-align: center;
 }
 
@@ -77,6 +78,7 @@
 }
 
 #title h1 {
+    color: white;
     margin-bottom: 5%;
     text-align: center;
 }
@@ -149,7 +151,7 @@
 
 #section5 {
     margin-top: 100px;
-    /* background-color: black; */
+    background-color: black;
     /* background-image: url("https://images.pexels.com/photos/210010/pexels-photo-210010.jpeg?cs=srgb&dl=pexels-pixabay-210010.jpg&fm=jpg");
     background-repeat: no-repeat;
     background-size: cover;

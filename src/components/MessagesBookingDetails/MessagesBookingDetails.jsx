@@ -6,13 +6,17 @@ import { Button, Row, Col, Container, Modal } from "react-bootstrap"
 import { beautifulDate, beautifulHour, daysBetweenTwoDates } from "../../utils/dateUtils"
 
 const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => {
-    // const [vanDetails, setVanDetails] = useState({})
-    const { van_id } = useParams()
-    const { isLoggedIn, isLoading, user } = useContext(AuthContext)
-
 
     const { setReload, _id, imageUrl, name, description, solarPower, shower, bathroom, maxPassengers, dayPrice, vanRating, owner, hideDeleteButton, solarRoof, kitchen, heatedSeats } = vanDetails
-    console.log("vanDetails are", vanDetails)
+
+    const getVanImageFiltered = () => {
+        console.log("vandetails image is", vanDetails.imageUrl[0])
+        if (vanDetails.imageUrl[0] && (vanDetails.imageUrl[0] !== "https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652949657/vans_project/results_azn9vk.png")) {
+            return vanDetails.imageUrl[0]
+        }
+        else return "https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652949664/vans_project/26_ngdxkd.jpg"
+    }
+    const imageUrlFiltered = vanDetails ? getVanImageFiltered() : ""
 
     let totalDays = 0
     let daysPrice = 0
@@ -28,13 +32,12 @@ const MessagesBookingDetails = ({ vanDetails, setBookingInfo, bookingInfo }) => 
 
     return (
         <div className="messagesBookingDetailsMain">
-            <img className="messagesVanImage" src={vanDetails?.imageUrl}></img>
+            <img className="messagesVanImage" src={imageUrlFiltered}></img>
 
             <div className="messagesDetailsPageSub">
 
 
                 <h4 className="messagesBookingTitle mb-4">{name?.length > 1000 ? (name.slice(0, 33) + " ...") : name}</h4>
-                {/* <p className="mb-4">{vanDetails.description}</p> */}
                 <hr></hr>
                 <Row className="mt-3 d-flex justify-content-between align-items-center">
                     <Col xs={8}>

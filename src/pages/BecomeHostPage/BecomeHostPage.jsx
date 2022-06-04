@@ -74,28 +74,6 @@ const BecomeHostPage = () => {
                         </Col>
 
                         <Col id="ib" lg={{ span: 6 }} md={{ span: 12 }}></Col>
-
-                        {/* <Modal show={showModal} onHide={closeModal}>
-                            <div className="modal1">
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Add a new van</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <NewVanForm fireFinalActions={fireFinalActions} />
-                                </Modal.Body>
-                            </div>
-                        </Modal>
-
-                        <Modal show={showModals} onHide={closeLoginModal}>
-                            <div className="modal1">
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Please Log in </Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <Loginform closeModal={closeLoginModal} />
-                                </Modal.Body>
-                            </div>
-                        </Modal> */}
                     </Row>
                 </Container>
             </section>
@@ -181,19 +159,6 @@ const BecomeHostPage = () => {
                     </Row>
                 </Container>
             </section>
-
-            {/* <Container fluid >
-                <section id="section4">
-                    <Row >
-                        <Col lg={{ span: 6 }}>
-                            <div id="div4">
-                                <h2>Not Sure yet? Please leave us any question</h2>
-                                <Button id="btn2">Leave us a Message</Button>
-                            </div>
-                        </Col>
-                    </Row>
-                </section >
-            </Container> */}
         </>
     )
 }

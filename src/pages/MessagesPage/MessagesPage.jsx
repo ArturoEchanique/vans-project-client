@@ -134,7 +134,6 @@ const MessagesPage = ({ setBookingInfo }) => {
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
                                             <ChatButton 
-                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id)[0]?.text.slice(0, 18) : ""}
                                             interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
@@ -146,18 +145,11 @@ const MessagesPage = ({ setBookingInfo }) => {
                                         <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
                                             active={selectedChat === idx} >
                                             <ChatButton 
-                                            // firstMessage={messages.length > 0 ? messages.filter(message => message.owner._id === getChatPartner(chat)._id )[0]?.text.slice(0,18) : ""} 
                                             interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
                                         </button>
                                     )
                                 }
                             }
-                            // return (
-                            //     <button className={"chatButton " + (selectedChat === idx ? "selected" : "unselected")} key={idx} onClick={() => setSelectedChat(idx)}
-                            //         active={selectedChat === idx} >
-                            //         <ChatButton interlocutor={getChatPartner(chat)} bookingStartDate={chat.booking.startDate} bookingEndDate={chat.booking.endDate}></ChatButton>
-                            //     </button>
-                            // )
                         })}
                     </div>
                 </Col>
@@ -168,10 +160,7 @@ const MessagesPage = ({ setBookingInfo }) => {
 
                             messages.map((message, idx) => {
                                 return (
-                                    <>
                                         <ChatMessage key={idx} message={message}></ChatMessage>
-                                        {/* <p key={idx}>{message.text}</p> */}
-                                    </>
 
                                 )
                             })
@@ -184,9 +173,7 @@ const MessagesPage = ({ setBookingInfo }) => {
                                         :
                                         <p>You don't have any booking yet!</p>
 
-                                    }
-                                    
-                                    
+                                    }    
                                 </div>
                             </div>
                             
@@ -205,9 +192,6 @@ const MessagesPage = ({ setBookingInfo }) => {
                 <Col xs={3} style={{ padding: "0px" }}>
                     <h3 className="messagesSectionTitle">Booking details</h3>
                     {chats.length > 0 && <MessagesBookingDetails vanDetails={chats[selectedChat].booking.bookedVan} bookingInfo={chats[selectedChat].booking} />}
-                    {/* chats[selectedChat].booking.bookedVan.owner.username */}
-
-
                 </Col>
             </Row>
         </div >
