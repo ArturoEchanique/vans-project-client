@@ -103,3 +103,64 @@
     text-align: center;
     justify-content: center;
 }
+
+/* @media (max-width: 480px) {
+    .ant-calendar-range {
+        width: 320px;
+    }
+
+    .ant-calendar-range-part {
+        width: 100%;
+    }
+}
+@media(max-width: 576px) {
+    .ant-picker-panels {
+        flex-direction: column;
+    }
+} */
+
+/* .CalendarMonthGrid_month__horizontal {
+    display: flex;
+    flex-direction: column !important;
+} */
+
+/* .DayPicker_transitionContainer__horizontal {
+    display: flex;
+        flex-direction: column !important;
+} */
+
+/* .CalendarMonth{
+    background-color: red;
+    transform: scale(0.7)
+}
+
+.CalendarMonthGrid{
+transform: scale(0.7)
+}
+
+.CalendarMonthGrid_month__horizontal {
+    transform: scale(0.7)
+} */
+
+.DateRangePicker_picker {
+    /* width: 100%; */
+    transform: scale(calc(1 * 1))
+}
+
+@media screen and (max-width: 750px) {
+    .DateRangePicker_picker {
+        transform: scale(0.8)
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .DateRangePicker_picker {
+        transform: scale(0.65)
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .DateRangePicker_picker {
+        transform: scale(0.5)
+    }
+}

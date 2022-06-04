@@ -33,19 +33,8 @@ const HomePage = ({ setFilterInfo, filterData, }) => {
             (error) => {
                 console.error(error)
                 navigate("/results")
-                // navigate('/results')
             }
         )
-    }
-
-    const handleFilterChange = (e) => {
-        e.preventDefault()
-    }
-
-    const handleStreetChange = (e) => {
-        const { name, value } = e.currentTarget
-        setFilterInfo({ ...filterData, address: value })
-        setGeoData({ ...geoData, address: value })
     }
 
     return (

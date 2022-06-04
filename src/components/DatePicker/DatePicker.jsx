@@ -43,15 +43,6 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
         handleDatesChange(filterDates);
     };
 
-    const dayAlreadyReserved = (day) => {
-
-        const today = new Date()
-        const tomorrow = new Date(today)
-        tomorrow.setDate(tomorrow.getDate() + 1)
-
-        return moment(day).toDate() == today
-    }
-
     const isDayBlocked = (day) => {
         const today = new Date()
         const tomorrow = new Date(today)
@@ -66,8 +57,10 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
                 startDate={dates.startDate}
                 startDateId="your_unique_start_date_id"
                 endDate={dates.endDate}
+                openDirection="OPEN_DOWN"
                 endDateId="your_unique_end_date_id"
                 onDatesChange={handleChange}
+                small= {true}
                 focusedInput={focusedInput}
                 onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
                 isDayBlocked={isDayBlocked}
