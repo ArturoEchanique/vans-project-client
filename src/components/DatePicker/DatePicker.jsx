@@ -61,7 +61,7 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
     }
 
     return (
-        <div className="datePicker">
+        <div className="datePickerMain">
             <DateRangePicker
                 startDate={dates.startDate}
                 startDateId="your_unique_start_date_id"
@@ -71,9 +71,7 @@ const DatePicker = ({ startDate, endDate, handleDatesChange, reservedDays }) => 
                 focusedInput={focusedInput}
                 onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
                 isDayBlocked={isDayBlocked}
-                // noBorder={true}
                 block={true}
-                // orientation={"VERTICAL_ORIENTATION"}
             />
         </div>
     )

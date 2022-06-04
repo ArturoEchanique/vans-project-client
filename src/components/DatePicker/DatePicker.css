@@ -1,6 +1,6 @@
-/* .DatePicker {
-    width: 100% !important;
-} */
+.datePickerMain {
+    width: 50% !important;
+}
 
 .rheostat-progress {
     background-color: black !important;
@@ -86,4 +86,20 @@
     text-align: center;
     background-color: rgb(255, 255, 255);
     border: 0px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.DateRangePickerInput {
+    padding: 0px;
+    margin: 0px;
+}
+
+.DateRangePicker>div:first-child {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }

@@ -36,7 +36,6 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
             (error) => {
                 console.log("geodata failed", error)
                 navigate("/results")
-                // navigate('/results')
             }
         )
     }
@@ -44,7 +43,6 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
     const handleStreetChange = (e) => {
         const { name, value } = e.currentTarget
         setFilterInfo({ ...filterData, address: value })
-        // const geoForn = { ...geoData, address: value }
         setGeoData({ ...geoData, address: value })
     }
     
@@ -53,28 +51,16 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
     return (
          (
             <div className="cityAndDate">
-                <form>
-                    <label>
-                        <input className="cityElem" type="text" value={address} name="address" onChange={handleStreetChange} />
-                    </label>
-                </form>
-                {/* <DatePicker /> */}
+
+                        <input className="cityInput" type="text" value={address} name="address" onChange={handleStreetChange} />
+
                 <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
                 <Link className="cityAndDateSearchButtonLink" to="/results">
                     <button className="cityAndDateSearchButton" variant={"light"} onClick={searchVansClicked} id="search">
                         <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                        &nbsp;<p>Search</p>
+                        &nbsp;<p className="searchText">Search</p>
                     </button>
                 </Link>
-
-                {/* <button
-                className="cityAndDateSearchButton"
-                variant={"light"}
-                onClick={searchVansClicked}
-                id="search">
-                <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>
-                &nbsp;<p>Search</p>
-            </button> */}
             </div>
         )
     )

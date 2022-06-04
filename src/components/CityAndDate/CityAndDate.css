@@ -3,11 +3,14 @@
     border-radius: 6px;
     display: flex;
     align-items: center;
-    width: auto;
+    width: 100%;
+    max-width: 600px;
+    justify-content: space-between;
     box-shadow: 2px 2px 8px var(--main-color-3);
     /* z-index: 2000; */
+    padding-left: 2%;
     height: 47px;
-    padding-left: 20px;
+    margin: 0 auto;
 }
 
 .cityAndDateElem {
@@ -20,7 +23,7 @@
     border: 0px;
 }
 
-.cityElem {
+.cityInput {
     border: none;
     outline: none;
     height: 100%;
@@ -28,11 +31,11 @@
     background-color: rgba(255, 255, 255, 0);
     border-style: double;
     border: 0px;
-    width: 100px;
+    width: 35%;
 }
 
 .cityAndDateSearchButtonLink {
-    width: 100%;
+    width: 25%;
     height: 100%;
     text-decoration: none !important;
 }
@@ -46,18 +49,30 @@
     border-radius: 0px 6px 6px 0px;
     font-size: 13px;
     align-items: center;
+    justify-content: center;
     background-color: var(--vanmeup-2);
     padding: 0px 20px;
 }
 
-.cityAndDateSearchButton p{
-    font-size: 16px;
+.searchText{
+    font-size: clamp(6px, 2.0vw, 15px);
+    margin-left: 10px;
 }
 
 .cityAndDateSearchIcon {
     padding: 0px;
-    margin-right: 5px;
     width: 20px;
     height: 20px;
     filter: brightness(400%);
+}
+
+@media screen and (max-width: 700px) {
+    .searchText {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+    }
 }
