@@ -78,7 +78,7 @@
 
 .logo-nav {
 
-    margin-left: 50px;
+    margin-left: 3vw;
 
 }
 
@@ -145,10 +145,21 @@
 
 .navigationMainContainer {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    justify-content: space-between;
+}
+
+.becomeAndProfile {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .myDropDown {
-    margin-right: 70px;
+    margin: 0 3vw;
 }
 
 .dropdown-menu.show {
@@ -200,4 +211,26 @@
 
 #hostBtn {
     font-size: 1.2em;
+}
+
+@media screen and (max-width: 500px) {
+    .becomeHost {
+        visibility: hidden;
+        /* clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%; */
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navSearchBar {
+        visibility: hidden;
+        /* clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%; */
+        display: none;
+    }
 }

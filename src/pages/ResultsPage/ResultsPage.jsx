@@ -169,12 +169,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         loadVans({ ...filterData, ...passengersRange })
     }
 
-    // const solarPowerClicked = () => {
-    //     const formFilterData = { ...filterData, solarPower: !solarPower }
-    //     setFilterInfo(formFilterData)
-    //     loadVans(formFilterData)
-    // }
-
     const handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -185,20 +179,9 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             console.log("fetching more data")
             loadVans({ ...filterData, skip: vans.length })
         }
-
-        // setTimeout(() => {
-        //     loadVans({ ...filterData, skip: vans.length })
-        // }, 1000)
     }
 
-    // const testClick = () => {
-    //     console.log("clicked!")
-    // }
-
-
     return (
-
-
         <div className="resultsPageMain">
             <div className="resultsTopBar">
 
@@ -212,7 +195,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                         </Modal.Body>
                     </div>
                 </Modal>
-
                 <Container fluid>
                     <Row className="">
                         <Col xs={2} className="d-flex justify-content-center">
@@ -227,9 +209,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <img className="locationButtonIcon" src="./../../images/locationIcon.png"></img>
                                 Show nearest vans
                             </button>
-                            {/* <Button variant="light filterButtonWide" onClick={() => setLocationSwitcher(!locationSwitcher)}>
-                                Show nearest vans
-                            </Button> */}
                         </Col>
                         <Col xs={5} className="d-flex justify-content-center">
                             <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
@@ -259,10 +238,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Row>
                 </Container>
             </div>
-
-
-
-
             <Container fluid className="resultsPageContainerMain">
                 <Row >
                     <Col xs={5} style={{ paddingRight: 0 }}>
@@ -274,14 +249,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Col >
                     <Col style={{ paddingLeft: 0, paddingRight: 0 }} xs={false ? 3 : "auto"} className="d-flex justify-content-end">
                         <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"350px"} collapsedWidth={"0px"}>
-
-                            {/* <Menu iconShape="square">
-                                <MenuItem>Dashboard</MenuItem>
-                                <SubMenu title="Components">
-                                    <MenuItem>Component 1</MenuItem>
-                                    <MenuItem>Component 2</MenuItem>
-                                </SubMenu>
-                            </Menu> */}
                             <Container className="filterMain filterScroll">
                                 <h3 className="filterTitle">Features</h3>
                                 <Row className="justify-content-center filterRowSmall">
@@ -393,8 +360,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             </Container>
                         </ProSidebar>
                     </Col>
-
-
                 </Row>
             </Container>
         </div>
