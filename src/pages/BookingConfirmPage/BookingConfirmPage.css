@@ -9,13 +9,7 @@
 
 #rowPay {
     margin-bottom: 4%;
-    /* margin-left: 4%; */
 }
-
-/* #cardTi {
-    margin-top: 5%;
-    padding-right: 5%;
-} */
 
 #priceDetail {
     margin-left: 5%;
@@ -46,7 +40,6 @@
 }
 
 #priceBooking {
-    /* margin-bottom: 15%; */
     padding-bottom: 15%;
 }
 
@@ -68,6 +61,7 @@
 }
 
 .confirmBookingCardDetails {
+    margin-left: 10%;
     margin-top: 90px;
 
 }
@@ -80,4 +74,39 @@
 .confirmCardVanName {
     font-size: 10px;
     font-weight: lighter;
+}
+
+#hrcolor {
+    width: 93%;
+}
+
+@media screen and (max-width: 400px) {
+
+    .confirmPageSection1 {
+        margin-top: 25%;
+        margin-bottom: 20%;
+    }
+
+    #canfirmationCard {
+        height: 550px;
+    }
+
+    #paymentMethods {
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
+
+}
+
+@media screen and (min-width: 400px) and (max-width: 1000px) {
+
+    .confirmPageSection1 {
+        margin-top: 15%;
+        margin-bottom: 20%;
+    }
+
+    #canfirmationCard {
+        height: 550px;
+    }
+
 }

@@ -32,94 +32,85 @@ const PaymentDetailsCard = ({ closeModal, startDate, endDate, price, bookedVan }
     return (
         <Container className="paymentDetailsMain">
             <Row>
-                <Col xs={{ span: 6, offset: 0 }} className="mt-2">
+
+                <Col md={6} sm={12} className="mt-2">
                     <Card id="colCard">
-
                         <Card.Img id="imgcard" className="img-fluid" variant="top" src="https://a.mailmunch.co/user_data/landing_pages/1501739679705-animated-check.gif" />
-
                         <div>
-
                             <h3>Booking confirmed</h3>
                         </div>
-
                     </Card>
                     <div className="paymentDetailsDates">
                         <Row className="justify-content-center filterRowSmall mt-5">
                             <Col className="">
                                 <div className="paymentDetailsDateElem">
-                                <h5>Starts </h5>
-                                <p className="mt-2"> {beautifulDate(startDate)} 15:00</p>
+                                    <h5>Starts </h5>
+                                    <p className="mt-2"> {beautifulDate(startDate)} 15:00</p>
                                 </div>
                             </Col>
                             <Col className="">
                                 <div className="paymentDetailsDateElem">
-                                <h5>Ends </h5>
-                                <p className="mt-2"> {beautifulDate(endDate)} 12:00</p>
+                                    <h5>Ends </h5>
+                                    <p className="mt-2"> {beautifulDate(endDate)} 12:00</p>
                                 </div>
                             </Col>
                         </Row>
                     </div>
                     <div className="seeMyBookingsButton">
-                        <NavLink  to="/profile" className="">
+                        <NavLink to="/profile" className="">
                             <button style={{ width: "200px" }} className="vanmeupButton mb-4" variant="light">
                                 {"See my bookings"}
                             </button>
                         </NavLink>
-                    
                     </div>
                 </Col>
-                
-                
-                <Col xs={{ span: 4, }} style={{ paddingLeft: "0px", marginTop: "160px" }} className="confirmBookingCardDetails">
+
+                <Col md={6} sm={12} style={{ paddingLeft: "0px", marginTop: "160px" }} className="confirmBookingCardDetails">
 
                     <div className="confirmBookingInfoMain">
                         <Row className="d-flex justify-content-space-between align-items-center mb-4">
-                            <Col className="">
+                            <Col>
                                 <strong className="mainPrice">{bookedVan.dayPrice} €</strong>&nbsp; /day
                             </Col>
                             <Col >
                                 {bookedVan.reviews && <div className="bookingInfoRating"><strong>{`★${reviewsAvg} - ${bookedVan.reviews.length} reviews`}</strong></div>}
                             </Col>
-
                         </Row>
                         <hr></hr>
-                        <div className=" mb-4">
-                            <Row>
-                                <Col>
-                                    <img className="confirmPageVanImage" src={bookedVan.imageUrl} />
+                        <Row className="mb-4">
+                            <Col>
+                                <img className="confirmPageVanImage" src={bookedVan.imageUrl} />
 
-                                </Col>
-                                <Col style={{ padding: "0px" }}>
-                                    <p className="confirmCardOwner" style={{ textAlign: "left" }}>{bookedVan?.owner?.username}</p>
-                                    <p className="confirmCardVanName" style={{ textAlign: "left" }}>{bookedVan?.name}</p>
-                                </Col>
-                            </Row>
-
-
-                        </div>
+                            </Col>
+                            <Col style={{ padding: "0px" }}>
+                                <p className="confirmCardOwner" style={{ textAlign: "left" }}>{bookedVan?.owner?.username}</p>
+                                <p className="confirmCardVanName" style={{ textAlign: "left" }}>{bookedVan?.name}</p>
+                            </Col>
+                        </Row>
                         <hr></hr>
-                        <div className="mb-4">
-                            <p id="save">
-                                Your van is protected by <strong id="upCover">UpCover </strong>
-                            </p>
-                            <hr />
-                        </div>
-                        <div className="bookingInfoPriceRow">
-                            <p>{bookedVan.dayPrice} x {totalDays} days</p>
-                            <p>{daysPrice} €</p>
-                        </div>
-                        <div className="bookingInfoPriceRow">
-                            <p>Service commission</p>
-                            <p>{commision} €</p>
-                        </div>
-                        <hr></hr>
-                        <div className="bookingInfoPriceRow">
-                            <strong><p>Total</p></strong>
-                            <strong><p>{totalPrice} €</p></strong>
-                        </div>
+                        <Row>
+                            <Col className="mb-4">
+                                <p id="save">
+                                    Your van is protected by <strong id="upCover">UpCover </strong>
+                                </p>
+                                <hr />
+                            </Col>
+                            <Col className="bookingInfoPriceRow">
+                                <p>{bookedVan.dayPrice} x {totalDays} days</p>
+                                <p>{daysPrice} €</p>
+                            </Col>
+                            <Col className="bookingInfoPriceRow">
+                                <p>Service commission</p>
+                                <p>{commision} €</p>
+                            </Col>
+                            <hr></hr>
+                            <Col className="bookingInfoPriceRow">
+                                <strong><p>Total</p></strong>
+                                <strong><p>{totalPrice} €</p></strong>
+                            </Col>
+                        </Row>
                     </div>
                 </Col>
-               
 
             </Row>
         </Container>
