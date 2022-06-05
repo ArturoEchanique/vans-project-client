@@ -188,7 +188,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     return (
         <div className="resultsPageMain">
-            <div className="resultsTopBar">
+            {/* <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} /> */}
+            <div className="resultsTopBar" style={{height:"10%"}}>
                 <Modal show={showModals} onHide={closeLoginModal}>
                     <div className="modal1">
                         <Modal.Header closeButton>
@@ -259,16 +260,16 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Row>
                 </Container>
             </div>
-            <Container fluid className="resultsPageContainerMain">
-                <Row >
+            <Container fluid className="resultsPageContainerMain" style={{ height: "90%"}}>
+                <Row style={{height:"100%"}}>
                     {(!showMap || width > 1200)&&
-                        <Col sm={12} xl={5} style={{ padding: 0 }}>
+                        <Col sm={12} xl={5} style={{ padding: 0, height: "100%" }}>
                             <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
                         </Col>
                     }
 
                     {(showMap || width > 1200)&&
-                        <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
+                        <Col style={{ paddingLeft: 0, paddingRight: 0, height: "100%" }}>
                             <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
                         </Col >
                     }

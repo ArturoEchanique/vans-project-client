@@ -1,8 +1,9 @@
 .resultsPageMain {
     overflow: hidden;
-    height: 100vh;
-    padding-top: 100px;
+    height: calc(100vh - 90px);
+    /* padding-top: 96px; */
     background-color: var(--main-color-5);
+    /* background-color: rgba(255, 0, 0, 0.866); */
     /* font-size: 0.8em; */
 }
 
@@ -12,19 +13,20 @@
 
 .resultsTopBar {
     padding-bottom: 20px;
-    padding-top: 5px;
+    padding-top: 20px;
     box-shadow: 3px 3px 5px var(--main-color-5);
     background-color: var(--main-color-5);
     z-index: 10000;
+    /* background-color: rgba(0, 128, 0, 0.632); */
 }
 
 .filterContainerMain {
     position: absolute;
-    top: 169px;
+    top: 168px;
     z-index: -0;
     right: 0px;
     /* width: 300px; */
-    height: calc(100vh - 169px);
+    height: calc(100vh - 168px);
     overflow: hidden;
 }
 
@@ -36,11 +38,11 @@
 
 .filterMain {
     flex: 1 !important;
-    height: calc(100vh - 169px) !important;
+    height: calc(100vh - 168px) !important;
     overflow-y: scroll !important;
 
     margin-top: 0px;
-    padding: 5% 8%;
+    padding: 10% 8%;
     padding-bottom: 25%;
 }
 
@@ -157,7 +159,7 @@
 .nameSearchBarInput {
     border: none;
     outline: none;
-    height: 46px;
+    height: 40px;
     border-color: #dadada;
     background-color: rgba(255, 255, 255, 0);
     border: 0px;
@@ -181,7 +183,7 @@
 
     display: flex;
     width: 90px;
-    height: 46px;
+    height: 40px;
     border-radius: 6px;
     font-size: 13px;
     align-items: center;
@@ -194,7 +196,7 @@
 
     display: flex;
     width: 120px;
-    height: 46px;
+    height: 40px;
     border-radius: 6px;
     font-size: 13px;
     align-items: center;
@@ -206,7 +208,7 @@
 .locationButton {
     display: flex;
     padding: 0px 0px;
-    height: 46px;
+    height: 40px;
     border-radius: 6px;
     font-size: 13px;
     align-items: center;
@@ -280,6 +282,8 @@
 
 .resultsPageContainerMain {
     padding: 0px;
+    /* height: 100%; */
+    /* background-color: rgba(128, 0, 128, 0.299); */
 }
 
 .filterLocationButton {
