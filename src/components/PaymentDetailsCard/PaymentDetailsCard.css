@@ -1,16 +1,13 @@
 #imgcard {
     max-width: 200px;
     max-height: 300px;
-
 }
 
 #colCard {
     margin-top: 30%;
-    /* margin-top: 10px; */
     text-align: center;
     align-items: center;
 }
-
 
 .paymentDetailsMain .card {
     border: 0px !important;
@@ -20,16 +17,13 @@
     color: black;
 }
 
-.paymentDetailsDates{
-}
-
-.paymentDetailsDateElem{
+.paymentDetailsDateElem {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.seeMyBookingsButton{
+.seeMyBookingsButton {
     display: flex;
     justify-content: center;
     margin-top: 70px;
