@@ -15,12 +15,40 @@
     padding-top: 5px;
     box-shadow: 3px 3px 5px var(--main-color-5);
     background-color: var(--main-color-5);
+    z-index: 10000;
 }
 
-.filterMain {
-    margin-top: 0px;
-    padding-bottom: 250px;
+.filterContainerMain {
+    position: absolute;
+    top: 172px;
+    z-index: -0;
+    right: 0px;
+    /* width: 300px; */
+    height: calc(100vh - 172px);
+    overflow: hidden;
+}
 
+/* .filterScroll {
+    flex: 1 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
+} */
+
+.filterMain {
+    flex: 1 !important;
+    height: calc(100vh - 172px) !important;
+    overflow-y: scroll !important;
+
+    margin-top: 0px;
+    padding: 5% 7%;
+    /* padding-bottom: 250px; */
+}
+
+.pro-sidebar {
+    /* width: max(100vh, 400px) !important; */
+    /* min-width: 0px !important;
+    max-width: 100vh !important; */
+    /* max-width: max(100vw, 400px) !important; */
 }
 
 .filterButton {
@@ -32,12 +60,6 @@
     margin: 0 auto;
     align-items: center;
     font-size: 13px;
-}
-
-.filterScroll {
-    flex: 1 !important;
-    height: 100vh !important;
-    overflow-y: scroll !important;
 }
 
 
@@ -69,6 +91,7 @@
 .filterRow {
     margin-top: 0px;
     margin-bottom: 20px;
+
 }
 
 .filterTitle {
@@ -189,7 +212,7 @@
     margin-right: 10px;
     width: 24px;
     height: 24px;
-    
+
 }
 
 .showFiltersButton.unchecked {

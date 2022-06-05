@@ -184,7 +184,6 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     return (
         <div className="resultsPageMain">
             <div className="resultsTopBar">
-
                 <Modal show={showModals} onHide={closeLoginModal}>
                     <div className="modal1">
                         <Modal.Header closeButton>
@@ -221,7 +220,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                             </div>
                         </Col>
-                        
+
                         <Col xs={2} className="d-flex justify-content-end">
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
@@ -240,128 +239,129 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             </div>
             <Container fluid className="resultsPageContainerMain">
                 <Row >
-                    <Col xs={5} style={{ paddingRight: 0 }}>
+                    <Col sm={12} md={5} style={{ padding: 0 }}>
                         <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
                     </Col>
                     <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
                         <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
 
                     </Col >
-                    <Col style={{ paddingLeft: 0, paddingRight: 0 }} xs={false ? 3 : "auto"} className="d-flex justify-content-end">
-                        <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"350px"} collapsedWidth={"0px"}>
-                            <Container className="filterMain filterScroll">
-                                <h3 className="filterTitle">Features</h3>
-                                <Row className="justify-content-center filterRowSmall">
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="solarPower"
-                                            type="checkbox"
-                                            variant={solarPower ? "dark" : "light"}
-                                            checked={solarPower}
-                                            name="solarPower"
-                                            onChange={handleFilterChange}>
-                                            Solar power
-                                        </ToggleButton>
-                                    </Col>
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="shower"
-                                            type="checkbox"
-                                            variant={shower ? "dark" : "light"}
-                                            checked={shower}
-                                            name="shower"
-                                            onChange={handleFilterChange}>
-                                            Shower
-                                        </ToggleButton>
-                                    </Col>
-                                </Row>
-                                <Row className="justify-content-center filterRowSmall">
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="bathroom"
-                                            type="checkbox"
-                                            variant={bathroom ? "dark" : "light"}
-                                            checked={bathroom}
-                                            name="bathroom"
-                                            onChange={handleFilterChange}>
-                                            Bathroom
-                                        </ToggleButton>
-                                    </Col>
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="kitchen"
-                                            type="checkbox"
-                                            variant={kitchen ? "dark" : "light"}
-                                            checked={kitchen}
-                                            name="kitchen"
-                                            onChange={handleFilterChange}>
-                                            Kitchen
-                                        </ToggleButton>
-                                    </Col>
-                                </Row>
-                                <Row className="justify-content-center filterRowSmall">
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="sunRoof"
-                                            type="checkbox"
-                                            variant={sunRoof ? "dark" : "light"}
-                                            checked={sunRoof}
-                                            name="sunRoof"
-                                            onChange={handleFilterChange}>
-                                            Sun roof
-                                        </ToggleButton>
-                                    </Col>
-                                    <Col className="filterButtonCol">
-                                        <ToggleButton
-                                            className="filterButton"
-                                            id="heatedSeats"
-                                            type="checkbox"
-                                            variant={heatedSeats ? "dark" : "light"}
-                                            checked={heatedSeats}
-                                            name="heatedSeats"
-                                            onChange={handleFilterChange}>
-                                            Heated seats
-                                        </ToggleButton>
-                                    </Col>
-                                </Row>
-                                <h3 className="filterTitle">Price range</h3>
-                                <Row className="justify-content-center filterRow">
-                                    <Col>
-                                        <PriceSlider handlePriceChange={handleFilterPriceChange} />
-                                    </Col>
-                                </Row>
-                                <Row className="justify-content-center filterRow">
-                                    <Col className="filterButtonCol">
-                                        <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
-                                    </Col>
-                                    <Col className="filterButtonCol">
-                                        <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
-                                    </Col>
-                                </Row>
-                                <h3 className="filterTitle">Max passengers</h3>
-                                <Row className="justify-content-center filterRow">
-                                    <Col>
-                                        <MaxPassengersSlider handlePassengersChange={handleFilterPassengersChange} />
-                                    </Col>
-                                </Row>
-                                <Row className="justify-content-center filterRow">
-                                    <Col className="filterButtonCol">
-                                        <Form.Control className="textInputSmall textInputClean" value={passengersStart + " passengers"} name="passengers" placeholder="Passengers start" />
-                                    </Col>
-                                    <Col className="filterButtonCol">
-                                        <Form.Control className="textInputSmall textInputClean" value={passengersEnd + " passengers"} name="passengers" placeholder="Passengers start" />
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </ProSidebar>
-                    </Col>
                 </Row>
+                {/* <Col style={{ paddingLeft: 0, paddingRight: 0 }} xs={false ? 3 : "auto"} className="d-flex justify-content-end"> */}
             </Container>
+            <div className="filterContainerMain">
+                <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"min(100vw, 400px)"} collapsedWidth={"0px"}>
+                    <Container className="filterMain filterScroll">
+                        <h3 className="filterTitle">Features</h3>
+                        <Row className="justify-content-center filterRowSmall">
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="solarPower"
+                                    type="checkbox"
+                                    variant={solarPower ? "dark" : "light"}
+                                    checked={solarPower}
+                                    name="solarPower"
+                                    onChange={handleFilterChange}>
+                                    Solar power
+                                </ToggleButton>
+                            </Col>
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="shower"
+                                    type="checkbox"
+                                    variant={shower ? "dark" : "light"}
+                                    checked={shower}
+                                    name="shower"
+                                    onChange={handleFilterChange}>
+                                    Shower
+                                </ToggleButton>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center filterRowSmall">
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="bathroom"
+                                    type="checkbox"
+                                    variant={bathroom ? "dark" : "light"}
+                                    checked={bathroom}
+                                    name="bathroom"
+                                    onChange={handleFilterChange}>
+                                    Bathroom
+                                </ToggleButton>
+                            </Col>
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="kitchen"
+                                    type="checkbox"
+                                    variant={kitchen ? "dark" : "light"}
+                                    checked={kitchen}
+                                    name="kitchen"
+                                    onChange={handleFilterChange}>
+                                    Kitchen
+                                </ToggleButton>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center filterRowSmall">
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="sunRoof"
+                                    type="checkbox"
+                                    variant={sunRoof ? "dark" : "light"}
+                                    checked={sunRoof}
+                                    name="sunRoof"
+                                    onChange={handleFilterChange}>
+                                    Sun roof
+                                </ToggleButton>
+                            </Col>
+                            <Col className="filterButtonCol">
+                                <ToggleButton
+                                    className="filterButton"
+                                    id="heatedSeats"
+                                    type="checkbox"
+                                    variant={heatedSeats ? "dark" : "light"}
+                                    checked={heatedSeats}
+                                    name="heatedSeats"
+                                    onChange={handleFilterChange}>
+                                    Heated seats
+                                </ToggleButton>
+                            </Col>
+                        </Row>
+                        <h3 className="filterTitle">Price range</h3>
+                        <Row className="justify-content-center filterRow">
+                            <Col>
+                                <PriceSlider handlePriceChange={handleFilterPriceChange} />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center filterRow">
+                            <Col className="filterButtonCol" style={{margin:"0px 1.8%"}}>
+                                <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
+                            </Col>
+                            <Col className="filterButtonCol" style={{ margin: "0px 1.8%" }}>
+                                <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
+                            </Col>
+                        </Row>
+                        <h3 className="filterTitle">Max passengers</h3>
+                        <Row className="justify-content-center filterRow">
+                            <Col>
+                                <MaxPassengersSlider handlePassengersChange={handleFilterPassengersChange} />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center filterRow">
+                            <Col className="filterButtonCol" style={{ margin: "0px 1.8%" }}>
+                                <Form.Control className="textInputSmall textInputClean" value={passengersStart + " passengers"} name="passengers" placeholder="Passengers start" />
+                            </Col>
+                            <Col className="filterButtonCol" style={{ margin: "0px 1.8%" }}>
+                                <Form.Control className="textInputSmall textInputClean" value={passengersEnd + " passengers"} name="passengers" placeholder="Passengers start" />
+                            </Col>
+                        </Row>
+                    </Container>
+                </ProSidebar>
+            </div>
         </div>
     )
 }

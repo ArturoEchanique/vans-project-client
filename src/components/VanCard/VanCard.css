@@ -1,4 +1,4 @@
-.vanCardMain{
+.vanCardMain {
     padding: 0%;
     margin-top: 0;
     margin-bottom: 20px;
@@ -7,10 +7,12 @@
 .vanCardImage {
     border-radius: 10px;
     width: 100%;
-    height: 170px;
     object-fit: cover;
     padding: 0px;
+    margin-bottom: 5px;
     margin-top: 18px;
+    aspect-ratio: 3.5 / 3;
+
 }
 
 .vanCardFeature {
@@ -25,7 +27,8 @@
 .vanCardTitle {
     display: flex;
     width: 95%;
-    font-size: 13px;
+    /* font-size: 13px; */
+    font-size: 1em;
     height: 40px;
     justify-content: left;
     text-align: left;
@@ -49,21 +52,12 @@
     margin-top: 0px;
     margin-bottom: 8px !important;
     padding-bottom: 0px;
-    font-size: 12px;
+    font-size: 0.8em;
+    /* font-size: 12px; */
 
 }
 
-/* .heartContainer {
-    height: 45px;
-    padding: 0px;
-    margin: 0px;
-    position: relative;
-    top: -20px;
-    right: 70px;
-    background-color: red;
-} */
-
-.imageParent{
+.imageParent {
     position: relative;
 }
 
@@ -72,7 +66,7 @@
     padding: 5px;
     margin: 0px;
     position: absolute;
-    bottom: 125px;
+    top: 30px;
     right: 10px;
 }
 
@@ -92,4 +86,10 @@
     margin: 0px 0px 0px 0px;
     text-align: center;
 
+}
+
+@media screen and (max-width: 576px) {
+    .vanCardMain {
+       font-size: 1.2em;
+    }
 }

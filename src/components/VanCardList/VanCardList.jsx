@@ -11,19 +11,8 @@ import "./VanCardList.css"
 
 
 const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingData, addFavoriteVan, removeFavoriteVan, favoriteVans, }) => {
-    // const { isLoggedIn, isLoading, user } = useContext(AuthContext)
-    // const [deleteState, setDeleteState] = useState(false)
-    // const [hasMoreVans, setHasMoreVans] = useState(true)
-
-    // const fetchMoreData = () => {
-    //     // setTimeout(() => {
-    //     //     loadVans({ ...filterData, skip: vans.length })
-    //     // }, 1000)
-    // }
     const ref = useRef();
-    // const inViewport = InViewportComponent(ref, '0px'); // Trigger as soon as the element becomes visible
     const inViewport = InViewportComponent(ref, "1% 0%"); // Trigger if 200px is visible from the element
-    // console.log("has more vans", hasMoreVans)
     if (inViewport && !isFetchingData && hasMoreVans) fetchMoreData()
     if (inViewport && !isFetchingData && !hasMoreVans) console.log("no more results")
     if (inViewport) {
@@ -36,26 +25,24 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
 
 
     return (
-            <div className="vanInfiniteScroll">
-                <Container >
-                    <Row >
-                        {vans.map((van, idx) => {
-                            return (
-                                <Col xs={6}>
-                                    <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
-                                </Col>)
-                        })}
-                        <div ref={ref} className="spinnerContainer">
-                            {hasMoreVans ? <Spinner className="mySpinner" animation="border" size="xl" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </Spinner> : (noResults ? "There is no results" : "No more results")
-                            }
-                        </div>
-
-                        {/* <InViewportComponent noResults={noResults} hasMoreVans={hasMoreVans} fetchMoreData={fetchMoreData} isFetchingData={isFetchingData}>loading component</InViewportComponent> */}
-                    </Row>
-                </Container>
-            </div>
+        <div className="vanInfiniteScroll" >
+            <Container fluid style={{padding:"0px 8%"}}>
+                <Row>
+                    {vans.map((van, idx) => {
+                        return (
+                            <Col sm={6} md={6} xs={12}>
+                                <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
+                            </Col>)
+                    })}
+                    <div ref={ref} className="spinnerContainer">
+                        {hasMoreVans ? <Spinner className="mySpinner" animation="border" size="xl" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner> : (noResults ? "There is no results" : "No more results")
+                        }
+                    </div>
+                </Row>
+            </Container>
+        </div>
 
 
 
