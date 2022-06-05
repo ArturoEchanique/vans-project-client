@@ -54,14 +54,13 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                 <Container>
                     <Row fluid>
 
-                        <Col xs={{ span: 6 }} style={{ paddingRight: "0px" }}>
+                        <Col md={6} xs={12} style={{ paddingRight: "0px" }}>
                             <BookingConfirmCard {...vanDetails} bookedVan={van_id} startDate={startDate} endDate={endDate} price={price} />
 
                             <section id="sect1">
                                 <Row className="d-flex justify-content-between">
                                     <Col>
                                         <h4 id="rowPay">Pay with</h4>
-
                                     </Col>
                                     <Col style={{ padding: "0px", margin: "0px" }}>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"></img>
@@ -71,7 +70,6 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_sofort.09a6b8666f72c0532ef1e01b516e1ac5.svg"></img>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_paypal.faa3042fa2daf6b4a9822cc4b43e8609.svg"></img>
                                         <img className="creditCardIcon" src="https://a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"></img>
-
                                     </Col>
                                 </Row>
 
@@ -86,8 +84,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                 </Elements>
                             </section>
                         </Col>
-                        <Col xs={{ span: 1 }}></Col>
-                        <Col xs={{ span: 4, }} style={{ paddingLeft: "0px" }} className="confirmBookingCardDetails">
+                        <Col md={4} xs={10} style={{ paddingLeft: "0px" }} className="confirmBookingCardDetails">
 
                             <div className="confirmBookingInfoMain">
                                 <Row className="d-flex justify-content-space-between align-items-center mb-4">
@@ -134,7 +131,7 @@ const BookingConfirmPage = ({ startDate, endDate, price, van_id }) => {
                                     <strong><p>Total</p></strong>
                                     <strong><p>{totalPrice} €</p></strong>
                                 </div>
-                            </div>    
+                            </div>
                         </Col>
                     </Row>
                 </Container >
