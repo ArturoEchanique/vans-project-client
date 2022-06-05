@@ -8,9 +8,11 @@
     justify-content: space-between;
     box-shadow: 2px 2px 8px var(--main-color-3);
     /* z-index: 2000; */
+    padding: 0px;
     padding-left: 2%;
-    height: 47px;
+    height: 46px;
     margin: 0 auto;
+    
 }
 
 .cityAndDateElem {
@@ -51,12 +53,12 @@
     align-items: center;
     justify-content: center;
     background-color: var(--vanmeup-2);
-    padding: 0px 20px;
+    padding: 0px 5px;
 }
 
 .searchText{
-    font-size: clamp(6px, 2.0vw, 15px);
-    margin-left: 10px;
+    font-size: clamp(6px, 1vw, 15px);
+    margin-left: 3px;
 }
 
 .cityAndDateSearchIcon {
@@ -66,7 +68,7 @@
     filter: brightness(400%);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 992px) {
     .searchText {
         visibility: hidden;
         clear: both;

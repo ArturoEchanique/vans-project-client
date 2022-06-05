@@ -30,7 +30,7 @@ const VanCardList = ({ vans, fetchMoreData, hasMoreVans, noResults, isFetchingDa
                 <Row>
                     {vans.map((van, idx) => {
                         return (
-                            <Col sm={6} md={6} xs={12}>
+                            <Col lg={4} xl={6} sm={6} md={6} xs={12}>
                                 <VanCard addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} isFavorite={favoriteVans.includes(van._id)} key={idx} {...van} />
                             </Col>)
                     })}

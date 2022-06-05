@@ -14,6 +14,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import CityAndDate from "../../components/CityAndDate/CityAndDate"
 import MaxPassengersSlider from "../../components/MaxPassengersSlider/MaxPassengersSlider"
 import Loginform from "../../components/LoginForm/LoginForm"
+import useWindowDimensions from "../../utils/useWindowDimensions"
 
 const ResultsPage = ({ setFilterInfo, filterData }) => {
     const { isLoggedIn, isLoading, user } = useContext(AuthContext)
@@ -25,10 +26,12 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [hasMoreVans, setHasMoreVans] = useState(true)
     const [noResults, setNoResults] = useState(true)
     const [isFetchingData, setIsFetchingData] = useState(false)
+    const [showMap, setShowMap] = useState(true)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
     const navigate = useNavigate()
     const [showModals, setShowModals] = useState(false)
+    const { height, width } = useWindowDimensions();
 
 
 
@@ -181,6 +184,8 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         }
     }
 
+    console.log("width is...-----", width)
+
     return (
         <div className="resultsPageMain">
             <div className="resultsTopBar">
@@ -194,10 +199,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                         </Modal.Body>
                     </div>
                 </Modal>
-                <Container fluid>
-                    <Row className="">
-                        <Col xs={2} className="d-flex justify-content-center">
+                <Container fluid style={{ padding: "0 5%" }}>
+                    <Row className="d-flex justify-content-around">
+                        <Col xs="auto" className="topBarLocationButton" style={{ padding: "0 6px" }}>
                             <button
+                                style={{ width: "180px" }}
                                 className={"locationButton"}
                                 id="showFilters"
                                 type="checkbox"
@@ -209,19 +215,35 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 Show nearest vans
                             </button>
                         </Col>
-                        <Col xs={5} className="d-flex justify-content-center">
-                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
-                        </Col>
-                        <Col xs={3} className="d-flex justify-content-center">
+
+                        <Col xs="auto" className="topBarName" style={{ padding: "0 6px" }}>
                             <div className="nameSearchBar">
                                 <form onSubmit={handleSubmit}>
-                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Write a van name" onChange={handleFilterChange} />
+                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Van name" onChange={handleFilterChange} />
                                 </form>
                                 <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                             </div>
                         </Col>
-
-                        <Col xs={2} className="d-flex justify-content-end">
+                        <Col xs="auto" className="topBarDatesBar" style={{ padding: "0 6px" }}>
+                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
+                        </Col>
+                        {(width <= 1200) &&
+                            <Col xs="auto" className="showMapButtonCol" style={{ padding: "0 6px" }}>
+                                <button
+                                    className={"showMapButton" + (!showMap ? " unchecked" : " checked")}
+                                    id="showMap"
+                                    type="checkbox"
+                                    variant={"light"}
+                                    checked={showMap}
+                                    name="showMap"
+                                    onClick={() => setShowMap(!showMap)}>
+                                    <img className="mapButtonIcon" src="./../../images/locationIcon.png"></img>
+                                    Show map
+                                </button>
+                            </Col>
+                        }
+                        
+                        <Col xs="auto" className="" style={{ padding: "0 6px" }}>
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
                                 id="showFilters"
@@ -239,20 +261,48 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
             </div>
             <Container fluid className="resultsPageContainerMain">
                 <Row >
-                    <Col sm={12} md={5} style={{ padding: 0 }}>
-                        <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
-                    </Col>
-                    <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
-                        <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
+                    {(!showMap || width > 1200)&&
+                        <Col sm={12} xl={5} style={{ padding: 0 }}>
+                            <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
+                        </Col>
+                    }
 
-                    </Col >
+                    {(showMap || width > 1200)&&
+                        <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
+                            <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
+                        </Col >
+                    }
+
                 </Row>
-                {/* <Col style={{ paddingLeft: 0, paddingRight: 0 }} xs={false ? 3 : "auto"} className="d-flex justify-content-end"> */}
             </Container>
             <div className="filterContainerMain">
                 <ProSidebar collapsed={filtersCollapsed} rtl={false} width={"min(100vw, 400px)"} collapsedWidth={"0px"}>
                     <Container className="filterMain filterScroll">
-                        <h3 className="filterTitle">Features</h3>
+
+                        <Row className="d-flex justify-content-center filterRowSmall filterLocationButton">
+                            <button
+                                className={"locationButton"}
+                                id="showFilters"
+                                type="checkbox"
+                                variant={"light"}
+                                checked={filtersCollapsed}
+                                name="showFilters"
+                                onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                <img className="locationButtonIcon" src="./../../images/locationIcon.png"></img>
+                                Show nearest vans
+                            </button>
+                        </Row>
+
+                        <Row className="d-flex justify-content-center filterRowSmall filterVanName">
+                            <h3 className="filterTitle mt-4">Write a van name</h3>
+                            <div className="nameSearchBar" style={{ width: "100%" }}>
+                                <form onSubmit={handleSubmit}>
+                                    <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Van name" onChange={handleFilterChange} />
+                                </form>
+                                <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
+                            </div>
+                        </Row>
+                        <h3 className="filterTitle mt-4">Features</h3>
                         <Row className="justify-content-center filterRowSmall">
                             <Col className="filterButtonCol">
                                 <ToggleButton
@@ -338,10 +388,10 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             </Col>
                         </Row>
                         <Row className="justify-content-center filterRow">
-                            <Col className="filterButtonCol" style={{margin:"0px 1.8%"}}>
+                            <Col className="filterButtonCol" style={{ margin: "0px 1%" }}>
                                 <Form.Control className="textInputSmall textInputClean" value={priceStart + "€"} name="name" placeholder="Price start" />
                             </Col>
-                            <Col className="filterButtonCol" style={{ margin: "0px 1.8%" }}>
+                            <Col className="filterButtonCol" style={{ margin: "0px 1%" }}>
                                 <Form.Control className="textInputSmall textInputClean" value={priceEnd + "€"} name="name" placeholder="Price start" />
                             </Col>
                         </Row>
@@ -358,6 +408,11 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             <Col className="filterButtonCol" style={{ margin: "0px 1.8%" }}>
                                 <Form.Control className="textInputSmall textInputClean" value={passengersEnd + " passengers"} name="passengers" placeholder="Passengers start" />
                             </Col>
+                        </Row>
+
+                        <Row className="justify-content-center filterRowSmall filterDatesBar">
+                            <h3 className="filterTitle mt-4 mb-3">City and date</h3>
+                            <CityAndDate filterData={filterData} setFilterInfo={setFilterInfo} handleDatesChange={setFilterInfo}></CityAndDate>
                         </Row>
                     </Container>
                 </ProSidebar>
