@@ -3,7 +3,7 @@
     height: 20px;
     padding: 0px;
     margin: 0px;
-    filter: saturate(1000%) brightness(120%) hue-rotate(205deg)
+    filter: saturate(1000%) brightness(120%) hue-rotate(210deg)
 }
 
 .toast{
