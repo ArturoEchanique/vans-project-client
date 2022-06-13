@@ -26,7 +26,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [hasMoreVans, setHasMoreVans] = useState(true)
     const [noResults, setNoResults] = useState(true)
     const [isFetchingData, setIsFetchingData] = useState(false)
-    const [showMap, setShowMap] = useState(false)
+    const [showMap, setShowMap] = useState(true)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
     const navigate = useNavigate()
@@ -43,6 +43,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
 
     useEffect(() => {
         loadVans(filterData)
+
     }, [])
 
     useEffect(() => {
@@ -189,7 +190,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     return (
         <div className="resultsPageMain">
             {/* <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} /> */}
-            <div className="resultsTopBar" style={{height:"10%"}}>
+            <div className="resultsTopBar" style={{ height: "10%" }}>
                 <Modal show={showModals} onHide={closeLoginModal}>
                     <div className="modal1">
                         <Modal.Header closeButton>
@@ -243,7 +244,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 </button>
                             </Col>
                         }
-                        
+
                         <Col xs="auto" className="" style={{ padding: "0 6px" }}>
                             <button
                                 className={"showFiltersButton" + (filtersCollapsed ? " unchecked" : " checked")}
@@ -260,15 +261,15 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                     </Row>
                 </Container>
             </div>
-            <Container fluid className="resultsPageContainerMain" style={{ height: "90%"}}>
-                <Row style={{height:"100%"}}>
-                    {(!showMap || width > 1200)&&
+            <Container fluid className="resultsPageContainerMain" style={{ height: "90%" }}>
+                <Row style={{ height: "100%" }}>
+                    {(!showMap || width > 1200) &&
                         <Col sm={12} xl={5} style={{ padding: 0, height: "100%" }}>
                             <VanCardList addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} favoriteVans={favoriteVans} fetchMoreData={fetchMoreData} noResults={noResults} hasMoreVans={hasMoreVans} isFetchingData={isFetchingData} vans={vans}> </VanCardList>
                         </Col>
                     }
 
-                    {(showMap || width > 1200)&&
+                    {(showMap || width > 1200) &&
                         <Col style={{ paddingLeft: 0, paddingRight: 0, height: "100%" }}>
                             <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} />
                         </Col >
