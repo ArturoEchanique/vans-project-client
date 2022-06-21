@@ -259,12 +259,12 @@
 }
 
 .showMapButton.unchecked {
-    color: var(--vanmeup-2);
+    color: black;
+    
 }
 
 .showMapButton.checked {
-    
-    color: black;
+    color: var(--vanmeup-2);
 }
 
 .searchIcon {

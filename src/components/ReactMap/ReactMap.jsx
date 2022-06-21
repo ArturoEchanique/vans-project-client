@@ -13,7 +13,7 @@ const containerStyle = {
 function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
-    const [zoom, setZoom] = useState(13)
+    const [zoom, setZoom] = useState(12)
     const [center, setCenter] = useState({ lat: initLocationX, lng: initLocationY });
 
     useEffect(() => {

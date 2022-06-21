@@ -188,11 +188,13 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     }
 
     const pressLocationButton = () => {
+        closeFiltersModal()
+        setShowMap(true)
         setLocationButtonPressed(true)
-        setLocationSwitcher(!locationSwitcher)
         setTimeout(() => {
             setLocationButtonPressed(false)
-        }, "450")
+            setLocationSwitcher(!locationSwitcher)
+        }, "200")
     }
 
     console.log("width is...-----", width)
@@ -394,7 +396,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     name="showMap"
                                     onClick={() => setShowMap(!showMap)}>
                                     <img className="mapButtonIcon" src="./../../images/locationIcon.png"></img>
-                                    Hide map
+                                    {showMap ? "Hide map" : "Show map"}
                                 </button>
                             </Col>
                         }
