@@ -7,12 +7,12 @@ const MapMarker = ({ isFavorite, addFavoriteVan, removeFavoriteVan, van, markerI
         null /* size is determined at runtime */,
         null /* origin is 0,0 */,
         null /* anchor is bottom center of the scaled image */,
-        new window.google.maps.Size(75, 50)
+        new window.google.maps.Size(60, 40)
     )
 
     const label = {
         text: `${van.dayPrice}€`,
-        fontSize: "20px",
+        fontSize: "16px",
         color: "#222222",
         fontWeight: "bolder",
     }
