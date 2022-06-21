@@ -302,7 +302,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                                     <strong className="mainPrice">{vanDetails.dayPrice} €</strong>&nbsp; /day
                                 </Col>
                                 <Col >
-                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}
+                                    {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${reviewsAvg}`}</strong></div>}
                                 </Col>
 
                             </Row>
