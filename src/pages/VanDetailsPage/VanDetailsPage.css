@@ -1,6 +1,6 @@
 .detailsPage {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 80px;
+    padding-bottom: 100px;
 }
 
 .detailsLeftBlock {
@@ -28,13 +28,28 @@
 }
 
 .vanImage {
-    width: 100%;
+    /* width: 100%;
     border-radius: 10px;
     padding: 0%;
     margin-bottom: 30px;
     height: 500px;
+    object-fit: cover; */
+
+    border-radius: 10px;
+    width: 100%;
     object-fit: cover;
+    padding: 0px;
+    margin-bottom: 3%;
+    aspect-ratio: 6 / 3;
 }
+
+/* border-radius: 10px;
+width: 100%;
+object-fit: cover;
+padding: 0px;
+margin-bottom: 2px;
+margin-top: 18px;
+aspect-ratio: 3.5 / 3; */
 
 .vanImageCollage {
     width: 100%;
@@ -88,7 +103,7 @@
 }
 
 .vanDetailsIconsRow {
-    margin: 30px 0px 70px 0px;
+    margin: 30px 0px 30px 0px;
     text-align: center;
 }
 
@@ -139,14 +154,17 @@
     margin-right: 5px;
 }
 
+
+
 .bookingInfoMain {
 
     /* margin-left: 50px; */
     width: 100%;
+    max-width: 360px;
     height: 490px;
     border-radius: 13px;
     padding: 25px;
-    margin-left: 20%;
+    /* margin-left: 20%; */
     /* background-color: red; */
     box-shadow: 3px 3px 10px var(--main-color-3);
 }
@@ -202,10 +220,10 @@
     padding: 4px;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
 
     .detailsPageSub {
-            padding: 0% 8%;
+            padding: 0% 7%;
         }
 }
 

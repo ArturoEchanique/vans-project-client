@@ -15,6 +15,7 @@ import ReactMapVan from "../../components/ReactMapVan/ReactMapVan"
 import { useNavigate } from "react-router-dom"
 import { daysBetweenTwoDates } from "../../utils/dateUtils"
 import Loginform from "../../components/LoginForm/LoginForm"
+import useWindowDimensions from "../../utils/useWindowDimensions"
 
 const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const [vanDetails, setVanDetails] = useState({})
@@ -26,6 +27,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
     const [showModals, setShowModals] = useState(false)
+    const { height, width } = useWindowDimensions()
 
 
     const openModal = () => setShowModal(true)
@@ -187,13 +189,15 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
             <div className="detailsPageSub">
                 <div className="vanImageTopInfo">
                     <Row className="mb-3">
-                        <Col xs="auto" className="d-flex justify-content-start">
-                            <h3 className="vanDetailsOwner">Owner: {vanDetails?.owner?.username}</h3>
-                        </Col>
+                        {width > 768 &&
+                            <Col xs="auto" className="d-flex justify-content-start">
+                                <h3 className="vanDetailsOwner">Owner: {vanDetails?.owner?.username}</h3>
+                            </Col>
+                        }
                         <Col className="d-flex align-items-center">
                             {vanDetails.reviews && <div className="bookingInfoRating"><strong>{`★ ${reviewsAvg} - ${vanDetails.reviews.length} reviews`}</strong></div>}
                         </Col>
-                        <Col xs={2} className="d-flex align-items-center justify-content-end">
+                        <Col xs="auto" className="d-flex align-items-center justify-content-end">
                             <button className="heartButtonDetails" onClick={isFavorite ? () => removeFavoriteVan(_id) : () => addFavoriteVan(_id)}>
                                 <img className={"heartIcon " + (isFavorite ? "redHeart" : "greyHeart")} src="./../../images/heartIcon.png"></img>&nbsp; Save van
                             </button>
@@ -231,7 +235,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                     <img className="vanImage" src={vanDetails?.imageUrl}></img>
                 }
                 <Row className="mt-3">
-                    <Col xs={7} >
+                    <Col xs={12} xl={7}>
                         <div className="vanInfoMain">
                             <Row className="justify-content-left align-items-center mb-4">
                                 <Col xs={10} className="justify-content-center">
@@ -291,7 +295,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                         </div>
                     </Col>
-                    <Col xs={5} className="d-flex justify-content-end">
+                    <Col xs={12} xl={{ span: 5, offset: 0 }} className="d-flex justify-content-center justify-content-xl-end">
                         <div className="bookingInfoMain">
                             <Row className="d-flex justify-content-space-between align-items-center mb-4">
                                 <Col className="">

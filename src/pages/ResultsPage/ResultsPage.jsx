@@ -218,7 +218,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Filters</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body >
                             <Container className="filterMain filterScroll">
                                 <Row className="d-flex justify-content-center filterRowSmall filterLocationButton">
                                     <button

@@ -31,7 +31,11 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
                 console.log("geocode results are:", "lat", lat, "lng,", lng)
 
                 setFilterInfo({ ...filterData, address: geoData.address, mapInitLocationX: lat, mapInitLocationY: lng })
-                navigate("/results")
+                navigate("/")
+                setTimeout( () => {
+                    navigate("/results")
+                }, 50)
+                
             },
             (error) => {
                 console.log("geodata failed", error)
