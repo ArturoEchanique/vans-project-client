@@ -6,12 +6,11 @@
     max-width: 300px !important;
     max-height: 500px !important;
     min-width: 0px !important;
-    height: 310px;
+    height: 410px;
     width: 400px;
     position: absolute;
     box-sizing: border-box;
     background-color: red;
-
     overflow: hidden;
     top: 0;
     left: 0;
