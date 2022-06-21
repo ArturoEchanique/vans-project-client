@@ -150,6 +150,19 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
         }
     }
 
+    const getVanImageFiltered = () => {
+        if (vanDetails.imageUrl){
+            if (vanDetails?.imageUrl[0] && (vanDetails?.imageUrl[0] !== "https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652949657/vans_project/results_azn9vk.png")) {
+                return vanDetails?.imageUrl[0]
+            }
+            else return "https://res.cloudinary.com/dzzkeb6xp/image/upload/v1652949664/vans_project/26_ngdxkd.jpg"
+        }
+        else return ""
+        
+       
+    }
+    const imageUrlFiltered = getVanImageFiltered()
+
     let totalDays = 0
     let daysPrice = 0
     let commision = 0
@@ -232,7 +245,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                         </Col>
                     </Row>
                     :
-                    <img className="vanImage" src={vanDetails?.imageUrl}></img>
+                    <img className="vanImage" src={imageUrlFiltered}></img>
                 }
                 <Row className="mt-3">
                     <Col xs={12} xl={7}>
@@ -257,36 +270,36 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
                             <br></br>
                             <h4 className="detailsPageTitle">{"Features"}</h4>
                             <Row className="d-flex justify-content-start vanDetailsIconsRow">
-                                <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">
+                                <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">
                                     <img className="vanCardIcon" src="./../../images/peopleIcon.png"></img> &nbsp;{" " + maxPassengers + " passengers "}
                                 </Col>
                                 {solarPower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; Solar power&nbsp; &nbsp; </Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/sunIcon.png"></img> &nbsp; Solar power&nbsp; &nbsp; </Col>
 
                                 }
                                 {shower &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; Shower&nbsp; &nbsp; </Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"><img className="vanCardIcon" src="./../../images/showerIcon.png"></img> &nbsp; Shower&nbsp; &nbsp; </Col>
 
                                 }
                                 {solarRoof &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; Solar roof</Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/solarRoofIcon.png"></img> &nbsp; Solar roof</Col>
 
                                 }
                                 {kitchen &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; Kitchen&nbsp; &nbsp; </Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5">  <img className="vanCardIcon" src="./../../images/kitchenIcon.png"></img> &nbsp; Kitchen&nbsp; &nbsp; </Col>
                                 }
                                 {bathroom &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; Bathroom&nbsp; &nbsp; </Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/bathroomIcon.png"></img> &nbsp; Bathroom&nbsp; &nbsp; </Col>
 
                                 }
                                 {heatedSeats &&
 
-                                    <Col xs={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; Heated seats&nbsp; &nbsp; </Col>
+                                    <Col xs={6} md={4} style={{ paddingLeft: "0" }} className="d-flex justify-content-start mb-5"> <img className="vanCardIcon" src="./../../images/heatedSeatsIcon.png"></img> &nbsp; Heated seats&nbsp; &nbsp; </Col>
 
                                 }
 

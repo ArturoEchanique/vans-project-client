@@ -34,10 +34,10 @@
 
 .filterMain {
     flex: 1 !important;
-    height: calc(78vh) !important;
+    height: calc(68vh) !important;
     overflow-y: scroll !important;
     margin-top: 0px;
-    padding: 5% 4%;
+    padding: 0% 4%;
     padding-bottom: 25%;
 }
 

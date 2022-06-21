@@ -57,8 +57,9 @@ const CityAndDate = ({ filterData, setFilterInfo, startDate, endDate, handleDate
             <div className="cityAndDate">
 
                         <input className="cityInput" type="text" value={address} name="address" onChange={handleStreetChange} />
-
-                <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+                <div className="cityAndDaterDatePickerContainer">
+                    <DatePicker startDate={today} endDate={tomorrow} handleDatesChange={setFilterInfo} />
+                </div>
                 <Link className="cityAndDateSearchButtonLink" to="/results">
                     <button className="cityAndDateSearchButton" variant={"light"} onClick={searchVansClicked} id="search">
                         <img className="cityAndDateSearchIcon" src="./../../images/magnifyingGlassIcon.png"></img>

@@ -12,7 +12,10 @@
     padding-left: 2%;
     height: 40px;
     margin: 0 auto;
-    
+}
+
+.cityAndDaterDatePickerContainer{
+    width: 50%;
 }
 
 .cityAndDateElem {

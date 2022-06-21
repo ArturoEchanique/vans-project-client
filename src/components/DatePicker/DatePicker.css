@@ -1,5 +1,5 @@
 .datePickerMain {
-    width: 50% !important;
+    width: 100% !important;
 }
 
 .rheostat-progress {
@@ -156,4 +156,10 @@ border-radius: 12px;
     .DateRangePicker_picker {
         transform: scale(0.5) translate(0%, -20%);
     }
+}
+
+.DateRangePickerInput_arrow{
+    display: flex;
+    align-items: center;
+
 }
