@@ -1,15 +1,16 @@
 .resultsPageMain {
-    /* overflow: hidden; */
-    height: calc(100vh - 60px);
-    /* padding-top: 96px; */
+    height: calc(100vh - 90px);
     background-color: var(--main-color-5);
-    /* background-color: rgba(255, 0, 0, 0.866); */
-    /* font-size: 0.8em; */
+    /* position: absolute;
+    top: 80px; */
 }
 
-/* .resultsContainer {
-    padding: 0;
-} */
+.resultsPageMainSm {
+    height: auto;
+    background-color: var(--main-color-5);
+    /* position: absolute;
+    top: 80px; */
+}
 
 .resultsTopBar {
     display: flex;
@@ -18,7 +19,6 @@
     box-shadow: 3px 3px 5px var(--main-color-5);
     background-color: var(--main-color-5);
     z-index: 10000;
-    /* background-color: rgba(0, 128, 0, 0.632); */
 }
 
 .filterContainerMain {
@@ -30,12 +30,6 @@
     height: calc(100vh - 168px);
     overflow: hidden;
 }
-
-/* .filterScroll {
-    flex: 1 !important;
-    height: 100vh !important;
-    overflow-y: scroll !important;
-} */
 
 .filterMain {
     flex: 1 !important;

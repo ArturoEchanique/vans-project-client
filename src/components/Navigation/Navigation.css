@@ -9,6 +9,13 @@
 }
 
 .navBarMain {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
+
+.navBarMain {
     height: 80px;
 
 }
@@ -17,7 +24,7 @@
     padding: 0;
 }
 
-.logoContainer{
+.logoContainer {
     height: 0px;
 }
 
@@ -216,7 +223,7 @@
     font-size: 1.2em;
 }
 
-.becomeHost{
+.becomeHost {
     margin: auto;
 }
 

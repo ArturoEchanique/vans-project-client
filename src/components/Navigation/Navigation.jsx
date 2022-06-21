@@ -70,7 +70,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
         <>
             {[false].map((expand) => (
                 <Navbar collapseOnSelect
-                    as="nav" key={expand} expand={expand} className=" ">
+                    as="nav" key={expand} expand={expand} className="navBarMain">
                     <div className="navigationMainContainer">
                         <Modal className="modal-signin" show={showRegisterModal} onHide={closeRegisterModal}>
                             <div className="modal1">
