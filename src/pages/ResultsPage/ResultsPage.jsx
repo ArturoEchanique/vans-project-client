@@ -27,6 +27,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [noResults, setNoResults] = useState(true)
     const [isFetchingData, setIsFetchingData] = useState(false)
     const [showMap, setShowMap] = useState(true)
+    const [locationButtonPressed, setLocationButtonPressed] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
     const navigate = useNavigate()
@@ -186,6 +187,14 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
         }
     }
 
+    const pressLocationButton = () => {
+        setLocationButtonPressed(true)
+        setLocationSwitcher(!locationSwitcher)
+        setTimeout(() => {
+            setLocationButtonPressed(false)
+        }, "450")
+    }
+
     console.log("width is...-----", width)
 
     return (
@@ -211,13 +220,13 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                             <Container className="filterMain filterScroll">
                                 <Row className="d-flex justify-content-center filterRowSmall filterLocationButton">
                                     <button
-                                        className={"locationButton"}
+                                        className={"locationButton" + (locationButtonPressed ? " pressed" : " unpressed")}
                                         id="showFilters"
                                         type="checkbox"
                                         variant={"light"}
                                         checked={filtersCollapsed}
                                         name="showFilters"
-                                        onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                        onClick={pressLocationButton}>
                                         <img className="locationButtonIcon" src="./../../images/locationIcon.png"></img>
                                         Show nearest vans
                                     </button>
@@ -226,9 +235,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                 <Row className="d-flex justify-content-center filterRowSmall filterVanName">
                                     <h3 className="filterTitle mt-4">Write a van name</h3>
                                     <div className="nameSearchBar" style={{ width: "100%" }}>
-                                        <form onSubmit={handleSubmit}>
-                                            <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Van name" onChange={handleFilterChange} />
-                                        </form>
+                                        <input className=" nameSearchBarInput textInputClean textInputBig" type="text" value={name} name="name" placeholder="Van name" onChange={handleFilterChange} />
                                         <img className="searchNameIcon" src="./../../images/magnifyingGlassIcon.png"></img>
                                     </div>
                                 </Row>
@@ -353,13 +360,13 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                         <Col xs="auto" className="topBarLocationButton" style={{ padding: "0 6px" }}>
                             <button
                                 style={{ width: "180px" }}
-                                className={"locationButton"}
+                                className={"locationButton" + (locationButtonPressed ? " pressed" : " unpressed")}
                                 id="showFilters"
                                 type="checkbox"
                                 variant={"light"}
                                 checked={filtersCollapsed}
                                 name="showFilters"
-                                onClick={() => setLocationSwitcher(!locationSwitcher)}>
+                                onClick={pressLocationButton}>
                                 <img className="locationButtonIcon" src="./../../images/locationIcon.png"></img>
                                 Show nearest vans
                             </button>
@@ -387,7 +394,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
                                     name="showMap"
                                     onClick={() => setShowMap(!showMap)}>
                                     <img className="mapButtonIcon" src="./../../images/locationIcon.png"></img>
-                                    Show map
+                                    Hide map
                                 </button>
                             </Col>
                         }

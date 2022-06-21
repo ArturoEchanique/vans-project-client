@@ -362,7 +362,7 @@ const VanDetails = ({ setBookingInfo, bookingInfo }) => {
 
                             {vanDetails.reviews && vanDetails.reviews.map((review, idx) => {
                                 return (
-                                    <Col xs={5}>
+                                    <Col xs={12} lg={5}>
                                         <ReviewComment profileIndex={idx} vanReview={review}></ReviewComment>
                                     </Col>
                                 )

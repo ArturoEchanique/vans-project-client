@@ -22,12 +22,6 @@
     justify-content: center;
 }
 
-/* .detailsPage .row {
-    text-align: right;
-    display: flex;
-    justify-content: right;
-} */
-
 .detailsRow {
     padding: 0px;
     margin: 0px;
@@ -207,3 +201,11 @@
     /* background-color: red; */
     padding: 4px;
 }
+
+@media screen and (max-width: 576px) {
+
+    .detailsPageSub {
+            padding: 0% 8%;
+        }
+}
+
