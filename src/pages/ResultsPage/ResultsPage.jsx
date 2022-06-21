@@ -200,7 +200,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     console.log("width is...-----", width)
 
     return (
-        <div className={width > 1200 ? "resultsPageMain" : "resultsPageMainSm"}>
+        <div className={(width < 1200 && !showMap) ? "resultsPageMainNoSubScroll" : "resultsPageMain"}>
             {/* <ReactMap locationSwitcher={locationSwitcher} initLocationX={mapInitLocationX} initLocationY={mapInitLocationY} favoriteVans={favoriteVans} addFavoriteVan={addFavoriteVan} removeFavoriteVan={removeFavoriteVan} handleMapBoundsChange={handleMapBoundsChange} vans={mapVans} /> */}
             <div className="resultsTopBar" style={{ height: "70px" }}>
                 <Modal show={showModals} onHide={closeLoginModal}>
