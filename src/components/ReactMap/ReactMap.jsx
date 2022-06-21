@@ -10,35 +10,6 @@ const containerStyle = {
     height: '100%'
 };
 
-// const exampleMapStyles = [
-//     {
-//         featureType: "poi",
-//         elementType: "geometry",
-//         stylers: [
-//             {
-//                 color: "#eeeeee",
-//             },
-//         ],
-//     },
-//     {
-//         featureType: "poi",
-//         elementType: "labels.text",
-//         stylers: [
-//             {
-//                 visibility: "off",
-//             },
-//         ],
-//     },
-//     {
-//         featureType: "water",
-//         elementType: "labels.text.fill",
-//         stylers: [
-//             {
-//                 color: "#9e9e9e",
-//             },
-//         ],
-//     },
-// ];
 function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favoriteVans, addFavoriteVan, removeFavoriteVan, handleMapBoundsChange }) {
 
     const [visibleMarker, setVisibleMarker] = useState(-1)
@@ -122,7 +93,12 @@ function ReactMap({ initLocationX, locationSwitcher, initLocationY, vans, favori
         console.log("keys are", Object.keys(bounds)[0])
         const yCord = Object.values(bounds)[0]
         const xCord = Object.values(bounds)[1]
-        handleMapBoundsChange({ mapYBounds: [yCord.h - margin, yCord.j + margin], mapXBounds: [xCord.h - margin, xCord.j + margin] })
+        const yCordH = Object.values(yCord)[0]
+        const yCordJ = Object.values(yCord)[1]
+        const xCordH = Object.values(xCord)[0]
+        const xCordJ = Object.values(xCord)[1]
+        console.log("ycordh is", yCordH)
+        handleMapBoundsChange({ mapYBounds: [yCordH - margin, yCordJ + margin], mapXBounds: [xCordH - margin, xCordJ + margin] })
     }
 
 
