@@ -12,8 +12,9 @@
 } */
 
 .resultsTopBar {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     box-shadow: 3px 3px 5px var(--main-color-5);
     background-color: var(--main-color-5);
     z-index: 10000;
@@ -22,7 +23,7 @@
 
 .filterContainerMain {
     position: absolute;
-    top: 168px;
+    top: 140px;
     z-index: -0;
     right: 0px;
     /* width: 300px; */

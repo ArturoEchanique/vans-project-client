@@ -92,7 +92,7 @@ const Navigation = ({ setFilterInfo, filterData, hideFilter }) => {
                                 </Modal.Body>
                             </div>
                         </Modal>
-                        <div className="logo">
+                        <div className="logoContainer">
                             <Navbar.Brand>
                                 <Link to="/" className="nav-link">
                                     <img className="logo-nav" id="logo" src="./../images/VANMEUP.png" alt="vanmeup" />

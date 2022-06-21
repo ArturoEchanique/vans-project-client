@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+.logoContainer{
+    height: 0px;
+}
+
 .background-navbar {
     background-color: white;
 }
@@ -77,14 +81,9 @@
 }
 
 .logo-nav {
-
     margin-left: 3vw;
-
-}
-
-.logo-nav {
     width: auto;
-
+    height: 50px;
 }
 
 .navbar {
@@ -120,6 +119,10 @@
     border-radius: 30px;
 }
 
+/* .dropdownContainer{
+    margin: auto;
+} */
+
 .dropdown-menu.show {
     background-color: white;
     border: 0px;
@@ -147,7 +150,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-top: 15px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     justify-content: space-between;
 }
 
@@ -189,7 +193,7 @@
     display: flex;
     width: 180px;
     padding: 0px 0px;
-    height: 44px;
+    height: 38px;
     border-radius: 6px;
     font-size: 13px;
     align-items: center;
@@ -202,7 +206,6 @@
 
 .nav-link {
     font-size: 13px !important;
-    margin-bottom: 5px;
 }
 
 .dropdown-item {
@@ -211,6 +214,10 @@
 
 #hostBtn {
     font-size: 1.2em;
+}
+
+.becomeHost{
+    margin: auto;
 }
 
 @media screen and (max-width: 500px) {
