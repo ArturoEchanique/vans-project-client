@@ -1,7 +1,8 @@
 .resultsPageMain {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 100px);
     background-color: var(--main-color-5);
-    /* position: absolute;
+    overflow: hidden
+        /* position: absolute;
     top: 80px; */
 }
 
@@ -253,7 +254,7 @@
 
 .showMapButton.unchecked {
     color: black;
-    
+
 }
 
 .showMapButton.checked {

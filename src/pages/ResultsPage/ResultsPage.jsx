@@ -26,7 +26,7 @@ const ResultsPage = ({ setFilterInfo, filterData }) => {
     const [hasMoreVans, setHasMoreVans] = useState(true)
     const [noResults, setNoResults] = useState(true)
     const [isFetchingData, setIsFetchingData] = useState(false)
-    const [showMap, setShowMap] = useState(true)
+    const [showMap, setShowMap] = useState(false)
     const [locationButtonPressed, setLocationButtonPressed] = useState(false)
     const [locationSwitcher, setLocationSwitcher] = useState(false)
     const [favoriteVans, setFavoriteVans] = useState([])
