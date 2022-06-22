@@ -15,8 +15,8 @@ const App = () => {
 
     const [filterData, setFilterData] = useState({
         skip: 0,
-        mapXBounds: [-10, 10],
-        mapYBounds: [30, 50],
+        mapXBounds: [-4, 4],
+        mapYBounds: [40, 45],
         address: "Cordoba, plaza de la corredera",
         mapInitLocationX: 40.39103445694156,
         mapInitLocationY: -3.7007285931754588,

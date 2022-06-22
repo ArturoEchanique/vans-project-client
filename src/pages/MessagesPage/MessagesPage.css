@@ -1,6 +1,6 @@
 .messagesPageMain {
-    padding-top: 85px;
-    height: 100vh;
+    padding-top: 5px;
+    height: calc(100vh - 110px);
     overflow: hidden;
 }
 
