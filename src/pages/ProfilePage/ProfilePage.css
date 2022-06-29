@@ -19,6 +19,7 @@ hr {
 }
 .button-profile:hover {
     background-color: #ffb05c4f;
+    border-radius: 6px;
     /* background-color: #ff5c5c; */
     /* color: white; */
 }
