@@ -9,7 +9,7 @@ const FavoritesVans = ({ favoriteVans }) => {
     const vansList = favoriteVans?.map((van) => {
         
         return (
-            <Col >
+            <Col xs={12} lg={6}>
                 <VanCard {...van} key={van._id} />
             </Col>
         )
@@ -18,9 +18,9 @@ const FavoritesVans = ({ favoriteVans }) => {
     return (
         <>
             <Container>
-                <h4 className="favorite">Favorite Vans</h4>
+                <h3 className="favorite">Favorite Vans</h3>
                 <hr />
-                <Row className="g-4" xs={2}>
+                <Row className="g-4">
                     {vansList}
                 </Row>
             </Container>

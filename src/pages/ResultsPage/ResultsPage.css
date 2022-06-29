@@ -33,9 +33,9 @@
 }
 
 .filterMain {
-    flex: 1 !important;
+    /* flex: 1 !important;
     height: calc(68vh) !important;
-    overflow-y: scroll !important;
+    overflow-y: scroll !important; */
     margin-top: 0px;
     padding: 0% 8%;
     padding-bottom: 25%;

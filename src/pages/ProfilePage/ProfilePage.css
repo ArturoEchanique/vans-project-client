@@ -10,15 +10,11 @@ hr {
     box-shadow: 3px 3px 10px var(--main-color-3);
     /* border: 2px solid #ff5c5c31; */
 
-    padding: 4rem 4rem 8rem 4rem;
+    /* padding: 16% 16% 32% 16%; */
 }
 .button-profile {
     margin-top: 0.5em;
     padding: 10px 0;
-
-    border-left: 0.5px solid #ff5c5c52;
-    border-right: 0.5px solid #ff5c5c52;
-
     background-color: transparent;
 }
 .button-profile:hover {
@@ -28,8 +24,9 @@ hr {
 }
 
 .button-profile.current {
-    background-color: #ff5c5c;
+    background-color: var(--vanmeup-2);
     color: white;
+    border-radius: 6px;
     /* font-weight: 600; */
 }
 
@@ -47,5 +44,13 @@ hr {
 .buttons-shortcuts{
     margin: 1em;
     display: flex
+    
+}
+
+.profileButtonsMain{
+padding: 30px;
+
+
+
     
 }

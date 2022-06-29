@@ -10,7 +10,7 @@ const UserBookings = ({ userBookings }) => {
         <>
             <Container>
                 <Row className="g-4 " xs={2}>
-                    <h4 className="favorite"> Bookings</h4>
+                    <h3 className="favorite"> Bookings</h3>
                     <hr />
 
                     {bookingList}

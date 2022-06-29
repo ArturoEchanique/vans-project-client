@@ -34,8 +34,8 @@ const UserVans = () => {
     })
 
     return (
-        <Row className="g-4 " xs={2}>
-            <h4 className="favorite">Your Vans</h4>
+        <Row className="g-4 " xs={12}>
+            <h3 className="favorite">Your Vans</h3>
             <hr />
             {vansList}
         </Row>

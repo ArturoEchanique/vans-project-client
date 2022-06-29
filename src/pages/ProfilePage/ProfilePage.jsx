@@ -86,8 +86,8 @@ const ProfilePage = () => {
         <section className="top-margin">
             <Container>
                 <Row className="d-flex justify-content-start">
-                    <Col sm={4}>
-                        <div className="background-profile-detalis">
+                    <Col xs={12} md={5} lg={4}>
+                        <div>
                             <ProfileCard {...userDetails} />
                             <div className="buttons-shortcuts">
                                 <button className="message-btn">
@@ -103,33 +103,24 @@ const ProfilePage = () => {
                             </div>
 
                             <hr />
+                            <div className="profileButtonsMain">
+                                <Row>{getButton("favorites", "Favorites")}</Row>
+                                <Row>{getButton("userBookings", "Your Bookings")}</Row>
 
-                            <Row>{getButton("favorites", "Favorites")}</Row>
-                            <Row>{getButton("userBookings", "Your Bookings")}</Row>
+                                {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
+                                    <>
+                                        <Row>{getButton("vans", "Your Vans")}</Row>
+                                        <Row>{getButton("ownerBookings", "Booked from you")}</Row>
+                                        <Row>{getButton("barChart", "Charts")}</Row>
+                                    </>
+                                )}
+                            </div>
 
-                            {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
-                                <>
-                                    <Row>{getButton("vans", "Your Vans")}</Row>
-                                    <Row>{getButton("ownerBookings", "Booked from you")}</Row>
-                                    <Row>{getButton("barChart", "Charts")}</Row>
-                                </>
-                            )}
                         </div>
                     </Col>
 
-                    <Col className="background-profile-detalis">
+                    <Col >
                         {getProfileView(selectedOption)}
-                        {/* <FavoritesVans id="favorites-vans" {...userDetails} />
-                            <UserBookings id="user-bookings" {...userDetails} />
-                            {(userDetails?.role === "OWNER" || userDetails?.role === "ADMIN") && (
-                                <>
-                                    <UserVans />
-
-                                    <OwnerBookings {...userDetails} />
-
-                                    <BarChart {...userDetails} />
-                                </>
-                            )} */}
                     </Col>
                     <Modal show={showModal} onHide={closeModal}>
                         <div className="modal1">

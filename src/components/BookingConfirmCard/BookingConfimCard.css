@@ -38,6 +38,7 @@ h5 {
     border-radius: 13px;
     padding:  25px;
     margin-right: 10%;
+    max-width: 370px;
     /* background-color: red; */
     box-shadow: 3px 3px 10px var(--main-color-3);
 }

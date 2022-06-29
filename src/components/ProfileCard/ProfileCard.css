@@ -1,7 +1,7 @@
 .profile-name {
-    font-family: "Josefin Sans", sans-serif;
-    color: #5d5d5d;
-   
+    
+    color: #6e6e6e;
+    font-size: 1.8em;
 }
 
 .img-profile {
@@ -9,6 +9,7 @@
     padding: 0;
     border-radius: 10px;
 }
+
 .profile-entry {
     padding: 1em 0.5em;
 
