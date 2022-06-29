@@ -19,7 +19,7 @@ const FavoritesVans = ({ favoriteVans }) => {
         <>
             <Container>
                 <h3 className="favorite">Favorite Vans</h3>
-                <hr />
+                <br />
                 <Row className="g-4">
                     {vansList}
                 </Row>

@@ -16,8 +16,6 @@ const ProfileCard = ({ username, imageUrl }) => {
             <figure className="profile-entry ">
                 <img className="img-profile" src={imageUrl} />
             </figure>
-
-            <hr />
         </div>
     )
 }

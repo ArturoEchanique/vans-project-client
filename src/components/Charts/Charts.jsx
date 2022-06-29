@@ -33,7 +33,9 @@ const BarChart = ({ ownerBookings }) => {
     return (
         <Row>
             <h3 className="favorite">Your Incomes </h3>
-            <hr />
+            <br />
+            <br />
+            <br />
             <Bar options={options} data={data1} />
         </Row>
     )

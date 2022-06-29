@@ -29,7 +29,7 @@ const UserBookingsCard = ({ startDate, endDate, price, bookedVan }) => {
     }
     return (
         <>
-            <Col xs={12} lg={6} style={{ paddingLeft: "0px" }}>
+            <Col xs={12} style={{ paddingLeft: "0px" }}>
                 <div className="confirmBookingInfoMain">
                     <div className=" mb-4">
                         <Row>

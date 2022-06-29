@@ -102,7 +102,7 @@ const ProfilePage = () => {
                                 )}
                             </div>
 
-                            <hr />
+                         
                             <div className="profileButtonsMain">
                                 <Row>{getButton("favorites", "Favorites")}</Row>
                                 <Row>{getButton("userBookings", "Your Bookings")}</Row>

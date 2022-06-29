@@ -3,7 +3,15 @@ import { Container, Row, Col } from "react-bootstrap"
 
 const UserBookings = ({ userBookings }) => {
     const bookingList = userBookings?.map((booking) => {
-        return <UserBookingsCard {...booking} />
+        return(
+            <Col xs={12} lg={6}>
+                <UserBookingsCard {...booking} />
+                <br />
+                <br />
+            </Col>
+           
+        )
+        
     })
 
     return (
@@ -11,8 +19,16 @@ const UserBookings = ({ userBookings }) => {
             <Container>
                 <Row className="g-4 " xs={2}>
                     <h3 className="favorite"> Bookings</h3>
-                    <hr />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
 
+
+
+                </Row>
+                <Row>
                     {bookingList}
                 </Row>
             </Container>

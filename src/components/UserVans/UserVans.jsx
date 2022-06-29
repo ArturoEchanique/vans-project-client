@@ -36,7 +36,7 @@ const UserVans = () => {
     return (
         <Row className="g-4 " xs={12}>
             <h3 className="favorite">Your Vans</h3>
-            <hr />
+            
             {vansList}
         </Row>
     )

@@ -1,5 +1,5 @@
 hr {
-    color: #ff5c5c76;
+    color: #9e9e9e76;
 }
 
 .top-margin {
@@ -18,7 +18,7 @@ hr {
     background-color: transparent;
 }
 .button-profile:hover {
-    background-color: #ff5c5c4f;
+    background-color: #ffb05c4f;
     /* background-color: #ff5c5c; */
     /* color: white; */
 }
