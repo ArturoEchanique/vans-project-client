@@ -19,12 +19,20 @@
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
-    padding-left: 19px;
-    font-size: 14px;
+    padding-left: 17px;
+    font-size: 16px;
 }
 
 /* .gm-style .gm-style-iw-c img{
     width: 130%;
+} */
+
+/* .gm-style .gm-style-iw-c{
+    padding: 0px;
+} */
+
+/* .gm-style .gm-style-iw-d{
+    padding: 0px;
 } */
 
 .gm-ui-hover-effect{
